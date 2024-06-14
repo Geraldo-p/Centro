@@ -137,4 +137,4 @@ CREATE TABLE Pagamento
     percentagem int --50%, 70%, 100%
     estado VARCHAR(100), -- em falta, pago
 )
-
+ola
