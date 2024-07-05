@@ -15,6 +15,7 @@ class Modulo extends Model
         'descricao',
         'data_inicio',
         'data_fim',
+        'qtd_licoes',
     ];
 
     public function cursos()
