@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('descricao')->nullable();
             $table->date('data_inicio')->nullable();
             $table->date('data_fim')->nullable();
-            $table->int('qtd_licoes')->nullable();
+            $table->Integer('qtd_licoes')->nullable();
             $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
             $table->timestamps();
         });
