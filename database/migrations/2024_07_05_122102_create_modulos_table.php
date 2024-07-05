@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('modulos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('curso_id');
+            $table->string('nome', 255);
+            $table->text('descricao')->nullable();
+            $table->date('data_inicio')->nullable();
+            $table->date('data_fim')->nullable();
+            $table->int('qtd_licoes')->nullable();
+            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
             $table->timestamps();
         });
     }

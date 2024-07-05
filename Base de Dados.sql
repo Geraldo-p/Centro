@@ -35,9 +35,11 @@ CREATE TABLE categoria (
 CREATE TABLE curso (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
+    preco DECIMAL NOT NULL,
     descricao TEXT,
     data_inicio DATE,
     data_fim DATE
+    foto VARCHAR(255) NOT NULL,
 );
 
 CREATE TABLE modulo (
@@ -47,6 +49,7 @@ CREATE TABLE modulo (
     descricao TEXT,
     data_inicio DATE,
     data_fim DATE,
+    qtd_licoes INT,
     FOREIGN KEY (curso_id) REFERENCES curso(id)
 );
 CREATE TABLE departamento (
