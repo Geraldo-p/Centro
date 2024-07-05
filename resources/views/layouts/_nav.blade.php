@@ -37,8 +37,7 @@
                     <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar
 											text-white">
                             <img alt="image" src="{{ asset('Template admin/assets/img/users/user-1.png') }}" class="rounded-circle">
-                        </span> <span class="dropdown-item-desc"> <span class="message-user">John
-                                Deo</span>
+                        </span> <span class="dropdown-item-desc"> <span class="message-user">Geraldo</span>
                             <span class="time messege-text">Please check your mail !!</span>
                             <span class="time">2 Min Ago</span>
                         </span>
@@ -84,8 +83,8 @@
                     src="{{ asset('Template admin/assets/img/user.png') }}" class="user-img-radious-style"> <span
                     class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
-                <div class="dropdown-title">Olá Geraldo</div>
-                <a href="profile.html" class="dropdown-item has-icon"> <i class="far
+                <div class="dropdown-title">Olá {{ Auth::user()->name }}</div>
+                <a href="{{route('profile.edit')}}" class="dropdown-item has-icon"> <i class="far
 										fa-user"></i> Perfil
                 </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
                     Actividades
@@ -93,7 +92,7 @@
                     Definições
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="auth-login.html" class="dropdown-item has-icon text-danger"> <i
+                <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger"> <i
                         class="fas fa-sign-out-alt"></i>
                     Sair
                 </a>
