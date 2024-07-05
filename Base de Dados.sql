@@ -1,22 +1,17 @@
 CREATE TABLE endereco (
     id INT AUTO_INCREMENT PRIMARY KEY,
     rua VARCHAR(255) NOT NULL,
-    numero VARCHAR(10),
-    complemento VARCHAR(100),
     bairro VARCHAR(100),
-    cidade VARCHAR(100) NOT NULL,
-    estado VARCHAR(2) NOT NULL,
-    cep VARCHAR(10) NOT NULL,
-    pais VARCHAR(50) NOT NULL
+    provincia VARCHAR(2) NOT NULL,
+    pais VARCHAR(50) NULL
+    enderecoDetalhado VARCHAR(200)
 );
 
 CREATE TABLE contacto (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
     email VARCHAR(255),
-    telefone VARCHAR(20),
-    endereco_id INT,
-    FOREIGN KEY (endereco_id) REFERENCES endereco(id)
+    telefone VARCHAR(20) ,
+    telefoneOP VARCHAR(20),
 );
 
 CREATE TABLE matricula (
@@ -33,8 +28,8 @@ CREATE TABLE matricula (
 CREATE TABLE categoria (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
+    familia VARCHAR(255) NOT NULL,
     descricao TEXT,
-    data_criacao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE curso (
