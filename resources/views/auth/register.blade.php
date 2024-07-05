@@ -37,31 +37,54 @@
                                     <div class="row">
                                         <div class="form-group col-6">
                                             <label for="name">Nome de Utilizador</label>
-                                            <input id="name" type="text" class="form-control" name="name"
+                                            <input id="name" type="text"
+                                                class="form-control @error('name') is-invalid @enderror" name="name"
                                                 autofocus>
+                                            @error('name')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group col-6">
                                             <label for="email">Email</label>
-                                            <input id="email" type="email" class="form-control" name="email">
-                                            <div class="invalid-feedback">
-                                            </div>
+                                            <input id="email" type="email"
+                                                class="form-control @error('email') is-invalid @enderror"
+                                                name="email">
+                                            @error('email')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-6">
                                             <label for="password" class="d-block">Palavra Passe</label>
-                                            <input id="password" type="password" class="form-control pwstrength"
+                                            <input id="password" type="password"
+                                                class="form-control pwstrength @error('password') is-invalid @enderror"
                                                 data-indicator="pwindicator" name="password">
                                             <div id="pwindicator" class="pwindicator">
                                                 <div class="bar"></div>
                                                 <div class="label"></div>
                                             </div>
+                                            @error('password')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group col-6">
                                             <label for="password_confirmation" class="d-block">Confirmar Palavra
                                                 Passe</label>
-                                            <input id="password_confirmation" type="password" class="form-control"
+                                            <input id="password_confirmation" type="password"
+                                                class="form-control @error('password_confirmation') is-invalid @enderror"
                                                 name="password_confirmation">
+                                            @error('password_confirmation')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -80,7 +103,7 @@
                                 </form>
                             </div>
                             <div class="mb-4 text-muted text-center">
-                                Já tens uma conta? <a href="{{route("login")}}">Login</a>
+                                Já tens uma conta? <a href="{{ route('login') }}">Login</a>
                             </div>
                         </div>
                     </div>
@@ -90,14 +113,10 @@
     </div>
     <!-- General JS Scripts -->
     <script src="Template admin/assets/js/app.min.js"></script>
-    <!-- JS Libraies -->
     <script src="Template admin/assets/bundles/jquery-pwstrength/jquery.pwstrength.min.js"></script>
     <script src="Template admin/assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
-    <!-- Page Specific JS File -->
     <script src="Template admin/assets/js/page/auth-register.js"></script>
-    <!-- Template JS File -->
     <script src="Template admin/assets/js/scripts.js"></script>
-    <!-- Custom JS File -->
     <script src="Template admin/assets/js/custom.js"></script>
 </body>
 
