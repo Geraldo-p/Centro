@@ -36,7 +36,8 @@
                 <div class="dropdown-list-content dropdown-list-message">
                     <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar
 											text-white">
-                            <img alt="image" src="{{ asset('Template admin/assets/img/users/user-1.png') }}" class="rounded-circle">
+                            <img alt="image" src="{{ asset('Template admin/assets/img/users/user-1.png') }}"
+                                class="rounded-circle">
                         </span> <span class="dropdown-item-desc"> <span class="message-user">Geraldo</span>
                             <span class="time messege-text">Please check your mail !!</span>
                             <span class="time">2 Min Ago</span>
@@ -84,7 +85,8 @@
                     class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
                 <div class="dropdown-title">Olá {{ Auth::user()->name }}</div>
-                <a href="{{route('profile.edit')}}" class="dropdown-item has-icon"> <i class="far
+                <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon"> <i
+                        class="far
 										fa-user"></i> Perfil
                 </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
                     Actividades
@@ -103,15 +105,16 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html"> <img alt="image" src="{{ asset('Template admin/assets/img/logo.png') }}" class="header-logo" /> <span
-                    class="logo-name">Otika</span>
+            <a href="index.html"> <img alt="image" src="{{ asset('Template admin/assets/img/logo.png') }}"
+                    class="header-logo" /> <span class="logo-name">Otika</span>
             </a>
 
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
             <li class="dropdown active">
-                <a href= "{{ route('dashboard') }}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+                <a href= "{{ route('dashboard') }}" class="nav-link"><i
+                        data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
@@ -137,11 +140,7 @@
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="grid"></i><span>Tabelas</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="basic-table.html">Basic Tables</a></li>
-                    <li><a class="nav-link" href="advance-table.html">Advanced Table</a></li>
-                    <li><a class="nav-link" href="datatables.html">Datatable</a></li>
-                    <li><a class="nav-link" href="export-table.html">Export Table</a></li>
-                    <li><a class="nav-link" href="editable-table.html">Editable Table</a></li>
+                    <li><a class="nav-link" href="{{ route('categorias.index') }}">Categoria</a></li>
                 </ul>
             </li>
             <li class="dropdown">

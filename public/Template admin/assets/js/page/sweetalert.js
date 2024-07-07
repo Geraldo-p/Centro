@@ -22,19 +22,19 @@ $("#swal-5").click(function () {
 
 $("#swal-6").click(function () {
   swal({
-    title: 'Are you sure?',
-    text: 'Once deleted, you will not be able to recover this imaginary file!',
+    title: 'Você tem certeza',
+    text: 'Tem certeza de que deseja excluir este arquivo? Esta ação não pode ser desfeita.',
     icon: 'warning',
     buttons: true,
     dangerMode: true,
   })
     .then((willDelete) => {
       if (willDelete) {
-        swal('Poof! Your imaginary file has been deleted!', {
+        swal('Registro Excluido com Sucesso', {
           icon: 'success',
         });
       } else {
-        swal('Your imaginary file is safe!');
+
       }
     });
 });

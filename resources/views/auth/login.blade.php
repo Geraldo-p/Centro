@@ -44,11 +44,11 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> --}}
 
 
 <!DOCTYPE html>
-<html lang="en"> --}}
+<html lang="en">
 
 
 <!-- auth-login.html  21 Nov 2019 03:49:32 GMT -->
@@ -105,7 +105,6 @@
                                         @error('password')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
-
                                             </div>
                                         @enderror
                                     </div>

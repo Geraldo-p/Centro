@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nome', 100);
             $table->string('familia', 100);
             $table->text('descricao')->nullable();
+            $table->unsignedBigInteger('id_us');
+            $table->foreign('id_us')->references('id')->on('users');
             $table->timestamps();
         });
     }
