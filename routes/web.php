@@ -17,11 +17,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('/categoria', CategoriaController::class)->names('categorias');
-    Route::post('/categoria/{categoria}', [CategoriaController::class, 'excluir'])->name('categorias.excluir');
-    Route::get('/categoria/editar/{categoria}', [CategoriaController::class, 'editar'])->name('categorias.editar');
-    Route::post('/categoria/editar/{categoria}', [CategoriaController::class, 'update2'])->name('categorias.update2');
-
+    Route::get('/categoria', [CategoriaController::class, 'index'])->name('categorias.index');
+    Route::get('/categoria/create', [CategoriaController::class, 'create'])->name('categorias.create');
+    Route::post('/categoria', [CategoriaController::class, 'store'])->name('categorias.store');
+    Route::get('/categoria/{categoria}', [CategoriaController::class, 'show'])->name('categorias.show');
+    Route::get('/categoria/{categoria}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
+    Route::put('/categoria/{categoria}', [CategoriaController::class, 'update'])->name('categorias.update');
+    Route::delete('/categoria/{categoria}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
 });
 
 require __DIR__ . '/auth.php';

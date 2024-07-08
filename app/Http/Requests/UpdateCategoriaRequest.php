@@ -16,10 +16,8 @@ class UpdateCategoriaRequest extends FormRequest
 
     public function rules(): array
     {
-        $categoriaId = $this->route('categoria'); // Obtém o ID da categoria da rota (se existir)
-
         return [
-            'nome' => 'required|max:255|unique:categorias,nome,' . $categoriaId,
+            'nome' => 'required|max:255',
         ];
     }
 

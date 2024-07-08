@@ -18,6 +18,8 @@
     <link rel='shortcut icon' type='image/x-icon' href='{{ asset('Template admin/assets/img/favicon.ico') }}' />
     <link rel="stylesheet" href="{{ asset('Template admin/assets/bundles/datatables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('Template admin/assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    {{-- @yield('css') --}}
+    <link rel="stylesheet" href="{{ asset('Template admin/assets/bundles/izitoast/css/iziToast.min.css') }}">
 
 </head>
 
@@ -54,8 +56,12 @@
   <script src="{{ asset('Template admin/assets/js/custom.js') }}"></script>
   <script src="{{ asset('Template admin/assets/js/page/datatables.js') }}"></script>
   <script src="{{ asset('Template admin/assets/bundles/sweetalert/sweetalert.min.js') }}"></script>
+
   <!-- Page Specific JS File -->
   <script src="{{ asset('Template admin/assets/js/page/sweetalert.js') }}"></script>
+  <script src="{{ asset('Template admin/assets/bundles/izitoast/js/iziToast.min.js') }}"></script>
+  <script src="{{ asset('Template admin/assets/js/page/toastr.js') }}"></script>
+
 </body>
 
 </html>

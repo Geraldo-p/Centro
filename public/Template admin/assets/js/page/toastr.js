@@ -16,6 +16,14 @@ $("#toastr-2").click(function () {
   });
 });
 
+// $(document).ready(function () {
+//   iziToast.success({
+//     title: 'Hello, world!',
+//     message: 'This awesome plugin is made by iziToast',
+//     position: 'topRight'
+//   });
+// });
+
 $("#toastr-3").click(function () {
   iziToast.warning({
     title: 'Hello, world!',

@@ -22,17 +22,26 @@
             </div>
         </div>
     @endif
-
+    <div class="page-header d-flex justify-content-between align-items-center">
+        <h3 class="page-title">
+            {{-- Categoria --}}
+        </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('categorias.index') }}">Categoria</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Nova Categoria</li>
+            </ol>
+        </nav>
+    </div>
     <div class="card text-left">
         <div class="card-body">
             <form action="{{ route('categorias.store') }}" method="POST">
                 @csrf
                 <div class="row profile-row">
                     <div class="col-md-8 col-lg-12">
-                        <h2>Nova Categoria</h2>
+                        <h3>Nova Categoria</h3>
                         <hr>
-
-
                         <div class="row">
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
@@ -75,8 +84,8 @@
                         <div class="row">
                             <div class="col-md-12 content-right">
                                 <button class="btn btn-primary form-btn" type="submit">Guardar</button>
-                                <a class="btn btn-danger form-btn" role="button"
-                                    href="{{ route('categorias.index') }}">Cancelar</a>
+                                <a href="{{ route('categorias.index') }}"><input type="button" value="Cancelar"
+                                        class="btn btn-danger form-btn"></a>
                             </div>
                         </div>
                     </div>
@@ -84,10 +93,9 @@
             </form>
         </div>
     </div>
-
     <script>
         setTimeout(function() {
             document.getElementById('alerta').classList.remove('show');
-        }, 10000);
+        }, 5000);
     </script>
 @endsection

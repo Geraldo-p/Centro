@@ -1,16 +1,8 @@
 @extends('layouts.admin')
 @section('titulo', 'Categoria')
+
+
 @section('content')
-    @if (session('sucesso'))
-        <div id="alerta" class="alert alert-success alert-dismissible show fade">
-            <div class="alert-body">
-                <button class="close" data-dismiss="alert">
-                    <span>&times;</span>
-                </button>
-                {{ session('sucesso') }}
-            </div>
-        </div>
-    @endif
     @if (session('erro'))
         <div id="alerta" class="alert alert-danger alert-dismissible show fade">
             <div class="alert-body">
@@ -21,10 +13,11 @@
             </div>
         </div>
     @endif
+
     <section class="section">
         <div class="page-header d-flex justify-content-between align-items-center">
             <h3 class="page-title">
-                Categoria
+                {{-- Categoria --}}
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -58,18 +51,21 @@
                                             <td>{{ $item->nome }}</td>
                                             {{-- <td>{{ $item->user->name }}</td> --}}
                                             <td>
-                                                <form id="deleteForm" action="{{ route('categorias.excluir', $item->id) }}"
+                                                <form id="deleteForm" action="{{ route('categorias.destroy', $item) }}"
                                                     method="POST">
+                                                    @method('DELETE')
                                                     @csrf
                                                     <div>
-                                                        <a href="{{ route('categorias.editar', $item) }}"
-                                                            class="btn btn-primary"><i class="fas fa-edit    "></i></a>
+                                                        <a href="{{ route('categorias.edit', $item->id) }}"
+                                                            title="Actualizar" class="btn btn-primary"><i
+                                                                class="fas fa-edit    "></i></a>
 
-                                                        <a href="#" class="btn btn-danger"><i
-                                                                class="fas fa-window-close    " id="swal-6"></i></a>
+                                                        <button title="Excluir" type="button" class="btn btn-danger"
+                                                            id="swal-6"><i class="fas fa-window-close"
+                                                                id="swal-6"></i></button>
 
-                                                        <a href="{{ route('categorias.show', $item) }}"
-                                                            class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                                        <a href="{{ route('categorias.show', $item) }}" title="Detalhes"
+                                                            class="btn btn-warning"><i class="fas fa-eye"></i></a>
                                                     </div>
                                                 </form>
                                             </td>
@@ -88,10 +84,4 @@
             </div>
         </div>
     </section>
-
-    <script>
-        setTimeout(function() {
-            document.getElementById('alerta').classList.remove('show');
-        }, 5000);
-    </script>
 @endsection

@@ -63,6 +63,30 @@ $("#swal-6").click(function () {
         });
 });
 
+$("#swal-Actualizar").click(function () {
+    swal({
+        title: 'Você tem certeza?',
+        text: 'Tem certeza de que deseja Actualizar o registro? Esta ação não pode ser desfeita.',
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                // Enviar o formulário manualmente
+                swal('Registro Actualizado com Sucesso', {
+                    icon: 'success',
+                });
+                document.getElementById('ActualizarForm').submit();
+            } else {
+                // O usuário cancelou a exclusão
+                // swal('Exclusão cancelada', {
+                //     icon: 'info',
+                // });
+            }
+        });
+});
+
 $("#swal-7").click(function () {
     swal({
         title: 'What is your name?',
