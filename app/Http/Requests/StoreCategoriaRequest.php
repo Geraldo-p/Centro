@@ -11,7 +11,7 @@ class StoreCategoriaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class StoreCategoriaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "nome" => "required|unique:categorias|max:255"
+        ];
+    }
+
+
+    public function messages()
+    {
+        return [
+            'nome.required' => 'Este Campo é Obrigatório.',
+            'nome.unique' => 'Já existe uma categoria com este nome.'
         ];
     }
 }

@@ -1,0 +1,80 @@
+@extends('layouts.admin')
+@section('titulo', 'Actualizar Categoria')
+@section('content')
+
+    @if (session('erro'))
+        <div id="alerta" class="alert alert-danger alert-dismissible show fade">
+            <div class="alert-body">
+                <button class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                </button>
+                {{ session('erro') }}
+            </div>
+        </div>
+    @endif
+
+    <div class="card text-left">
+        <div class="card-body">
+            <form action="{{ route('categorias.update2', $categoria) }}" method="POST">
+                @csrf
+                {{-- @method('PUT') --}}
+                <div class="row profile-row">
+                    <div class="col-md-8 col-lg-12">
+                        <h2>Nova Categoria</h2>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="nome">Descrição da
+                                        Categoria</label>
+                                    <input class="form-control @error('nome') is-invalid @enderror" type="text"
+                                        name="nome" value="{{ $categoria->nome }}">
+                                    @error('nome')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="familia">Família</label>
+                                    <select class="form-control @error('familia') is-invalid @enderror" name="familia">
+                                            <option value="Curso" @if ($categoria->familia == 'Curso') selected @endif>Curso</option>
+                                            <option value="Eletrônicos" @if ($categoria->familia == 'Eletrônicos') selected @endif>Eletrônicos</option>
+                                            <option value="Livros, Papelaria e Escritório" @if ($categoria->familia == 'Livros, Papelaria e Escritório') selected @endif>Livros, Papelaria e Escritório</option>
+                                            <option value="Tecnologia da Informação" @if ($categoria->familia == 'Tecnologia da Informação') selected @endif>Tecnologia da Informação</option>
+                                    </select>
+                                    @error('familia')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="descricao">Observações</label>
+                            <textarea class="form-control @error('descricao') is-invalid @enderror" name="descricao">{{ $categoria->descricao }}</textarea>
+                            @error('descricao')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 content-right">
+                                <button class="btn btn-primary form-btn" type="submit">Actualizar</button>
+                                <a class="btn btn-danger form-btn" role="button"
+                                    href="{{ route('categorias.index') }}">Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('alerta').classList.remove('show');
+        }, 10000);
+    </script>
+@endsection

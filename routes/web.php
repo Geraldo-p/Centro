@@ -4,11 +4,11 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/layouts.dashboard', function () {
+Route::get('/', function () {
     return view('/layouts.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -18,6 +18,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('/categoria', CategoriaController::class)->names('categorias');
+    Route::post('/categoria/{categoria}', [CategoriaController::class, 'excluir'])->name('categorias.excluir');
+    Route::get('/categoria/editar/{categoria}', [CategoriaController::class, 'editar'])->name('categorias.editar');
+    Route::post('/categoria/editar/{categoria}', [CategoriaController::class, 'update2'])->name('categorias.update2');
+
 });
 
 require __DIR__ . '/auth.php';
