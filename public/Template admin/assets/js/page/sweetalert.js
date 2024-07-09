@@ -41,8 +41,8 @@ $("#swal-5").click(function () {
 
 $("#swal-6").click(function () {
     swal({
-        title: 'Você tem certeza?',
-        text: 'Tem certeza de que deseja excluir este registro? Esta ação não pode ser desfeita.',
+        title: 'Tem certeza?',
+        text: 'Tem certeza que deseja excluir este registro? Esta ação não pode ser desfeita.',
         icon: 'warning',
         buttons: true,
         dangerMode: true,
@@ -50,9 +50,9 @@ $("#swal-6").click(function () {
         .then((willDelete) => {
             if (willDelete) {
                 // Enviar o formulário manualmente
-                swal('Registro Excluido com Sucesso', {
-                    icon: 'success',
-                });
+                // swal('Registro Excluido com Sucesso', {
+                //     icon: 'success',
+                // });
                 document.getElementById('deleteForm').submit();
             } else {
                 // O usuário cancelou a exclusão
@@ -65,8 +65,8 @@ $("#swal-6").click(function () {
 
 $("#swal-Actualizar").click(function () {
     swal({
-        title: 'Você tem certeza?',
-        text: 'Tem certeza de que deseja Actualizar o registro? Esta ação não pode ser desfeita.',
+        title: 'Tem certeza?',
+        text: 'Tem certeza que deseja Actualizar o registro? Esta ação não pode ser desfeita.',
         icon: 'warning',
         buttons: true,
         dangerMode: true,
@@ -78,6 +78,31 @@ $("#swal-Actualizar").click(function () {
                     icon: 'success',
                 });
                 document.getElementById('ActualizarForm').submit();
+            } else {
+                // O usuário cancelou a exclusão
+                // swal('Exclusão cancelada', {
+                //     icon: 'info',
+                // });
+            }
+        });
+});
+
+$("#swal-inserir").click(function () {
+    swal({
+        title: 'Tem certeza?',
+        text: 'Tem certeza que deseja Inserir Este Registro',
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                // Enviar o formulário manualmente
+                // swal('Registro Actualizado com Sucesso', {
+                //     icon: 'success',
+                // });
+
+                document.getElementById('InserirForm').submit();
             } else {
                 // O usuário cancelou a exclusão
                 // swal('Exclusão cancelada', {

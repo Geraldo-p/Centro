@@ -3,17 +3,6 @@
 
 
 @section('content')
-    @if (session('erro'))
-        <div id="alerta" class="alert alert-danger alert-dismissible show fade">
-            <div class="alert-body">
-                <button class="close" data-dismiss="alert">
-                    <span>&times;</span>
-                </button>
-                {{ session('erro') }}
-            </div>
-        </div>
-    @endif
-
     <section class="section">
         <div class="page-header d-flex justify-content-between align-items-center">
             <h3 class="page-title">
@@ -60,11 +49,10 @@
                                                             title="Actualizar" class="btn btn-primary"><i
                                                                 class="fas fa-edit    "></i></a>
 
-                                                        <button title="Excluir" type="button" class="btn btn-danger"
-                                                            id="swal-6"><i class="fas fa-window-close"
-                                                                id="swal-6"></i></button>
+                                                        <a id="swal-6" href="#" title="Actualizar" title="Excluir"
+                                                            class="btn btn-danger"><i class="fas fa-window-close"></i></a>
 
-                                                        <a href="{{ route('categorias.show', $item) }}" title="Detalhes"
+                                                        <a href="{{ route('categorias.show', $item->id) }}" title="Detalhes"
                                                             class="btn btn-warning"><i class="fas fa-eye"></i></a>
                                                     </div>
                                                 </form>
@@ -84,4 +72,31 @@
             </div>
         </div>
     </section>
+@endsection
+@section('script')
+    <script src="{{ asset('Template admin/assets/bundles/izitoast/js/iziToast.min.js') }}"></script>
+    <script src="{{ asset('Template admin/assets/js/page/toastr.js') }}"></script>
+    @if (session('sucesso'))
+        <script>
+            $(document).ready(function() {
+                iziToast.success({
+                    title: 'Sucesso, ',
+                    message: '{{ session('sucesso') }}',
+                    position: 'topRight'
+                });
+            });
+        </script>
+    @endif
+
+    @if (session('erro'))
+        <script>
+            $(document).ready(function() {
+                iziToast.error({
+                    title: 'Erro,',
+                    message: '{{ session('erro') }}',
+                    position: 'topRight'
+                });
+            });
+        </script>
+    @endif
 @endsection

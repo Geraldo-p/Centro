@@ -59,8 +59,9 @@
 
   <!-- Page Specific JS File -->
   <script src="{{ asset('Template admin/assets/js/page/sweetalert.js') }}"></script>
-  <script src="{{ asset('Template admin/assets/bundles/izitoast/js/iziToast.min.js') }}"></script>
-  <script src="{{ asset('Template admin/assets/js/page/toastr.js') }}"></script>
+  {{-- <script src="{{ asset('Template admin/assets/bundles/izitoast/js/iziToast.min.js') }}"></script>
+  <script src="{{ asset('Template admin/assets/js/page/toastr.js') }}"></script> --}}
+  @yield('script')
 
 </body>
 

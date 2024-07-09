@@ -1,27 +1,6 @@
 @extends('layouts.admin')
 @section('titulo', 'Nova Categoria')
 @section('content')
-
-    @if (session('sucesso'))
-        <div id="alerta" class="alert alert-success alert-dismissible show fade">
-            <div class="alert-body">
-                <button class="close" data-dismiss="alert">
-                    <span>&times;</span>
-                </button>
-                {{ session('sucesso') }}
-            </div>
-        </div>
-    @endif
-    @if (session('erro'))
-        <div id="alerta" class="alert alert-danger alert-dismissible show fade">
-            <div class="alert-body">
-                <button class="close" data-dismiss="alert">
-                    <span>&times;</span>
-                </button>
-                {{ session('erro') }}
-            </div>
-        </div>
-    @endif
     <div class="page-header d-flex justify-content-between align-items-center">
         <h3 class="page-title">
             {{-- Categoria --}}
@@ -36,7 +15,7 @@
     </div>
     <div class="card text-left">
         <div class="card-body">
-            <form action="{{ route('categorias.store') }}" method="POST">
+            <form action="{{ route('categorias.store') }}" method="POST" id="InserirForm">
                 @csrf
                 <div class="row profile-row">
                     <div class="col-md-8 col-lg-12">
@@ -83,7 +62,8 @@
                         <hr>
                         <div class="row">
                             <div class="col-md-12 content-right">
-                                <button class="btn btn-primary form-btn" type="submit">Guardar</button>
+                                <button class="btn btn-primary form-btn" type="button"
+                                    id="swal-inserir">Guardar</button>
                                 <a href="{{ route('categorias.index') }}"><input type="button" value="Cancelar"
                                         class="btn btn-danger form-btn"></a>
                             </div>
@@ -93,9 +73,31 @@
             </form>
         </div>
     </div>
-    <script>
-        setTimeout(function() {
-            document.getElementById('alerta').classList.remove('show');
-        }, 5000);
-    </script>
+@endsection
+@section('script')
+    <script src="{{ asset('Template admin/assets/bundles/izitoast/js/iziToast.min.js') }}"></script>
+    <script src="{{ asset('Template admin/assets/js/page/toastr.js') }}"></script>
+    @if (session('sucesso'))
+        <script>
+            $(document).ready(function() {
+                iziToast.success({
+                    title: 'Sucesso, ',
+                    message: '{{ session('sucesso') }}',
+                    position: 'topRight'
+                });
+            });
+        </script>
+    @endif
+
+    @if (session('erro'))
+        <script>
+            $(document).ready(function() {
+                iziToast.error({
+                    title: 'Erro,',
+                    message: '{{ session('erro') }}',
+                    position: 'topRight'
+                });
+            });
+        </script>
+    @endif
 @endsection
