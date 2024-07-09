@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria\Categoria;
 use App\Http\Requests\StoreCategoriaRequest;
 use App\Http\Requests\UpdateCategoriaRequest;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 
 class CategoriaController extends Controller
@@ -80,5 +81,13 @@ class CategoriaController extends Controller
         } catch (\Throwable $th) {
             return back()->with('erro', 'Ocorreu um problema ao tentar excluir a categoria "' . $categoria->nome . '". Por favor, tente novamente.');
         }
+    }
+
+    public function generatePdf()
+    {
+        $data = ['title' => 'Exemplo de PDF'];
+        $pdf = Pdf::loadView('admin.Categoria.pdf', $data);
+        return $pdf->download('exemplo.pdf');
+
     }
 }

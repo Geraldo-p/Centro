@@ -66,9 +66,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12">
-                <h4><a name="" id="" class="btn btn-primary" href="{{ route('categorias.create') }}"
-                        role="button">+ Novo</a></h4>
+            <div class="col-12 d-flex align-items-center">
+                <h4 class="mb-0">
+                    <a name="" id="" class="btn btn-primary mr-2" href="{{ route('categorias.create') }}"
+                        role="button">+ Novo</a>
+                </h4>
+                <h4 class="mb-0">
+                    <a name="" id="" class="btn btn-danger" href="{{ route('categorias.pdf') }}"
+                        role="button"><i class="fas fa-file-pdf    "></i> PDF</a>
+                </h4>
             </div>
         </div>
     </section>

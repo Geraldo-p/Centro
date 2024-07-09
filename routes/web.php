@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/categoria/{categoria}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
     Route::put('/categoria/{categoria}', [CategoriaController::class, 'update'])->name('categorias.update');
     Route::delete('/categoria/{categoria}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
+    Route::get("/categoria/pdf", [CategoriaController::class, 'generatePdf'])->name("categorias.pdf");
 });
 
 require __DIR__ . '/auth.php';
