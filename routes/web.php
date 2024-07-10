@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\CursoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/categoria/{categoria}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
     Route::put('/categoria/{categoria}', [CategoriaController::class, 'update'])->name('categorias.update');
     Route::delete('/categoria/{categoria}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
-    Route::get("/categoria/pdf", [CategoriaController::class, 'generatePdf'])->name("categorias.pdf");
+    Route::get("/generate-pdf", [CategoriaController::class, 'generatePdf'])->name("categorias.pdf");
+
+
+    // curso
+    Route::resource('cursos', CursoController::class)->names([
+        'index' => 'cursos.index',
+        'create' => 'cursos.create',
+        'store' => 'cursos.store',
+        'show' => 'cursos.show',
+        'edit' => 'cursos.edit',
+        'update' => 'cursos.update',
+        'destroy' => 'cursos.destroy'
+    ]);
 });
 
 require __DIR__ . '/auth.php';

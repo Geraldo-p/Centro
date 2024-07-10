@@ -2,6 +2,7 @@
 
 namespace App\Models\Categoria;
 
+use App\Models\Curso\Curso;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,11 @@ class Categoria extends Model
 
     public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id_us');
+    }
+
+    public function cursos()
+    {
+        return $this->hasMany(Curso::class, 'id_categ');
     }
 }

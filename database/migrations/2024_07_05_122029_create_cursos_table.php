@@ -19,6 +19,12 @@ return new class extends Migration
             $table->date('data_inicio')->nullable();
             $table->date('data_fim')->nullable();
             $table->text('descricao')->nullable();
+
+            $table->unsignedBigInteger('id_us');
+            $table->foreign('id_us')->references('id')->on('users');
+
+            $table->unsignedBigInteger('id_categ');
+            $table->foreign('id_categ')->references('id')->on('categorias');
             $table->timestamps();
         });
     }

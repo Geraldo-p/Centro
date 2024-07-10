@@ -141,6 +141,7 @@
                         data-feather="grid"></i><span>Tabelas</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('categorias.index') }}">Categoria</a></li>
+                    <li><a class="nav-link" href="{{ route('cursos.index') }}">Cursos</a></li>
                 </ul>
             </li>
             <li class="dropdown">

@@ -7,6 +7,7 @@ use App\Models\Categoria\Categoria;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Categoria\Curso;
 
 class User extends Authenticatable
 {
@@ -24,7 +25,12 @@ class User extends Authenticatable
     ];
     public function categorias()
     {
-        return $this->hasMany(Categoria::class);
+        return $this->hasMany(Categoria::class, 'id_us');
+    }
+
+    public function cursos()
+    {
+        return $this->hasMany(Curso::class, 'id_us');
     }
 
     /**

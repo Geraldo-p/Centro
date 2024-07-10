@@ -37,8 +37,7 @@
                                         <tr>
                                             <td>{{ $item->nome }}</td>
                                             <td>{{ $item->familia }}</td>
-                                            <td>{{ $item->nome }}</td>
-                                            {{-- <td>{{ $item->user->name }}</td> --}}
+                                            <td>{{ $item->users->name }}</td>
                                             <td>
                                                 <form id="deleteForm" action="{{ route('categorias.destroy', $item) }}"
                                                     method="POST">
@@ -59,7 +58,6 @@
                                             </td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>
@@ -105,4 +103,16 @@
             });
         </script>
     @endif
+
+    @if (session('warning'))
+    <script>
+        $(document).ready(function() {
+            iziToast.warning({
+                title: 'Atenção,',
+                message: '{{ session('warning') }}',
+                position: 'topRight'
+            });
+        });
+    </script>
+@endif
 @endsection
