@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
         'update' => 'cursos.update',
         'destroy' => 'cursos.destroy'
     ]);
+    Route::get("/generate-pdf", [CategoriaController::class, 'generatePdf'])->name("cursos.pdf");
+
 });
 
 require __DIR__ . '/auth.php';

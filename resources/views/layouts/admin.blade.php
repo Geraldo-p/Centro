@@ -15,11 +15,12 @@
     <link rel="stylesheet" href="{{ asset('Template admin/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('Template admin/assets/css/components.css') }}">
     <link rel="stylesheet" href="{{ asset('Template admin/assets/css/custom.css') }}">
-    <link rel='shortcut icon' type='image/x-icon' href='{{ asset('Template admin/assets/img/favicon.ico') }}' />
+    <link rel='shortcut icon' type='image/x-icon' href='{{ asset('Template admin/assets/img/logo_.ico') }}' />
     <link rel="stylesheet" href="{{ asset('Template admin/assets/bundles/datatables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('Template admin/assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
     {{-- @yield('css') --}}
     <link rel="stylesheet" href="{{ asset('Template admin/assets/bundles/izitoast/css/iziToast.min.css') }}">
+    @yield('css')
 
 </head>
 

@@ -13,13 +13,15 @@ class Curso extends Model
     use HasFactory;
     protected $fillable = [
         'nome',
+        'duracao',
+        'foto',
         'preco',
-        'descricao',
+        'pag_mes',
         'data_inicio',
         'data_fim',
-        'foto',
+        'descricao',
+        'id_us',
         'id_categ',
-        'id_us'
     ];
 
     public function modulos()

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria\Categoria;
 use App\Models\Curso\Curso;
 use App\Http\Requests\StoreCursoRequest;
 use App\Http\Requests\UpdateCursoRequest;
@@ -24,7 +25,8 @@ class CursoController extends Controller
      */
     public function create()
     {
-        return view('admin.Curso.create');
+        $categoria = Categoria::where('familia', 'Curso')->orderBy('nome', 'asc')->get();
+        return view('admin.Curso.create', compact("categoria"));
     }
 
     /**
@@ -32,13 +34,13 @@ class CursoController extends Controller
      */
     public function store(StoreCursoRequest $request)
     {
-        try {
+        // try {
             $userId = Auth::id();
             Curso::create($request->all() + ['id_us' => $userId]);
             return back()->with('sucesso', 'Curso "' . $request->input("nome") . '" criado com sucesso.');
-        } catch (\Throwable $th) {
-            return back()->with('erro', 'Ocorreu um problema ao tentar adicionar o curso. "' . $request->input("nome") . '"');
-        }
+        // } catch (\Throwable $th) {
+        //     return back()->with('erro', 'Ocorreu um problema ao tentar adicionar o curso. "' . $request->input("nome") . '"');
+        // }
     }
 
     /**
@@ -87,7 +89,7 @@ class CursoController extends Controller
     {
         $data = ['title' => 'Exemplo de PDF'];
         $pdf = Pdf::loadView('admin.Curso.pdf', $data);
-        return $pdf->download('exemplo.pdf')->back()->with("warning", "Arquivo Baixado com sucesso");
+        return $pdf->download('exemplo.pdf');
 
     }
 }

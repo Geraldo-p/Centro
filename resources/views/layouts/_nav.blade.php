@@ -105,8 +105,8 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html"> <img alt="image" src="{{ asset('Template admin/assets/img/logo.png') }}"
-                    class="header-logo" /> <span class="logo-name">Otika</span>
+            <a href="{{ route('dashboard') }}"> <img alt="image" src="{{ asset('Template admin/assets/img/logo_.png') }}"
+                    class="header-logo" /> <span class="logo-name">Santa Cruz</span>
             </a>
 
         </div>

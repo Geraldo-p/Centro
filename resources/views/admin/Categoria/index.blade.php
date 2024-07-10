@@ -70,7 +70,7 @@
                         role="button">+ Novo</a>
                 </h4>
                 <h4 class="mb-0">
-                    <a name="" id="" class="btn btn-danger" href="{{ route('categorias.pdf') }}"
+                    <a name="" id="" class="btn btn-danger" href=""
                         role="button"><i class="fas fa-file-pdf    "></i> PDF</a>
                 </h4>
             </div>

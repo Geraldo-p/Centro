@@ -87,6 +87,7 @@ class CategoriaController extends Controller
     {
         $data = ['title' => 'Exemplo de PDF'];
         $pdf = Pdf::loadView('admin.Categoria.pdf', $data);
+        // session()->flash('warning', 'Arquivo Baixado com sucesso');
         return $pdf->download('exemplo.pdf');
 
     }
