@@ -35,7 +35,7 @@
     </div>
     <div class="card text-left">
         <div class="card-body">
-            <form action="{{ route('cursos.store') }}" method="POST" id="InserirForm">
+            <form action="{{ route('cursos.store') }}" method="POST" id="InserirForm" enctype="multipart/form-data">
                 @csrf
                 <h3>Novo Curso</h3>
                 <hr>
@@ -52,68 +52,106 @@
                         <br>
                     </div>
                     <div class="col-md-8">
-
                         <div class="row">
                             <div class="col-sm-12 col-md-6 col-lg-12">
                                 <div class="form-group mb-3">
-                                    <label class="form-label " for="nome">Descrição</label>
+                                    <label class="form-label" for="nome">Descrição</label>
                                     <input class="form-control @error('nome') is-invalid @enderror" type="text"
-                                        name="nome">
+                                        name="nome" id="nome">
                                     @error('nome')
-                                        <div class="invalid-feedback">{{ $messages }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <label class="form-label">Categoria</label>
-                                    <select class="form-control" name="id_categ">
+                                    <select class="form-control @error('id_categ') is-invalid @enderror" name="id_categ">
                                         <optgroup label="Escolha uma Categoria para o curso">
                                             @foreach ($categoria as $item)
                                                 <option value="{{ $item->id }}">{{ $item->nome }}</option>
                                             @endforeach
                                         </optgroup>
+
                                     </select>
+                                    @error('id_categ')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="duracao">Duração</label>
-                                    <input class="form-control" type="text" name="duracao" autocomplete="on"
-                                        required="">
+                                    <input class="form-control @error('duracao') is-invalid @enderror" type="text"
+                                        name="duracao" autocomplete="on" required="">
+                                    @error('duracao')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3"><label class="form-label" for="preco">Preço de
-                                        Inscrição</label><input class="form-control" type="number" name="preco"
-                                        autocomplete="off" required=""></div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="preco">Preço de
+                                        Inscrição</label>
+                                    <input class="form-control preco @error('preco') is-invalid @enderror" type="number"
+                                        name="preco" autocomplete="off" required="">
+                                    @error('preco')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3"><label class="form-label" for="pag_mes">Pagamento
-                                        Mensal</label><input class="form-control" type="number" name="pag_mes"
-                                        autocomplete="off" required=""></div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="pag_mes">Pagamento
+                                        Mensal</label>
+                                    <input class="form-control @error('pag_mes') is-invalid @enderror" type="number"
+                                        name="pag_mes" autocomplete="off" required="">
+                                    @error('pag_mes')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3"><label class="form-label" for="data_inicio">Data de
-                                        Início</label><input class="form-control" type="date" name="data_inicio"></div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="data_inicio">Data de
+                                        Início</label>
+                                    <input class="form-control @error('data_inicio') is-invalid @enderror" type="date"
+                                        name="data_inicio">
+                                    @error('data_inicio')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <div class="form-group mb-3"><label class="form-label" for="data_fim">Data de
-                                        Início</label><input class="form-control" type="date" name="data_fim"></div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="data_fim">Data de
+                                        Término</label>
+                                    <input class="form-control @error('data_fim') is-invalid @enderror" type="date"
+                                        name="data_fim">
+                                    @error('data_fim')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-12">
-                                <div class="form-group mb-3"><label class="form-label" for="descricao">Mais
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="descricao">Mais
                                         Informações</label>
-                                    <textarea class="form-control" name="descricao"></textarea>
+                                    <textarea class="form-control @error('descricao') is-invalid @enderror" name="descricao"></textarea>
+                                    @error('descricao')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-md-12 content-right">
-                                <button class="btn btn-primary form-btn" type="button" id="swal-inserir">Guardar</button>
+                                <button class="btn btn-primary form-btn" type="button"
+                                    id="swal-inserir">Guardar</button>
                                 <a href="{{ route('cursos.index') }}"><input type="button" value="Cancelar"
                                         class="btn btn-danger form-btn"></a>
                             </div>

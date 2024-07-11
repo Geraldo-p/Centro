@@ -40,16 +40,17 @@
                                             <td>{{ $item->preco }}</td>
                                             <td>{{ $item->duracao }}</td>
                                             @if (\Carbon\Carbon::parse($item->data_fim)->isFuture())
-                                                <td>Terminado</td>
+                                                <td>Em Andamento</td>
                                             @else
-                                                <td>Em Anmdamento</td>
+                                                <td>Terminado</td>
                                             @endif
                                             <td>
-                                                <form id="deleteForm" action="{{ route('cursos.destroy', $item) }}"
-                                                    method="POST">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <div>
+                                                <div>
+                                                    <form id="deleteForm" action="{{ route('cursos.destroy', $item) }}"
+                                                        method="POST">
+                                                        @method('DELETE')
+                                                        @csrf
+
                                                         <a href="{{ route('cursos.edit', $item->id) }}" title="Actualizar"
                                                             class="btn btn-primary"><i class="fas fa-edit    "></i></a>
 
@@ -58,8 +59,10 @@
 
                                                         <a href="{{ route('cursos.show', $item->id) }}" title="Detalhes"
                                                             class="btn btn-warning"><i class="fas fa-eye"></i></a>
-                                                    </div>
-                                                </form>
+
+
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

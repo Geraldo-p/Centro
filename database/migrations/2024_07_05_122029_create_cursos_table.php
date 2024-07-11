@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 255);
             $table->string('duracao', 255)->nullable(); //1, 2, 3 ou 4 meses
-            $table->string('foto', 255)->nullable();
+            $table->text('foto')->nullable();
             $table->decimal('preco', 10, 2);
             $table->decimal('pag_mes', 10, 2); //valor pago por mes
             $table->date('data_inicio')->nullable();

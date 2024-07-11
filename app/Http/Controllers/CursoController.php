@@ -34,13 +34,22 @@ class CursoController extends Controller
      */
     public function store(StoreCursoRequest $request)
     {
-        // try {
+        try {
+            // $pasta_fish = public_path("images");
+
+            if ($request->hasFile('foto')) {
+                $file = $request->file('foto');
+                $image_name = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path("images"), $image_name);
+            }
+
             $userId = Auth::id();
-            Curso::create($request->all() + ['id_us' => $userId]);
+            Curso::create($request->all() + ['id_us' => $userId, 'foto' => $image_name]);
             return back()->with('sucesso', 'Curso "' . $request->input("nome") . '" criado com sucesso.');
-        // } catch (\Throwable $th) {
-        //     return back()->with('erro', 'Ocorreu um problema ao tentar adicionar o curso. "' . $request->input("nome") . '"');
-        // }
+
+        } catch (\Throwable $th) {
+            return back()->with('erro', 'Ocorreu um problema ao tentar adicionar o curso. "' . $request->input("nome") . '"');
+        }
     }
 
     /**
@@ -90,6 +99,5 @@ class CursoController extends Controller
         $data = ['title' => 'Exemplo de PDF'];
         $pdf = Pdf::loadView('admin.Curso.pdf', $data);
         return $pdf->download('exemplo.pdf');
-
     }
 }

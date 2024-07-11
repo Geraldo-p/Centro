@@ -21,16 +21,17 @@ class StoreCursoRequest extends FormRequest
      */
     public function rules(): array
     {
+        // dd($this->request->all());
         return [
             'nome' => 'required|string|max:255|unique:cursos',
             'duracao' => 'nullable|string|max:255',
-            'foto' => 'nullable|string|max:255',
+            // 'foto' => 'nullable|string',
             'preco' => 'required|numeric',
             'pag_mes' => 'required|numeric',
             'data_inicio' => 'nullable|date',
             'data_fim' => 'nullable|date|after_or_equal:data_inicio',
             'descricao' => 'nullable|string',
-            'id_us' => 'required|exists:users,id',
+            'id_us' => 'exists:users,id',
             'id_categ' => 'required|exists:categorias,id',
         ];
     }
@@ -38,10 +39,9 @@ class StoreCursoRequest extends FormRequest
     public function messages()
     {
         return [
-            'nome.required' => 'O nome é obrigatório.',
-            'nome.string' => 'O nome deve ser uma string.',
-            'nome.max' => 'O nome não pode ter mais de 255 caracteres.',
-            'nome.unique' => 'Este nome já está em uso na tabela.',
+            'nome.required' => 'A descrição do curso é obrigatório.',
+            'nome.max' => 'A descrição não pode ter mais de 255 caracteres.',
+            'nome.unique' => 'Esta Descrição já está em uso.',
 
             'preco.required' => 'O preço de inscrição é obrigatório.',
             'preco.numeric' => 'O preço deve ser do tipo númerico.',
@@ -58,6 +58,4 @@ class StoreCursoRequest extends FormRequest
             'id_categ.exists' => 'A categoria selecionada não existe.',
         ];
     }
-
-
 }
