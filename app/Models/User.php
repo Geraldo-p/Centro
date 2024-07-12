@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Categoria\Categoria;
+use App\Models\Departamento\departamento;
 use App\Models\Modulo\Modulo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -27,6 +28,11 @@ class User extends Authenticatable
     public function categorias()
     {
         return $this->hasMany(Categoria::class, 'id_us');
+    }
+
+    public function departamentos()
+    {
+        return $this->hasMany(departamento::class, 'id_us');
     }
 
     public function cursos()

@@ -3,14 +3,13 @@ CREATE TABLE endereco (
     rua VARCHAR(255) NOT NULL,
     bairro VARCHAR(100),
     provincia VARCHAR(2) NOT NULL,
-    pais VARCHAR(50) NULL
-    enderecoDetalhado VARCHAR(200)
+    pais VARCHAR(50) NULL enderecoDetalhado VARCHAR(200)
 );
 
 CREATE TABLE contacto (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255),
-    telefone VARCHAR(20) ,
+    telefone VARCHAR(20),
     telefoneOP VARCHAR(20),
 );
 
@@ -22,8 +21,6 @@ CREATE TABLE matricula (
     FOREIGN KEY (formando_id) REFERENCES formando(id),
     FOREIGN KEY (curso_id) REFERENCES curso(id)
 );
-
-
 
 CREATE TABLE categoria (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -38,8 +35,7 @@ CREATE TABLE curso (
     preco DECIMAL NOT NULL,
     descricao TEXT,
     data_inicio DATE,
-    data_fim DATE
-    foto VARCHAR(255) NOT NULL,
+    data_fim DATE foto VARCHAR(255) NOT NULL,
 );
 
 CREATE TABLE modulo (
@@ -51,17 +47,19 @@ CREATE TABLE modulo (
     data_fim DATE,
     qtd_licoes INT,
     id_us int,
-
-    FOREIGN KEY (curso_id) REFERENCES curso(id)
-    FOREIGN KEY (id_us) REFERENCES users(id)
+    FOREIGN KEY (curso_id) REFERENCES curso(id) FOREIGN KEY (id_us) REFERENCES users(id)
 );
+
 CREATE TABLE departamento (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     descricao TEXT,
     hora_entrada TIME NOT NULL,
-    hora_fechamento TIME NOT NULL
+    hora_fechamento TIME NOT NULL,
+    id_us int,
+    FOREIGN KEY (id_us) REFERENCES users(id)
 );
+
 CREATE TABLE funcionario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
@@ -79,7 +77,8 @@ CREATE TABLE funcionario (
     estado_civil VARCHAR(50),
     nacionalidade VARCHAR(100),
     numero_bi VARCHAR(50),
-    tipo VARCHAR(50), -- formador, limpeza, funcionario normal
+    tipo VARCHAR(50),
+    -- formador, limpeza, funcionario normal
     FOREIGN KEY (departamento_id) REFERENCES departamento(id),
     FOREIGN KEY (contacto_id) REFERENCES contacto(id),
     FOREIGN KEY (endereco_id) REFERENCES endereco(id)
@@ -94,6 +93,7 @@ CREATE TABLE formando (
     FOREIGN KEY (contacto_id) REFERENCES contacto(id),
     FOREIGN KEY (endereco_id) REFERENCES endereco(id)
 );
+
 CREATE TABLE lista_presença (
     id INT AUTO_INCREMENT PRIMARY KEY,
     formando_id INT,
@@ -104,37 +104,36 @@ CREATE TABLE lista_presença (
     FOREIGN KEY (modulo_id) REFERENCES modulo(id)
 );
 
-CREATE TABLE SALA
-(
+CREATE TABLE SALA (
     id INT AUTO_INCREMENT PRIMARY KEY,
     descricao TEXT,
-    capacidade INT, --QUANTIDADE DE ALUNOS
-    tipo TEXT , --TEORICA, PRATICA
+    capacidade INT,
+    --QUANTIDADE DE ALUNOS
+    tipo TEXT,
+    --TEORICA, PRATICA
 );
 
-CREATE TABLE TURMA
-(
+CREATE TABLE TURMA (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255),
     sala_id INT,
     turma_id int,
-    funcionario_id int, -- selecionar apenas formadores no combobox
+    funcionario_id int,
+    -- selecionar apenas formadores no combobox
     formando_id int,
     horario_ENTRADA VARCHAR(50),
     horario_SAIDA VARCHAR(50),
-    FOREIGN KEY (sala_id) REFERENCES SALA(id)
-    FOREIGN KEY (funcionario_id) REFERENCES funcionario(id)
-    FOREIGN KEY (formando_id) REFERENCES formando(id)
-    FOREIGN KEY (turma_id) REFERENCES TURMA(id)
+    FOREIGN KEY (sala_id) REFERENCES SALA(id) FOREIGN KEY (funcionario_id) REFERENCES funcionario(id) FOREIGN KEY (formando_id) REFERENCES formando(id) FOREIGN KEY (turma_id) REFERENCES TURMA(id)
 );
 
-CREATE TABLE Pagamento
-(
+CREATE TABLE Pagamento (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    tipo VARCHAR(50), -- transferencia, dinheiro em mão
+    tipo VARCHAR(50),
+    -- transferencia, dinheiro em mão
     data_pagamento DATE,
     valor DECIMAL(10, 2),
     em_falta DECIMAL(10, 2),
     percentagem int --50%, 70%, 100%
-    estado VARCHAR(100), -- em falta, pago
+    estado VARCHAR(100),
+    -- em falta, pago
 )

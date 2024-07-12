@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\ModuloController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,18 @@ Route::middleware('auth')->group(function () {
         'destroy' => 'modulos.destroy'
     ]);
     Route::get("/generate-pdf/modulo", [ModuloController::class, 'generatePdf'])->name("modulos.pdf");
+
+    // DEPARTAMENTO
+    Route::resource('departamentos', DepartamentoController::class)->names([
+        'index' => 'departamentos.index',
+        'create' => 'departamentos.create',
+        'store' => 'departamentos.store',
+        'show' => 'departamentos.show',
+        'edit' => 'departamentos.edit',
+        'update' => 'departamentos.update',
+        'destroy' => 'departamentos.destroy'
+    ]);
+    Route::get("/generate-pdf/departamento", [DepartamentoController::class, 'generatePdf'])->name("departamentos.pdf");
 });
 
 require __DIR__ . '/auth.php';
