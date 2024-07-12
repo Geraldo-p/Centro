@@ -39,8 +39,8 @@
                                             <td>{{ $item->familia }}</td>
                                             <td>{{ $item->users->name }}</td>
                                             <td>
-                                                <form id="deleteForm" action="{{ route('categorias.destroy', $item) }}"
-                                                    method="POST">
+                                                <form id="deleteForm-{{ $item->id }}"
+                                                    action="{{ route('categorias.destroy', $item) }}" method="POST">
                                                     @method('DELETE')
                                                     @csrf
                                                     <div>
@@ -48,8 +48,9 @@
                                                             title="Actualizar" class="btn btn-primary"><i
                                                                 class="fas fa-edit    "></i></a>
 
-                                                        <a id="swal-6" href="#" title="Actualizar" title="Excluir"
-                                                            class="btn btn-danger"><i class="fas fa-window-close"></i></a>
+                                                        <a id="swal__{{ $item->id }}" href="#" title="Actualizar"
+                                                            title="Excluir" class="btn btn-danger"><i
+                                                                class="fas fa-window-close"></i></a>
 
                                                         <a href="{{ route('categorias.show', $item->id) }}" title="Detalhes"
                                                             class="btn btn-warning"><i class="fas fa-eye"></i></a>
@@ -57,6 +58,42 @@
                                                 </form>
                                             </td>
                                         </tr>
+                                        <script>
+                                            document.getElementById("swal__{{ $item->id }}").addEventListener("click", function(event) {
+                                                event.preventDefault();
+                                                swal({
+                                                    title: 'Tem certeza?',
+                                                    text: 'Tem certeza que deseja excluir a categoria {{ $item->nome }}? Esta ação não pode ser desfeita.',
+                                                    icon: 'warning',
+                                                    buttons: {
+                                                        cancel: {
+                                                            text: 'Não',
+                                                            value: null,
+                                                            visible: true,
+                                                            className: '',
+                                                            closeModal: true,
+                                                        },
+                                                        confirm: {
+                                                            text: 'Sim',
+                                                            value: true,
+                                                            visible: true,
+                                                            className: '',
+                                                            closeModal: false
+                                                        }
+                                                    },
+                                                    dangerMode: true,
+
+                                                }).then((willDelete) => {
+                                                    if (willDelete) {
+                                                        document.getElementById('deleteForm-{{ $item->id }}').submit();
+                                                    } else {
+                                                        swal('Exclusão cancelada', {
+                                                            icon: 'info'
+                                                        });
+                                                    }
+                                                });
+                                            });
+                                        </script>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -70,8 +107,8 @@
                         role="button">+ Novo</a>
                 </h4>
                 <h4 class="mb-0">
-                    <a name="" id="" class="btn btn-danger" href=""
-                        role="button"><i class="fas fa-file-pdf    "></i> PDF</a>
+                    <a name="" id="" class="btn btn-danger" href="" role="button"><i
+                            class="fas fa-file-pdf    "></i> PDF</a>
                 </h4>
             </div>
         </div>
@@ -105,14 +142,14 @@
     @endif
 
     @if (session('warning'))
-    <script>
-        $(document).ready(function() {
-            iziToast.warning({
-                title: 'Atenção,',
-                message: '{{ session('warning') }}',
-                position: 'topRight'
+        <script>
+            $(document).ready(function() {
+                iziToast.warning({
+                    title: 'Atenção,',
+                    message: '{{ session('warning') }}',
+                    position: 'topRight'
+                });
             });
-        });
-    </script>
-@endif
+        </script>
+    @endif
 @endsection

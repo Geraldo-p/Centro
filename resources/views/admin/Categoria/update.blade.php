@@ -93,6 +93,7 @@
                 });
             });
         </script>
+        {{ session()->forget('sucesso') }}
     @endif
 
     @if (session('erro'))
@@ -105,5 +106,6 @@
                 });
             });
         </script>
+        {{ session()->forget('erro') }}
     @endif
 @endsection

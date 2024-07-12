@@ -75,6 +75,10 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
+        if ($categoria->cursos()->count() > 0) {
+            return back()->with('warning', 'Não é possível excluir a categoria "' . $categoria->nome . '" pois está associada a um ou mais registros.');
+        }
+    
         try {
             $categoria->delete();
             return back()->with('sucesso', 'A categoria "' . $categoria->nome . '" foi excluída com sucesso.');

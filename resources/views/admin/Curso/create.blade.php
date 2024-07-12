@@ -3,7 +3,7 @@
 @section('css')
     <style>
         .photo-frame {
-            border: 2px solid black;
+            border: 1px solid rgb(0, 0, 0);
             width: 300px;
             height: 300px;
             display: flex;
@@ -43,7 +43,7 @@
                     <div class="col-md-4 relative">
                         <div class="row justify-content-center mt-5">
                             <div class="photo-frame" id="photoFrame">
-                                <span>Foto</span>
+                                <img src="{{ asset('images/') }}" alt="Foto do Curso">
                             </div>
                         </div>
                         <br>
@@ -52,6 +52,7 @@
                         <br>
                     </div>
                     <div class="col-md-8">
+
                         <div class="row">
                             <div class="col-sm-12 col-md-6 col-lg-12">
                                 <div class="form-group mb-3">
@@ -175,6 +176,7 @@
                 });
             });
         </script>
+        {{ session()->forget('sucesso') }}
     @endif
 
     @if (session('erro'))
@@ -187,6 +189,7 @@
                 });
             });
         </script>
+        {{ session()->forget('erro') }}
     @endif
 
     <script>

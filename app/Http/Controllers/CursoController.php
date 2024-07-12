@@ -9,6 +9,8 @@ use App\Http\Requests\UpdateCursoRequest;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 
+use function PHPUnit\Framework\isNull;
+
 class CursoController extends Controller
 {
     /**
@@ -34,19 +36,17 @@ class CursoController extends Controller
      */
     public function store(StoreCursoRequest $request)
     {
-        try {
-            // $pasta_fish = public_path("images");
 
+        try {
+            $image_name = null;
             if ($request->hasFile('foto')) {
                 $file = $request->file('foto');
                 $image_name = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path("images"), $image_name);
             }
 
-            $userId = Auth::id();
-            Curso::create($request->all() + ['id_us' => $userId, 'foto' => $image_name]);
+            Curso::create(['id_us' => Auth::id(), 'foto' => $image_name] + $request->all());
             return back()->with('sucesso', 'Curso "' . $request->input("nome") . '" criado com sucesso.');
-
         } catch (\Throwable $th) {
             return back()->with('erro', 'Ocorreu um problema ao tentar adicionar o curso. "' . $request->input("nome") . '"');
         }
@@ -65,7 +65,8 @@ class CursoController extends Controller
      */
     public function edit(Curso $curso)
     {
-        return view('admin.Curso.update', compact('curso'));
+        $categoria = Categoria::where("familia", "Curso")->orderBy("nome")->get();
+        return view('admin.Curso.update', compact('curso', "categoria"));
     }
 
     /**
@@ -74,7 +75,19 @@ class CursoController extends Controller
     public function update(UpdateCursoRequest $request, Curso $curso)
     {
         try {
-            $curso->update($request->all());
+            $image_name = null;
+            if ($request->hasFile('foto')) {
+                $file = $request->file('foto');
+                $image_name = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path("images"), $image_name);
+            }
+            if (!is_null($image_name)) {
+
+                $curso->update(['foto' => $image_name] + $request->all());
+            } else {
+                $curso->update(['foto' => $request->input("foto2")] + $request->all());
+            }
+
             return redirect()->route('cursos.index')->with('sucesso', 'Curso "' . $curso->nome . '" atualizado com sucesso.');
         } catch (\Throwable $th) {
             return back()->with('erro', 'Ocorreu um problema ao tentar atualizar o curso "' . $curso->nome . '". Por favor, tente novamente.');
@@ -88,7 +101,7 @@ class CursoController extends Controller
     {
         try {
             $curso->delete();
-            return back()->with('sucesso', 'A curso "' . $curso->nome . '" foi excluído com sucesso.');
+            return back()->with('sucesso', 'O curso "' . $curso->nome . '" foi excluído com sucesso.');
         } catch (\Throwable $th) {
             return back()->with('erro', 'Ocorreu um problema ao tentar excluir o curso "' . $curso->nome . '". Por favor, tente novamente.');
         }
