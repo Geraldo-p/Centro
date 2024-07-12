@@ -3,7 +3,8 @@ CREATE TABLE endereco (
     rua VARCHAR(255) NOT NULL,
     bairro VARCHAR(100),
     provincia VARCHAR(2) NOT NULL,
-    pais VARCHAR(50) NULL enderecoDetalhado VARCHAR(200)
+    pais VARCHAR(50) NULL,
+    enderecoDetalhado VARCHAR(200)
 );
 
 CREATE TABLE contacto (
@@ -63,25 +64,38 @@ CREATE TABLE departamento (
 CREATE TABLE funcionario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
-    email VARCHAR(255),
+    genero VARCHAR(50),
+    estado_civil VARCHAR(50),
+    nacionalidade VARCHAR(100),
+    provincia VARCHAR(100),
+    municipio VARCHAR(100),
+    bi VARCHAR(16),
+
+
     cargo VARCHAR(100),
     salario DECIMAL(10, 2),
     data_contratacao DATE,
     data_nascimento DATE,
     foto VARCHAR(255),
+    nivel_escolaridade VARCHAR(100),
+    linguas VARCHAR(100),
+
+    nome_banco VARCHAR(100), --Nome do banco onde o funcionário tem conta.
+    num_conta_banco INT,
+    iban VARCHAR(100),
+
+    status VARCHAR(50), --Status do funcionário (ativo, inativo, demitido, em ferias, suspenso).
+    documento VARCHAR(50),
+    tipo VARCHAR(50), -- formador, limpeza, funcionario normal
+
     departamento_id INT,
     contacto_id INT,
     endereco_id INT,
-    linguas VARCHAR(100),
-    genero VARCHAR(50),
-    estado_civil VARCHAR(50),
-    nacionalidade VARCHAR(100),
-    numero_bi VARCHAR(50),
-    tipo VARCHAR(50),
-    -- formador, limpeza, funcionario normal
+    id_ud INT,
     FOREIGN KEY (departamento_id) REFERENCES departamento(id),
     FOREIGN KEY (contacto_id) REFERENCES contacto(id),
     FOREIGN KEY (endereco_id) REFERENCES endereco(id)
+    FOREIGN KEY (id_ud) REFERENCES users(id)
 );
 
 CREATE TABLE formando (

@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('enderecos', function (Blueprint $table) {
+        Schema::create('funcionarios', function (Blueprint $table) {
             $table->id();
-            $table->string('rua', 150)->nullable();
-            $table->string('bairro', 100);
-            $table->string('provincia', 100);
-            $table->string('municipio', 100);
-            $table->string('pais', 100);
-            $table->string('enderecoDetalhado')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('enderecos');
+        Schema::dropIfExists('funcionarios');
     }
 };

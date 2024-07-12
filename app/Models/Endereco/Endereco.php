@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Endereco extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'rua',
         'bairro',
         'provincia',
+        'municipio',
         'pais',
         'enderecoDetalhado'
     ];

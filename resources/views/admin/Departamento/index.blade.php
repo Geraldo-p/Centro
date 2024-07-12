@@ -41,7 +41,6 @@
                                             <td>{{ $item->hora_entrada }}</td>
                                             <td>{{ $item->hora_fechamento }}</td>
                                             <td>
-
                                                 @if ($item->hora_entrada <= $horaAtual && $horaAtual <= $item->hora_fechamento)
                                                     <span style="color: green;">Aberto</span>
                                                 @else
