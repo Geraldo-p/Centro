@@ -26,7 +26,7 @@ class Curso extends Model
 
     public function modulos()
     {
-        return $this->hasMany(Modulo::class);
+        return $this->hasMany(Modulo::class, 'curso_id');
     }
     public function categorias()
     {

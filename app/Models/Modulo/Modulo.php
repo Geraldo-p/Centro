@@ -3,6 +3,7 @@
 namespace App\Models\Modulo;
 
 use App\Models\Curso\Curso;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,10 +17,16 @@ class Modulo extends Model
         'data_inicio',
         'data_fim',
         'qtd_licoes',
+        'id_us',
     ];
 
     public function cursos()
     {
-        return $this->belongsTo(Curso::class);
+        return $this->belongsTo(Curso::class, 'curso_id');
+    }
+        
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'id_us');
     }
 }

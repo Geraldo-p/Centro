@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Categoria\Categoria;
+use App\Models\Modulo\Modulo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -31,6 +32,11 @@ class User extends Authenticatable
     public function cursos()
     {
         return $this->hasMany(Curso::class, 'id_us');
+    }
+
+    public function modulos()
+    {
+        return $this->hasMany(Modulo::class, 'id_us');
     }
 
     /**

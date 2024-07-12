@@ -35,7 +35,7 @@
     </div>
     <div class="card text-left">
         <div class="card-body">
-            <form action="{{ route('cursos.update', $curso) }}" method="POST" id="InserirForm"
+            <form action="{{ route('cursos.update', $curso) }}" method="POST" id="ActualizarForm"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -160,7 +160,7 @@
                         <div class="row">
                             <div class="col-md-12 content-right">
                                 <button class="btn btn-primary form-btn" type="button"
-                                    id="swal-inserir">Actualizar</button>
+                                    id="swal-Actualizar">Actualizar</button>
                                 <a href="{{ route('cursos.index') }}"><input type="button" value="Cancelar"
                                         class="btn btn-danger form-btn"></a>
                             </div>

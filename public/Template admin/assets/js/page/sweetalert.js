@@ -74,9 +74,9 @@ $("#swal-Actualizar").click(function () {
         .then((willDelete) => {
             if (willDelete) {
                 // Enviar o formulário manualmente
-                swal('Registro Actualizado com Sucesso', {
-                    icon: 'success',
-                });
+                // swal('Registro Actualizado com Sucesso', {
+                //     icon: 'success',
+                // });
                 document.getElementById('ActualizarForm').submit();
             } else {
                 // O usuário cancelou a exclusão

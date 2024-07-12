@@ -105,8 +105,9 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{ route('dashboard') }}"> <img alt="image" src="{{ asset('Template admin/assets/img/logo_.png') }}"
-                    class="header-logo" /> <span class="logo-name">Santa Cruz</span>
+            <a href="{{ route('dashboard') }}"> <img alt="image"
+                    src="{{ asset('Template admin/assets/img/logo_.png') }}" class="header-logo" /> <span
+                    class="logo-name">Santa Cruz</span>
             </a>
 
         </div>
@@ -142,6 +143,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('categorias.index') }}">Categoria</a></li>
                     <li><a class="nav-link" href="{{ route('cursos.index') }}">Cursos</a></li>
+                    <li><a class="nav-link" href="{{ route('modulos.index') }}">Modulos</a></li>
                 </ul>
             </li>
             <li class="dropdown">

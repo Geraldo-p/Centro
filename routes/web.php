@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\ModuloController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/categoria/{categoria}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
     Route::put('/categoria/{categoria}', [CategoriaController::class, 'update'])->name('categorias.update');
     Route::delete('/categoria/{categoria}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
-    Route::get("/generate-pdf", [CategoriaController::class, 'generatePdf'])->name("categorias.pdf");
+    Route::get("/generate-pdf/categoria", [CategoriaController::class, 'generatePdf'])->name("categorias.pdf");
 
 
     // curso
@@ -38,8 +39,19 @@ Route::middleware('auth')->group(function () {
         'update' => 'cursos.update',
         'destroy' => 'cursos.destroy'
     ]);
-    Route::get("/generate-pdf", [CategoriaController::class, 'generatePdf'])->name("cursos.pdf");
+    Route::get("/generate-pdf/curso", [CursoController::class, 'generatePdf'])->name("cursos.pdf");
 
+    // MODULOS
+    Route::resource('modulos', ModuloController::class)->names([
+        'index' => 'modulos.index',
+        'create' => 'modulos.create',
+        'store' => 'modulos.store',
+        'show' => 'modulos.show',
+        'edit' => 'modulos.edit',
+        'update' => 'modulos.update',
+        'destroy' => 'modulos.destroy'
+    ]);
+    Route::get("/generate-pdf/modulo", [ModuloController::class, 'generatePdf'])->name("modulos.pdf");
 });
 
 require __DIR__ . '/auth.php';

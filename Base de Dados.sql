@@ -50,7 +50,10 @@ CREATE TABLE modulo (
     data_inicio DATE,
     data_fim DATE,
     qtd_licoes INT,
+    id_us int,
+
     FOREIGN KEY (curso_id) REFERENCES curso(id)
+    FOREIGN KEY (id_us) REFERENCES users(id)
 );
 CREATE TABLE departamento (
     id INT AUTO_INCREMENT PRIMARY KEY,
