@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Funcionario\Funcionario;
 use App\Http\Requests\StoreFuncionarioRequest;
 use App\Http\Requests\UpdateFuncionarioRequest;
+use App\Models\Contacto\Contacto;
+use App\Models\Departamento\departamento;
+use App\Models\Endereco\Endereco;
+use Barryvdh\DomPDF\Facade\Pdf;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Auth;
 
 class FuncionarioController extends Controller
 {
@@ -13,54 +19,118 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        //
+        $funcionarios = funcionario::orderBy('nome')->get();
+        return view('admin.Funcionario.index', compact('funcionarios'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostra o formulário para criar um novo recurso.
      */
     public function create()
     {
-        //
+        $client = new Client();
+        $response = $client->get('https://restcountries.com/v3.1/all');
+        $countries = json_decode($response->getBody(), true);
+
+        // Ordenar os países por nome
+        usort($countries, function ($a, $b) {
+            return strcmp($a['name']['common'], $b['name']['common']);
+        });
+        $valencia = departamento::orderBy("nome")->get();
+        return view('admin.Funcionario.create', compact('valencia', 'countries'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Armazena um novo recurso no armazenamento.
      */
     public function store(StoreFuncionarioRequest $request)
     {
-        //
+
+        try {
+
+            $image_name = null;
+            if ($request->hasFile('foto')) {
+                $file = $request->file('foto');
+                $image_name = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path("images"), $image_name);
+            }
+                                                                                                                                                                                          
+            $doc = null;
+            $file = null;
+            if ($request->hasFile('documento')) {
+                $file = $request->file('documento');
+                $doc = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path("arquivo"), $doc);
+            }
+
+            $endereco = Endereco::create($request->all());
+            $contacto = Contacto::create($request->all());
+
+            funcionario::create(["endereco_id" => $contacto->id, "contacto_id" => $endereco->id, 'id_us' => Auth::id(), 'foto' => $image_name] + $request->all());
+            return back()->with('sucesso', 'funcionario "' . $request->input("nome") . '" criado com sucesso.');
+        } catch (\Throwable $th) {
+            return back()->with('erro', 'Ocorreu um problema ao tentar adicionar o funcionario. "' . $request->input("nome") . '"');
+        }
     }
 
     /**
-     * Display the specified resource.
+     * Exibe o recurso especificado.
      */
-    public function show(Funcionario $funcionario)
+    public function show(funcionario $funcionario)
     {
-        //
+        return view('admin.Funcionario.show', compact('funcionario'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostra o formulário para editar o recurso especificado.
      */
     public function edit(Funcionario $funcionario)
     {
-        //
+        return view('admin.Funcionario.update', compact('funcionario'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Atualiza o recurso especificado no armazenamento.
      */
     public function update(UpdateFuncionarioRequest $request, Funcionario $funcionario)
     {
-        //
+        try {
+            $image_name = null;
+            if ($request->hasFile('foto')) {
+                $file = $request->file('foto');
+                $image_name = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path("images"), $image_name);
+            }
+            if (!is_null($image_name)) {
+
+                $funcionario->update(['foto' => $image_name] + $request->all());
+            } else {
+                $funcionario->update(['foto' => $request->input("foto2")] + $request->all());
+            }
+
+            return redirect()->route('departamentos.index')->with('sucesso', 'funcionario "' . $funcionario->nome . '" atualizado com sucesso.');
+        } catch (\Throwable $th) {
+            return back()->with('erro', 'Ocorreu um problema ao tentar atualizar o funcionario "' . $funcionario->nome . '". Por favor, tente novamente.');
+        }
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove o recurso especificado do armazenamento.
      */
     public function destroy(Funcionario $funcionario)
     {
-        //
+        try {
+            $funcionario->delete();
+            return back()->with('sucesso', 'O funcionario "' . $funcionario->nome . '" foi excluído com sucesso.');
+        } catch (\Throwable $th) {
+            return back()->with('erro', 'Ocorreu um problema ao tentar excluir o funcionario "' . $funcionario->nome . '". Por favor, tente novamente.');
+        }
+    }
+
+    public function generatePdf()
+    {
+        $data = ['title' => 'Exemplo de PDF'];
+        $pdf = Pdf::loadView('admin.Funcionario.pdf', $data);
+        return $pdf->download('exemplo.pdf');
     }
 }

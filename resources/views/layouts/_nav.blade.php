@@ -145,6 +145,7 @@
                     <li><a class="nav-link" href="{{ route('cursos.index') }}">Cursos</a></li>
                     <li><a class="nav-link" href="{{ route('modulos.index') }}">Modulos</a></li>
                     <li><a class="nav-link" href="{{ route('departamentos.index') }}">Departamento</a></li>
+                    <li><a class="nav-link" href="{{ route('funcionarios.index') }}">Funcionario</a></li>
                 </ul>
             </li>
             <li class="dropdown">

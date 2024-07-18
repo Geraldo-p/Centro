@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ModuloController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -65,6 +66,19 @@ Route::middleware('auth')->group(function () {
         'destroy' => 'departamentos.destroy'
     ]);
     Route::get("/generate-pdf/departamento", [DepartamentoController::class, 'generatePdf'])->name("departamentos.pdf");
+
+
+    // Funcionario
+    Route::resource('funcionarios', FuncionarioController::class)->names([
+        'index' => 'funcionarios.index',
+        'create' => 'funcionarios.create',
+        'store' => 'funcionarios.store',
+        'show' => 'funcionarios.show',
+        'edit' => 'funcionarios.edit',
+        'update' => 'funcionarios.update',
+        'destroy' => 'funcionarios.destroy'
+    ]);
+    Route::get("/generate-pdf/funcionario", [FuncionarioController::class, 'generatePdf'])->name("funcionarios.pdf");
 });
 
 require __DIR__ . '/auth.php';
