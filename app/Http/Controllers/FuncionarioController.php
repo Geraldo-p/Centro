@@ -54,7 +54,7 @@ class FuncionarioController extends Controller
                 $image_name = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path("images"), $image_name);
             }
-                                                                                                                                                                                          
+
             $doc = null;
             $file = null;
             if ($request->hasFile('documento')) {
@@ -62,11 +62,23 @@ class FuncionarioController extends Controller
                 $doc = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path("arquivo"), $doc);
             }
-
+            // provincia2
+            // municipio2
             $endereco = Endereco::create($request->all());
             $contacto = Contacto::create($request->all());
 
-            funcionario::create(["endereco_id" => $contacto->id, "contacto_id" => $endereco->id, 'id_us' => Auth::id(), 'foto' => $image_name] + $request->all());
+            funcionario::create(
+                [
+                    "endereco_id" => $contacto->id,
+                    "contacto_id" => $endereco->id,
+                    'id_us' => Auth::id(),
+                    'foto' => $image_name,
+                    'documento' => $doc,
+                    'provincia' => $request->input("provincia2"),
+                    'municipio' => $request->input("municipio2")
+                ] + $request->all()
+            );
+
             return back()->with('sucesso', 'funcionario "' . $request->input("nome") . '" criado com sucesso.');
         } catch (\Throwable $th) {
             return back()->with('erro', 'Ocorreu um problema ao tentar adicionar o funcionario. "' . $request->input("nome") . '"');
@@ -86,7 +98,17 @@ class FuncionarioController extends Controller
      */
     public function edit(Funcionario $funcionario)
     {
-        return view('admin.Funcionario.update', compact('funcionario'));
+        $client = new Client();
+        $response = $client->get('https://restcountries.com/v3.1/all');
+        $countries = json_decode($response->getBody(), true);
+
+        // Ordenar os países por nome
+        usort($countries, function ($a, $b) {
+            return strcmp($a['name']['common'], $b['name']['common']);
+        });
+        $valencia = departamento::orderBy("nome")->get();
+
+        return view('admin.Funcionario.update', compact('funcionario', 'countries', 'valencia'));
     }
 
     /**
@@ -101,14 +123,50 @@ class FuncionarioController extends Controller
                 $image_name = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path("images"), $image_name);
             }
-            if (!is_null($image_name)) {
 
-                $funcionario->update(['foto' => $image_name] + $request->all());
-            } else {
-                $funcionario->update(['foto' => $request->input("foto2")] + $request->all());
+            $doc = null;
+            $file = null;
+            if ($request->hasFile('documento')) {
+                $file = $request->file('documento');
+                $doc = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path("arquivo"), $doc);
+            }
+            // provincia2
+            // municipio2
+            $funcionario->contactos->update($request->all());
+            $funcionario->enderecos->update($request->all());
+
+            if ($request->hasFile('foto')) {
+                $funcionario->update(
+                    [
+                        'provincia' => $request->input("provincia2"),
+                        'municipio' => $request->input("municipio2"),
+                        'foto' => $image_name
+                    ] + $request->except(['documento'])
+                );
+            }
+            if ($request->hasFile('documento')) {
+                $funcionario->update(
+                    [
+                        'provincia' => $request->input("provincia2"),
+                        'municipio' => $request->input("municipio2"),
+                        'documento' => $doc
+                    ] + $request->except(['foto'])
+                );
             }
 
-            return redirect()->route('departamentos.index')->with('sucesso', 'funcionario "' . $funcionario->nome . '" atualizado com sucesso.');
+            if (!$request->hasFile('documento') && !$request->hasFile('foto')) {
+
+                $funcionario->update([
+                    'provincia' => $request->input("provincia2"),
+                    'municipio' => $request->input("municipio2")
+                ] + $request->except(['foto', 'documento']));
+            }
+
+
+
+
+            return redirect()->route('funcionarios.index')->with('sucesso', 'funcionario "' . $funcionario->nome . '" atualizado com sucesso.');
         } catch (\Throwable $th) {
             return back()->with('erro', 'Ocorreu um problema ao tentar atualizar o funcionario "' . $funcionario->nome . '". Por favor, tente novamente.');
         }

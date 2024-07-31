@@ -137,7 +137,10 @@ CREATE TABLE TURMA (
     formando_id int,
     horario_ENTRADA VARCHAR(50),
     horario_SAIDA VARCHAR(50),
-    FOREIGN KEY (sala_id) REFERENCES SALA(id) FOREIGN KEY (funcionario_id) REFERENCES funcionario(id) FOREIGN KEY (formando_id) REFERENCES formando(id) FOREIGN KEY (turma_id) REFERENCES TURMA(id)
+    FOREIGN KEY (sala_id) REFERENCES SALA(id),
+    FOREIGN KEY (funcionario_id) REFERENCES funcionario(id),
+    FOREIGN KEY (formando_id) REFERENCES formando(id),
+    FOREIGN KEY (turma_id) REFERENCES TURMA(id)
 );
 
 CREATE TABLE Pagamento (

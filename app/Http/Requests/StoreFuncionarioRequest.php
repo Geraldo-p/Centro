@@ -21,6 +21,7 @@ class StoreFuncionarioRequest extends FormRequest
      */
     public function rules(): array
     {
+        // dd($this->request->all());
         return [
             'nome' => 'required|string|max:255',
             'genero' => 'required|string|max:50',
@@ -40,15 +41,22 @@ class StoreFuncionarioRequest extends FormRequest
 
             'nome_banco' => 'nullable|string|max:100',
             'num_conta_banco' => 'nullable|integer|min:0',
-            'iban' => 'nullable|string|size:25|regex:/^AO06/', // Aceita apenas IBAN com 25 caracteres que começam com AO06
+            'iban' => 'nullable|string|size:25|regex:/^AO06[A-Za-z0-9]+$/', // Aceita apenas IBAN com 25 caracteres que começam com AO06
 
             'status' => 'nullable|string|max:50|in:Activo,Inactivo', // Supondo que 'Activo' e 'Inactivo' sejam os possíveis valores
             'documento' => 'nullable|mimes:pdf|max:10240', // Aceita somente PDFs com tamanho máximo de 10MB
 
             'departamento_id' => 'nullable|exists:departamentos,id',
-            'contacto_id' => 'nullable|exists:contactos,id',
-            'endereco_id' => 'nullable|exists:enderecos,id',
-            'id_us' => 'required|exists:users,id',
+
+            'email' => 'nullable|string|email|max:100',
+            'telefone' => 'required|string|size:9',
+            'outros' => 'nullable|string|max:200',
+
+            'rua' => 'nullable|string|max:150',
+            'bairro' => 'required|string|max:100',
+            'pais' => 'required|string|max:100',
+            'enderecoDetalhado' => 'nullable|string|max:255',
+
         ];
     }
 
@@ -124,10 +132,21 @@ class StoreFuncionarioRequest extends FormRequest
             'documento.max' => 'O campo documento não pode ter mais que 10MB.',
 
             'departamento_id.exists' => 'O departamento selecionado é inválido.',
-            'contacto_id.exists' => 'O contacto selecionado é inválido.',
-            'endereco_id.exists' => 'O endereço selecionado é inválido.',
-            'id_us.required' => 'O campo usuário é obrigatório.',
-            'id_us.exists' => 'O usuário selecionado é inválido.',
+
+            'email.email' => 'O campo email deve ser um endereço de email válido.',
+            'email.max' => 'O campo email não pode ter mais do que 100 caracteres.',
+
+            'telefone.required' => 'O nº telefone é obrigatório.',
+            'telefone.size' => 'O nº telefone deve ter exatamente 9 digitos.',
+
+            'outros.max' => 'O campo outros não pode ter mais do que 200 caracteres.',
+
+            'rua.max' => 'O campo rua não pode ter mais do que 150 caracteres.',
+            'bairro.required' => 'O campo bairro é obrigatório.',
+            'bairro.max' => 'O campo bairro não pode ter mais do que 100 caracteres.',
+            'pais.required' => 'O país é obrigatório.',
+            'pais.max' => 'O país não pode ter mais do que 100 caracteres.',
+            'enderecoDetalhado.max' => 'O campo endereço detalhado não pode ter mais do que 255 caracteres.',
         ];
     }
 }

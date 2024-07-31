@@ -29,6 +29,7 @@
                                         <th>Nº B.I</th>
                                         <th>Contacto</th>
                                         <th>Endereço/Bairro</th>
+                                        <th>Endereço/Rua</th>
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
@@ -37,8 +38,10 @@
                                         <tr>
                                             <td>{{ $item->nome }}</td>
                                             <td>{{ $item->genero }}</td>
+                                            <td>{{ $item->bi }}</td>
                                             <td>{{ $item->contactos->telefone }}</td>
                                             <td>{{ $item->enderecos->bairro }}</td>
+                                            <td>{{ $item->enderecos->rua }}</td>
                                             <td>
                                                 <div>
                                                     <form id="deleteForm-{{ $item->id }}"
