@@ -3,9 +3,11 @@
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\FormandoController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ModuloController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SalaController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -79,6 +81,30 @@ Route::middleware('auth')->group(function () {
         'destroy' => 'funcionarios.destroy'
     ]);
     Route::get("/generate-pdf/funcionario", [FuncionarioController::class, 'generatePdf'])->name("funcionarios.pdf");
+
+    // Sala
+    Route::resource('salas', SalaController::class)->names([
+        'index' => 'salas.index',
+        'create' => 'salas.create',
+        'store' => 'salas.store',
+        'show' => 'salas.show',
+        'edit' => 'salas.edit',
+        'update' => 'salas.update',
+        'destroy' => 'salas.destroy'
+    ]);
+    Route::get("/generate-pdf/sala", [SalaController::class, 'generatePdf'])->name("salas.pdf");
+
+    // Formando
+    Route::resource('formandos', FormandoController::class)->names([
+        'index' => 'formandos.index',
+        'create' => 'formandos.create',
+        'store' => 'formandos.store',
+        'show' => 'formandos.show',
+        'edit' => 'formandos.edit',
+        'update' => 'formandos.update',
+        'destroy' => 'formandos.destroy'
+    ]);
+    Route::get("/generate-pdf/formando", [FormandoController::class, 'generatePdf'])->name("formandos.pdf");
 });
 
 require __DIR__ . '/auth.php';

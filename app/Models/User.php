@@ -5,8 +5,10 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Categoria\Categoria;
 use App\Models\Departamento\departamento;
+use App\Models\Formando\Formando;
 use App\Models\Funcionario\Funcionario;
 use App\Models\Modulo\Modulo;
+use App\Models\Sala\Sala;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -29,6 +31,14 @@ class User extends Authenticatable
     public function categorias()
     {
         return $this->hasMany(Categoria::class, 'id_us');
+    }
+    public function formandos()
+    {
+        return $this->hasMany(Formando::class, 'id_us');
+    }
+    public function salas()
+    {
+        return $this->hasMany(Sala::class, 'id_us');
     }
 
     public function departamentos()

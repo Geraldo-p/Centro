@@ -51,6 +51,9 @@
                         <br>
                         <input class="form-control form-control" type="file" name="foto" id="fotoInput"
                             accept="image/*">
+                        @error('foto')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                         <br>
                     </div>
                     <div class="col-md-9">
@@ -404,11 +407,12 @@
                                                     <div class="row">
                                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                                             <div class="form-group mb-3"><label class="form-label"
-                                                                    for="telefone">Nº Telefone</label><input size="9"
+                                                                    for="telefone">Nº Telefone</label><input
+                                                                    size="9"
                                                                     class="form-control @error('telefone') is-invalid @enderror"
                                                                     type="tel" name="telefone" inputmode="numeric"
-                                                                    autocomplete="on" placeholder="+244"
-                                                                    maxlength="9" pattern="\d{9}"/>
+                                                                    autocomplete="on" placeholder="+244" maxlength="9"
+                                                                    pattern="\d{9}" />
                                                                 @error('telefone')
                                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                                 @enderror
@@ -416,7 +420,8 @@
                                                         </div>
                                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                                             <div class="form-group mb-3"><label class="form-label"
-                                                                    for="telefoneOP">Nº Telefone (Opcional)</label><input size="9" maxlength="9" pattern="\d{9}"
+                                                                    for="telefoneOP">Nº Telefone (Opcional)</label><input
+                                                                    size="9" maxlength="9" pattern="\d{9}"
                                                                     class="form-control @error('telefoneOP') is-invalid @enderror"
                                                                     type="tel" name="telefoneOP" inputmode="tel"
                                                                     placeholder="+244" autocomplete="on" />
@@ -580,17 +585,21 @@
                                                     <div class="row">
                                                         <div class="col-sm-12 col-md-6 col-lg-4">
                                                             <div class="form-group mb-3"><label class="form-label"
-                                                                    for="nivel_escolaridade">Nível de
-                                                                    Escolaridade</label><select
+                                                                    for="nivel_escolaridade">Nível Acadêmico</label><select
                                                                     class="form-control @error('nivel_escolaridade') is-invalid @enderror"
                                                                     name="nivel_escolaridade" autofocus>
-                                                                    <optgroup label="Selecione o Nível de Escolaridada">
-                                                                        <option value="Básico" selected>Básico
+                                                                    <optgroup label="Selecione o Nível Acadêmico">
+                                                                        <option value="Educação Pré-Escolar" selected>
+                                                                            Educação Pré-Escolar </option>
+                                                                        <option value="Ensino Primário">Ensino Primário
                                                                         </option>
-                                                                        <option value="Técnico Médio">Técnico
-                                                                            Médio
+                                                                        <option value="Ensino Secundário do I Ciclo">Ensino
+                                                                            Secundário do I Ciclo </option>
+                                                                        <option value="Ensino Secundário do II Ciclo">
+                                                                            Ensino Secundário do II Ciclo </option>
+                                                                        <option value="Educação Superior">Educação Superior
                                                                         </option>
-                                                                        <option value="Licenciado">Licenciado
+                                                                        <option value="Educação Superior">Educação Superior
                                                                         </option>
                                                                     </optgroup>
                                                                 </select>

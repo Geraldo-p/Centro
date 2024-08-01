@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('enderecos', function (Blueprint $table) {
             $table->id();
             $table->string('rua', 150)->nullable();
-            $table->string('bairro', 100);
-            $table->string('provincia', 100);
-            $table->string('municipio', 100);
-            $table->string('pais', 100);
+            $table->string('bairro', 100)->nullable();
+            $table->string('provincia', 100)->nullable();
+            $table->string('municipio', 100)->nullable();
+            $table->string('pais', 100)->nullable();
             $table->string('enderecoDetalhado')->nullable();
             $table->timestamps();
         });

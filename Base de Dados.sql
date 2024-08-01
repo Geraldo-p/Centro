@@ -70,8 +70,6 @@ CREATE TABLE funcionario (
     provincia VARCHAR(100),
     municipio VARCHAR(100),
     bi VARCHAR(16),
-
-
     cargo VARCHAR(100),
     salario DECIMAL(10, 2),
     data_contratacao DATE,
@@ -79,23 +77,22 @@ CREATE TABLE funcionario (
     foto VARCHAR(255),
     nivel_escolaridade VARCHAR(100),
     linguas VARCHAR(100),
-
-    nome_banco VARCHAR(100), --Nome do banco onde o funcionário tem conta.
+    nome_banco VARCHAR(100),
+    --Nome do banco onde o funcionário tem conta.
     num_conta_banco INT,
     iban VARCHAR(100),
-
-    status VARCHAR(50), --Status do funcionário (ativo, inativo, demitido, em ferias, suspenso).
+    status VARCHAR(50),
+    --Status do funcionário (ativo, inativo, demitido, em ferias, suspenso).
     documento VARCHAR(50),
-    tipo VARCHAR(50), -- formador, limpeza, funcionario normal
-
+    tipo VARCHAR(50),
+    -- formador, limpeza, funcionario normal
     departamento_id INT,
     contacto_id INT,
     endereco_id INT,
     id_ud INT,
     FOREIGN KEY (departamento_id) REFERENCES departamento(id),
     FOREIGN KEY (contacto_id) REFERENCES contacto(id),
-    FOREIGN KEY (endereco_id) REFERENCES endereco(id)
-    FOREIGN KEY (id_ud) REFERENCES users(id)
+    FOREIGN KEY (endereco_id) REFERENCES endereco(id) FOREIGN KEY (id_ud) REFERENCES users(id)
 );
 
 CREATE TABLE formando (
@@ -127,20 +124,25 @@ CREATE TABLE SALA (
     --TEORICA, PRATICA
 );
 
-CREATE TABLE TURMA (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE turma (
+    turma_id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255),
     sala_id INT,
-    turma_id int,
-    funcionario_id int,
-    -- selecionar apenas formadores no combobox
-    formando_id int,
+    funcionario_id INT, -- selecionar apenas formadores no combobox
     horario_ENTRADA VARCHAR(50),
     horario_SAIDA VARCHAR(50),
-    FOREIGN KEY (sala_id) REFERENCES SALA(id),
-    FOREIGN KEY (funcionario_id) REFERENCES funcionario(id),
-    FOREIGN KEY (formando_id) REFERENCES formando(id),
-    FOREIGN KEY (turma_id) REFERENCES TURMA(id)
+    FOREIGN KEY (sala_id) REFERENCES sala(id),
+    FOREIGN KEY (funcionario_id) REFERENCES funcionario(id)
+);
+
+-- uma turma pode ter 1 ou varios formandos e um formando pode fazer parte de uma ou varias turmas
+-- turma_formando
+CREATE TABLE turma_formando_relacao (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    turma_id int,
+    formando_id INT,
+    FOREIGN KEY (turma_id) REFERENCES turma(turma_id),
+    FOREIGN KEY (formando_id) REFERENCES formando(id)
 );
 
 CREATE TABLE Pagamento (

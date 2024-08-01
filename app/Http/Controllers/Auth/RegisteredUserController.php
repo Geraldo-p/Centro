@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contacto\Contacto;
+use App\Models\Endereco\Endereco;
+use App\Models\Formando\Formando;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -50,6 +53,18 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        //criar formando assim que abrir uma conta no sistema
+        $endereco = Endereco::create($request->all());
+        $contacto = Contacto::create($request->all());
+        Formando::create(
+            [
+                'nome' => $request->name,
+                "endereco_id" => $contacto->id,
+                "contacto_id" => $endereco->id,
+                'id_us' => $user->id
+            ]
+        );
 
         event(new Registered($user));
 
