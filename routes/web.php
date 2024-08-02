@@ -8,6 +8,7 @@ use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ModuloController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SalaController;
+use App\Http\Controllers\TurmaController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -105,6 +106,18 @@ Route::middleware('auth')->group(function () {
         'destroy' => 'formandos.destroy'
     ]);
     Route::get("/generate-pdf/formando", [FormandoController::class, 'generatePdf'])->name("formandos.pdf");
+
+    // Turma
+    Route::resource('turmas', TurmaController::class)->names([
+        'index' => 'turmas.index',
+        'create' => 'turmas.create',
+        'store' => 'turmas.store',
+        'show' => 'turmas.show',
+        'edit' => 'turmas.edit',
+        'update' => 'turmas.update',
+        'destroy' => 'turmas.destroy'
+    ]);
+    Route::get("/generate-pdf/turmas", [TurmaController::class, 'generatePdf'])->name("turmas.pdf");
 });
 
 require __DIR__ . '/auth.php';

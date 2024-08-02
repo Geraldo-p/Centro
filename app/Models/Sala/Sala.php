@@ -19,4 +19,8 @@ class Sala extends Model
     {
         return $this->belongsTo(User::class, 'id_us');
     }
+    public function salas()
+    {
+        return $this->hasMany(Sala::class, 'sala_id');
+    }
 }
