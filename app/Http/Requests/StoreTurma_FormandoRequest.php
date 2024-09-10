@@ -11,7 +11,7 @@ class StoreTurma_FormandoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**

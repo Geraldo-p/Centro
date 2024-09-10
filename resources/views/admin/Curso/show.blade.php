@@ -135,9 +135,9 @@
                                                         Estado</strong>
                                                     <p class="text-muted">
                                                         @if (\Carbon\Carbon::parse($curso->data_fim)->isFuture())
-                                                    
+
                                                         <label for="" class="btn btn-success">Inscrições Abertas...</label>
-     
+
                                                      @else
                                                         <label for="" class="btn btn-danger"> Inscrição Encerrada</label>
                                                      @endif
@@ -221,10 +221,8 @@
                                                         </tfoot>
                                                     </table>
                                                 </div>
-
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>

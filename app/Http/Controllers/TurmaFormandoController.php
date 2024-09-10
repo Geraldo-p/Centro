@@ -9,6 +9,8 @@ use App\Models\Formando\Formando;
 use App\Models\Turma\Turma;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 class TurmaFormandoController extends Controller
 {
 
@@ -34,12 +36,31 @@ class TurmaFormandoController extends Controller
     public function store(StoreTurma_FormandoRequest $request)
     {
 
-        try {
-            Turma_Formando::create(['id_us' => Auth::id()] + $request->all());
-            return back()->with('sucesso', 'Formando/os Adicionado/os na turma_formando');
-        } catch (\Throwable $th) {
-            return back()->with('erro', 'Ocorreu um problema ao tentar adicionar os formandos na turma_formando');
-        }
+        // try {
+            foreach ($request->carrinho_turma_id_val as $index => $turmaId) {
+                $formandoId = $request->carrinho_formando_id_val[$index];
+
+                $exists = DB::table('turma__formandos')
+                    ->where('turma_id', $turmaId)
+                    ->where('formando_id', $formandoId)
+                    ->exists();
+
+                $qtd_formando_na_turma = Turma_Formando::where("turma_id", $turmaId)->count();
+                if (!$exists) {
+
+                    Turma_Formando::create([
+                        'turma_id' => $turmaId,
+                        'formando_id' => $formandoId,
+                        'id_us' => Auth::id()
+                    ]);
+                }
+            }
+
+            return back()->with('sucesso', 'Formando/os Adicionado/os na Turma');
+
+        // } catch (\Throwable $th) {
+        //     return back()->with('erro', 'Ocorreu um problema ao tentar adicionar os formandos na Turma');
+        // }
     }
 
     /**

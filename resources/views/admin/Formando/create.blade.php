@@ -51,7 +51,7 @@
                         <br>
                         <input class="form-control form-control" type="file" name="foto" id="fotoInput"
                             accept="image/*">
-                       
+
                         <br>
 
                     </div>
@@ -583,13 +583,13 @@
                                                     <a href="#" class="btn btn-light" type="button"
                                                         id="next-button3_1">Voltar</a>
                                                     </a>
-                                                    <a href="#" class="btn btn-primary" type="button"
-                                                        id="next-button5">Próximo</a>
+                                                    <a href="#" class="btn btn-success" type="submit"
+                                                        id="swal-inserir">Guardar</a>
                                                     </a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="arquivo4" role="tabpanel"
+                                        {{-- <div class="tab-pane fade" id="arquivo4" role="tabpanel"
                                             aria-labelledby="arquivo-tab4">
                                             <div class="row profile-row">
                                                 <div class="col-md-8 col-lg-12">
@@ -721,7 +721,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

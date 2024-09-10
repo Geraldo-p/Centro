@@ -123,7 +123,7 @@ CREATE TABLE SALA (
     tipo TEXT,
     --TEORICA, PRATICA
 );
-
+select capacidade where id
 CREATE TABLE turma (
     turma_id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255),

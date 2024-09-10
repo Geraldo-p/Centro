@@ -108,7 +108,6 @@
                                         </div>
                                         <div class="profile-feed">
                                             <div class="d-flex align-items-start profile-feed-item">
-
                                                 <div class="table-responsive">
                                                     <table id="order-listing" class="table">
                                                         <thead>
@@ -128,20 +127,6 @@
                                                                 </th>
                                                                 <td>fffff</td>
                                                                 <td>ffffff</td>
-
-                                                                {{-- @if (true)
-                                                            <td>
-                                                                <a class="jsgrid-button btn btn-success" href="" title="Editar">
-                                                                    Activo <i class="fas fa-check"></i>
-                                                                </a>
-                                                            </td>
-                                                            @else
-                                                            <td>
-                                                                <a class="jsgrid-button btn btn-danger" href="" title="Editar">
-                                                                    Cancelado <i class="fas fa-times"></i>
-                                                                </a>
-                                                            </td>
-                                                            @endif --}}
                                                                 <td style="width: 50px;">
 
                                                                     <a href=""
@@ -151,11 +136,8 @@
                                                                     <a href=""
                                                                         class="jsgrid-button jsgrid-edit-button"><i
                                                                             class="far fa-eye"></i></a>
-
-
                                                                 </td>
                                                             </tr>
-                                                            {{-- @endforeach --}}
                                                         </tbody>
                                                         <tfoot>
                                                             <tr>
