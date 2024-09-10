@@ -80,7 +80,7 @@
                             <div class="col-sm-12 col-md-3">
                                 <div class="form-group mb-3">
                                     <label class="form-label" id="" for="turma_id">Turma</label>
-                                    <select class="form-control @error('turma_id') is-invalid @enderror" name="turma_id"
+                                    <select  class="form-control @error('turma_id') is-invalid @enderror" name="turma_id"
                                         id="turma_id">
                                         @foreach ($turmas as $item)
                                             <option value="{{ $item->id }}">{{ $item->nome }}</option>
@@ -94,7 +94,8 @@
                             <div class="col-sm-12 col-md-9">
                                 <div class="form-group mb-3">
                                     <label class="form-label" id="" for="formando_id">Formando</label>
-                                    <select class="form-control @error('formando_id') is-invalid @enderror"
+                                    depois de fazer o quisito de pagamento selecione apenas formandos que se inscreveram e pagaram um determinado curso
+                                    <select disabled class="form-control @error('formando_id') is-invalid @enderror"
                                         name="formando_id" id="formando_id">
                                         @foreach ($formandos as $item)
                                             <option value="{{ $item->id }}">{{ $item->nome }}</option>
@@ -142,7 +143,18 @@
             {{ session()->forget('sucesso') }}
         </script>
     @endif
-
+    @if (session('warning'))
+        <script>
+            $(document).ready(function() {
+                iziToast.warning({
+                    title: 'Atenção, ',
+                    message: '{{ session('warning') }}',
+                    position: 'topRight'
+                });
+            });
+            {{ session()->forget('warning') }}
+        </script>
+    @endif
     @if (session('erro'))
         <script>
             $(document).ready(function() {
@@ -306,8 +318,6 @@
                     return; // Exit the function once a match is found
                 }
             }
-
-            // If no match is found, you may want to clear the selection or handle it differently
             selectElement.value = ''; // Clear the selection if no match is found
         });
     </script>

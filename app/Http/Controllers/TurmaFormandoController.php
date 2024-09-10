@@ -6,6 +6,7 @@ use App\Models\Turma_Formando\Turma_Formando;
 use App\Http\Requests\StoreTurma_FormandoRequest;
 use App\Http\Requests\UpdateTurma_FormandoRequest;
 use App\Models\Formando\Formando;
+use App\Models\Sala\Sala;
 use App\Models\Turma\Turma;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,8 @@ class TurmaFormandoController extends Controller
     public function store(StoreTurma_FormandoRequest $request)
     {
 
-        // try {
+        try {
+            $estado = false;
             foreach ($request->carrinho_turma_id_val as $index => $turmaId) {
                 $formandoId = $request->carrinho_formando_id_val[$index];
 
@@ -45,22 +47,43 @@ class TurmaFormandoController extends Controller
                     ->where('formando_id', $formandoId)
                     ->exists();
 
-                $qtd_formando_na_turma = Turma_Formando::where("turma_id", $turmaId)->count();
-                if (!$exists) {
+                $qtd_formando_turma = Turma_Formando::where("turma_id", $turmaId)->count();
 
-                    Turma_Formando::create([
-                        'turma_id' => $turmaId,
-                        'formando_id' => $formandoId,
-                        'id_us' => Auth::id()
-                    ]);
+                $result = DB::table('turma__formandos as tf')
+                    ->join('turmas as t', 'tf.turma_id', '=', 't.id')
+                    ->join('salas as s', 't.sala_id', '=', 's.id')
+                    ->select('s.capacidade')
+                    ->distinct()
+                    ->get();
+
+                foreach ($result as $item) {
+                    if ($qtd_formando_turma >= $item->capacidade) {
+
+                        return back()->with('warning', 'Alguns Formandos nao foram adicionados a turma porque se encontra cheia');
+                    } else {
+
+                        if (!$exists) {
+                            Turma_Formando::create([
+                                'turma_id' => $turmaId,
+                                'formando_id' => $formandoId,
+                                'id_us' => Auth::id()
+                            ]);
+                        } else {
+                            $estado = true;
+                        }
+                    }
                 }
             }
 
-            return back()->with('sucesso', 'Formando/os Adicionado/os na Turma');
-
-        // } catch (\Throwable $th) {
-        //     return back()->with('erro', 'Ocorreu um problema ao tentar adicionar os formandos na Turma');
-        // }
+            if ($estado) {
+                return back()->with('warning', 'Alguns Formandos nao foram adicionados a turma porque se encontra cheia');
+            } else {
+                return back()->with('sucesso', 'Formando/os Adicionado/os na Turma');
+            }
+            
+        } catch (\Throwable $th) {
+            return back()->with('erro', 'Ocorreu um problema ao tentar adicionar os formandos na Turma');
+        }
     }
 
     /**

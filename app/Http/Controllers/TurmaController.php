@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Turma\Turma;
 use App\Http\Requests\StoreTurmaRequest;
 use App\Http\Requests\UpdateTurmaRequest;
+use App\Models\Formando\Formando;
 use App\Models\Funcionario\Funcionario;
 use App\Models\Sala\Sala;
+use App\Models\Turma_Formando\Turma_Formando;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 
@@ -91,5 +93,5 @@ class TurmaController extends Controller
         $data = ['title' => 'Exemplo de PDF'];
         $pdf = Pdf::loadView('admin.Turma.pdf', $data);
         return $pdf->download('exemplo.pdf');
-    } 
+    }
 }
