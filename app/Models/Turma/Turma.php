@@ -4,6 +4,7 @@ namespace App\Models\Turma;
 
 use App\Models\Funcionario\Funcionario;
 use App\Models\Sala\Sala;
+use App\Models\Turma_Formando\Turma_Formando;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,6 +21,10 @@ class Turma extends Model
         "status",
         "id_us",
     ];
+    public function turma_formandos()
+    {
+        return $this->hasMany(Turma_Formando::class, 'turma_id');
+    }
     public function users()
     {
         return $this->belongsTo(User::class, 'id_us');

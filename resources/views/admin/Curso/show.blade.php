@@ -208,8 +208,6 @@
                                                                     <a href=""
                                                                         class="jsgrid-button jsgrid-edit-button"><i
                                                                             class="far fa-eye"></i></a>
-
-
                                                                 </td>
                                                             </tr>
                                                             {{-- @endforeach --}}

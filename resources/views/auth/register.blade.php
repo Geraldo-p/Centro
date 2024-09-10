@@ -123,7 +123,7 @@
 
 <!-- auth-register.html  21 Nov 2019 04:05:02 GMT -->
 
-</html>^
+</html>
 {{-- <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf

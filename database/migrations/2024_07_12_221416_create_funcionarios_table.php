@@ -40,13 +40,14 @@ return new class extends Migration
             $table->unsignedBigInteger('contacto_id')->nullable();
             $table->unsignedBigInteger('endereco_id')->nullable();
             $table->unsignedBigInteger('id_us');
-            $table->timestamps();
 
             // Definição das chaves estrangeiras
             $table->foreign('departamento_id')->references('id')->on('departamentos');
             $table->foreign('contacto_id')->references('id')->on('contactos');
             $table->foreign('endereco_id')->references('id')->on('enderecos');
             $table->foreign('id_us')->references('id')->on('users');
+            $table->timestamps();
+
         });
     }
 

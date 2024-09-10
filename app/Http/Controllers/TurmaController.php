@@ -91,5 +91,5 @@ class TurmaController extends Controller
         $data = ['title' => 'Exemplo de PDF'];
         $pdf = Pdf::loadView('admin.Turma.pdf', $data);
         return $pdf->download('exemplo.pdf');
-    }
+    } 
 }

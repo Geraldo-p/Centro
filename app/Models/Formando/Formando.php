@@ -4,6 +4,7 @@ namespace App\Models\Formando;
 
 use App\Models\Contacto\Contacto;
 use App\Models\Endereco\Endereco;
+use App\Models\Turma_Formando\Turma_Formando;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -44,5 +45,9 @@ class Formando extends Model
     public function users()
     {
         return $this->belongsTo(User::class, 'id_us');
+    }
+    public function turma_formandos()
+    {
+        return $this->hasMany(Turma_Formando::class, 'formando_id');
     }
 }
