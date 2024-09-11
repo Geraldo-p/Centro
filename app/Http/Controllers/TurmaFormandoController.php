@@ -80,7 +80,7 @@ class TurmaFormandoController extends Controller
             } else {
                 return back()->with('sucesso', 'Formando/os Adicionado/os na Turma');
             }
-            
+
         } catch (\Throwable $th) {
             return back()->with('erro', 'Ocorreu um problema ao tentar adicionar os formandos na Turma');
         }
@@ -124,7 +124,8 @@ class TurmaFormandoController extends Controller
     {
         try {
             $turma_formando->delete();
-            return back()->with('sucesso', 'os Dados foram excluídos com sucesso.');
+            $formandos = $turma_formando->formandos;
+            // return redirect()->route('turmas.show', $turma_formando->id)->with('sucesso', 'o formando'.$formandos->nome .'Foi excluido da turma');
         } catch (\Throwable $th) {
             return back()->with('erro', 'Ocorreu um problema ao tentar excluir a o formando da turma. Por favor, tente novamente.');
         }

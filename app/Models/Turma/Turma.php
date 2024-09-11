@@ -2,6 +2,7 @@
 
 namespace App\Models\Turma;
 
+use App\Models\Formando\Formando;
 use App\Models\Funcionario\Funcionario;
 use App\Models\Sala\Sala;
 use App\Models\Turma_Formando\Turma_Formando;
@@ -24,6 +25,10 @@ class Turma extends Model
     public function turma_formandos()
     {
         return $this->hasMany(Turma_Formando::class, 'turma_id');
+    }
+    public function formandos()
+    {
+        return $this->belongsToMany(Formando::class, 'turma__formandos', 'turma_id', 'formando_id');
     }
     public function users()
     {

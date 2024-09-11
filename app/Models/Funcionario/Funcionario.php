@@ -38,6 +38,11 @@ class Funcionario extends Model
         'endereco_id',
         'id_us',
     ];
+
+    public function formadors()
+    {
+        return $this->hasMany(Funcionario::class, 'formador_id');
+    }
     public function departamentos()
     {
         return $this->belongsTo(departamento::class, 'departamento_id');

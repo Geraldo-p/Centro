@@ -110,7 +110,7 @@ CREATE TABLE lista_presença (
     formando_id INT,
     modulo_id INT,
     data_presenca DATE,
-    presente BOOLEAN,
+    presente VARCHAR(255),
     FOREIGN KEY (formando_id) REFERENCES formando(id),
     FOREIGN KEY (modulo_id) REFERENCES modulo(id)
 );
@@ -123,7 +123,6 @@ CREATE TABLE SALA (
     tipo TEXT,
     --TEORICA, PRATICA
 );
-select capacidade where id
 CREATE TABLE turma (
     turma_id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255),

@@ -41,16 +41,10 @@
                             <div class="col-lg-4">
                                 <div class="row justify-content-center mt-5">
                                     <div class="photo-frame" id="photoFrame">
-                                        @if ($turma->foto)
-                                            <img src="{{ asset('images/' . $turma->foto) }}" alt="Foto do Turma">
-                                        @else
-                                            <span>Foto</span>
-                                        @endif
+                                        <img src="{{ asset('images/turma.png') }}" alt="Foto do Turma">
                                     </div>
                                 </div>
                                 <div class="border-bottom text-center pb-4">
-
-
                                     <h3>{{ $turma->nome }}</h3>
                                     <div class="d-flex justify-content-between">
                                     </div>
@@ -117,7 +111,8 @@
                                                     <hr>
                                                     <strong><i class="fas fa-chalkboard"></i> Sala</strong>
                                                     <p class="text-muted">
-                                                        {{ $turma->salas->descricao }} (Capacidade: {{ $turma->salas->capacidade }})
+                                                        {{ $turma->salas->descricao }} (Capacidade:
+                                                        {{ $turma->salas->capacidade }})
                                                     </p>
                                                     <hr>
                                                     <strong><i class="fas fa-user"></i>Turma add Por</strong>
@@ -151,37 +146,81 @@
                                                     <table id="order-listing" class="table">
                                                         <thead>
                                                             <tr>
-                                                                <th>Id</th>
-                                                                <th>Fecha</th>
-                                                                <th>Total</th>
-                                                                <th>Estado</th>
-                                                                <th style="width:50px;">Acciones</th>
+                                                                <th>Nª</th>
+                                                                <th>Nome Completo</th>
+                                                                <th>Tel.</th>
+                                                                <th>Sala</th>
+                                                                <th style="width:50px;">Acção</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <th scope="row">
-                                                                    <a href="">22</a>
-                                                                </th>
-                                                                <td>fffff</td>
-                                                                <td>ffffff</td>
-                                                                <td>ffffff</td>
-                                                                <td style="width: 50px;">
+                                                            @foreach ($formandos as $item)
+                                                                <tr>
+                                                                    <th scope="row">
+                                                                        <a href="">{{ $item->id }}</a>
+                                                                    </th>
+                                                                    <td>{{ $item->nome }}</td>
+                                                                    <td>{{ $item->contactos->telefone }}</td>
+                                                                    <td>{{ $turma->salas->descricao }}</td>
+                                                                    <td>
+                                                                        <form id="deleteForm-{{ $item->id }}"
+                                                                            action="{{ route('turma-formando.eliminar', $item->id) }}"
+                                                                            method="GET">
+                                                                            @csrf
+                                                                            <a href="#"
+                                                                                id="swal__{{ $item->id }}">
+                                                                                Eliminar</a>
+                                                                        </form>
 
-                                                                    <a href=""
-                                                                        class="jsgrid-button jsgrid-edit-button"><i
-                                                                            class="far fa-file-pdf"></i></a>
-                                                                    <a href=""
-                                                                        class="jsgrid-button jsgrid-edit-button"><i
-                                                                            class="far fa-eye"></i></a>
-                                                                </td>
-                                                            </tr>
+                                                                    </td>
+
+
+                                                                </tr>
+                                                                <script>
+                                                                    document.getElementById("swal__{{ $item->id }}").addEventListener("click", function(event) {
+                                                                        event.preventDefault();
+                                                                        swal({
+                                                                            title: 'Tem certeza?',
+                                                                            text: 'Tem certeza que deseja excluir o formando da turma" {{ $item->nome }}?" Esta ação não pode ser desfeita.',
+                                                                            icon: 'warning',
+                                                                            buttons: {
+                                                                                cancel: {
+                                                                                    text: 'Não',
+                                                                                    value: null,
+                                                                                    visible: true,
+                                                                                    className: '',
+                                                                                    closeModal: true,
+                                                                                },
+                                                                                confirm: {
+                                                                                    text: 'Sim',
+                                                                                    value: true,
+                                                                                    visible: true,
+                                                                                    className: '',
+                                                                                    closeModal: false
+                                                                                }
+                                                                            },
+                                                                            dangerMode: true,
+
+                                                                        }).then((willDelete) => {
+                                                                            if (willDelete) {
+                                                                                document.getElementById('deleteForm-{{ $item->id }}').submit();
+                                                                            } else {
+                                                                                swal('Exclusão cancelada', {
+                                                                                    icon: 'info'
+                                                                                });
+                                                                            }
+                                                                        });
+                                                                    });
+                                                                </script>
+                                                            @endforeach
                                                         </tbody>
                                                         <tfoot>
                                                             <tr>
-                                                                <td colspan="2"><strong>Total de Cursos Relacionados:
+                                                                <td colspan="4"><strong>Total de Formandos na Turma:
                                                                     </strong></td>
-                                                                <td colspan="3" align="left"><strong>s/</strong></td>
+                                                                <td colspan="3" align="left">
+                                                                    <strong>{{ $turma->count() }}</strong>
+                                                                </td>
                                                             </tr>
                                                         </tfoot>
                                                     </table>
@@ -202,5 +241,45 @@
     </div>
 @endsection
 @section('script')
+    <script src="{{ asset('Template admin/assets/bundles/izitoast/js/iziToast.min.js') }}"></script>
+    <script src="{{ asset('Template admin/assets/js/page/toastr.js') }}"></script>
 
+    @if (session('sucesso'))
+        <script>
+            $(document).ready(function() {
+                iziToast.success({
+                    title: 'Sucesso',
+                    message: '{{ session('sucesso') }}',
+                    position: 'topRight'
+                });
+            });
+        </script>
+        {{ session()->forget('sucesso') }}
+    @endif
+
+    @if (session('erro'))
+        <script>
+            $(document).ready(function() {
+                iziToast.error({
+                    title: 'Erro',
+                    message: '{{ session('erro') }}',
+                    position: 'topRight'
+                });
+            });
+        </script>
+        {{ session()->forget('erro') }}
+    @endif
+
+    @if (session('warning'))
+        <script>
+            $(document).ready(function() {
+                iziToast.warning({
+                    title: 'Atenção',
+                    message: '{{ session('warning') }}',
+                    position: 'topRight'
+                });
+            });
+        </script>
+        {{ session()->forget('warning') }}
+    @endif
 @endsection

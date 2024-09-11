@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria\Categoria;
 use App\Http\Requests\StoreCategoriaRequest;
 use App\Http\Requests\UpdateCategoriaRequest;
+use App\Models\Curso\Curso;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,7 +47,8 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        return view('admin.Categoria.show', compact('categoria'));
+        $cursos = $categoria->cursos->all();
+        return view('admin.Categoria.show', compact('categoria', 'cursos'));
     }
 
     /**
@@ -78,7 +80,7 @@ class CategoriaController extends Controller
         if ($categoria->cursos()->count() > 0) {
             return back()->with('warning', 'Não é possível excluir a categoria "' . $categoria->nome . '" pois está associada a um ou mais registros.');
         }
-    
+
         try {
             $categoria->delete();
             return back()->with('sucesso', 'A categoria "' . $categoria->nome . '" foi excluída com sucesso.');

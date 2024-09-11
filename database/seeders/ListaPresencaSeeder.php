@@ -2,18 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Categoria\Categoria;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CategoriaSeeder extends Seeder
+class ListaPresencaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        // Categoria::factory()->count(10)->create();
-
+        //
     }
 }

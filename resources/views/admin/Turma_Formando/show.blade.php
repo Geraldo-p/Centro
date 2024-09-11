@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('titulo', 'Categoria')
+@section('titulo', 'Detalhes Turma')
 @section('css')
     <style>
         .photo-frame {
@@ -23,13 +23,13 @@
     <div class="content-wrapper">
         <div class="page-header d-flex justify-content-between align-items-center">
             <h3 class="page-title">
-                {{-- Categoria --}}
+                {{-- Turma --}}
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('categorias.index') }}">Categoria</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Detalhes da Categoria</li>
+                    <li class="breadcrumb-item"><a href="{{ route('cursos.index') }}">Turma</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Detalhes da Turma</li>
                 </ol>
             </nav>
         </div>
@@ -41,11 +41,17 @@
                             <div class="col-lg-4">
                                 <div class="row justify-content-center mt-5">
                                     <div class="photo-frame" id="photoFrame">
-                                        <img src="{{ asset('images/categoria.png') }}" alt="">
+                                        @if ($turma->foto)
+                                            <img src="{{ asset('images/' . $turma->foto) }}" alt="Foto do Turma">
+                                        @else
+                                            <span>Foto</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="border-bottom text-center pb-4">
-                                    <h3>{{ $categoria->nome }}</h3>
+
+
+                                    <h3>{{ $turma->nome }}</h3>
                                     <div class="d-flex justify-content-between">
                                     </div>
                                 </div>
@@ -53,11 +59,11 @@
                                     <div class="list-group">
                                         <a class="list-group-item list-group-item-action active" id="list-home-list"
                                             data-toggle="list" href="#list-home" role="tab" aria-controls="home">
-                                            Sobre a Categoria
+                                            Sobre a Turma
                                         </a>
                                         <a class="list-group-item list-group-item-action" id="list-profile-list"
                                             data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">
-                                            Cursos Relacionados a Categoria
+                                            Formandos na Turma
                                         </a>
                                     </div>
                                 </div>
@@ -69,102 +75,113 @@
 
                                         <div class="d-flex justify-content-between">
                                             <div>
-                                                <h4>Detalhes da Categoria</h4>
+                                                <h4>Detalhes do Turma</h4>
                                             </div>
                                         </div>
                                         <div class="profile-feed">
                                             <div class="d-flex align-items-start profile-feed-item">
 
                                                 <div class="form-group col-md-6">
-                                                    <strong><i class="fas fa-file-alt"></i>
-                                                        Descrição</strong>
+                                                    <strong><i class="fas fa-file-alt"></i> Nome da Turma</strong>
                                                     <p class="text-muted">
-                                                        {{ $categoria->nome }}
+                                                        {{ $turma->nome }}
                                                     </p>
                                                     <hr>
-                                                    <strong>
-                                                        <i class="fas fa-users"></i>
 
-                                                        Família</strong>
+                                                    <strong><i class="fas fa-chalkboard"></i> Sala</strong>
                                                     <p class="text-muted">
-                                                        {{ $categoria->familia }}
+                                                        {{ $turma->salas->descricao }}
                                                     </p>
-
                                                     <hr>
+
+                                                    <strong><i class="fas fa-user-tie"></i> Formador</strong>
+                                                    <p class="text-muted">
+                                                        {{ $turma->funcionarios->nome }}
+                                                    </p>
+                                                    <hr>
+
+                                                    <strong><i class="fas fa-clock"></i> Horário de Entrada</strong>
+                                                    <p class="text-muted">
+                                                        {{ $turma->horario_ENTRADA }}
+                                                    </p>
+                                                    <hr>
+
+
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-
-                                                    <strong><i class="fas fa-calendar-plus"></i>
-                                                        Inserido em</strong>
+                                                    <strong><i class="fas fa-tasks"></i> Status</strong>
                                                     <p class="text-muted">
-                                                        {{ $categoria->created_at }}
-
+                                                        {{ $turma->status }}
                                                     </p>
                                                     <hr>
-                                                    <strong><i class="fas fa-history"></i>
-                                                        Ultima Actualização</strong>
+                                                    <strong><i class="fas fa-chalkboard"></i> Sala</strong>
                                                     <p class="text-muted">
-                                                        {{ $categoria->updated_at }}
+                                                        {{ $turma->salas->descricao }} (Capacidade:
+                                                        {{ $turma->salas->capacidade }})
+                                                    </p>
+                                                    <hr>
+                                                    <strong><i class="fas fa-user"></i>Turma add Por</strong>
+                                                    <p class="text-muted">
+                                                        {{ $turma->users->name }}
+                                                    </p>
+                                                    <hr>
 
+                                                    <strong><i class="fas fa-clock"></i> Horário de Saída</strong>
+                                                    <p class="text-muted">
+                                                        {{ $turma->horario_SAIDA }}
                                                     </p>
                                                     <hr>
                                                 </div>
-
-                                            </div>
-                                            <div class="form-group col-md-12">
-                                                <strong><i class="fas fa-comments"></i>
-                                                    Observações</strong>
-                                                <p class="text-muted">
-                                                    {{ $categoria->descricao }}
-                                                </p>
                                             </div>
                                             <hr>
                                         </div>
+
                                     </div>
                                     <div class="tab-pane fade" id="list-profile" user="tabpanel"
                                         aria-labelledby="list-profile-list">
                                         <div class="d-flex justify-content-between">
                                             <div>
-                                                <h4>Cursos Relacionados a Categoria</h4>
+                                                <h4>Formando na Turma</h4>
                                             </div>
                                         </div>
                                         <div class="profile-feed">
                                             <div class="d-flex align-items-start profile-feed-item">
+
                                                 <div class="table-responsive">
                                                     <table id="order-listing" class="table">
                                                         <thead>
                                                             <tr>
-                                                                <th>Descrição</th>
-                                                                <th>Duração</th>
-                                                                <th>Data/Início</th>
-                                                                <th>Data/Término</th>
+                                                                <th>Nª</th>
+                                                                <th>Nome Completo</th>
+                                                                <th>Tel.</th>
+                                                                <th>Sala</th>
                                                                 <th style="width:50px;">Acção</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @foreach ($cursos as $item)
+                                                            @foreach ($formandos as $item)
                                                                 <tr>
-                                                                    <th>
-                                                                        {{ $item->nome }}
+                                                                    <th scope="row">
+                                                                        <a href="">{{ $item->id }}</a>
                                                                     </th>
-                                                                    <td>{{ $item->duracao }}</td>
-                                                                    <td>{{ $item->data_inicio }}</td>
-                                                                    <td>{{ $item->data_fim }}</td>
+                                                                    <td>{{ $item->nome }}</td>
+                                                                    <td>{{ $item->contactos->telefone }}</td>
+                                                                    <td>{{ $turma->salas->descricao }}</td>
                                                                     <td style="width: 50px;">
                                                                         <a
-                                                                            href="{{ route('cursos.show', $item) }}">Detalhes</a>
+                                                                            href="{{ route('turma_formandos.destroy', $turma->id) }}">Eliminar</a>
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
-
                                                         </tbody>
                                                         <tfoot>
                                                             <tr>
-                                                                <td colspan="4"><strong>Total de Cursos Associados:
+                                                                <td colspan="4"><strong>Total de Formandos na Turma:
                                                                     </strong></td>
                                                                 <td colspan="3" align="left">
-                                                                    <strong>{{ $categoria->cursos->count() }}</strong></td>
+                                                                    <strong>{{ $turma->count() }}</strong>
+                                                                </td>
                                                             </tr>
                                                         </tfoot>
                                                     </table>
@@ -177,7 +194,7 @@
                         </div>
                     </div>
                     <div class="card-footer text-muted">
-                        <a href="{{ route('categorias.index') }}" class="btn btn-primary float-right">Voltar</a>
+                        <a href="{{ route('cursos.index') }}" class="btn btn-primary float-right">Voltar</a>
                     </div>
                 </div>
             </div>
@@ -185,5 +202,44 @@
     </div>
 @endsection
 @section('script')
+    <script src="{{ asset('Template admin/assets/bundles/izitoast/js/iziToast.min.js') }}"></script>
+    <script src="{{ asset('Template admin/assets/js/page/toastr.js') }}"></script>
+    @if (session('sucesso'))
+        <script>
+            $(document).ready(function() {
+                iziToast.success({
+                    title: 'Sucesso',
+                    message: '{{ session('sucesso') }}',
+                    position: 'topRight'
+                });
+            });
+        </script>
+        {{ session()->forget('sucesso') }}
+    @endif
 
+    @if (session('erro'))
+        <script>
+            $(document).ready(function() {
+                iziToast.error({
+                    title: 'Erro',
+                    message: '{{ session('erro') }}',
+                    position: 'topRight'
+                });
+            });
+        </script>
+        {{ session()->forget('erro') }}
+    @endif
+
+    @if (session('warning'))
+        <script>
+            $(document).ready(function() {
+                iziToast.warning({
+                    title: 'Atenção',
+                    message: '{{ session('warning') }}',
+                    position: 'topRight'
+                });
+            });
+        </script>
+        {{ session()->forget('warning') }}
+    @endif
 @endsection

@@ -49,7 +49,10 @@ class TurmaController extends Controller
      */
     public function show(Turma $turma)
     {
-        return view('admin.Turma.show', compact('turma'));
+        $turma = Turma::with('formandos')->find($turma->id);
+        $formandos = $turma->formandos;
+        $salas = $turma->salas;
+        return view('admin.Turma.show', compact('turma', "formandos", "salas"));
     }
 
     /**
@@ -85,6 +88,19 @@ class TurmaController extends Controller
             return back()->with('sucesso', 'A turma "' . $turma->nome . '" foi excluída com sucesso.');
         } catch (\Throwable $th) {
             return back()->with('erro', 'Ocorreu um problema ao tentar excluir a turma "' . $turma->nome . '". Por favor, tente novamente.');
+        }
+    }
+    public function eliminar($formandoid)
+    {
+        try {
+            
+            $Turma_formando =  Turma_Formando::where("formando_id", $formandoid)->first();
+            $formando =  Formando::where("id", $formandoid)->first();
+            $Turma_formando->delete();
+
+            return back()->with('sucesso', 'O formando "' . $formando->nome . '" foi retirado da turma.');
+        } catch (\Throwable $th) {
+            return back()->with('erro', 'Ocorreu um problema ao tentar excluir a o formando da turma. Por favor, tente novamente.');
         }
     }
 

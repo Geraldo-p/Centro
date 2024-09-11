@@ -131,6 +131,8 @@ Route::middleware('auth')->group(function () {
         'destroy' => 'turma_formandos.destroy'
     ]);
     Route::get("/generate-pdf/turma_formandos", [TurmaFormandoController::class, 'generatePdf'])->name("turma_formandos.pdf");
+    Route::get('/turma-formando/retirar/{id}', [TurmaController::class, 'eliminar'])->name('turma-formando.eliminar');
+
 });
 
 require __DIR__ . '/auth.php';
