@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lista__presencas', function (Blueprint $table) {
+        Schema::create('lista__presenca__principals', function (Blueprint $table) {
             $table->id();
-            $table->string("presenca", 100);
-            $table->unsignedBigInteger('formando_id');
-            $table->unsignedBigInteger('lista_id');
+            $table->date("data_presenca");
+            $table->string("aula_nome");
+            $table->unsignedBigInteger('modulo_id');
             $table->unsignedBigInteger('id_us');
-            $table->foreign('lista_id')->references('id')->on('lista__presenca__principals');
-            $table->foreign('formando_id')->references('id')->on('formandos');
+            $table->foreign('modulo_id')->references('id')->on('modulos');
             $table->foreign('id_us')->references('id')->on('users');
 
             $table->timestamps();
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lista__presencas');
+        Schema::dropIfExists('lista__presenca__principals');
     }
 };

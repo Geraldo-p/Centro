@@ -142,6 +142,7 @@
                         data-feather="grid"></i><span>Tabelas</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('categorias.index') }}">Categoria</a></li>
+                    <li><a class="nav-link" href="{{ route('lista_presencas.create') }}">Lista de Presença</a></li>
                     <li><a class="nav-link" href="{{ route('cursos.index') }}">Cursos</a></li>
                     <li><a class="nav-link" href="{{ route('modulos.index') }}">Modulos</a></li>
                     <li><a class="nav-link" href="{{ route('departamentos.index') }}">Departamento</a></li>

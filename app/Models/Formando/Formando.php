@@ -4,6 +4,7 @@ namespace App\Models\Formando;
 
 use App\Models\Contacto\Contacto;
 use App\Models\Endereco\Endereco;
+use App\Models\Lista_de_Presenca\Lista_Presenca;
 use App\Models\Turma\Turma;
 use App\Models\Turma_Formando\Turma_Formando;
 use App\Models\User;
@@ -50,6 +51,10 @@ class Formando extends Model
     public function turma_formandos()
     {
         return $this->hasMany(Turma_Formando::class, 'formando_id');
+    }
+    public function lista_presencas()
+    {
+        return $this->hasMany(Lista_Presenca::class, 'formando_id');
     }
 
     public function turmas()

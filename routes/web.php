@@ -5,6 +5,7 @@ use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\FormandoController;
 use App\Http\Controllers\FuncionarioController;
+use App\Http\Controllers\ListaPresencaController;
 use App\Http\Controllers\ModuloController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SalaController;
@@ -132,6 +133,18 @@ Route::middleware('auth')->group(function () {
     ]);
     Route::get("/generate-pdf/turma_formandos", [TurmaFormandoController::class, 'generatePdf'])->name("turma_formandos.pdf");
     Route::get('/turma-formando/retirar/{id}', [TurmaController::class, 'eliminar'])->name('turma-formando.eliminar');
+
+    Route::resource('lista_presencas', ListaPresencaController::class)->names([
+        'index' => 'lista_presencas.index',
+        'create' => 'lista_presencas.create',
+        'store' => 'lista_presencas.store',
+        'show' => 'lista_presencas.show',
+        'edit' => 'lista_presencas.edit',
+        'update' => 'lista_presencas.update',
+        'destroy' => 'lista_presencas.destroy'
+    ]);
+    
+    Route::get("/generate-pdf/lista_presencas", [ListaPresencaController::class, 'generatePdf'])->name("lista_presencas.pdf");
 
 });
 

@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Categoria\Curso;
+use App\Models\Lista_de_Presenca\Lista_Presenca;
+use App\Models\Lista_de_Presenca_Principal\Lista_Presenca_Principal;
 
 class User extends Authenticatable
 {
@@ -31,6 +33,14 @@ class User extends Authenticatable
     public function categorias()
     {
         return $this->hasMany(Categoria::class, 'id_us');
+    }
+    public function lista_presencas()
+    {
+        return $this->hasMany(Lista_Presenca::class, 'id_us');
+    }
+    public function lista_presencas_principals()
+    {
+        return $this->hasMany(Lista_Presenca_Principal::class, 'id_us');
     }
     public function formandos()
     {
