@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\Contacto\Contacto;
 use App\Models\Endereco\Endereco;
 use App\Models\Formando\Formando;
@@ -20,9 +21,31 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
+    public function index(): View
+    {
+        $users= User::orderBy("name")->get();
+        return view('auth.index', compact("users"));
+    }
     public function create(): View
     {
         return view('auth.register');
+    }
+
+    public function edit(User $user): View
+    {
+        return view('auth.update', compact("user"));
+    }
+
+    public function update(UpdateUserRequest $request, User $user)
+    {
+        try {
+
+            $user->update($request->all());
+            return redirect()->route('users.index')->with('sucesso', 'Utilizador "' . $user->name . '" atualizado com sucesso.');
+            
+        } catch (\Throwable $th) {
+            return back()->with('erro', 'Ocorreu um problema ao tentar atualizar os dados do Utilizador "' . $user->name . '". Por favor, tente novamente.');
+        }
     }
 
     /**
@@ -33,11 +56,12 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'unique:'.User::class],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ], [
             'name.required' => 'O Nome do Utilizador é obrigatório.',
+            'name.unique' => 'O Nome de Utilizador já se encontra em uso.',
             'name.max' => 'O campo nome não pode ter mais de 255 caracteres.',
             'email.required' => 'O email é obrigatório.',
             'email.lowercase' => 'O email deve estar em letras minúsculas.',
@@ -52,6 +76,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'nivel_acesso' => 'Formando'
         ]);
 
         //criar formando assim que abrir uma conta no sistema

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DepartamentoController;
@@ -143,9 +144,19 @@ Route::middleware('auth')->group(function () {
         'update' => 'lista_presencas.update',
         'destroy' => 'lista_presencas.destroy'
     ]);
-    
+
     Route::get("/generate-pdf/lista_presencas", [ListaPresencaController::class, 'generatePdf'])->name("lista_presencas.pdf");
 
+    // User
+    Route::resource('users', RegisteredUserController::class)->names([
+        'index' => 'users.index',
+        // 'create' => 'users.create',
+        // 'store' => 'users.store',
+        // 'show' => 'users.show',
+        'edit' => 'users.edit',
+        'update' => 'users.update',
+        // 'destroy' => 'users.destroy'
+    ]);
 });
 
 require __DIR__ . '/auth.php';

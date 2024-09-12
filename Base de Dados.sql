@@ -1,17 +1,15 @@
-CREATE TABLE endereco (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    rua VARCHAR(255) NOT NULL,
-    bairro VARCHAR(100),
-    provincia VARCHAR(2) NOT NULL,
-    pais VARCHAR(50) NULL,
-    enderecoDetalhado VARCHAR(200)
-);
 
-CREATE TABLE contacto (
+CREATE TABLE Pagamento (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255),
-    telefone VARCHAR(20),
-    telefoneOP VARCHAR(20),
+    tipo VARCHAR(50),
+    -- transferencia, dinheiro em mão
+    data_pagamento DATE,
+    valor DECIMAL(10, 2),
+    em_falta DECIMAL(10, 2),
+    percentagem int --50%, 70%, 100%
+    estado VARCHAR(100),-- em em falta, pago
+    formando_id int,
+    FOREIGN KEY (formando_id) REFERENCES formando(id),
 );
 
 CREATE TABLE matricula (
@@ -22,136 +20,187 @@ CREATE TABLE matricula (
     FOREIGN KEY (formando_id) REFERENCES formando(id),
     FOREIGN KEY (curso_id) REFERENCES curso(id)
 );
+-- ____________________________________________________________________
 
-CREATE TABLE categoria (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    familia VARCHAR(255) NOT NULL,
-    descricao TEXT,
+CREATE TABLE categorias (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    familia VARCHAR(100) NOT NULL,
+    descricao TEXT NULL,
+    id_us BIGINT UNSIGNED,
+    FOREIGN KEY (id_us) REFERENCES users(id),
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
 );
-
-CREATE TABLE curso (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    preco DECIMAL NOT NULL,
-    descricao TEXT,
-    data_inicio DATE,
-    data_fim DATE foto VARCHAR(255) NOT NULL,
+CREATE TABLE enderecos (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    rua VARCHAR(150) NULL,
+    bairro VARCHAR(100) NULL,
+    provincia VARCHAR(100) NULL,
+    municipio VARCHAR(100) NULL,
+    pais VARCHAR(100) NULL,
+    enderecoDetalhado VARCHAR(255) NULL,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
 );
-
-CREATE TABLE modulo (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    curso_id INT NOT NULL,
+CREATE TABLE cursos (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
-    descricao TEXT,
-    data_inicio DATE,
-    data_fim DATE,
-    qtd_licoes INT,
-    id_us int,
-    FOREIGN KEY (curso_id) REFERENCES curso(id) FOREIGN KEY (id_us) REFERENCES users(id)
+    duracao VARCHAR(255) NULL,
+    foto TEXT NULL,
+    preco DECIMAL(10, 2) NOT NULL,
+    pag_mes DECIMAL(10, 2) NOT NULL,
+    data_inicio DATE NULL,
+    data_fim DATE NULL,
+    descricao TEXT NULL,
+    id_us BIGINT UNSIGNED,
+    FOREIGN KEY (id_us) REFERENCES users(id),
+    id_categ BIGINT UNSIGNED,
+    FOREIGN KEY (id_categ) REFERENCES categorias(id),
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
 );
-
-CREATE TABLE departamento (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE modulos (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
-    descricao TEXT,
+    descricao TEXT NULL,
+    data_inicio DATE NULL,
+    data_fim DATE NULL,
+    qtd_licoes INT NOT NULL,
+    id_us BIGINT UNSIGNED,
+    FOREIGN KEY (id_us) REFERENCES users(id),
+    curso_id BIGINT UNSIGNED,
+    FOREIGN KEY (curso_id) REFERENCES cursos(id) ON DELETE CASCADE,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+CREATE TABLE departamentos (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    descricao TEXT NULL,
     hora_entrada TIME NOT NULL,
     hora_fechamento TIME NOT NULL,
-    id_us int,
-    FOREIGN KEY (id_us) REFERENCES users(id)
+    id_us BIGINT UNSIGNED,
+    FOREIGN KEY (id_us) REFERENCES users(id),
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
 );
-
-CREATE TABLE funcionario (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE funcionarios (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
-    genero VARCHAR(50),
-    estado_civil VARCHAR(50),
-    nacionalidade VARCHAR(100),
-    provincia VARCHAR(100),
-    municipio VARCHAR(100),
-    bi VARCHAR(16),
-    cargo VARCHAR(100),
-    salario DECIMAL(10, 2),
-    data_contratacao DATE,
-    data_nascimento DATE,
-    foto VARCHAR(255),
-    nivel_escolaridade VARCHAR(100),
-    linguas VARCHAR(100),
-    nome_banco VARCHAR(100),
-    --Nome do banco onde o funcionário tem conta.
-    num_conta_banco INT,
-    iban VARCHAR(100),
-    status VARCHAR(50),
-    --Status do funcionário (ativo, inativo, demitido, em ferias, suspenso).
-    documento VARCHAR(50),
-    tipo VARCHAR(50),
-    -- formador, limpeza, funcionario normal
-    departamento_id INT,
-    contacto_id INT,
-    endereco_id INT,
-    id_ud INT,
-    FOREIGN KEY (departamento_id) REFERENCES departamento(id),
-    FOREIGN KEY (contacto_id) REFERENCES contacto(id),
-    FOREIGN KEY (endereco_id) REFERENCES endereco(id) FOREIGN KEY (id_ud) REFERENCES users(id)
+    genero VARCHAR(50) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    estado_civil VARCHAR(50) NOT NULL,
+    nacionalidade VARCHAR(100) NOT NULL,
+    provincia VARCHAR(100) NOT NULL,
+    municipio VARCHAR(100) NOT NULL,
+    bi CHAR(16) NULL,
+    cargo VARCHAR(100) NOT NULL,
+    salario DECIMAL(10, 2) NULL,
+    data_contratacao DATE NULL,
+    foto VARCHAR(255) NULL,
+    nivel_escolaridade VARCHAR(100) NOT NULL,
+    linguas VARCHAR(100) NULL,
+    nome_banco VARCHAR(100) NULL,
+    num_conta_banco INT NULL,
+    iban CHAR(30) NULL,
+    status VARCHAR(50) DEFAULT 'Activo',
+    documento VARCHAR(255) NULL,
+    departamento_id BIGINT UNSIGNED NULL,
+    FOREIGN KEY (departamento_id) REFERENCES departamentos(id),
+    contacto_id BIGINT UNSIGNED NULL,
+    FOREIGN KEY (contacto_id) REFERENCES contactos(id),
+    endereco_id BIGINT UNSIGNED NULL,
+    FOREIGN KEY (endereco_id) REFERENCES enderecos(id),
+    id_us BIGINT UNSIGNED,
+    FOREIGN KEY (id_us) REFERENCES users(id),
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
 );
-
-CREATE TABLE formando (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE salas (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(255) NOT NULL,
+    capacidade INT NOT NULL,
+    tipo VARCHAR(100) NOT NULL,
+    id_us BIGINT UNSIGNED,
+    FOREIGN KEY (id_us) REFERENCES users(id),
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+CREATE TABLE formandos (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NULL,
+    genero VARCHAR(50) NULL,
+    data_nascimento DATE NULL,
+    estado_civil VARCHAR(50) NULL,
+    nacionalidade VARCHAR(100) NULL,
+    provincia VARCHAR(100) NULL,
+    municipio VARCHAR(100) NULL,
+    bi CHAR(16) NULL,
+    instituicao VARCHAR(255) NULL,
+    nivel_escolaridade VARCHAR(100) NULL,
+    curso VARCHAR(100) NULL,
+    periodo VARCHAR(100) NULL,
+    situacao VARCHAR(100) NULL,
+    foto VARCHAR(255) NULL,
+    contacto_id BIGINT UNSIGNED NULL,
+    FOREIGN KEY (contacto_id) REFERENCES contactos(id),
+    endereco_id BIGINT UNSIGNED NULL,
+    FOREIGN KEY (endereco_id) REFERENCES enderecos(id),
+    id_us BIGINT UNSIGNED,
+    FOREIGN KEY (id_us) REFERENCES users(id),
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+CREATE TABLE turmas (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
-    data_nascimento DATE,
-    contacto_id INT,
-    endereco_id INT,
-    FOREIGN KEY (contacto_id) REFERENCES contacto(id),
-    FOREIGN KEY (endereco_id) REFERENCES endereco(id)
+    sala_id BIGINT UNSIGNED,
+    FOREIGN KEY (sala_id) REFERENCES salas(id),
+    funcionario_id BIGINT UNSIGNED,
+    FOREIGN KEY (funcionario_id) REFERENCES funcionarios(id),
+    horario_ENTRADA TIME NOT NULL,
+    horario_SAIDA TIME NOT NULL,
+    status VARCHAR(50) DEFAULT 'Disponivel',
+    id_us BIGINT UNSIGNED,
+    FOREIGN KEY (id_us) REFERENCES users(id),
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
 );
 
-CREATE TABLE lista_presença (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    formando_id INT,
-    modulo_id INT,
-    data_presenca DATE,
-    presente VARCHAR(255),
-    FOREIGN KEY (formando_id) REFERENCES formando(id),
-    FOREIGN KEY (modulo_id) REFERENCES modulo(id)
+CREATE TABLE turma_formandos (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    turma_id BIGINT UNSIGNED,
+    FOREIGN KEY (turma_id) REFERENCES turmas(id) ON DELETE CASCADE,
+    formando_id BIGINT UNSIGNED,
+    FOREIGN KEY (formando_id) REFERENCES formandos(id) ON DELETE CASCADE,
+    id_us BIGINT UNSIGNED,
+    FOREIGN KEY (id_us) REFERENCES users(id),
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+CREATE TABLE lista_presencas (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    presenca VARCHAR(100) NOT NULL,
+    formando_id BIGINT UNSIGNED,
+    FOREIGN KEY (formando_id) REFERENCES formandos(id),
+    lista_id BIGINT UNSIGNED,
+    FOREIGN KEY (lista_id) REFERENCES lista_presenca_principals(id),
+    id_us BIGINT UNSIGNED,
+    FOREIGN KEY (id_us) REFERENCES users(id),
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
 );
 
-CREATE TABLE SALA (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    descricao TEXT,
-    capacidade INT,
-    --QUANTIDADE DE ALUNOS
-    tipo TEXT,
-    --TEORICA, PRATICA
-);
-CREATE TABLE turma (
-    turma_id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255),
-    sala_id INT,
-    funcionario_id INT, -- selecionar apenas formadores no combobox
-    horario_ENTRADA VARCHAR(50),
-    horario_SAIDA VARCHAR(50),
-    FOREIGN KEY (sala_id) REFERENCES sala(id),
-    FOREIGN KEY (funcionario_id) REFERENCES funcionario(id)
-);
 
--- uma turma pode ter 1 ou varios formandos e um formando pode fazer parte de uma ou varias turmas
--- turma_formando
-CREATE TABLE turma_formando_relacao (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    turma_id int,
-    formando_id INT,
-    FOREIGN KEY (turma_id) REFERENCES turma(turma_id),
-    FOREIGN KEY (formando_id) REFERENCES formando(id)
+CREATE TABLE lista_presenca_principals (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    data_presenca DATE NOT NULL,
+    aula_nome VARCHAR(255) NOT NULL,
+    modulo_id BIGINT UNSIGNED,
+    FOREIGN KEY (modulo_id) REFERENCES modulos(id),
+    id_us BIGINT UNSIGNED,
+    FOREIGN KEY (id_us) REFERENCES users(id),
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
 );
-
-CREATE TABLE Pagamento (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    tipo VARCHAR(50),
-    -- transferencia, dinheiro em mão
-    data_pagamento DATE,
-    valor DECIMAL(10, 2),
-    em_falta DECIMAL(10, 2),
-    percentagem int --50%, 70%, 100%
-    estado VARCHAR(100),
-    -- em falta, pago
-)

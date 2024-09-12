@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('titulo', 'Preencher Turma')
+@section('titulo', 'Lista de Presença')
 @section('css')
     <style>
         .photo-frame {

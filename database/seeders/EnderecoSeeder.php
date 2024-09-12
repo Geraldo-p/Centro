@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class EnderecoSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class EnderecoSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        
     }
 }
