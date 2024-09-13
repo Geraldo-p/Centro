@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('situacao', 100)->nullable(); //estudando, terminado
 
             $table->string('foto')->nullable();
+            $table->text(column: 'num_formando');
 
 
 

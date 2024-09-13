@@ -42,7 +42,7 @@ class RegisteredUserController extends Controller
 
             $user->update($request->all());
             return redirect()->route('users.index')->with('sucesso', 'Utilizador "' . $user->name . '" atualizado com sucesso.');
-            
+
         } catch (\Throwable $th) {
             return back()->with('erro', 'Ocorreu um problema ao tentar atualizar os dados do Utilizador "' . $user->name . '". Por favor, tente novamente.');
         }
@@ -82,11 +82,13 @@ class RegisteredUserController extends Controller
         //criar formando assim que abrir uma conta no sistema
         $endereco = Endereco::create($request->all());
         $contacto = Contacto::create($request->all());
+
         Formando::create(
             [
                 'nome' => $request->name,
                 "endereco_id" => $contacto->id,
                 "contacto_id" => $endereco->id,
+                "num_formando" => rand(1000, 9000)."UE" .$user->id,
                 'id_us' => $user->id
             ]
         );

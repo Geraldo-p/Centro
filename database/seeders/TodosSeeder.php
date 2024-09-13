@@ -136,6 +136,7 @@ class TodosSeeder extends Seeder
                 'periodo' => $faker->randomElement(['Manhã', 'Tarde', 'Noite']),
                 'situacao' => $faker->randomElement(['Estudando', 'Terminado']),
                 'foto' => $faker->imageUrl(),
+                'num_formando' =>  rand(1000, 9000) . "UE" . $faker->numberBetween(1, 5),
                 'contacto_id' => $faker->optional()->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de contactos
                 'endereco_id' => $faker->optional()->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de endereços
                 'id_us' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de usuários

@@ -61,6 +61,7 @@ class FormandoController extends Controller
                     "contacto_id" => $endereco->id,
                     'id_us' => Auth::id(),
                     'foto' => $image_name,
+                    'num_formando' => rand(1000, 9000) . "UE" . Auth::id(),
                     'provincia' => $request->input("provincia2"),
                     'municipio' => $request->input("municipio2")
                 ] + $request->all()

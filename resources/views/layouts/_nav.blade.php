@@ -141,6 +141,7 @@
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="grid"></i><span>Tabelas</span></a>
                 <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('pagamentos.index') }}">Pagamento</a></li>
                     <li><a class="nav-link" href="{{ route('categorias.index') }}">Categoria</a></li>
                     <li><a class="nav-link" href="{{ route('lista_presencas.create') }}">Lista de Presença</a></li>
                     <li><a class="nav-link" href="{{ route('cursos.index') }}">Cursos</a></li>

@@ -15,6 +15,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Categoria\Curso;
 use App\Models\Lista_de_Presenca\Lista_Presenca;
 use App\Models\Lista_de_Presenca_Principal\Lista_Presenca_Principal;
+use App\Models\Pagamento\Pagamento;
 
 class User extends Authenticatable
 {
@@ -31,6 +32,11 @@ class User extends Authenticatable
         'password',
         'nivel_acesso'
     ];
+
+    public function pagamentos()
+    {
+        return $this->hasMany(Pagamento::class, 'id_us');
+    }
     public function categorias()
     {
         return $this->hasMany(Categoria::class, 'id_us');

@@ -8,6 +8,7 @@ use App\Http\Controllers\FormandoController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ListaPresencaController;
 use App\Http\Controllers\ModuloController;
+use App\Http\Controllers\PagamentoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SalaController;
 use App\Http\Controllers\TurmaController;
@@ -157,6 +158,20 @@ Route::middleware('auth')->group(function () {
         'update' => 'users.update',
         // 'destroy' => 'users.destroy'
     ]);
+
+    Route::resource('pagamentos', PagamentoController::class)->names([
+        'index' => 'pagamentos.index',
+        'create' => 'pagamentos.create',
+        'store' => 'pagamentos.store',
+        'show' => 'pagamentos.show',
+        'edit' => 'pagamentos.edit',
+        'update' => 'pagamentos.update',
+        'destroy' => 'pagamentos.destroy'
+    ]);
+    Route::post("/pagamentos/formando", [PagamentoController::class, 'pesquisar'])->name("pagamentos.pesquisar");
+
+    Route::get("/generate-pdf/pagamentos", [PagamentoController::class, 'generatePdf'])->name("pagamentos.pdf");
+
 });
 
 require __DIR__ . '/auth.php';
