@@ -2,8 +2,10 @@
 
 namespace App\Models\Turma;
 
+use App\Models\Curso\Curso;
 use App\Models\Formando\Formando;
 use App\Models\Funcionario\Funcionario;
+use App\Models\Matricula\Matricula;
 use App\Models\Sala\Sala;
 use App\Models\Turma_Formando\Turma_Formando;
 use App\Models\User;
@@ -20,12 +22,19 @@ class Turma extends Model
         "horario_ENTRADA",
         "horario_SAIDA",
         "status",
+        "curso_id",
         "id_us",
     ];
-    public function turma_formandos()
+    public function matriculas()
     {
-        return $this->hasMany(Turma_Formando::class, 'turma_id');
+        return $this->hasMany(Matricula::class, 'turma_id');
     }
+    public function cursos()
+    {
+        return $this->belongsTo(Curso::class, 'curso_id');
+    }
+
+    
     public function formandos()
     {
         return $this->belongsToMany(Formando::class, 'turma__formandos', 'turma_id', 'formando_id');

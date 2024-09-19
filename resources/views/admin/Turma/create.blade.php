@@ -69,17 +69,29 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-12 col-md-6 col-lg-8">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="funcionario_id">Formador</label>
-                                    <select class="form-control @error('funcionario_id') is-invalid @enderror" name="funcionario_id">
-                                        <optgroup label="Selecione o Formador">
-                                            @foreach ($formadores as $item)
-                                                <option value="{{ $item->id }}">{{ $item->nome }}</option>
-                                            @endforeach
-                                        </optgroup>
+                                    <select class="form-control @error('funcionario_id') is-invalid @enderror"
+                                        name="funcionario_id">
+                                        @foreach ($formadores as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nome }}</option>
+                                        @endforeach
                                     </select>
                                     @error('funcionario_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="curso_id">Curso</label>
+                                    <select class="form-control @error('curso_id') is-invalid @enderror" name="curso_id">
+                                        @foreach ($cursos as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nome }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('curso_id')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -87,8 +99,8 @@
                             <div class="col-sm-12 col-md-2">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="horario_ENTRADA">Hora de Entrada</label>
-                                    <input class="form-control @error('horario_ENTRADA') is-invalid @enderror" type="time"
-                                        name="horario_ENTRADA" />
+                                    <input class="form-control @error('horario_ENTRADA') is-invalid @enderror"
+                                        type="time" name="horario_ENTRADA" />
 
                                     @error('horario_ENTRADA')
                                         <div class="invalid-feedback">{{ $message }}</div>

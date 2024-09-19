@@ -7,12 +7,13 @@ use App\Models\Categoria\Categoria;
 use App\Models\Departamento\departamento;
 use App\Models\Formando\Formando;
 use App\Models\Funcionario\Funcionario;
+use App\Models\Matricula\Matricula;
 use App\Models\Modulo\Modulo;
 use App\Models\Sala\Sala;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Categoria\Curso;
+use App\Models\Curso\Curso;
 use App\Models\Lista_de_Presenca\Lista_Presenca;
 use App\Models\Lista_de_Presenca_Principal\Lista_Presenca_Principal;
 use App\Models\Pagamento\Pagamento;
@@ -36,6 +37,11 @@ class User extends Authenticatable
     public function pagamentos()
     {
         return $this->hasMany(Pagamento::class, 'id_us');
+    }
+
+    public function matriculas()
+    {
+        return $this->hasMany(Matricula::class, 'id_us');
     }
     public function categorias()
     {

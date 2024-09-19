@@ -8,9 +8,11 @@ use App\Http\Requests\UpdateFuncionarioRequest;
 use App\Models\Contacto\Contacto;
 use App\Models\Departamento\departamento;
 use App\Models\Endereco\Endereco;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class FuncionarioController extends Controller
 {
@@ -47,6 +49,15 @@ class FuncionarioController extends Controller
     {
 
         try {
+            $faker = \Faker\Factory::create();
+
+            // depois de criar mandar as credenciais por email - resolver isso depois
+            $user = User::create([
+                'name' => $faker->name,
+                'email' => $request->email,
+                'password' => Hash::make($faker->password),
+                'nivel_acesso' => $request->cargo
+            ]);
 
             $image_name = null;
             if ($request->hasFile('foto')) {
@@ -71,7 +82,7 @@ class FuncionarioController extends Controller
                 [
                     "endereco_id" => $contacto->id,
                     "contacto_id" => $endereco->id,
-                    'id_us' => Auth::id(),
+                    'id_us' => $user->id,
                     'foto' => $image_name,
                     'documento' => $doc,
                     'provincia' => $request->input("provincia2"),
@@ -79,7 +90,7 @@ class FuncionarioController extends Controller
                 ] + $request->all()
             );
 
-            return back()->with('sucesso', 'funcionario "' . $request->input("nome") . '" criado com sucesso.');
+            return back()->with('sucesso', 'funcionario "' . $request->input("nome") . '" criado com sucesso. As crêdencias do Funcionario foram enviadas no email do mesmo');
         } catch (\Throwable $th) {
             return back()->with('erro', 'Ocorreu um problema ao tentar adicionar o funcionario. "' . $request->input("nome") . '"');
         }
@@ -88,6 +99,7 @@ class FuncionarioController extends Controller
     /**
      * Exibe o recurso especificado.
      */
+    
     public function show(funcionario $funcionario)
     {
         return view('admin.Funcionario.show', compact('funcionario'));

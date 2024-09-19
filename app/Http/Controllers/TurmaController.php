@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Turma\Turma;
 use App\Http\Requests\StoreTurmaRequest;
 use App\Http\Requests\UpdateTurmaRequest;
+use App\Models\Contacto\Contacto;
+use App\Models\Curso\Curso;
 use App\Models\Formando\Formando;
 use App\Models\Funcionario\Funcionario;
 use App\Models\Sala\Sala;
@@ -25,9 +27,11 @@ class TurmaController extends Controller
      */
     public function create()
     {
+
         $formadores = Funcionario::where("cargo", "Formador")->orderBy("nome")->get();
         $salas = Sala::orderBy("descricao")->get();
-        return view('admin.Turma.create', compact("formadores", "salas"));
+        $cursos = Curso::orderBy("nome")->get();
+        return view('admin.Turma.create', compact("formadores", "cursos", "salas"));
     }
 
     /**
@@ -35,6 +39,7 @@ class TurmaController extends Controller
      */
     public function store(StoreTurmaRequest $request)
     {
+
 
         try {
             Turma::create(['id_us' => Auth::id()] + $request->all());
@@ -62,7 +67,9 @@ class TurmaController extends Controller
     {
         $formadores = Funcionario::where("cargo", "Formador")->orderBy("nome")->get();
         $salas = Sala::orderBy("descricao")->get();
-        return view('admin.Turma.update', compact('turma', 'formadores', 'salas'));
+        $cursos = Curso::orderBy("nome")->get();
+
+        return view('admin.Turma.update', compact('turma', "cursos", 'formadores', 'salas'));
     }
 
     /**
@@ -93,7 +100,7 @@ class TurmaController extends Controller
     public function eliminar($formandoid)
     {
         try {
-            
+
             $Turma_formando =  Turma_Formando::where("formando_id", $formandoid)->first();
             $formando =  Formando::where("id", $formandoid)->first();
             $Turma_formando->delete();

@@ -32,7 +32,7 @@ class StoreFormandoRequest extends FormRequest
             'bi' => 'nullable|string|max:16',
             'foto' => 'nullable|image|max:10240', // Aceita somente imagens com tamanho máximo de 10MB
 
-            'email' => 'nullable|string|email|max:100',
+            'email' => 'required|nullable|string|email|max:100',
             'telefone' => 'string|size:9',
             'outros' => 'nullable|string|max:200',
 
@@ -49,7 +49,7 @@ class StoreFormandoRequest extends FormRequest
     public function messages(): array
     {
         return [
-            
+
             'nome.max' => 'O campo nome não pode ter mais que 255 caracteres.',
 
             'genero.string' => 'O campo gênero deve ser uma string.',
@@ -80,6 +80,7 @@ class StoreFormandoRequest extends FormRequest
 
             'email.email' => 'O campo email deve ser um endereço de email válido.',
             'email.max' => 'O campo email não pode ter mais do que 100 caracteres.',
+            'email.required' => 'Campo Obrigatório',
 
             'telefone.required' => 'O nº telefone é obrigatório.',
             'telefone.size' => 'O nº telefone deve ter exatamente 9 digitos.',

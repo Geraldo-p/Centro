@@ -150,7 +150,7 @@
                     <li><a class="nav-link" href="{{ route('funcionarios.index') }}">Funcionario</a></li>
                     <li><a class="nav-link" href="{{ route('salas.index') }}">Sala</a></li>
                     <li><a class="nav-link" href="{{ route('turmas.index') }}">Turma</a></li>
-                    <li><a class="nav-link" href="{{ route('turma_formandos.create') }}">Add Formando na Turma</a></li>
+                    <li><a class="nav-link" href="{{ route('matriculas.create') }}">Matricula</a></li>
                     <li><a class="nav-link" href="{{ route('formandos.index') }}">Formando</a></li>
                 </ul>
             </li>

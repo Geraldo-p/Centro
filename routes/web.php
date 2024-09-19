@@ -7,6 +7,7 @@ use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\FormandoController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ListaPresencaController;
+use App\Http\Controllers\MatriculaController;
 use App\Http\Controllers\ModuloController;
 use App\Http\Controllers\PagamentoController;
 use App\Http\Controllers\ProfileController;
@@ -22,6 +23,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('/layouts.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/', function () {
+// return view("User Admin/index");
+// });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -159,6 +164,7 @@ Route::middleware('auth')->group(function () {
         // 'destroy' => 'users.destroy'
     ]);
 
+    //PAGAMENTOS
     Route::resource('pagamentos', PagamentoController::class)->names([
         'index' => 'pagamentos.index',
         'create' => 'pagamentos.create',
@@ -172,6 +178,17 @@ Route::middleware('auth')->group(function () {
 
     Route::get("/generate-pdf/pagamentos", [PagamentoController::class, 'generatePdf'])->name("pagamentos.pdf");
 
+    //PAGAMENTOS
+    Route::resource('matriculas', MatriculaController::class)->names([
+        'index' => 'matriculas.index',
+        'create' => 'matriculas.create',
+        'store' => 'matriculas.store',
+        'show' => 'matriculas.show',
+        'edit' => 'matriculas.edit',
+        'update' => 'matriculas.update',
+        'destroy' => 'matriculas.destroy'
+    ]);
+    Route::get("/generate-pdf/matriculas", [PagamentoController::class, 'generatePdf'])->name("pagamentos.pdf");
 });
 
 require __DIR__ . '/auth.php';

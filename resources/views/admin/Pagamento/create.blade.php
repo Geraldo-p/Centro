@@ -31,67 +31,94 @@
                             <div class="col-sm-12 col-md-2 col-lg-3">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="nome">Código do Formando</label>
-                                    <input readonly class="form-control" type="text" value="{{ $cod }}"
-                                        name="cod_formando" id="cod_formando">
+                                    <input readonly class="form-control @error('cod_formando') is-invalid @enderror"
+                                        type="text" value="{{ $cod }}" name="cod_formando" id="cod_formando">
+                                    @error('cod_formando')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-9 col-lg-9 col-xl-4 col-xxl-4">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="formando_id">Formando</label>
-                                    <select class="form-control" readonly id="formando_id" name="formando_id">
+                                    <select class="form-control @error('formando_id') is-invalid @enderror" readonly
+                                        id="formando_id" name="formando_id">
                                         @foreach ($formandos as $item)
                                             <option value="{{ $item->id }}">{{ $item->nome }}</option>
                                         @endforeach
                                     </select>
+                                    @error('formando_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-sm-12 col-md-9 col-lg-9 col-xl-5 col-xxl-5">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="curso">Curso</label>
-                                    <select id="curso" name="curso_id" class="form-control">
+                                    <select id="curso" name="curso_id"
+                                        class="form-control @error('curso_id') is-invalid @enderror">
                                         @foreach ($cursos as $item)
                                             <option value="{{ $item->id }}" data-preco="{{ $item->preco }}">
                                                 {{ $item->nome }}
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('curso_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="preco">Preço</label>
-                                    <input type="text" id="preco" class="form-control" name="preco" readonly>
+                                    <input type="text" id="preco"
+                                        class="form-control @error('preco') is-invalid @enderror" name="preco" readonly>
+                                    @error('preco')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="tipo">Tipo de Pagamento</label>
-                                    <select id="tipo" class="form-control" name="tipo">
+                                    <select id="tipo" class="form-control @error('tipo') is-invalid @enderror"
+                                        name="tipo">
                                         <option value="Dinheiro em Mão" selected>Dinheiro em Mão</option>
                                         <option value="Transferencia Bancária">Transferencia Bancária</option>
                                         <option value="Depósito">Depósito</option>
                                     </select>
+                                    @error('tipo')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2 col-xxl-3">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="">A pagar %</label>
-                                    <select class="form-control" name="percentagem" id="percentagem">
+                                    <select class="form-control @error('percentagem') is-invalid @enderror"
+                                        name="percentagem" id="percentagem">
                                         <option value="50" selected>50%</option>
                                         <option value="70">70%</option>
                                         <option value="100">100%</option>
                                     </select>
+                                    @error('percentagem')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2 col-xxl-3">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="">Valor a Pagar</label>
-                                    <input type="text" id="valor" readonly class="form-control" name="valor">
+                                    <input type="text" id="valor" readonly
+                                        class="form-control @error('valor') is-invalid @enderror" name="valor">
+                                    @error('valor')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -99,14 +126,22 @@
                             <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2 col-xxl-3">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="">Em Falta</label>
-                                    <input class="form-control" type="text" id="em_falta" name="em_falta" readonly>
+                                    <input class="form-control @error('em_falta') is-invalid @enderror" type="text"
+                                        id="em_falta" name="em_falta" readonly>
+                                    @error('em_falta')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div id="comprov" class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-9">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="">Submeter Comprovativo</label>
-                                    <input class="form-control" type="file" name="comprovativo">
+                                    <input class="form-control @error('comprovativo') is-invalid @enderror" type="file"
+                                        name="comprovativo">
+                                    @error('comprovativo')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

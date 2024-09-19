@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Turma_Formando\Turma_Formando;
 use App\Http\Requests\StoreTurma_FormandoRequest;
 use App\Http\Requests\UpdateTurma_FormandoRequest;
+use App\Models\Curso\Curso;
 use App\Models\Formando\Formando;
 use App\Models\Sala\Sala;
 use App\Models\Turma\Turma;
@@ -26,65 +27,75 @@ class TurmaFormandoController extends Controller
      */
     public function create()
     {
-        $formandos = Formando::orderBy("nome")->get();
+        //selecionar formandos apenas que tenham feito o pagamento
+        $formandos = Formando::whereHas('pagamentos')->orderBy('nome')->get();
         $turmas = Turma::orderBy("nome")->get();
-        return view('admin.Turma_Formando.create', compact("formandos", "turmas"));
+        $cursos = Curso::orderBy("nome")->get();
+        $salas = Sala::orderBy("nome")->get();
+        return view('admin.Turma_Formando.create', compact("formandos",'salas', "cursos", "turmas"));
     }
 
     /**
      * Armazena um novo recurso no armazenamento.
      */
     public function store(StoreTurma_FormandoRequest $request)
-    {
+{
+    try {
+        $estado = false;
 
-        try {
-            $estado = false;
-            foreach ($request->carrinho_turma_id_val as $index => $turmaId) {
-                $formandoId = $request->carrinho_formando_id_val[$index];
+        // Loop através dos carrinhos de turmas e formandos
+        foreach ($request->carrinho_turma_id_val as $index => $turmaId) {
+            $formandoId = $request->carrinho_formando_id_val[$index];
 
-                $exists = DB::table('turma__formandos')
-                    ->where('turma_id', $turmaId)
-                    ->where('formando_id', $formandoId)
-                    ->exists();
+            // Verifica se o formando já está na turma
+            $exists = DB::table('turma__formandos')
+                ->where('turma_id', $turmaId)
+                ->where('formando_id', $formandoId)
+                ->exists();
 
-                $qtd_formando_turma = Turma_Formando::where("turma_id", $turmaId)->count();
-
-                $result = DB::table('turma__formandos as tf')
-                    ->join('turmas as t', 'tf.turma_id', '=', 't.id')
-                    ->join('salas as s', 't.sala_id', '=', 's.id')
-                    ->select('s.capacidade')
-                    ->distinct()
-                    ->get();
-
-                foreach ($result as $item) {
-                    if ($qtd_formando_turma >= $item->capacidade) {
-
-                        return back()->with('warning', 'Alguns Formandos nao foram adicionados a turma porque se encontra cheia');
-                    } else {
-
-                        if (!$exists) {
-                            Turma_Formando::create([
-                                'turma_id' => $turmaId,
-                                'formando_id' => $formandoId,
-                                'id_us' => Auth::id()
-                            ]);
-                        } else {
-                            $estado = true;
-                        }
-                    }
-                }
+            if ($exists) {
+                $estado = true;
+                continue; // Passa para o próximo formando se já estiver cadastrado
             }
 
-            if ($estado) {
-                return back()->with('warning', 'Alguns Formandos nao foram adicionados a turma porque se encontra cheia');
-            } else {
-                return back()->with('sucesso', 'Formando/os Adicionado/os na Turma');
+            // Obtém a quantidade de formandos na turma e a capacidade da sala
+            $turmaInfo = DB::table('turmas as t')
+                ->join('salas as s', 't.sala_id', '=', 's.id')
+                ->leftJoin('turma__formandos as tf', 't.id', '=', 'tf.turma_id')
+                ->where('t.id', $turmaId)
+                ->select(
+                    's.capacidade',
+                    DB::raw('COUNT(tf.formando_id) as total_formandos')
+                )
+                ->groupBy('s.capacidade')
+                ->first();
+
+            // Verifica se a turma está cheia
+            if ($turmaInfo->total_formandos >= $turmaInfo->capacidade) {
+                $estado = true;
+                continue; // Se a turma estiver cheia, não adiciona mais formandos
             }
 
-        } catch (\Throwable $th) {
-            return back()->with('erro', 'Ocorreu um problema ao tentar adicionar os formandos na Turma');
+            // Adiciona o formando à turma se não houver erros
+            Turma_Formando::create([
+                'turma_id' => $turmaId,
+                'formando_id' => $formandoId,
+                'id_us' => Auth::id(),
+            ]);
         }
+
+        // Mensagem de feedback com base nos resultados
+        if ($estado) {
+            return back()->with('warning', 'Alguns formandos não foram adicionados à turma porque já estão cadastrados ou a turma está cheia.');
+        }
+
+        return back()->with('sucesso', 'Formandos adicionados com sucesso à turma.');
+    } catch (\Throwable $th) {
+        // Tratamento de exceção
+        return back()->with('erro', 'Ocorreu um problema ao tentar adicionar os formandos à turma.');
     }
+}
+
 
     /**
      * Exibe o recurso especificado.
@@ -101,7 +112,9 @@ class TurmaFormandoController extends Controller
     {
         $formandos = Formando::orderBy("nome")->get();
         $turmas = Turma::orderBy("nome")->get();
-        return view('admin.Turma_Formando.update', compact('turma_formando', 'formandos', 'turmas'));
+        $cursos = Curso::orderBy("nome")->get();
+
+        return view('admin.Turma_Formando.update', compact('turma_formando', 'cursos', 'formandos', 'turmas'));
     }
 
     /**

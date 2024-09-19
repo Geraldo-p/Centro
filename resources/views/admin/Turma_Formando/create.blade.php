@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('titulo', 'Preencher Turma')
+@section('titulo', 'Matricula')
 @section('css')
     <style>
         .photo-frame {
@@ -75,27 +75,11 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-3">
-                                <div class="form-group mb-3">
-                                    <label class="form-label" id="" for="turma_id">Turma</label>
-                                    <select  class="form-control @error('turma_id') is-invalid @enderror" name="turma_id"
-                                        id="turma_id">
-                                        @foreach ($turmas as $item)
-                                            <option value="{{ $item->id }}">{{ $item->nome }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('turma_id')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-9">
+
+                            <div class="col-sm-12 col-md-12">
                                 <div class="form-group mb-3">
                                     <label class="form-label" id="" for="formando_id">Formando</label>
-                                    depois de fazer o quisito de pagamento selecione apenas formandos que se inscreveram e pagaram um determinado curso
-                                    <select disabled class="form-control @error('formando_id') is-invalid @enderror"
+                                    <select readonly class="form-control @error('formando_id') is-invalid @enderror"
                                         name="formando_id" id="formando_id">
                                         @foreach ($formandos as $item)
                                             <option value="{{ $item->id }}">{{ $item->nome }}</option>
@@ -107,6 +91,48 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-9">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="turma_id">Turma</label>
+                                    <select class="form-control @error('turma_id') is-invalid @enderror" name="turma_id" id="turma_id">
+                                        <option value="">Selecione uma turma</option>
+                                        @foreach ($turmas as $item)
+                                            <option value="{{ $item->id }}" data-curso="{{ $item->cursos->id }}" data-sala="{{ $item->salas->capacidade }}">{{ $item->nome }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('turma_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-3">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="sala_id">Qtd. Vagas</label>
+                                    <input type="text" class="form-control @error('sala_id') is-invalid @enderror" name="sala_id" id="sala_id" readonly>
+                                    @error('sala_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="curso_id">Curso Associado à Turma</label>
+                                    <select class="form-control @error('curso_id') is-invalid @enderror" name="curso_id" id="curso_id" disabled>
+                                        <option value="">Selecione um curso</option>
+                                        @foreach ($cursos as $curso)
+                                            <option value="{{ $curso->id }}">{{ $curso->nome }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('curso_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
 
                         <button type="button" id="botao" class="btn btn-primary mr-2">Adicionar</button>
 
@@ -321,4 +347,42 @@
             selectElement.value = ''; // Clear the selection if no match is found
         });
     </script>
+
+    $(document).ready(function() {
+    // Quando o select de turma mudar
+    $('#turma_id').change(function() {
+        // Obter o curso associado à turma selecionada
+        var selectedTurma = $(this).find(':selected');
+        var cursoId = selectedTurma.data('curso'); // pega o valor de data-curso
+
+        // Atualizar o campo de curso com base no curso associado à turma
+        $('#curso_id').val(cursoId);
+    });
+});
+<style>
+    div {
+        position: relative;
+    }
+</style>
+
+
+
+<script>
+    $(document).ready(function() {
+    // Quando o select de turma mudar
+    $('#turma_id').change(function() {
+        // Obter o curso associado à turma selecionada
+        var selectedTurma = $(this).find(':selected');
+        var cursoId = selectedTurma.data('curso'); // pega o valor de data-curso
+        var salaId = selectedTurma.data('sala'); // pega o valor de data-sala
+
+        // Atualizar o campo de curso com base no curso associado à turma
+        $('#curso_id').val(cursoId);
+
+        $('#sala_id').val(salaId);
+
+    });
+});
+
+</script>
 @endsection

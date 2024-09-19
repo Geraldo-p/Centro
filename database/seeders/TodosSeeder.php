@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Contacto\Contacto;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -39,6 +40,7 @@ class TodosSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
+
         }
 
         // CATEGORIA
@@ -129,7 +131,7 @@ class TodosSeeder extends Seeder
                 'nacionalidade' => $faker->country,
                 'provincia' => $faker->word,
                 'municipio' => $faker->word,
-                'bi' => $faker->optional()->numerify('##########'),
+                'bi' => $faker->numerify('##########'),
                 'instituicao' => $faker->word,
                 'nivel_escolaridade' => $faker->word,
                 'curso' => $faker->word,
@@ -137,8 +139,8 @@ class TodosSeeder extends Seeder
                 'situacao' => $faker->randomElement(['Estudando', 'Terminado']),
                 'foto' => $faker->imageUrl(),
                 'num_formando' =>  rand(1000, 9000) . "UE" . $faker->numberBetween(1, 5),
-                'contacto_id' => $faker->optional()->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de contactos
-                'endereco_id' => $faker->optional()->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de endereços
+                'contacto_id' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de contactos
+                'endereco_id' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de endereços
                 'id_us' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de usuários
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -156,7 +158,7 @@ class TodosSeeder extends Seeder
                 'nacionalidade' => $faker->country,
                 'provincia' => $faker->word,
                 'municipio' => $faker->word,
-                'bi' => $faker->optional()->numerify('##########'),
+                'bi' => $faker->numerify('##########'),
                 'cargo' => $faker->word,
                 'salario' => $faker->randomFloat(2, 500, 5000),
                 'data_contratacao' => $faker->date(),
@@ -164,13 +166,13 @@ class TodosSeeder extends Seeder
                 'nivel_escolaridade' => $faker->word,
                 'linguas' => $faker->word,
                 'nome_banco' => $faker->word,
-                'num_conta_banco' => $faker->optional()->numerify('###########'),
-                'iban' => $faker->optional()->swiftBicNumber,
+                'num_conta_banco' => $faker->numerify('###########'),
+                'iban' => $faker->swiftBicNumber,
                 'status' => $faker->randomElement(['Activo', 'Inactivo']),
                 'documento' => $faker->word,
-                'departamento_id' => $faker->optional()->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de departamentos
-                'contacto_id' => $faker->optional()->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de contactos
-                'endereco_id' => $faker->optional()->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de endereços
+                'departamento_id' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de departamentos
+                'contacto_id' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de contactos
+                'endereco_id' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de endereços
                 'id_us' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de usuários
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -226,22 +228,23 @@ class TodosSeeder extends Seeder
                 'horario_ENTRADA' => $faker->time('H:i:s'),
                 'horario_SAIDA' => $faker->time('H:i:s'),
                 'status' => $faker->randomElement(['Disponivel', 'Indisponivel', 'Cheia']),
+                "curso_id" => $faker->numberBetween(1, 5),
                 'id_us' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de usuários
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
         }
 
-        // TURMA FORMANDO
-        for ($i = 0; $i < $numRecords; $i++) {
+        // Matriculas
+        // for ($i = 0; $i < $numRecords; $i++) {
 
-            DB::table('turma__formandos')->insert([
-                'turma_id' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de turmas
-                'formando_id' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de formandos
-                'id_us' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de usuários
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
+        //     DB::table('matriculas')->insert([
+        //         'turma_id' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de turmas
+        //         'formando_id' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de formandos
+        //         'id_us' => $faker->numberBetween(1, 5), // Ajuste o intervalo conforme a quantidade de usuários
+        //         'created_at' => now(),
+        //         'updated_at' => now(),
+        //     ]);
+        // }
     }
 }

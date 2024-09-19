@@ -2,6 +2,7 @@
 
 namespace App\Models\Pagamento;
 
+use App\Models\Curso\Curso;
 use App\Models\Formando\Formando;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,9 +20,14 @@ class Pagamento extends Model
         'percentagem',
         'estado',
         'formando_id',
-        'id_us'
+        'id_us',
+        'curso_id'
     ];
 
+    public function cursos()
+    {
+       return $this->belongsTo(Curso::class, 'curso_id');
+    }
     public function formandos()
     {
        return $this->belongsTo(Formando::class, 'formando_id');

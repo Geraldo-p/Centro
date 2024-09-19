@@ -16,7 +16,6 @@ CREATE TABLE matricula (
     id INT AUTO_INCREMENT PRIMARY KEY,
     formando_id INT,
     curso_id INT,
-    data_matricula DATE,
     FOREIGN KEY (formando_id) REFERENCES formando(id),
     FOREIGN KEY (curso_id) REFERENCES curso(id)
 );
@@ -152,6 +151,7 @@ CREATE TABLE formandos (
     created_at TIMESTAMP NULL,
     updated_at TIMESTAMP NULL
 );
+
 CREATE TABLE turmas (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,

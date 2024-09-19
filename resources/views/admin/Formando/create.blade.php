@@ -745,8 +745,8 @@
                     position: 'topRight'
                 });
             });
+            {{ session()->forget('sucesso') }}
         </script>
-        {{ session()->forget('sucesso') }}
     @endif
 
     @if (session('erro'))

@@ -5,6 +5,7 @@ namespace App\Models\Formando;
 use App\Models\Contacto\Contacto;
 use App\Models\Endereco\Endereco;
 use App\Models\Lista_de_Presenca\Lista_Presenca;
+use App\Models\Matricula\Matricula;
 use App\Models\Pagamento\Pagamento;
 use App\Models\Turma\Turma;
 use App\Models\Turma_Formando\Turma_Formando;
@@ -53,19 +54,19 @@ class Formando extends Model
     {
         return $this->belongsTo(User::class, 'id_us');
     }
-    public function turma_formandos()
-    {
-        return $this->hasMany(Turma_Formando::class, 'formando_id');
-    }
+
     public function lista_presencas()
     {
         return $this->hasMany(Lista_Presenca::class, 'formando_id');
     }
 
-
+    public function matriculas()
+    {
+        return $this->hasMany(Matricula::class, 'formando_id');
+    }
 
     public function turmas()
     {
-        return $this->belongsToMany(Turma::class, 'turma__formandos', 'formando_id', 'turma_id');
+        return $this->belongsToMany(Turma::class, 'matriculas', 'formando_id', 'turma_id');
     }
 }

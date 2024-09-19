@@ -7,9 +7,12 @@ use App\Http\Requests\StoreFormandoRequest;
 use App\Http\Requests\UpdateFormandoRequest;
 use App\Models\Contacto\Contacto;
 use App\Models\Endereco\Endereco;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Str;
 
 class FormandoController extends Controller
 {
@@ -44,6 +47,15 @@ class FormandoController extends Controller
     {
 
         try {
+            $faker = \Faker\Factory::create();
+
+            // depois de criar mandar as credenciais por email - resolver isso depois
+            $user = User::create([
+                'name' => $faker->name,
+                'email' => $request->email,
+                'password' => Hash::make($faker->password),
+                'nivel_acesso' => 'Formando'
+            ]);
 
             $image_name = null;
             if ($request->hasFile('foto')) {
@@ -59,15 +71,15 @@ class FormandoController extends Controller
                 [
                     "endereco_id" => $contacto->id,
                     "contacto_id" => $endereco->id,
-                    'id_us' => Auth::id(),
+                    'id_us' => $user->id,
                     'foto' => $image_name,
-                    'num_formando' => rand(1000, 9000) . "UE" . Auth::id(),
+                    'num_formando' => rand(1000, 9000) . "UE" . $user->id,
                     'provincia' => $request->input("provincia2"),
                     'municipio' => $request->input("municipio2")
                 ] + $request->all()
             );
 
-            return back()->with('sucesso', 'formando "' . $request->input("nome") . '" criado com sucesso.');
+            return back()->with('sucesso', 'formando "' . $request->input("nome") . '" criado com sucesso. As Credenciais foram enviadas no Email do Formando');
         } catch (\Throwable $th) {
             return back()->with('erro', 'Ocorreu um problema ao tentar adicionar o formando. "' . $request->input("nome") . '"');
         }

@@ -21,9 +21,11 @@ return new class extends Migration
             $table->integer('percentagem')->nullable(); // 50%, 70%, 100%
             $table->string('estado', 100)->nullable(); // em falta, pago
 
+            $table->unsignedBigInteger('curso_id')->nullable();
             $table->unsignedBigInteger('formando_id')->nullable();
             $table->unsignedBigInteger('id_us')->nullable();
             $table->foreign('formando_id')->references('id')->on('formandos')->onDelete('cascade');
+            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
             $table->foreign('id_us')->references('id')->on('users');
 
             $table->timestamps();

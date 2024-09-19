@@ -1,76 +1,163 @@
 @extends('layouts.admin')
-@section('titulo', 'Actualizar Categoria')
+@section('titulo', 'Actualizar Pagamento')
+    <style>
+        #comprov {
+            display: none;
+        }
+    </style>
+
 @section('content')
     <div class="page-header d-flex justify-content-between align-items-center">
         <h3 class="page-title">
-            {{-- Categoria --}}
+            {{-- Pagamento --}}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('categorias.index') }}">Categoria</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Actualizar Categoria</li>
+                <li class="breadcrumb-item"><a href="{{ route('pagamentos.index') }}">Pagamento</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Actualizar Pagamento</li>
             </ol>
         </nav>
     </div>
     <div class="card text-left">
         <div class="card-body">
-            <form action="{{ route('categorias.update', $categoria) }}" id="ActualizarForm" method="POST">
+            <form action="{{ route('pagamentos.update', $pagamento) }}" id="ActualizarForm" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row profile-row">
                     <div class="col-md-8 col-lg-12">
-                        <h3>Actualizar Categoria</h3>
+                        <h2>Actualizar Pagamento</h2>
                         <hr>
-
                         <div class="row">
-                            <div class="col-sm-12 col-md-6">
+                            <div class="col-sm-12 col-md-2 col-lg-3">
                                 <div class="form-group mb-3">
-                                    <label class="form-label" for="nome">Descrição da
-                                        Categoria</label>
-                                    <input class="form-control @error('nome') is-invalid @enderror" type="text"
-                                        name="nome" value="{{ $categoria->nome }}">
-                                    @error('nome')
+                                    <label class="form-label" for="nome">Código do Formando</label>
+                                    <input readonly class="form-control @error('cod_formando') is-invalid @enderror"
+                                        type="text" value="{{ $pagamento->formandos->num_formando }}" name="cod_formando"
+                                        id="cod_formando" value="{{ $pagamento->formandos->num_formando }}">
+                                    @error('cod_formando')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-9 col-lg-9 col-xl-4 col-xxl-4">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="formando_id">Formando</label>
+                                    <select class="form-control @error('formando_id') is-invalid @enderror" readonly
+                                        id="formando_id" name="formando_id">
+                                        <option value="{{ $pagamento->formandos->num_formando }}">
+                                            {{ $pagamento->formandos->nome }}</option>
+                                    </select>
+                                    @error('formando_id')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
 
-                            <div class="col-sm-12 col-md-6">
+                            <div class="col-sm-12 col-md-9 col-lg-9 col-xl-5 col-xxl-5">
                                 <div class="form-group mb-3">
-                                    <label class="form-label" for="familia">Família</label>
-                                    <select class="form-control @error('familia') is-invalid @enderror" name="familia">
-                                        <option value="Curso" @if ($categoria->familia == 'Curso') selected @endif>Curso
-                                        </option>
-                                        <option value="Eletrônicos" @if ($categoria->familia == 'Eletrônicos') selected @endif>
-                                            Eletrônicos</option>
-                                        <option value="Livros, Papelaria e Escritório"
-                                            @if ($categoria->familia == 'Livros, Papelaria e Escritório') selected @endif>Livros, Papelaria e Escritório
-                                        </option>
-                                        <option value="Tecnologia da Informação"
-                                            @if ($categoria->familia == 'Tecnologia da Informação') selected @endif>Tecnologia da Informação
+                                    <label class="form-label" for="curso">Curso</label>
+                                    <select id="curso" name="curso_id"
+                                        class="form-control @error('curso_id') is-invalid @enderror">
+                                        @foreach ($cursos as $item)
+                                            <option @if ($item->id === $pagamento->cursos->id) selected @endif
+                                                value="{{ $item->id }}" data-preco="{{ $item->preco }}">
+                                                {{ $item->nome }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('curso_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="preco">Preço</label>
+                                    <input type="text" id="preco" value="{{ $pagamento->cursos->preco }}"
+                                        class="form-control @error('preco') is-invalid @enderror" name="preco" readonly>
+                                    @error('preco')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="tipo">Tipo de Pagamento</label>
+                                    <select id="tipo" class="form-control @error('tipo') is-invalid @enderror"
+                                        name="tipo">
+                                        <option @if ($pagamento->tipo == 'Dinheiro em Mão') selected @endif value="Dinheiro em Mão"
+                                            selected>Dinheiro em Mão</option>
+                                        <option @if ($pagamento->tipo == 'Transferencia Bancária') selected @endif
+                                            value="Transferencia Bancária">Transferencia Bancária</option>
+                                        <option @if ($pagamento->tipo == 'Depósito') selected @endif value="Depósito">Depósito
                                         </option>
                                     </select>
-                                    @error('familia')
+                                    @error('tipo')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-
                             </div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="form-label" for="descricao">Observações</label>
-                            <textarea class="form-control @error('descricao') is-invalid @enderror" name="descricao">{{ $categoria->descricao }}</textarea>
-                            @error('descricao')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+
+                            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2 col-xxl-3">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="">A pagar %</label>
+                                    <select class="form-control @error('percentagem') is-invalid @enderror"
+                                        name="percentagem" id="percentagem">
+                                        <option @if ($pagamento->percentagem == '50') selected @endif value="50" selected>
+                                            50%</option>
+                                        <option @if ($pagamento->percentagem == '70') selected @endif value="70">70%
+                                        </option>
+                                        <option @if ($pagamento->percentagem == '100') selected @endif value="100">100%
+                                        </option>
+                                    </select>
+                                    @error('percentagem')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2 col-xxl-3">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="">Valor a Pagar</label>
+                                    <input type="text" id="valor" readonly value="{{ $pagamento->valor }}"
+                                        class="form-control @error('valor') is-invalid @enderror" name="valor">
+                                    @error('valor')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2 col-xxl-3">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="">Em Falta</label>
+                                    <input class="form-control @error('em_falta') is-invalid @enderror" type="text"
+                                        id="em_falta" name="em_falta" readonly value="{{ $pagamento->em_falta }}">
+                                    @error('em_falta')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div id="comprov" class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-9">
+                                <div class="form-group mb-3">
+                                    <label class="form-label" for="">Submeter Comprovativo</label>
+                                    <input class="form-control @error('comprovativo') is-invalid @enderror"
+                                        type="file" name="comprovativo">
+                                    @error('comprovativo')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-md-12 content-right">
-                                <button class="btn btn-primary form-btn" id="swal-Actualizar"
-                                    type="button">Actualizar</button>
-                                <a href="{{ route('categorias.index') }}"><input type="button" value="Cancelar"
+                                <button class="btn btn-primary form-btn" type="button" id="swal-Actualizar">Actualizar Pagamento</button>
+                                <a href="{{ route('pagamentos.index') }}"><input type="button" value="Cancelar"
                                         class="btn btn-danger form-btn"></a>
                             </div>
                         </div>
@@ -108,4 +195,47 @@
         </script>
         {{ session()->forget('erro') }}
     @endif
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cursoSelect = document.getElementById('curso');
+            const precoInput = document.getElementById('preco');
+            const percentagemSelect = document.querySelector('select[name="percentagem"]');
+            const valorAPagarInput = document.querySelector('input[name="valor"]');
+            const emFaltaInput = document.querySelector('input[name="em_falta"]');
+
+            // Função para atualizar o preço quando o curso é selecionado
+            cursoSelect.addEventListener('change', function() {
+                const selectedOption = cursoSelect.options[cursoSelect.selectedIndex];
+                const preco = selectedOption.getAttribute('data-preco');
+                precoInput.value = preco;
+                calcularValorAPagar(); // Atualiza o valor a pagar quando o curso muda
+            });
+
+            // Função para calcular o valor a pagar e o valor em falta
+            function calcularValorAPagar() {
+                const preco = parseFloat(precoInput.value) || 0;
+                const percentagem = parseFloat(percentagemSelect.value) || 0;
+                const valorAPagar = (preco * percentagem) / 100;
+                const emFalta = preco - valorAPagar;
+
+                // Atualiza os campos
+                valorAPagarInput.value = valorAPagar.toFixed(2);
+                emFaltaInput.value = emFalta.toFixed(2);
+            }
+
+            // Atualiza o valor a pagar e o em falta quando a percentagem mudar
+            percentagemSelect.addEventListener('change', calcularValorAPagar);
+        });
+    </script>
+    <script>
+        document.getElementById('tipo').addEventListener('change', function() {
+            var comprovDiv = document.getElementById('comprov');
+            if (this.value === 'Transferencia Bancária' || this.value === 'Depósito') {
+                comprovDiv.style.display = 'block';
+            } else {
+                comprovDiv.style.display = 'none';
+            }
+        });
+    </script>
 @endsection
