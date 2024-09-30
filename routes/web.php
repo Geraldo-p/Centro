@@ -17,9 +17,12 @@ use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\TurmaFormandoController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('layouts user/index');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return view('layouts user/index');
+    });
 });
+
 
 
 Route::get('/dashboard', function () {

@@ -1,0 +1,70 @@
+.navbar {
+    margin-bottom: 0;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+
+/* Mouse hover no menu dropdown */
+.dropdown-menu a:hover {
+    background-color: #ffa500;
+    color: white;
+}
+
+/* Carousel altura personalizada */
+.carousel-item img {
+    height: 600px;
+    object-fit: cover;
+}
+
+/* Estilo para o botão "READ MORE" */
+.btn-warning {
+    background-color: #ffa500;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #ff8c00;
+}
+
+/* Texto sobreposto no carrossel */
+.carousel-caption {
+    bottom: 150px;
+}
+
+.carousel-caption h1 {
+    font-size: 3.5rem;
+}
+
+/* Estilo do bloco de informações abaixo do carrossel */
+.info-text {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#testimonials {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+#testimonials {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.owl-carousel .item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+}
+
+.owl-carousel .owl-nav button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: #333;
+}

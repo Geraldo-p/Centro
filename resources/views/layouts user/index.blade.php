@@ -6,112 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home - Santa Cruz - Centro de Formação</title>
-    {{-- {{ asset('Template User/') }} --}}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
 
-    <!-- Custom CSS -->
-    <style>
-        .navbar {
-            margin-bottom: 0;
-        }
-
-        .navbar-brand img {
-            height: 50px;
-        }
-
-        /* Mouse hover no menu dropdown */
-        .dropdown-menu a:hover {
-            background-color: #ffa500;
-            color: white;
-        }
-
-        /* Carousel altura personalizada */
-        .carousel-item img {
-            height: 600px;
-            object-fit: cover;
-        }
-
-        /* Estilo para o botão "READ MORE" */
-        .btn-warning {
-            background-color: #ffa500;
-            border: none;
-        }
-
-        .btn-warning:hover {
-            background-color: #ff8c00;
-        }
-
-        /* Texto sobreposto no carrossel */
-        .carousel-caption {
-            bottom: 150px;
-        }
-
-        .carousel-caption h1 {
-            font-size: 3.5rem;
-        }
-
-        /* Estilo do bloco de informações abaixo do carrossel */
-        .info-text {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        #testimonials {
-            padding: 50px 0;
-            background-color: #f9f9f9;
-        }
-
-        #testimonials {
-            padding: 50px 0;
-            background-color: #f9f9f9;
-            text-align: center;
-        }
-
-        .owl-carousel .item {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            font-size: 18px;
-        }
-
-        .owl-carousel .owl-nav button {
-            background-color: transparent;
-            border: none;
-            font-size: 24px;
-            color: #333;
-        }
-    </style>
-
-    <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ asset('Template User/css/bootstrap.css') }}">
-    <!-- DL Menu CSS -->
+    <link rel="stylesheet" href="{{ asset('Template User/css/owr carousel/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Template User/css/owr carousel/owl.theme.default.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('Template User/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('Template User/js/dl-menu/component.css') }}">
-    <!--SLICK SLIDER CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('Template User/css/slick.css') }}" />
-    <!-- Font Awesome StyleSheet CSS -->
     <link rel="stylesheet" href="{{ asset('Template User/css/font-awesome.min.css') }}">
-    <!-- Font Awesome StyleSheet CSS -->
     <link rel="stylesheet" href="{{ asset('Template User/css/svg.css') }}">
-    <!-- Pretty Photo CSS -->
     <link rel="stylesheet" href="{{ asset('Template User/css/prettyPhoto.css') }}">
-    <!-- Shortcodes CSS -->
     <link rel="stylesheet" href="{{ asset('Template User/css/shortcodes.css') }}">
-    <!-- Widget CSS -->
     <link rel="stylesheet" href="{{ asset('Template User/css/widget.css') }}">
-    <!-- Typography CSS -->
     <link rel="stylesheet" href="{{ asset('Template User/css/typography.css') }}">
-    <!-- Custom Main StyleSheet CSS -->
     <link rel="stylesheet" href="{{ asset('Template User/style.css') }}">
-    <!-- Color CSS -->
     <link rel="stylesheet" href="{{ asset('Template User/css/color.css') }}">
-    <!-- Responsive CSS -->
     <link rel="stylesheet" href="{{ asset('Template User/css/responsive.css') }}">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{ asset('Template User/css/swiper/swiper-bunble.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM1Q9Yw2GVD9Nf25/TLr6/hM8c7/B9WJ4hV4xD" crossorigin="anonymous">
+
+
 
 
 </head>
@@ -262,11 +178,24 @@
                     <div class="iq-caption-wrapper text-left">
                         <div class="iq_banner_caption container">
                             <div class="iq-caption">
-                                <div class="iq-caption-title">The Best Learning Institution</div>
-                                <div class="iq-caption-text">welcome to our university</div>
-                                <div class="iq-caption-contant">Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                                <div class="iq-caption-title">Centro de Formação Profissional - Santa Cruz</div>
+                                <div class="iq-caption-text">Construa seu futuro!</div>
+                                <div class="iq-caption-contant">Oferecemos cursos que preparam você para o mercado de
+                                    trabalho.
                                 </div>
-                                <div class="iq_link_1">Read More</div>
+                                @auth
+                                    <a href="{{ route('dashboard') }}">
+                                        <div class="iq_link_1">Dashboard</div>
+                                    </a>
+                                @endauth
+                                @guest
+                                    <a href="{{ route('login') }}">
+                                        <div class="iq_link_1">Entrar</div>
+                                    </a>
+                                    <a href="{{ route('register') }}">
+                                        <div class="iq_link_1">Inscrever-se</div>
+                                    </a>
+                                @endguest
                             </div>
                         </div>
                     </div>
@@ -277,11 +206,24 @@
                     <div class="iq-caption-wrapper text-center">
                         <div class="iq_banner_caption container">
                             <div class="iq-caption">
-                                <div class="iq-caption-title">The Best Learning Institution</div>
-                                <div class="iq-caption-text">welcome to our university</div>
-                                <div class="iq-caption-contant">Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                                <div class="iq-caption-title">Centro de Formação Profissional - Santa Cruz</div>
+                                <div class="iq-caption-text">Aprendizado prático!</div>
+                                <div class="iq-caption-contant">Experimente cursos dinâmicos com instrutores
+                                    qualificados e laboratórios bem equipados.
                                 </div>
-                                <div class="iq_link_1">Read More</div>
+                                @auth
+                                <a href="{{ route('dashboard') }}">
+                                    <div class="iq_link_1">Dashboard</div>
+                                </a>
+                            @endauth
+                            @guest
+                                <a href="{{ route('login') }}">
+                                    <div class="iq_link_1">Entrar</div>
+                                </a>
+                                <a href="{{ route('register') }}">
+                                    <div class="iq_link_1">Inscrever-se</div>
+                                </a>
+                            @endguest
                             </div>
                         </div>
                     </div>
@@ -292,11 +234,24 @@
                     <div class="iq-caption-wrapper text-right">
                         <div class="iq_banner_caption container">
                             <div class="iq-caption">
-                                <div class="iq-caption-title">The Best Learning Institution</div>
-                                <div class="iq-caption-text">welcome to our university</div>
-                                <div class="iq-caption-contant">Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                                <div class="iq-caption-title">Centro de Formação Profissional - Santa Cruz</div>
+                                <div class="iq-caption-text">Apoio ao Formando!</div>
+                                <div class="iq-caption-contant">Oferecemos orientação profissional, workshops e
+                                    oportunidades de networking para garantir que você alcance seus objetivos
                                 </div>
-                                <div class="iq_link_1">Read More</div>
+                                @auth
+                                    <a href="{{ route('dashboard') }}">
+                                        <div class="iq_link_1">Dashboard</div>
+                                    </a>
+                                @endauth
+                                @guest
+                                    <a href="{{ route('login') }}">
+                                        <div class="iq_link_1">Entrar</div>
+                                    </a>
+                                    <a href="{{ route('register') }}">
+                                        <div class="iq_link_1">Inscrever-se</div>
+                                    </a>
+                                @endguest
                             </div>
                         </div>
                     </div>
@@ -321,124 +276,61 @@
                     <div class="row">
                         <div class="col-md-8">
                             <section>
-                                <!--Heading Wrap Start-->
+                                <!-- Heading Wrap Start -->
                                 <div class="iq_heading_1 text-left">
-                                    <h4>We Are <span>Professional</span></h4>
-                                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor
-                                        aliquet. Aenean sollicitudin,
-                                        <br>lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh
-                                        id elit.
-                                    </p>
+                                    <h4>Estamos <span>Profissionais</span></h4>
+                                    <p>Descubra nossas categorias de formação, onde cada uma é projetada para desenvolver habilidades essenciais para o mercado de trabalho.</p>
                                 </div>
-                                <!--Heading Wrap End-->
+                                <!-- Heading Wrap End -->
                                 <div class="row">
-                                    <!--Services Start-->
+                                    <!-- Categoria: Tecnologia -->
                                     <div class="col-md-6 col-sm-6">
                                         <div class="iq_professional_services">
-                                            <span class="icon-lecture">
-                                                <span class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span><span class="path4"></span><span
-                                                    class="path5"></span><span class="path6"></span><span
-                                                    class="path7"></span><span class="path8"></span><span
-                                                    class="path9"></span><span class="path10"></span><span
-                                                    class="path11"></span><span class="path12"></span><span
-                                                    class="path13"></span><span class="path14"></span><span
-                                                    class="path15"></span><span class="path16"></span><span
-                                                    class="path17"></span><span class="path18"></span><span
-                                                    class="path19"></span><span class="path20"></span><span
-                                                    class="path21"></span><span class="path22"></span><span
-                                                    class="path23"></span><span class="path24"></span><span
-                                                    class="path25"></span><span class="path26"></span><span
-                                                    class="path27"></span><span class="path28"></span><span
-                                                    class="path29"></span><span class="path30"></span><span
-                                                    class="path31"></span><span class="path32"></span><span
-                                                    class="path33"></span><span class="path34"></span><span
-                                                    class="path35"></span><span class="path36"></span><span
-                                                    class="path37"></span><span class="path38"></span>
+                                            <span class="icon-technology">
+                                                <!-- Aqui você deve adicionar o SVG ou a classe do ícone da tecnologia -->
+                                                <i class="fas fa-laptop-code"></i>
                                             </span>
-                                            <h5><a href="#">Business</a></h5>
-                                            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                                auctor aliquet. Aenean lorem quis bibendum auctor, nisi elit consequat
-                                                ipsum nec sagittis.</p>
+                                            <h5><a href="#">Tecnologia</a></h5>
+                                            <p>Aprimore suas habilidades em programação, desenvolvimento web e muito mais na área de tecnologia.</p>
                                         </div>
                                     </div>
-                                    <!--Services End-->
-                                    <!--Services Start-->
+                                    <!-- Categoria: Culinária -->
                                     <div class="col-md-6 col-sm-6">
                                         <div class="iq_professional_services">
-                                            <span class="icon-doctor-2">
-                                                <span class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span><span class="path4"></span><span
-                                                    class="path5"></span><span class="path6"></span><span
-                                                    class="path7"></span><span class="path8"></span><span
-                                                    class="path9"></span><span class="path10"></span><span
-                                                    class="path11"></span><span class="path12"></span><span
-                                                    class="path13"></span><span class="path14"></span><span
-                                                    class="path15"></span><span class="path16"></span><span
-                                                    class="path17"></span><span class="path18"></span><span
-                                                    class="path19"></span><span class="path20"></span><span
-                                                    class="path21"></span><span class="path22"></span><span
-                                                    class="path23"></span><span class="path24"></span><span
-                                                    class="path25"></span><span class="path26"></span><span
-                                                    class="path27"></span><span class="path28"></span><span
-                                                    class="path29"></span><span class="path30"></span><span
-                                                    class="path31"></span><span class="path32"></span><span
-                                                    class="path33"></span><span class="path34"></span><span
-                                                    class="path35"></span><span class="path36"></span><span
-                                                    class="path37"></span><span class="path38"></span>
+                                            <span class="icon-culinary">
+                                                <!-- Aqui você deve adicionar o SVG ou a classe do ícone da culinária -->
+                                                <i class="fas fa-utensils"></i>
                                             </span>
-                                            <h5><a href="#">Neuroscience</a></h5>
-                                            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                                auctor aliquet. Aenean lorem quis bibendum auctor, nisi elit consequat
-                                                ipsum nec sagittis.</p>
+                                            <h5><a href="#">Culinária</a></h5>
+                                            <p>Aprenda a arte da culinária com cursos práticos de gastronomia e confeitaria.</p>
                                         </div>
                                     </div>
-                                    <!--Services End-->
-                                    <!--Services Start-->
+                                    <!-- Categoria: Inteligência Artificial -->
                                     <div class="col-md-6 col-sm-6">
                                         <div class="iq_professional_services">
-                                            <span class="icon-medical-3">
-                                                <span class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span><span class="path4"></span><span
-                                                    class="path5"></span><span class="path6"></span><span
-                                                    class="path7"></span><span class="path8"></span><span
-                                                    class="path9"></span><span class="path10"></span><span
-                                                    class="path11"></span><span class="path12"></span><span
-                                                    class="path13"></span><span class="path14"></span><span
-                                                    class="path15"></span><span class="path16"></span><span
-                                                    class="path17"></span><span class="path18"></span><span
-                                                    class="path19"></span><span class="path20"></span><span
-                                                    class="path21"></span><span class="path22"></span><span
-                                                    class="path23"></span><span class="path24"></span>
+                                            <span class="icon-ai">
+                                                <!-- Aqui você deve adicionar o SVG ou a classe do ícone de inteligência artificial -->
+                                                <i class="fas fa-robot"></i>
                                             </span>
-                                            <h5><a href="#">Zoology</a></h5>
-                                            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                                auctor aliquet. Aenean lorem quis bibendum auctor, nisi elit consequat
-                                                ipsum nec sagittis.</p>
+                                            <h5><a href="#">Inteligência Artificial</a></h5>
+                                            <p>Descubra como a inteligência artificial pode transformar negócios e aprender sobre suas aplicações.</p>
                                         </div>
                                     </div>
-                                    <!--Services End-->
-                                    <!--Services Start-->
+                                    <!-- Categoria: Decoração -->
                                     <div class="col-md-6 col-sm-6">
                                         <div class="iq_professional_services">
-                                            <span class="icon-debate">
-                                                <span class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span><span class="path4"></span><span
-                                                    class="path5"></span><span class="path6"></span><span
-                                                    class="path7"></span><span class="path8"></span><span
-                                                    class="path9"></span><span class="path10"></span><span
-                                                    class="path11"></span><span class="path12"></span>
+                                            <span class="icon-decoration">
+                                                <!-- Aqui você deve adicionar o SVG ou a classe do ícone de decoração -->
+                                                <i class="fas fa-paint-roller"></i>
                                             </span>
-                                            <h5><a href="#">Politics</a></h5>
-                                            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                                auctor aliquet. Aenean lorem quis bibendum auctor, nisi elit consequat
-                                                ipsum nec sagittis.</p>
+                                            <h5><a href="#">Decoração</a></h5>
+                                            <p>Desperte sua criatividade com cursos de design de interiores e decoração.</p>
                                         </div>
                                     </div>
-                                    <!--Services End-->
                                 </div>
-                                <!--Professional Services Wrap End-->
+                                <!-- Professional Services Wrap End -->
                             </section>
+
                         </div>
                         <!--Search Wrap Start-->
                         <div class="col-md-4">
@@ -540,291 +432,58 @@
             <!--Get Best Knowledge Wrap End-->
             <!--Our Featured Courses Wrap Start-->
             <section>
-                <div class="container">
-                    <!--Heading Wrap Start-->
-                    <div class="iq_heading_1 text-center">
-                        <h4>Our Featured <span>Courses</span></h4>
-                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                            Aenean sollicitudin,
-                            <br>lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.
-                        </p>
-                    </div>
-                    <!--Heading Wrap End-->
-                    <!--Tab Menu Wrap Start-->
-                    <div class="iq_tab_menu">
-                        <ul id="tabs" data-tabs="tabs">
-                            <li class="active"><a data-toggle="tab" href="#featured">Featured</a></li>
-                            <li><a data-toggle="tab" href="#popular">popular</a></li>
-                        </ul>
-                    </div>
-                    <!--Tab Menu Wrap End-->
-                    <!--Tab Menu Detail Wrap Start-->
-                    <div id="my-tab-content" class="tab-content">
-                        <div class="row tab-pane active" id="featured">
-                            <!--Courses List Start-->
-                            <div class="col-md-4 col-sm-6">
-                                <div class="iq_course_list">
-                                    <figure>
-                                        <img src="{{ asset('Template User/extra-images/featured-course-1.jpg') }}"
-                                            alt="Image Here">
-                                    </figure>
-                                    <div class="iq_course_list_des">
-                                        <div class="iq_course_icon">
-                                            <span class="icon-student">
-                                                <span class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span><span class="path4"></span><span
-                                                    class="path5"></span><span class="path6"></span><span
-                                                    class="path7"></span><span class="path8"></span><span
-                                                    class="path9"></span><span class="path10"></span><span
-                                                    class="path11"></span><span class="path12"></span><span
-                                                    class="path13"></span><span class="path14"></span><span
-                                                    class="path15"></span><span class="path16"></span><span
-                                                    class="path17"></span><span class="path18"></span><span
-                                                    class="path19"></span>
-                                            </span>
-                                        </div>
-                                        <h5><a href="#">Computer & IT Courses</a></h5>
-                                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                            auctor aliquet. Aenean sollicitudin, lorem quis bibendum </p>
-                                        <ul>
-                                            <li>
-                                                <!--RATING AREA START-->
-                                                <div class="rating_down">
-                                                    <div class="rating_up" style="width:100%;"></div>
-                                                </div>
-                                                <!--RATING AREA End-->
-                                            </li>
-                                            <li>101 Reviews</li>
-                                            <li><i class="fa fa-user"></i>3.1 k</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Courses List End-->
-                            <!--Courses List Start-->
-                            <div class="col-md-4 col-sm-6">
-                                <div class="iq_course_list">
-                                    <figure>
-                                        <img src="{{ asset('Template User/extra-images/featured-course-02.jpg') }}"
-                                            alt="Image Here">
-                                    </figure>
-                                    <div class="iq_course_list_des">
-                                        <div class="iq_course_icon">
-                                            <span class="icon-lecture">
-                                                <span class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span><span class="path4"></span><span
-                                                    class="path5"></span><span class="path6"></span><span
-                                                    class="path7"></span><span class="path8"></span><span
-                                                    class="path9"></span><span class="path10"></span><span
-                                                    class="path11"></span><span class="path12"></span><span
-                                                    class="path13"></span><span class="path14"></span><span
-                                                    class="path15"></span><span class="path16"></span><span
-                                                    class="path17"></span><span class="path18"></span><span
-                                                    class="path19"></span><span class="path20"></span><span
-                                                    class="path21"></span><span class="path22"></span><span
-                                                    class="path23"></span><span class="path24"></span><span
-                                                    class="path25"></span><span class="path26"></span><span
-                                                    class="path27"></span><span class="path28"></span><span
-                                                    class="path29"></span><span class="path30"></span><span
-                                                    class="path31"></span><span class="path32"></span><span
-                                                    class="path33"></span><span class="path34"></span><span
-                                                    class="path35"></span><span class="path36"></span><span
-                                                    class="path37"></span><span class="path38"></span>
-                                            </span>
-                                        </div>
-                                        <h5><a href="#">Business & Finance</a></h5>
-                                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                            auctor aliquet. Aenean sollicitudin, lorem quis bibendum </p>
-                                        <ul>
-                                            <li>
-                                                <!--RATING AREA START-->
-                                                <div class="rating_down">
-                                                    <div class="rating_up" style="width:100%;"></div>
-                                                </div>
-                                                <!--RATING AREA End-->
-                                            </li>
-
-                                            <li>101 Reviews</li>
-                                            <li><i class="fa fa-user"></i>3.1 k</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Courses List End-->
-                            <!--Courses List Start-->
-                            <div class="col-md-4 hidden-sm">
-                                <div class="iq_course_list">
-                                    <figure>
-                                        <img src="{{ asset('Template User/extra-images/featured-course-03.jpg') }}"
-                                            alt="Image Here">
-                                    </figure>
-                                    <div class="iq_course_list_des">
-                                        <div class="iq_course_icon">
-                                            <span class="icon-molecule">
-                                                <span class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span><span class="path4"></span><span
-                                                    class="path5"></span><span class="path6"></span><span
-                                                    class="path7"></span><span class="path8"></span><span
-                                                    class="path9"></span><span class="path10"></span><span
-                                                    class="path11"></span><span class="path12"></span><span
-                                                    class="path13"></span><span class="path14"></span><span
-                                                    class="path15"></span><span class="path16"></span><span
-                                                    class="path17"></span>
-                                            </span>
-                                        </div>
-                                        <h5><a href="#">Social Courses</a></h5>
-                                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                            auctor aliquet. Aenean sollicitudin, lorem quis bibendum </p>
-                                        <ul>
-                                            <li>
-                                                <!--RATING AREA START-->
-                                                <div class="rating_down">
-                                                    <div class="rating_up" style="width:100%;"></div>
-                                                </div>
-                                                <!--RATING AREA End-->
-                                            </li>
-                                            <li>101 Reviews</li>
-                                            <li><i class="fa fa-user"></i>3.1 k</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Courses List End-->
-                        </div>
-                        <div class="row tab-pane" id="popular">
-                            <!--Courses List Start-->
-                            <div class="col-md-4 col-sm-6">
-                                <div class="iq_course_list">
-                                    <figure>
-                                        <img src="{{ asset('Template User/extra-images/featured-course-01.jpg') }}"
-                                            alt="Image Here">
-                                    </figure>
-                                    <div class="iq_course_list_des">
-                                        <div class="iq_course_icon">
-                                            <span class="icon-doctor-2">
-                                                <span class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span><span class="path4"></span><span
-                                                    class="path5"></span><span class="path6"></span><span
-                                                    class="path7"></span><span class="path8"></span><span
-                                                    class="path9"></span><span class="path10"></span><span
-                                                    class="path11"></span><span class="path12"></span><span
-                                                    class="path13"></span><span class="path14"></span><span
-                                                    class="path15"></span><span class="path16"></span><span
-                                                    class="path17"></span><span class="path18"></span><span
-                                                    class="path19"></span><span class="path20"></span><span
-                                                    class="path21"></span><span class="path22"></span><span
-                                                    class="path23"></span><span class="path24"></span><span
-                                                    class="path25"></span><span class="path26"></span><span
-                                                    class="path27"></span><span class="path28"></span><span
-                                                    class="path29"></span><span class="path30"></span><span
-                                                    class="path31"></span><span class="path32"></span><span
-                                                    class="path33"></span><span class="path34"></span><span
-                                                    class="path35"></span><span class="path36"></span><span
-                                                    class="path37"></span><span class="path38"></span>
-                                            </span>
-                                        </div>
-                                        <h5><a href="#">Neuroscience Courses</a></h5>
-                                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                            auctor aliquet. Aenean sollicitudin, lorem quis bibendum </p>
-                                        <ul>
-                                            <li>
-                                                <!--RATING AREA START-->
-                                                <div class="rating_down">
-                                                    <div class="rating_up" style="width:100%;"></div>
-                                                </div>
-                                                <!--RATING AREA End-->
-                                            </li>
-                                            <li>101 Reviews</li>
-                                            <li><i class="fa fa-user"></i>3.1 k</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Courses List End-->
-                            <!--Courses List Start-->
-                            <div class="col-md-4 col-sm-6">
-                                <div class="iq_course_list">
-                                    <figure>
-                                        <img src="{{ asset('Template User/extra-images/featured-course-02.jpg') }}"
-                                            alt="Image Here">
-                                    </figure>
-                                    <div class="iq_course_list_des">
-                                        <div class="iq_course_icon">
-                                            <span class="icon-debate">
-                                                <span class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span><span class="path4"></span><span
-                                                    class="path5"></span><span class="path6"></span><span
-                                                    class="path7"></span><span class="path8"></span><span
-                                                    class="path9"></span><span class="path10"></span><span
-                                                    class="path11"></span><span class="path12"></span>
-                                            </span>
-                                        </div>
-                                        <h5><a href="#">Politics Courses</a></h5>
-                                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                            auctor aliquet. Aenean sollicitudin, lorem quis bibendum </p>
-                                        <ul>
-                                            <li>
-                                                <!--RATING AREA START-->
-                                                <div class="rating_down">
-                                                    <div class="rating_up" style="width:100%;"></div>
-                                                </div>
-                                                <!--RATING AREA End-->
-                                            </li>
-
-                                            <li>101 Reviews</li>
-                                            <li><i class="fa fa-user"></i>3.1 k</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Courses List End-->
-                            <!--Courses List Start-->
-                            <div class="col-md-4 hidden-sm">
-                                <div class="iq_course_list">
-                                    <figure>
-                                        <img src="{{ asset('Template User/extra-images/featured-course-03.jpg') }}"
-                                            alt="Image Here">
-                                    </figure>
-                                    <div class="iq_course_list_des">
-                                        <div class="iq_course_icon">
-                                            <span class="icon-medical-3">
-                                                <span class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span><span class="path4"></span><span
-                                                    class="path5"></span><span class="path6"></span><span
-                                                    class="path7"></span><span class="path8"></span><span
-                                                    class="path9"></span><span class="path10"></span><span
-                                                    class="path11"></span><span class="path12"></span><span
-                                                    class="path13"></span><span class="path14"></span><span
-                                                    class="path15"></span><span class="path16"></span><span
-                                                    class="path17"></span><span class="path18"></span><span
-                                                    class="path19"></span><span class="path20"></span><span
-                                                    class="path21"></span><span class="path22"></span><span
-                                                    class="path23"></span><span class="path24"></span>
-                                            </span>
-                                        </div>
-                                        <h5><a href="#">Zoology Courses</a></h5>
-                                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit
-                                            auctor aliquet. Aenean sollicitudin, lorem quis bibendum </p>
-                                        <ul>
-                                            <li>
-                                                <!--RATING AREA START-->
-                                                <div class="rating_down">
-                                                    <div class="rating_up" style="width:100%;"></div>
-                                                </div>
-                                                <!--RATING AREA End-->
-                                            </li>
-                                            <li>101 Reviews</li>
-                                            <li><i class="fa fa-user"></i>3.1 k</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Courses List End-->
-                        </div>
-                    </div>
-                    <!--Tab Menu Detail Wrap End-->
+                <!-- Heading Wrap Start -->
+                <div class="iq_heading_1 text-left">
+                    <h4>Estamos <span>Profissionais</span></h4>
+                    <p>Descubra nossas categorias de formação, onde cada uma é projetada para desenvolver habilidades essenciais para o mercado de trabalho e transformar sua carreira!</p>
                 </div>
+                <!-- Heading Wrap End -->
+                <div class="row">
+                    <!-- Categoria: Tecnologia -->
+                    <div class="col-md-6 col-sm-6">
+                        <div class="iq_professional_services">
+                            <span class="icon-technology">
+                                <i class="fas fa-laptop-code"></i>
+                            </span>
+                            <h5><a href="#">Tecnologia</a></h5>
+                            <p>Na era digital, as habilidades tecnológicas são mais importantes do que nunca. Nossos cursos de Tecnologia oferecem uma profunda imersão em programação, desenvolvimento web, e mais. Venha se preparar para o futuro e se tornar um profissional requisitado no mercado, aprendendo com instrutores experientes e projetos práticos!</p>
+                        </div>
+                    </div>
+                    <!-- Categoria: Culinária -->
+                    <div class="col-md-6 col-sm-6">
+                        <div class="iq_professional_services">
+                            <span class="icon-culinary">
+                                <i class="fas fa-utensils"></i>
+                            </span>
+                            <h5><a href="#">Culinária</a></h5>
+                            <p>Transforme sua paixão por cozinhar em uma carreira! Em nosso curso de Culinária, você irá explorar técnicas culinárias diversas, desde a gastronomia clássica até a confeitaria moderna. Aprenda a criar pratos incríveis e impressionar seus amigos e familiares, enquanto se prepara para um mercado de trabalho vibrante e cheio de oportunidades!</p>
+                        </div>
+                    </div>
+                    <!-- Categoria: Inteligência Artificial -->
+                    <div class="col-md-6 col-sm-6">
+                        <div class="iq_professional_services">
+                            <span class="icon-ai">
+                                <i class="fas fa-robot"></i>
+                            </span>
+                            <h5><a href="#">Inteligência Artificial</a></h5>
+                            <p>A inteligência artificial está moldando o futuro! Em nossos cursos, você aprenderá sobre algoritmos, machine learning, e suas aplicações no mundo real. Venha entender como a IA está transformando negócios e otimizando processos, e posicione-se na vanguarda dessa revolução tecnológica com um conhecimento prático e teórico!</p>
+                        </div>
+                    </div>
+                    <!-- Categoria: Decoração -->
+                    <div class="col-md-6 col-sm-6">
+                        <div class="iq_professional_services">
+                            <span class="icon-decoration">
+                                <i class="fas fa-paint-roller"></i>
+                            </span>
+                            <h5><a href="#">Decoração</a></h5>
+                            <p>Desperte sua criatividade e crie ambientes inspiradores! Nosso curso de Decoração oferece uma abordagem abrangente ao design de interiores, incluindo teoria das cores, escolha de móveis e técnicas de arranjo. Aprenda a transformar espaços comuns em verdadeiras obras de arte, e abra as portas para uma carreira repleta de estilo e inovação!</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Professional Services Wrap End -->
             </section>
+
+
             <!--Our Featured Courses Wrap End-->
             <!--Our Gallery Wrap Start-->
             <section class="iq_gallery_bg">
@@ -1394,15 +1053,17 @@
 
             <!--Testimonial Slider Wrap Start-->
             <br>
-            <div class="iq_heading_1 text-center">
-                <h4>Testemunho de<span> Formandos</span></h4>
-                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
-                    sollicitudin,
-                    <br>lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.
-                </p>
-            </div>
+
             <section>
                 <div class="container">
+                    <div class="iq_heading_1 text-center">
+                        <h4>Testemunho de<span> Formandos</span></h4>
+                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
+                            Aenean
+                            sollicitudin,
+                            <br>lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.
+                        </p>
+                    </div>
                     <div class="owl-carousel owl-theme">
                         <!--Testimonial Start-->
                         <div>
@@ -1412,7 +1073,8 @@
                                     ponto! ”</p>
                                 <div class="coures_instractor_thumb">
                                     <figure>
-                                        <img src="extra-images/testimonial-nav1.jpg" alt="">
+                                        <img src="{{ asset('Template User/extra-images/testimonial-nav1.jpg') }}"
+                                            alt="">
                                     </figure>
                                     <div class="thumb_capstion">
                                         <h5><a href="#">Jonatahan James</a></h5>
@@ -1428,7 +1090,8 @@
                                 <p>“ Ótima experiência de aprendizado, com suporte rápido e eficiente. Amei! ”</p>
                                 <div class="coures_instractor_thumb">
                                     <figure>
-                                        <img src="extra-images/testimonial-nav2.jpg" alt="">
+                                        <img src="{{ asset('Template User/extra-images/testimonial-nav2.jpg') }}"
+                                            alt="">
                                     </figure>
                                     <div class="thumb_capstion">
                                         <h5><a href="#">Jonatahan James</a></h5>
@@ -1445,7 +1108,8 @@
                                     completo. ”</p>
                                 <div class="coures_instractor_thumb">
                                     <figure>
-                                        <img src="extra-images/testimonial-nav3.jpg" alt="">
+                                        <img src="{{ asset('Template User/extra-images/testimonial-nav3.jpg') }}"
+                                            alt="">
                                     </figure>
                                     <div class="thumb_capstion">
                                         <h5><a href="#">Jonatahan James</a></h5>
@@ -1463,49 +1127,6 @@
             <!--Testimonial Slider Wrap End-->
         </div>
         <!--Iqoniq Content End-->
-        <!--Brand Slider Start-->
-        <div class="brnd-slider-wrap">
-            <div class="container">
-                <div class="brnd-slider">
-                    <div>
-                        <a href="#" class="thumb">
-                            <img src="{{ asset('Template User/extra-images/brand1.png') }}" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="thumb">
-                            <img src="{{ asset('Template User/extra-images/brand2.png') }}" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="thumb">
-                            <img src="{{ asset('Template User/extra-images/brand3.png') }}" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="thumb">
-                            <img src="{{ asset('Template User/extra-images/brand4.png') }}" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="thumb">
-                            <img src="{{ asset('Template User/extra-images/brand5.png') }}" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="thumb">
-                            <img src="{{ asset('Template User/extra-images/brand6.png') }}" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="thumb">
-                            <img src="{{ asset('Template User/extra-images/brand1.png') }}" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Brand Slider End-->
         <!--Contact Info Wrap Start-->
         <div class="iq_contact_info">
             <div class="container">
@@ -1747,14 +1368,16 @@
     <!--Custom JavaScript-->
 
     {{-- é neste script ou arquivo onde esta o problema: custom.js --}}
-    <script src="{{ asset('Template User/js/custom.js') }}"></script>
     <!-- Scripts do Bootstrap 4 -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="{{ asset('Template User/js/jquery-3.5.1.slim.min.js') }}"></script>
+    <script src="{{ asset('Template User/js/jquery.min.js') }}"></script>
+
+    <script src="{{ asset('Template User/js/popper.min.js') }}"></script>
+    <script src="{{ asset('Template User/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('Template User/js/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('Template User/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('Template User/js/custom.js') }}"></script>
+
     <script>
         $(document).ready(function() {
             $(".owl-carousel").owlCarousel({
@@ -1771,7 +1394,7 @@
                         items: 1
                     },
                     1000: {
-                        items: 3
+                        items: 2
                     }
                 }
             });
