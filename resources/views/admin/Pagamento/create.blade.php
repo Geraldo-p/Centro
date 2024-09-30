@@ -14,8 +14,8 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('pagamentos.index') }}">Pagamento</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Nova Pagamento</li>
+                {{-- <li class="breadcrumb-item"><a href="{{ route('pagamentos.index') }}">Pagamento</a></li> --}}
+                <li class="breadcrumb-item active" aria-current="page">Processo de Pagamento</li>
             </ol>
         </nav>
     </div>

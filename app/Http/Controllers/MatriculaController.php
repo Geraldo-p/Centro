@@ -34,7 +34,6 @@ class MatriculaController extends Controller
         $salas = Sala::orderBy("nome")->get();
         return view('admin.Matricula.create', compact("formandos",'salas', "cursos", "turmas"));
     }
-
     /**
      * Armazena um novo recurso no armazenamento.
      */

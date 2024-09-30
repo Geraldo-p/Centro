@@ -3,7 +3,7 @@
 }
 .widget{
 	float:left;
-	width:100%;	
+	width:100%;
 }
 .widget-title{
 	float: left;
@@ -23,7 +23,7 @@
 	content:"";
 	bottom:0px;
 	width:25px;
-	height:2px;	
+	height:2px;
 	position:absolute;
 }
 .iq_footer_bg .widget-title{
@@ -46,18 +46,18 @@
 .iq_contact_info{
 	float:left;
 	width:100%;
-	position:relative;	
+	position:relative;
 }
 .iq_contact_info ul{
 	float:left;
-	width:100%;	
+	width:100%;
 }
 .iq_contact_info ul li{
 	float:left;
 	position:relative;
 	padding:25px 60px;
 	width:33.3%;
-	z-index:100;	
+	z-index:100;
 }
 .iq_contact_info ul li:before{
 	top: 0;
@@ -65,7 +65,7 @@
 	right: 0px;
 	width: 1px;
 	height: 100%;
-	position: absolute;	
+	position: absolute;
 	background-color: rgba(255, 255, 255, 0.118);
 }
 .iq_contact_info ul li:last-child:before{
@@ -80,7 +80,7 @@
 	text-align:center;
 	margin-right:15px;
 	font-size:28px;
-	position:relative;	
+	position:relative;
 	background-color: rgba(255,255,255,0.117);
 }
 .iq_contact_info ul li i:after{
@@ -90,11 +90,11 @@
 	left:0px;
 	width:0px;
 	height:3px;
-	background-color:#fff;	
+	background-color:#fff;
 }
 .iq_info_wrap{
 	float:none;
-	padding:0px 0px 0px 70px;	
+	padding:0px 0px 0px 70px;
 }
 .iq_info_wrap h5{
 	color:#fff;
@@ -121,7 +121,7 @@
 }
 /*HOVER*/
 .iq_contact_info ul li:hover i:after{
-	width:100%;	
+	width:100%;
 }
 /*
 	  ==============================================================
@@ -154,7 +154,7 @@
 	color: #fff;
 }
 .iq_footer_newsletter .iq-input input[type="text"]{
-	padding-right:65px; 
+	padding-right:65px;
 	border-color: #333;
 }
 .iq_footer_newsletter .iq-input input[type="text"]::-webkit-input-placeholder{
@@ -201,23 +201,23 @@
 	float:left;
 	width:100%;
 	position:relative;
-	background-color:#15191c;	
+	background-color:#15191c;
 }
 /*Widget 1 Style*/
 .iq_uni_title{
 	float:left;
 	width:100%;
 	position:relative;
-	padding:0px 60px 0px 0px;	
+	padding:0px 60px 0px 0px;
 }
 .iq_uni_title h4{
 	color:#fff;
 	text-transform:capitalize;
 	margin:0px 0px 10px;
-	font-size: 26px;	
+	font-size: 26px;
 }
 .iq_uni_title h4 > span{
-	display:block;	
+	display:block;
 }
 .iq_uni_title p {
     color: #999;
@@ -227,8 +227,8 @@
 	float:left;
 	width:100%;
 	text-align:center;
-	background:#1a1c1e;
-	padding:21px 0 21px 0; 
+	background:#1e1a1a;
+	padding:21px 0 21px 0;
 }
 .footer_strip h5{
 	color:#fff;
@@ -240,11 +240,13 @@
 	font-weight: bold;
 	text-transform: uppercase;
 }
+
 /*
 	  ==============================================================
 		   FOOTER WIDGETS WRAP CSS END
 	  ==============================================================
 */
+
 /*side-bar*/
 .iq-input input[type="text"]{
 	border-color: #d1d1d1;
@@ -338,9 +340,9 @@
     padding: 11px 0 12px;
     border-top: 1px dashed #3c3c3c;
 }
-.aside-bar .course-lesson-list li, 
-.aside-bar .widget_time li, 
-.aside-bar .iq_uni_title li, 
+.aside-bar .course-lesson-list li,
+.aside-bar .widget_time li,
+.aside-bar .iq_uni_title li,
 .aside-bar .widget_archive li{
 	border-color: #ccc;
 }
@@ -368,8 +370,8 @@
 	float: left;
 }
 .course-lesson-list li:hover{
-	padding-right:10px; 
-	padding-left:10px; 
+	padding-right:10px;
+	padding-left:10px;
 }
 .course-lesson-list li:hover,
 .course-lesson-list li:hover a{

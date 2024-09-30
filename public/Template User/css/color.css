@@ -9,7 +9,7 @@
 .footer_strip h5 a,
 .course-info > span,
 .comment-reply:hover,
-.iq_time_wrap a:hover, 
+.iq_time_wrap a:hover,
 .blog-medium:hover h5 a,
 .iq_top_contact a:hover,
 .categries-list a:hover,
@@ -121,7 +121,7 @@
 .iq-progress .popOver + .tooltip > .tooltip-arrow,
 .iq_search_courses
 {
-	border-color:#e79800;	
+	border-color:#e79800;
 }
 /*
 	  ============================================================
@@ -180,7 +180,7 @@ h1 a,h2 a,h3 a,h4 a,h5 a,h6 a,
 	-webkit-transition:all 0.3s ease-in-out;
 	-moz-transition:all 0.3s ease-in-out;
 	-o-transition:all 0.3s ease-in-out;
-	-moz-transition:all 0.3s ease-in-out;	
+	-moz-transition:all 0.3s ease-in-out;
 }
 
 /*

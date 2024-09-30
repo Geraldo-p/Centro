@@ -8,6 +8,7 @@ use App\Http\Controllers\FormandoController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ListaPresencaController;
 use App\Http\Controllers\MatriculaController;
+use App\Http\Controllers\MensagensController;
 use App\Http\Controllers\ModuloController;
 use App\Http\Controllers\PagamentoController;
 use App\Http\Controllers\ProfileController;
@@ -16,11 +17,12 @@ use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\TurmaFormandoController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
+    return view('layouts user/index');
+});
+
+
+Route::get('/dashboard', function () {
     return view('/layouts.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -190,5 +192,17 @@ Route::middleware('auth')->group(function () {
     ]);
     Route::get("/generate-pdf/matriculas", [PagamentoController::class, 'generatePdf'])->name("pagamentos.pdf");
 });
+//MENSAGENS
+Route::resource('mensagens', MensagensController::class)->names([
+    'index' => 'mensagens.index',
+    'create' => 'mensagens.create',
+    'store' => 'mensagens.store',
+    'show' => 'mensagens.show',
+    'edit' => 'mensagens.edit',
+    'update' => 'mensagens.update',
+    'destroy' => 'mensagens.destroy'
+]);
+Route::get("/generate-pdf/mensagens", [PagamentoController::class, 'generatePdf'])->name("mensagens.pdf");
+
 
 require __DIR__ . '/auth.php';

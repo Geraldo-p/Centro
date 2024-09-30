@@ -17,7 +17,7 @@ class ListaPresencaController extends Controller
      */
     public function index()
     {
-        $lista_presencas = Lista_Presenca::orderBy("data_presenca")->get();
+        $lista_presencas = Lista_Presenca_Principal::get();
         return view("admin.Lista de Presença.index", compact("lista_presencas"));
     }
 

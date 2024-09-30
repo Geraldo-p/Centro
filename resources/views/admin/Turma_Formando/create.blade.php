@@ -95,10 +95,12 @@
                             <div class="col-sm-12 col-md-9">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="turma_id">Turma</label>
-                                    <select class="form-control @error('turma_id') is-invalid @enderror" name="turma_id" id="turma_id">
+                                    <select class="form-control @error('turma_id') is-invalid @enderror" name="turma_id"
+                                        id="turma_id">
                                         <option value="">Selecione uma turma</option>
                                         @foreach ($turmas as $item)
-                                            <option value="{{ $item->id }}" data-curso="{{ $item->cursos->id }}" data-sala="{{ $item->salas->capacidade }}">{{ $item->nome }}</option>
+                                            <option value="{{ $item->id }}" data-curso="{{ $item->cursos->id }}"
+                                                data-sala="{{ $item->salas->capacidade }}">{{ $item->nome }}</option>
                                         @endforeach
                                     </select>
                                     @error('turma_id')
@@ -110,7 +112,8 @@
                             <div class="col-sm-12 col-md-3">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="sala_id">Qtd. Vagas</label>
-                                    <input type="text" class="form-control @error('sala_id') is-invalid @enderror" name="sala_id" id="sala_id" readonly>
+                                    <input type="text" class="form-control @error('sala_id') is-invalid @enderror"
+                                        name="sala_id" id="sala_id" readonly>
                                     @error('sala_id')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -120,7 +123,8 @@
                             <div class="col-sm-12 col-md-12">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="curso_id">Curso Associado à Turma</label>
-                                    <select class="form-control @error('curso_id') is-invalid @enderror" name="curso_id" id="curso_id" disabled>
+                                    <select class="form-control @error('curso_id') is-invalid @enderror" name="curso_id"
+                                        id="curso_id" disabled>
                                         <option value="">Selecione um curso</option>
                                         @foreach ($cursos as $curso)
                                             <option value="{{ $curso->id }}">{{ $curso->nome }}</option>
@@ -279,56 +283,6 @@
             }
         });
     </script>
-    {{-- <script>
-        document.getElementById('botao').addEventListener('click', function() {
-            // Obter os valores dos selects
-            var turmaSelect = document.getElementById('turma_id');
-            var formandoSelect = document.getElementById('formando_id');
-
-            var turmaId = turmaSelect.value;
-            var turmaNome = turmaSelect.options[turmaSelect.selectedIndex].text;
-
-            var formandoId = formandoSelect.value;
-            var formandoNome = formandoSelect.options[formandoSelect.selectedIndex].text;
-
-            // Verificar se ambos os valores foram selecionados
-            if (turmaId && formandoId) {
-                var tabela = document.getElementById('carrinho').getElementsByTagName('tbody')[0];
-
-                // Criar uma nova linha na tabela
-                var novaLinha = tabela.insertRow();
-
-                // Criar célula para a turma
-                var turmaCell = novaLinha.insertCell(0);
-                turmaCell.innerHTML = `
-            ${turmaNome}
-            <input type="hidden" name="carrinho_turma_id_val[]" value="${turmaId}">
-            `;
-
-                // Criar célula para o formando
-                var formandoCell = novaLinha.insertCell(1);
-                formandoCell.innerHTML = `
-            ${formandoNome}
-            <input type="hidden" name="carrinho_formando_id_val[]" value="${formandoId}">
-            `;
-
-                // Criar célula para o botão de remoção
-                var removerCell = novaLinha.insertCell(2);
-                var botaoRemover = document.createElement('button');
-                botaoRemover.type = 'button';
-                botaoRemover.classList.add('btn', 'btn-danger');
-                botaoRemover.textContent = 'Remover';
-                removerCell.appendChild(botaoRemover);
-
-                // Evento para remover a linha
-                botaoRemover.addEventListener('click', function() {
-                    tabela.deleteRow(novaLinha.rowIndex - 1);
-                });
-            } else {
-                alert('Por favor, selecione A TURMA E O FORMANDO.');
-            }
-        });
-    </script> --}}
 
     <script>
         document.getElementById('nome').addEventListener('input', function() {
@@ -348,41 +302,28 @@
         });
     </script>
 
-    $(document).ready(function() {
-    // Quando o select de turma mudar
-    $('#turma_id').change(function() {
-        // Obter o curso associado à turma selecionada
-        var selectedTurma = $(this).find(':selected');
-        var cursoId = selectedTurma.data('curso'); // pega o valor de data-curso
 
-        // Atualizar o campo de curso com base no curso associado à turma
-        $('#curso_id').val(cursoId);
-    });
-});
-<style>
-    div {
-        position: relative;
-    }
-</style>
+    <style>
+        div {
+            position: relative;
+        }
+    </style>
 
+    <script>
+        $(document).ready(function() {
+            // Quando o select de turma mudar
+            $('#turma_id').change(function() {
+                // Obter o curso associado à turma selecionada
+                var selectedTurma = $(this).find(':selected');
+                var cursoId = selectedTurma.data('curso'); // pega o valor de data-curso
+                var salaId = selectedTurma.data('sala'); // pega o valor de data-sala
 
+                // Atualizar o campo de curso com base no curso associado à turma
+                $('#curso_id').val(cursoId);
 
-<script>
-    $(document).ready(function() {
-    // Quando o select de turma mudar
-    $('#turma_id').change(function() {
-        // Obter o curso associado à turma selecionada
-        var selectedTurma = $(this).find(':selected');
-        var cursoId = selectedTurma.data('curso'); // pega o valor de data-curso
-        var salaId = selectedTurma.data('sala'); // pega o valor de data-sala
+                $('#sala_id').val(salaId);
 
-        // Atualizar o campo de curso com base no curso associado à turma
-        $('#curso_id').val(cursoId);
-
-        $('#sala_id').val(salaId);
-
-    });
-});
-
-</script>
+            });
+        });
+    </script>
 @endsection

@@ -47,13 +47,13 @@ class FormandoController extends Controller
     {
 
         try {
-            $faker = \Faker\Factory::create();
+              $faker = \Faker\Factory::create();
 
             // depois de criar mandar as credenciais por email - resolver isso depois
             $user = User::create([
-                'name' => $faker->name,
+                'name' => $faker->regexify('[A-Za-z0-9]{5}'),
                 'email' => $request->email,
-                'password' => Hash::make($faker->password),
+                'password' => Hash::make($faker->password(5,10)),
                 'nivel_acesso' => 'Formando'
             ]);
 

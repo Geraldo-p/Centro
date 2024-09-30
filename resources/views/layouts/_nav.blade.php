@@ -2,8 +2,9 @@
 <nav class="navbar navbar-expand-lg main-navbar sticky">
     <div class="form-inline mr-auto">
         <ul class="navbar-nav mr-3">
-            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
-									collapse-btn"> <i
+            <li><a href="#" data-toggle="sidebar"
+                    class="nav-link nav-link-lg
+                                  collapse-btn"> <i
                         data-feather="align-justify"></i></a></li>
             <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
                     <i data-feather="maximize"></i>
@@ -11,7 +12,7 @@
             <li>
                 <form class="form-inline mr-auto">
                     <div class="search-element">
-                        <input class="form-control" type="search" placeholder="Pesquisar" aria-label="Search"
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Pesquisar"
                             data-width="200">
                         <button class="btn" type="submit">
                             <i class="fas fa-search"></i>
@@ -38,14 +39,15 @@
 											text-white">
                             <img alt="image" src="{{ asset('Template admin/assets/img/users/user-1.png') }}"
                                 class="rounded-circle">
-                        </span> <span class="dropdown-item-desc"> <span class="message-user">Geraldo</span>
+                        </span> <span class="dropdown-item-desc"> <span
+                                class="message-user">{{ Auth::user()->name }}</span>
                             <span class="time messege-text">Please check your mail !!</span>
                             <span class="time">2 Min Ago</span>
                         </span>
                     </a>
                 </div>
                 <div class="dropdown-footer text-center">
-                    <a href="#">Ver Todas <i class="fas fa-chevron-right"></i></a>
+                    <a href="{{ route('mensagens.index') }}">Ver Todas <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
         </li>
@@ -94,10 +96,15 @@
                     Definições
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger"> <i
-                        class="fas fa-sign-out-alt"></i>
-                    Sair
-                </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    {{-- <a href="{{ route('logout') }}" type="submit" class="dropdown-item has-icon text-danger"> <i
+                            class="fas fa-sign-out-alt"></i>
+                        Sair
+                    </a> --}}
+                    <button type="submit" class="dropdown-item has-icon text-danger"><i
+                            class="fas fa-sign-out-alt"></i> Sair</button>
+                </form>
             </div>
         </li>
     </ul>
@@ -117,29 +124,35 @@
                 <a href= "{{ route('dashboard') }}" class="nav-link"><i
                         data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
+            <li><a class="nav-link" href="{{ route('mensagens.index') }}"><i
+                        data-feather="mail"></i><span>Mensagens</span></a></li>
+
+
+            <li><a class="nav-link" href="blank.html"><i data-feather="file"></i><span>Notifications</span></a></li>
+            <li class="menu-header">Area de Trabalho</li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="briefcase"></i><span>Widgets</span></a>
+                        data-feather="command"></i><span>Area do Formador</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="widget-chart.html">Chart Widgets</a></li>
-                    <li><a class="nav-link" href="widget-data.html">Data Widgets</a></li>
+                    <li><a class="nav-link" href="chat.html">Turmas</a></li>
+                    <li><a class="nav-link" href="{{ route('lista_presencas.index') }}">Lista de Presença</a></li>
+                    <li><a class="nav-link" href="blog.html">Registrar Modulos</a></li>
+                    <li><a class="nav-link" href="blog.html">Lançar Notas</a></li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="command"></i><span>Apps</span></a>
+                        data-feather="command"></i><span>Area do Formando</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="chat.html">Chat</a></li>
-                    <li><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-                    <li><a class="nav-link" href="blog.html">Blog</a></li>
-                    <li><a class="nav-link" href="calendar.html">Calendar</a></li>
+                    <li><a class="nav-link" href="chat.html">Turmas</a></li>
+                    <li><a class="nav-link" href="{{ route('lista_presencas.index') }}">Lista de Presença</a></li>
+                    <li><a class="nav-link" href="blog.html">Certificações</a></li>
+                    <li><a class="nav-link" href="blog.html">...</a></li>
                 </ul>
             </li>
-            <li><a class="nav-link" href="blank.html"><i data-feather="file"></i><span>Blank Page</span></a></li>
-            <li class="menu-header">Otika</li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="grid"></i><span>Tabelas</span></a>
+                        data-feather="grid"></i><span>Area do Administrador</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('pagamentos.index') }}">Pagamento</a></li>
                     <li><a class="nav-link" href="{{ route('categorias.index') }}">Categoria</a></li>
@@ -156,50 +169,79 @@
             </li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="pie-chart"></i><span>Charts</span></a>
+                        data-feather="pie-chart"></i><span>Inscrições</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="chart-amchart.html">amChart</a></li>
-                    <li><a class="nav-link" href="chart-apexchart.html">apexchart</a></li>
-                    <li><a class="nav-link" href="chart-echart.html">eChart</a></li>
-                    <li><a class="nav-link" href="chart-chartjs.html">Chartjs</a></li>
-                    <li><a class="nav-link" href="chart-sparkline.html">Sparkline</a></li>
-                    <li><a class="nav-link" href="chart-morris.html">Morris</a></li>
+                    <li><a class="nav-link" href="chart-amchart.html">Inscrever-se</a></li>
+                    <li><a class="nav-link" href="chart-apexchart.html">Inscrições Pendentes</a></li>
+                    <li><a class="nav-link" href="chart-echart.html">Inscrições Realizadas</a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="flag"></i><span>Sliders</span></a>
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="flag"></i><span>Processo
+                        de Matricula</span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="carousel.html">Bootstrap Carousel.html</a></li>
-                    <li><a class="nav-link" href="owl-carousel.html">Owl Carousel</a></li>
+                    {{-- <li><a type="button" data-toggle="modal" data-target="#exampleModalCenter">Registrar
+                            Pagamento</a></li> --}}
+                    <li><a class="nav-link" href="{{ route('pagamentos.index') }}">Registrar
+                            Pagamento</a></li>
+                    <li><a class="nav-link" href="{{ route('matriculas.create') }}">Matricular</a></li>
                 </ul>
             </li>
-            <li><a class="nav-link" href="timeline.html"><i data-feather="sliders"></i><span>Timeline</span></a></li>
+
+            {{-- <li><a class="nav-link" href="timeline.html"><i data-feather="sliders"></i><span>Timeline</span></a></li>
 
             <li><a class="nav-link" href="vector-map.html"><i data-feather="map-pin"></i><span>Vector
-                        Map</span></a></li>
+                        Map</span></a></li> --}}
             <li class="menu-header">Páginas</li>
-            <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a href="" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="user-check"></i><span>Auth</span></a>
                 <ul class="dropdown-menu">
-                    {{-- <li><a href="auth-login.html">Login</a></li> --}}
-                    <li><a href="{{route("users.index")}}">Utilizador</a></li>
-                    <li><a href="auth-forgot-password.html">Forgot Password</a></li>
-                    <li><a href="auth-reset-password.html">Reset Password</a></li>
+                    <li><a href="{{ route('users.index') }}">Utilizador</a></li>
+                    <li><a href="auth-forgot-password.html">Esqueci a palavra passe</a></li>
+                    <li><a href="auth-reset-password.html">Resetar Senha</a></li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="anchor"></i><span>Outras
                         Páginas</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="create-post.html">Criar Postagem</a></li>
-                    <li><a class="nav-link" href="posts.html">Posts</a></li>
-                    <li><a class="nav-link" href="profile.html">Profile</a></li>
-                    <li><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li><a class="nav-link" href="invoice.html">Invoice</a></li>
+                    <li><a class="nav-link" href="create-post.html">Certificados</a></li>
+                    <li><a class="nav-link" href="posts.html">Anúncios</a></li>
+                    <li><a class="nav-link" href="profile.html">Blog</a></li>
                 </ul>
             </li>
         </ul>
     </aside>
+</div>
+
+
+<!-- Modal Vertically Center -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Processo de Pagamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <center>
+                        <form action="{{ route('pagamentos.pesquisar') }}" method="post">
+                            @csrf <!-- Token CSRF para proteção -->
+                            <label for="cod">Código do Formando</label>
+                            <input type="text" class="form-control" name="cod" id="cod"
+                                aria-describedby="helpId" placeholder="">
+                            <br>
+                            <button type="submit" class="btn btn-primary mr-2">Pesquisar</button>
+                            <!-- Envia o form ao clicar -->
+                        </form>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

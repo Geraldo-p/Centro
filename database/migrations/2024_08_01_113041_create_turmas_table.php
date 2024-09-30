@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('status', 50)->default("Disponivel"); //disponivel, indisponivel, cheia
             $table->unsignedBigInteger('curso_id');
             $table->unsignedBigInteger('id_us');
-
+ 
             // $table->foreign('sala_id')->references('id')->on('salas')->onDelete('cascade');
             $table->foreign('sala_id')->references('id')->on('salas');
             $table->foreign('funcionario_id')->references('id')->on('funcionarios');

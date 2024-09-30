@@ -98,7 +98,8 @@
                                         id="turma_id">
                                         @foreach ($turmas as $item)
                                             <option value="{{ $item->id }}" data-curso="{{ $item->cursos->id }}"
-                                                data-sala="{{ $item->salas->capacidade }}">{{ $item->nome }}</option>
+                                                data-sala="{{ $item->salas->capacidade - $item->matriculas->count() }}">
+                                                {{ $item->nome }}</option>
                                         @endforeach
                                     </select>
                                     @error('turma_id')
@@ -106,7 +107,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div class="col-sm-12 col-md-3">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="sala_id">Qtd. Vagas</label>
@@ -147,10 +147,7 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <button type="button" id="botao" class="btn btn-primary mr-2">Adicionar</button>
-
                     </div>
                 </div>
                 <hr>
@@ -168,8 +165,6 @@
 @endsection
 
 @section('script')
-
-
     <script src="{{ asset('Template admin/assets/bundles/izitoast/js/iziToast.min.js') }}"></script>
     <script src="{{ asset('Template admin/assets/js/page/toastr.js') }}"></script>
     @if (session('sucesso'))
@@ -227,6 +222,28 @@
     </script>
 
     <script>
+        // Objeto para armazenar as vagas disponíveis para cada turma
+        var vagasPorTurma = {};
+
+        // Função para inicializar as vagas no objeto ao carregar a página
+        function inicializarVagas() {
+            var turmaSelect = document.getElementById('turma_id');
+            for (var i = 0; i < turmaSelect.options.length; i++) {
+                var turmaId = turmaSelect.options[i].value;
+                var vagasIniciais = parseInt(turmaSelect.options[i].getAttribute('data-sala'));
+                vagasPorTurma[turmaId] = vagasIniciais; // Armazena a quantidade de vagas inicial
+            }
+        }
+
+        // Inicializa as vagas ao carregar a página
+        inicializarVagas();
+
+        document.getElementById('turma_id').addEventListener('change', function() {
+            var turmaId = this.value;
+            // Atualiza o campo de vagas com base nas vagas armazenadas no objeto
+            document.getElementById('sala_id').value = vagasPorTurma[turmaId] || 0;
+        });
+
         document.getElementById('botao').addEventListener('click', function() {
             // Obter os valores dos selects
             var turmaSelect = document.getElementById('turma_id');
@@ -234,63 +251,77 @@
 
             var turmaId = turmaSelect.value;
             var turmaNome = turmaSelect.options[turmaSelect.selectedIndex].text;
+            var vagasRestantes = vagasPorTurma[turmaId]; // Pega as vagas restantes da turma no objeto
 
             var formandoId = formandoSelect.value;
             var formandoNome = formandoSelect.options[formandoSelect.selectedIndex].text;
 
-            // Verificar se ambos os valores foram selecionados
-            if (turmaId && formandoId) {
-                var tabela = document.getElementById('carrinho').getElementsByTagName('tbody')[0];
-                var linhas = tabela.getElementsByTagName('tr');
-                var existe = false;
+            // Verificar se há vagas disponíveis
+            if (vagasRestantes > 0) {
+                // Verificar se ambos os valores foram selecionados
+                if (turmaId && formandoId) {
+                    var tabela = document.getElementById('carrinho').getElementsByTagName('tbody')[0];
+                    var linhas = tabela.getElementsByTagName('tr');
+                    var existe = false;
 
-                // Verificar se já existe uma linha com esses valores de turmaId e formandoId
-                for (var i = 0; i < linhas.length; i++) {
-                    var cells = linhas[i].getElementsByTagName('td');
-                    var turmaExistenteId = cells[0].getElementsByTagName('input')[0].value;
-                    var formandoExistenteId = cells[1].getElementsByTagName('input')[0].value;
+                    // Verificar se já existe uma linha com esses valores de turmaId e formandoId
+                    for (var i = 0; i < linhas.length; i++) {
+                        var cells = linhas[i].getElementsByTagName('td');
+                        var turmaExistenteId = cells[0].getElementsByTagName('input')[0].value;
+                        var formandoExistenteId = cells[1].getElementsByTagName('input')[0].value;
 
-                    if (turmaExistenteId === turmaId && formandoExistenteId === formandoId) {
-                        existe = true;
-                        break;
+                        if (turmaExistenteId === turmaId && formandoExistenteId === formandoId) {
+                            existe = true;
+                            break;
+                        }
                     }
-                }
 
-                if (existe) {
-                    alert('A combinação da TURMA e do FORMANDO já está na tabela.');
+                    if (existe) {
+                        alert('A combinação da TURMA e do FORMANDO já está na tabela.');
+                    } else {
+                        // Criar uma nova linha na tabela
+                        var novaLinha = tabela.insertRow();
+
+                        // Criar célula para a turma
+                        var turmaCell = novaLinha.insertCell(0);
+                        turmaCell.innerHTML = `
+                    ${turmaNome}
+                    <input type="hidden" name="carrinho_turma_id_val[]" value="${turmaId}">
+                `;
+
+                        // Criar célula para o formando
+                        var formandoCell = novaLinha.insertCell(1);
+                        formandoCell.innerHTML = `
+                    ${formandoNome}
+                    <input type="hidden" name="carrinho_formando_id_val[]" value="${formandoId}">
+                `;
+
+                        // Criar célula para o botão de remoção
+                        var removerCell = novaLinha.insertCell(2);
+                        var botaoRemover = document.createElement('button');
+                        botaoRemover.type = 'button';
+                        botaoRemover.classList.add('btn', 'btn-danger');
+                        botaoRemover.textContent = 'Remover';
+                        removerCell.appendChild(botaoRemover);
+
+                        // Descontar 1 da quantidade de vagas
+                        vagasPorTurma[turmaId]--; // Atualiza o objeto de vagas
+                        document.getElementById('sala_id').value = vagasPorTurma[turmaId];
+
+                        // Evento para remover a linha
+                        botaoRemover.addEventListener('click', function() {
+                            tabela.deleteRow(novaLinha.rowIndex - 1);
+
+                            // Aumentar a quantidade de vagas ao remover
+                            vagasPorTurma[turmaId]++;
+                            document.getElementById('sala_id').value = vagasPorTurma[turmaId];
+                        });
+                    }
                 } else {
-                    // Criar uma nova linha na tabela
-                    var novaLinha = tabela.insertRow();
-
-                    // Criar célula para a turma
-                    var turmaCell = novaLinha.insertCell(0);
-                    turmaCell.innerHTML = `
-                ${turmaNome}
-                <input type="hidden" name="carrinho_turma_id_val[]" value="${turmaId}">
-                `;
-
-                    // Criar célula para o formando
-                    var formandoCell = novaLinha.insertCell(1);
-                    formandoCell.innerHTML = `
-                ${formandoNome}
-                <input type="hidden" name="carrinho_formando_id_val[]" value="${formandoId}">
-                `;
-
-                    // Criar célula para o botão de remoção
-                    var removerCell = novaLinha.insertCell(2);
-                    var botaoRemover = document.createElement('button');
-                    botaoRemover.type = 'button';
-                    botaoRemover.classList.add('btn', 'btn-danger');
-                    botaoRemover.textContent = 'Remover';
-                    removerCell.appendChild(botaoRemover);
-
-                    // Evento para remover a linha
-                    botaoRemover.addEventListener('click', function() {
-                        tabela.deleteRow(novaLinha.rowIndex - 1);
-                    });
+                    alert('Por favor, selecione A TURMA E O FORMANDO.');
                 }
             } else {
-                alert('Por favor, selecione A TURMA E O FORMANDO.');
+                alert('Não há mais vagas disponíveis para esta turma.');
             }
         });
     </script>
@@ -318,8 +349,6 @@
             position: relative;
         }
     </style>
-
-
 
     <script>
         $(document).ready(function() {
