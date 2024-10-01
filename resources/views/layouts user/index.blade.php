@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home - Santa Cruz - Centro de Formação</title>
 
+    {{-- pendente --}}
+    <link rel="stylesheet" href="{{ asset('Template admin/assets/css/style.css') }}">
+
 
     <link rel="stylesheet" href="{{ asset('Template User/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('Template User/css/owr carousel/owl.carousel.min.css') }}">
@@ -25,8 +28,6 @@
     <link rel="stylesheet" href="{{ asset('Template User/css/color.css') }}">
     <link rel="stylesheet" href="{{ asset('Template User/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('Template User/css/swiper/swiper-bunble.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM1Q9Yw2GVD9Nf25/TLr6/hM8c7/B9WJ4hV4xD" crossorigin="anonymous">
-
 
 
 
@@ -40,7 +41,7 @@
             <div class="container">
                 <!--Logo Wrap Start-->
                 <div class="iq_logo">
-                    <a href="#"><img src="{{ asset('Template User/images/logo.jpg') }}" alt="Iqoniq Themes"></a>
+                    <a href="#"><img src="{{ asset('Template admin/assets/img/logo3.png') }}" alt="Iqoniq Themes"></a>
                 </div>
                 <!--Logo Wrap Start-->
                 <!--Top Strip Wrap Start-->
@@ -48,10 +49,10 @@
                     <!--Top Strip Wrap Start-->
                     <div class="iq_top_strip">
                         <div class="iq_top_contact pull-left">
-                            <a href="#"> Call us : +01 123 456</a>
-                            <a href="#"> Email : info@info.com</a>
+                            <a href="#"> Call us : +244 947 986 411</a>
+                            <a href="#"> Email : gpaciencia68@gmail.com</a>
                         </div>
-                        <div class="iq_time_wrap pull-right"><i class="fa fa-clock-o"></i> Mon - Sat : 09:00 am - 05:30
+                        <div class="iq_time_wrap pull-right"><i class="fa fa-clock-o"></i> Seg - Sáb: 06:00 - 16:00
                             pm </div>
                     </div>
                     <!--Top Strip Wrap End-->
@@ -59,94 +60,123 @@
                     <div class="navigation-wrapper pull-left">
                         <div class="navigation pull-left">
                             <ul>
-                                <li class="active"><a href="index-2.html">Home</a></li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="#">Courses</a>
+                                <li class="active"><a href="#">Ínicio</a></li>
+                                <li><a href="about-us.html">Sobre Nós</a></li>
+                                <li><a href="#">Cursos</a>
                                     <ul class="children">
-                                        <li><a href="course-detail.html">course detail</a></li>
-                                        <li><a href="courses-small.html">Courses Small</a></li>
-                                        <li><a href="our-courses-list.html">Our Courses List</a></li>
-                                        <li><a href="our-courses.html">Our Courses</a></li>
+                                        <li><a href="course-detail.html">Novos Cursos</a></li>
+                                        <li><a href="courses-small.html">Cursos Populares</a></li>
+                                        <li><a href="our-courses-list.html">Em Destaque</a></li>
+                                        <li><a href="our-courses.html">Cursos em Promoção</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Blog</a>
+                                </li>
+                                <li><a href="#">Eventos</a>
                                     <ul class="children">
-                                        <li><a href="blog-large.html">Blog Large</a></li>
-                                        <li><a href="blog-medium.html">blog medium</a></li>
-                                        <li><a href="blog-small.html">Blog small</a></li>
-                                        <li><a href="blog-detail.html">Blog Detail</a></li>
+                                        <li><a href="event-detail.html">Novos Eventos</a></li>
+                                        <li><a href="event-detail.html">Eventos Passados</a></li>
+                                        <li><a href="event-calender.html">Calendario de Eventos</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Event</a>
-                                    <ul class="children">
-                                        <li><a href="event-detail.html">Event Detail</a></li>
-                                        <li><a href="event-calender.html">Even Calender</a></li>
-                                    </ul>
+                                <li><a href="#">Nossa Equipe</a>
                                 </li>
-                                <li><a href="#">Staff</a>
-                                    <ul class="children">
-                                        <li><a href="our-teachers.html">Our Staff</a></li>
-                                        <li><a href="staff-detail.html">Staff Detail</a></li>
-                                    </ul>
+                                <li><a href="#">Galeria</a>
                                 </li>
-                                <li><a href="#">Gallery</a>
-                                    <ul class="children">
-                                        <li><a href="gallery-medium.html">Gallery medium</a></li>
-                                        <li><a href="gallery-small.html">Gallery small</a></li>
-                                        <li><a href="gallery-mesnory.html">Masonry Gallery</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact-us.html">Countact Us</a></li>
-                                {{-- <li><a href="{{route("login")}}">Entrar</a></li> --}}
+                                <li><a href="contact-us.html">Fale Connosco</a></li>
                             </ul>
                         </div>
-                        <!--DL Menu Start-->
+
+
+                        <!--DL Menu Start mobile-->
                         <div id="mg-responsive-navigation" class="dl-menuwrapper">
-                            <button class="dl-trigger">Open Menu</button>
-                            <ul class="dl-menu">
-                                <li class="menu-item mg-parent-menu">
-                                    <a href="index-2.html">home</a>
-                                </li>
-                                <li><a href="about-us.html">About us</a></li>
-                                <li class="menu-item mg-parent-menu"><a href="#">course</a>
-                                    <ul class="dl-submenu">
-                                        <li><a href="course-detail.html">course detail</a></li>
-                                        <li><a href="courses-small.html">Courses Small</a></li>
-                                        <li><a href="our-courses-list.html">Our Courses List</a></li>
-                                        <li><a href="our-courses.html">Our Courses</a></li>
+                            <a href="#" id="toggle-sidebar" class="nav-link nav-link-lg collapse-btn">
+                                <i data-feather="align-justify"></i>
+                            </a>
+
+                            <div class="main-sidebar sidebar-style-2" id="sidebar">
+                                <aside id="sidebar-wrapper">
+                                    <div class="sidebar-brand">
+                                        <a href="{{ route('dashboard') }}">
+                                            <img alt="image"
+                                                src="{{ asset('Template admin/assets/img/logo_.png') }}"
+                                                class="header-logo" />
+                                            <span class="logo-name">Santa Cruz</span>
+                                        </a>
+                                    </div>
+                                    <ul class="sidebar-menu">
+                                        <li class="dropdown active">
+                                            <a href="{{ route('dashboard') }}" class="nav-link"><i
+                                                    data-feather="monitor"></i><span>Dashboard</span></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="menu-toggle nav-link has-dropdown">
+                                                <span>Area do Administrador</span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="nav-link"
+                                                        href="{{ route('pagamentos.index') }}">Pagamento</a></li>
+                                                <li><a class="nav-link"
+                                                        href="{{ route('categorias.index') }}">Categoria</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
-                                </li>
-                                <li class="menu-item mg-parent-menu"><a href="#">Blog</a>
-                                    <ul class="dl-submenu">
-                                        <li><a href="blog-large.html">Blog Large</a></li>
-                                        <li><a href="blog-medium.html">blog medium</a></li>
-                                        <li><a href="blog-small.html">Blog small</a></li>
-                                        <li><a href="blog-detail.html">Blog Detail</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item mg-parent-menu"><a href="#">Event</a>
-                                    <ul class="dl-submenu">
-                                        <li><a href="event-detail.html">Event Detail</a></li>
-                                        <li><a href="event-calender.html">Even Calender</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item mg-parent-menu"><a href="#">Staff</a>
-                                    <ul class="dl-submenu">
-                                        <li><a href="our-teachers.html">Our Staff</a></li>
-                                        <li><a href="staff-detail.html">Staff Detail</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item mg-parent-menu"><a href="#">Gallery</a>
-                                    <ul class="dl-submenu">
-                                        <li><a href="gallery-medium.html">Gallery medium</a></li>
-                                        <li><a href="gallery-small.html">Gallery small</a></li>
-                                        <li><a href="gallery-mesnory.html">Masonry Gallery</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item mg-parent-menu">
-                                    <a href="contact-us.html">contact us</a>
-                                </li>
-                            </ul>
+                                </aside>
+                            </div>
+
+                            <script>
+                                const toggleButton = document.getElementById('toggle-sidebar');
+                                const sidebar = document.getElementById('sidebar');
+
+                                // Abrir/fechar menu ao clicar no botão
+                                toggleButton.addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    sidebar.classList.toggle('active');
+                                });
+
+                                // Fechar o menu ao clicar fora
+                                document.addEventListener('click', function(e) {
+                                    const isClickInside = sidebar.contains(e.target) || toggleButton.contains(e.target);
+                                    if (!isClickInside) {
+                                        sidebar.classList.remove('active');
+                                    }
+                                });
+
+                                // Pega todos os elementos que têm a classe "menu-toggle"
+                                const menuToggles = document.querySelectorAll('.menu-toggle');
+
+                                // Itera sobre cada item de menu que tem submenu
+                                menuToggles.forEach(function(toggle) {
+                                    toggle.addEventListener('click', function(e) {
+                                        e.preventDefault();
+                                        const dropdownMenu = toggle.nextElementSibling;
+
+                                        // Alterna visibilidade do submenu
+                                        if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+                                            dropdownMenu.style.display = 'block';
+                                        } else {
+                                            dropdownMenu.style.display = 'none';
+                                        }
+                                    });
+                                });
+                            </script>
+
+                            <style>
+                                .main-sidebar {
+                                    position: fixed;
+                                    left: -300px;
+                                    /* Escondido inicialmente */
+                                    width: 300px;
+                                    height: 100%;
+                                    transition: left 0.3s ease;
+                                }
+
+                                .main-sidebar.active {
+                                    left: 0;
+                                    /* Aparece ao clicar */
+                                }
+                            </style>
+
                         </div>
                         <!--DL Menu END-->
                         <!--Search Wrap Start-->
@@ -163,7 +193,11 @@
         </header>
         <!--Header Wrap End-->
         <!--Banner Wrap Start-->
-
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         {{-- carousel --}}
         <div id="carouselExample" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -212,18 +246,18 @@
                                     qualificados e laboratórios bem equipados.
                                 </div>
                                 @auth
-                                <a href="{{ route('dashboard') }}">
-                                    <div class="iq_link_1">Dashboard</div>
-                                </a>
-                            @endauth
-                            @guest
-                                <a href="{{ route('login') }}">
-                                    <div class="iq_link_1">Entrar</div>
-                                </a>
-                                <a href="{{ route('register') }}">
-                                    <div class="iq_link_1">Inscrever-se</div>
-                                </a>
-                            @endguest
+                                    <a href="{{ route('dashboard') }}">
+                                        <div class="iq_link_1">Dashboard</div>
+                                    </a>
+                                @endauth
+                                @guest
+                                    <a href="{{ route('login') }}">
+                                        <div class="iq_link_1">Entrar</div>
+                                    </a>
+                                    <a href="{{ route('register') }}">
+                                        <div class="iq_link_1">Inscrever-se</div>
+                                    </a>
+                                @endguest
                             </div>
                         </div>
                     </div>
@@ -278,8 +312,10 @@
                             <section>
                                 <!-- Heading Wrap Start -->
                                 <div class="iq_heading_1 text-left">
-                                    <h4>Estamos <span>Profissionais</span></h4>
-                                    <p>Descubra nossas categorias de formação, onde cada uma é projetada para desenvolver habilidades essenciais para o mercado de trabalho.</p>
+                                    <h4>Nós Somos <span>Profissionais</span></h4>
+                                    <p>Descubra nossas categorias de formação, onde cada uma é projetada para
+                                        desenvolver habilidades essenciais para o mercado de trabalho e transformar sua
+                                        carreira!</p>
                                 </div>
                                 <!-- Heading Wrap End -->
                                 <div class="row">
@@ -287,44 +323,56 @@
                                     <div class="col-md-6 col-sm-6">
                                         <div class="iq_professional_services">
                                             <span class="icon-technology">
-                                                <!-- Aqui você deve adicionar o SVG ou a classe do ícone da tecnologia -->
                                                 <i class="fas fa-laptop-code"></i>
                                             </span>
                                             <h5><a href="#">Tecnologia</a></h5>
-                                            <p>Aprimore suas habilidades em programação, desenvolvimento web e muito mais na área de tecnologia.</p>
+                                            <p>Na era digital, as habilidades tecnológicas são mais importantes do que
+                                                nunca. Nossos cursos de Tecnologia oferecem uma profunda imersão em
+                                                programação, desenvolvimento web, e mais. Venha se preparar para o
+                                                futuro e se tornar um profissional requisitado no mercado, aprendendo
+                                                com instrutores experientes e projetos práticos!</p>
                                         </div>
                                     </div>
                                     <!-- Categoria: Culinária -->
                                     <div class="col-md-6 col-sm-6">
                                         <div class="iq_professional_services">
                                             <span class="icon-culinary">
-                                                <!-- Aqui você deve adicionar o SVG ou a classe do ícone da culinária -->
                                                 <i class="fas fa-utensils"></i>
                                             </span>
                                             <h5><a href="#">Culinária</a></h5>
-                                            <p>Aprenda a arte da culinária com cursos práticos de gastronomia e confeitaria.</p>
+                                            <p>Transforme sua paixão por cozinhar em uma carreira! Em nosso curso de
+                                                Culinária, você irá explorar técnicas culinárias diversas, desde a
+                                                gastronomia clássica até a confeitaria moderna. Aprenda a criar pratos
+                                                incríveis e impressionar seus amigos e familiares, enquanto se prepara
+                                                para um mercado de trabalho vibrante e cheio de oportunidades!</p>
                                         </div>
                                     </div>
                                     <!-- Categoria: Inteligência Artificial -->
                                     <div class="col-md-6 col-sm-6">
                                         <div class="iq_professional_services">
                                             <span class="icon-ai">
-                                                <!-- Aqui você deve adicionar o SVG ou a classe do ícone de inteligência artificial -->
                                                 <i class="fas fa-robot"></i>
                                             </span>
                                             <h5><a href="#">Inteligência Artificial</a></h5>
-                                            <p>Descubra como a inteligência artificial pode transformar negócios e aprender sobre suas aplicações.</p>
+                                            <p>A inteligência artificial está moldando o futuro! Em nossos cursos, você
+                                                aprenderá sobre algoritmos, machine learning, e suas aplicações no mundo
+                                                real. Venha entender como a IA está transformando negócios e otimizando
+                                                processos, e posicione-se na vanguarda dessa revolução tecnológica com
+                                                um conhecimento prático e teórico!</p>
                                         </div>
                                     </div>
                                     <!-- Categoria: Decoração -->
                                     <div class="col-md-6 col-sm-6">
                                         <div class="iq_professional_services">
                                             <span class="icon-decoration">
-                                                <!-- Aqui você deve adicionar o SVG ou a classe do ícone de decoração -->
                                                 <i class="fas fa-paint-roller"></i>
                                             </span>
                                             <h5><a href="#">Decoração</a></h5>
-                                            <p>Desperte sua criatividade com cursos de design de interiores e decoração.</p>
+                                            <p>Desperte sua criatividade e crie ambientes inspiradores! Nosso curso de
+                                                Decoração oferece uma abordagem abrangente ao design de interiores,
+                                                incluindo teoria das cores, escolha de móveis e técnicas de arranjo.
+                                                Aprenda a transformar espaços comuns em verdadeiras obras de arte, e
+                                                abra as portas para uma carreira repleta de estilo e inovação!</p>
                                         </div>
                                     </div>
                                 </div>
@@ -417,339 +465,386 @@
                     <div class="iq_knowledge_des">
                         <!--Heading Wrap Start-->
                         <div class="iq_heading_1 text-left">
-                            <h4>Get The <span>Best knowledge</span><br>From Us</h4>
+                            <h4>Obtenha o <span>Melhor Conhecimento</span><br>Conosco</h4>
                         </div>
                         <!--Heading Wrap End-->
-                        <h5>Have the Courage to have Convictions</h5>
-                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                            Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
-                            nibh id elit</p>
-                        <a class="iq_link_1" href="#">Join Us</a>
+                        <h5>Tenha a Coragem de Acreditar no Seu Potencial</h5>
+                        <p>No Centro de Formação Profissional Santa Cruz, oferecemos mais que conhecimento:
+                            proporcionamos experiências práticas que transformam sua carreira. Deixe para trás as
+                            dúvidas e abrace as oportunidades de crescimento que nossos cursos oferecem.</p>
+                        <a class="iq_link_1" href="#">Junte-se a Nós</a>
                     </div>
                 </div>
-                <!--Best Knowledge Description Wrap Start-->
+                <!--Best Knowledge Description Wrap End-->
             </section>
+
             <!--Get Best Knowledge Wrap End-->
             <!--Our Featured Courses Wrap Start-->
             <section>
-                <!-- Heading Wrap Start -->
-                <div class="iq_heading_1 text-left">
-                    <h4>Estamos <span>Profissionais</span></h4>
-                    <p>Descubra nossas categorias de formação, onde cada uma é projetada para desenvolver habilidades essenciais para o mercado de trabalho e transformar sua carreira!</p>
+                <div class="container">
+                    <!--Heading Wrap Start-->
+                    <div class="iq_heading_1 text-center">
+                        <h4>Nossos <span>Cursos em Destaque</span></h4>
+                        <p>Explore nossa ampla variedade de cursos, cuidadosamente desenhados para capacitar você nas
+                            áreas mais procuradas pelo mercado. <br>Seja para aprimorar suas habilidades ou iniciar uma
+                            nova carreira, aqui você encontra o curso perfeito.</p>
+                    </div>
+                    <!--Heading Wrap End-->
+                    <!--Tab Menu Wrap Start-->
+                    <div class="iq_tab_menu">
+                        <ul id="tabs" data-tabs="tabs">
+                            <li class="active"><a data-toggle="tab" href="#featured">Destaques</a></li>
+                            <li><a data-toggle="tab" href="#popular">Popular</a></li>
+                        </ul>
+                    </div>
+                    <!--Tab Menu Wrap End-->
+                    <!--Tab Menu Detail Wrap Start-->
+                    <div id="my-tab-content" class="tab-content">
+                        <div class="row tab-pane active" id="featured">
+                            <!--Courses List Start-->
+                            <div class="col-md-4 col-sm-6">
+                                <div class="iq_course_list">
+                                    <figure>
+                                        <img src="{{ asset('Template User/extra-images/featured-course-1.jpg') }}"
+                                            alt="Curso de Informática e TI">
+                                    </figure>
+                                    <div class="iq_course_list_des">
+                                        <div class="iq_course_icon">
+                                            <span class="icon-student"></span>
+                                        </div>
+                                        <h5><a href="#">Cursos de Informática & TI</a></h5>
+                                        <p>Domine as tecnologias que estão moldando o futuro. Desde redes de
+                                            computadores até programação avançada, nossos cursos oferecem as habilidades
+                                            necessárias para se destacar no competitivo mercado de TI.</p>
+                                        <ul>
+                                            <li>
+                                                <div class="rating_down">
+                                                    <div class="rating_up" style="width:100%;"></div>
+                                                </div>
+                                            </li>
+                                            <li>101 Avali.</li>
+                                            <li><i class="fa fa-user"></i>3.1 mil</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Courses List End-->
+                            <!--Courses List Start-->
+                            <div class="col-md-4 col-sm-6">
+                                <div class="iq_course_list">
+                                    <figure>
+                                        <img src="{{ asset('Template User/extra-images/featured-course-02.jpg') }}"
+                                            alt="Curso de Negócios e Finanças">
+                                    </figure>
+                                    <div class="iq_course_list_des">
+                                        <div class="iq_course_icon">
+                                            <span class="icon-lecture"></span>
+                                        </div>
+                                        <h5><a href="#">Negócios & Finanças</a></h5>
+                                        <p>Desenvolva suas competências em gestão e finanças com nossos cursos que
+                                            preparam você para liderar com eficiência e tomar decisões estratégicas em
+                                            um ambiente corporativo dinâmico.</p>
+                                        <ul>
+                                            <li>
+                                                <div class="rating_down">
+                                                    <div class="rating_up" style="width:100%;"></div>
+                                                </div>
+                                            </li>
+                                            <li>101 Avali.</li>
+                                            <li><i class="fa fa-user"></i>3.1 mil</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Courses List End-->
+                            <!--Courses List Start-->
+                            <div class="col-md-4 hidden-sm">
+                                <div class="iq_course_list">
+                                    <figure>
+                                        <img src="{{ asset('Template User/extra-images/featured-course-03.jpg') }}"
+                                            alt="Curso de Ciências Sociais">
+                                    </figure>
+                                    <div class="iq_course_list_des">
+                                        <div class="iq_course_icon">
+                                            <span class="icon-molecule"></span>
+                                        </div>
+                                        <h5><a href="#">Ciências Sociais</a></h5>
+                                        <p>Entenda as complexidades da sociedade moderna com nossos cursos de ciências
+                                            sociais. Aprenda a analisar e propor soluções para os desafios sociais
+                                            contemporâneos.</p>
+                                        <ul>
+                                            <li>
+                                                <div class="rating_down">
+                                                    <div class="rating_up" style="width:100%;"></div>
+                                                </div>
+                                            </li>
+                                            <li>101 Avali.</li>
+                                            <li><i class="fa fa-user"></i>3.1 mil</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Courses List End-->
+                        </div>
+                        <div class="row tab-pane" id="popular">
+                            <!--Courses List Start-->
+                            <div class="col-md-4 col-sm-6">
+                                <div class="iq_course_list">
+                                    <figure>
+                                        <img src="{{ asset('Template User/extra-images/featured-course-01.jpg') }}"
+                                            alt="Curso de Neurociência">
+                                    </figure>
+                                    <div class="iq_course_list_des">
+                                        <div class="iq_course_icon">
+                                            <span class="icon-doctor-2"></span>
+                                        </div>
+                                        <h5><a href="#">Neurociência</a></h5>
+                                        <p>Explore as profundezas da mente humana com nossos cursos de neurociência.
+                                            Combinando teoria e prática, nossos programas são perfeitos para quem deseja
+                                            ingressar ou avançar na área médica e científica.</p>
+                                        <ul>
+                                            <li>
+                                                <div class="rating_down">
+                                                    <div class="rating_up" style="width:100%;"></div>
+                                                </div>
+                                            </li>
+                                            <li>101 Avali.</li>
+                                            <li><i class="fa fa-user"></i>3.1 mil</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Courses List End-->
+                            <!--Courses List Start-->
+                            <div class="col-md-4 col-sm-6">
+                                <div class="iq_course_list">
+                                    <figure>
+                                        <img src="{{ asset('Template User/extra-images/featured-course-02.jpg') }}"
+                                            alt="Curso de Política">
+                                    </figure>
+                                    <div class="iq_course_list_des">
+                                        <div class="iq_course_icon">
+                                            <span class="icon-debate"></span>
+                                        </div>
+                                        <h5><a href="#">Ciências Políticas</a></h5>
+                                        <p>Compreenda os sistemas políticos e participe ativamente nas mudanças sociais
+                                            com nossos cursos de ciências políticas. Uma formação indispensável para
+                                            quem quer atuar na esfera pública ou acadêmica.</p>
+                                        <ul>
+                                            <li>
+                                                <div class="rating_down">
+                                                    <div class="rating_up" style="width:100%;"></div>
+                                                </div>
+                                            </li>
+                                            <li>101 Avali.</li>
+                                            <li><i class="fa fa-user"></i>3.1 mil</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Courses List End-->
+                            <!--Courses List Start-->
+                            <div class="col-md-4 hidden-sm">
+                                <div class="iq_course_list">
+                                    <figure>
+                                        <img src="{{ asset('Template User/extra-images/featured-course-03.jpg') }}"
+                                            alt="Curso de Zoologia">
+                                    </figure>
+                                    <div class="iq_course_list_des">
+                                        <div class="iq_course_icon">
+                                            <span class="icon-medical-3"></span>
+                                        </div>
+                                        <h5><a href="#">Zoologia</a></h5>
+                                        <p>Se o seu interesse é a vida animal, nossos cursos de zoologia oferecem o
+                                            conhecimento necessário para compreender os diferentes ecossistemas e
+                                            contribuir para a conservação da biodiversidade.</p>
+                                        <ul>
+                                            <li>
+                                                <div class="rating_down">
+                                                    <div class="rating_up" style="width:100%;"></div>
+                                                </div>
+                                            </li>
+                                            <li>101 Avali.</li>
+                                            <li><i class="fa fa-user"></i>3.1 mil</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Courses List End-->
+                        </div>
+                    </div>
+                    <!--Tab Menu Detail Wrap End-->
                 </div>
-                <!-- Heading Wrap End -->
-                <div class="row">
-                    <!-- Categoria: Tecnologia -->
-                    <div class="col-md-6 col-sm-6">
-                        <div class="iq_professional_services">
-                            <span class="icon-technology">
-                                <i class="fas fa-laptop-code"></i>
-                            </span>
-                            <h5><a href="#">Tecnologia</a></h5>
-                            <p>Na era digital, as habilidades tecnológicas são mais importantes do que nunca. Nossos cursos de Tecnologia oferecem uma profunda imersão em programação, desenvolvimento web, e mais. Venha se preparar para o futuro e se tornar um profissional requisitado no mercado, aprendendo com instrutores experientes e projetos práticos!</p>
-                        </div>
-                    </div>
-                    <!-- Categoria: Culinária -->
-                    <div class="col-md-6 col-sm-6">
-                        <div class="iq_professional_services">
-                            <span class="icon-culinary">
-                                <i class="fas fa-utensils"></i>
-                            </span>
-                            <h5><a href="#">Culinária</a></h5>
-                            <p>Transforme sua paixão por cozinhar em uma carreira! Em nosso curso de Culinária, você irá explorar técnicas culinárias diversas, desde a gastronomia clássica até a confeitaria moderna. Aprenda a criar pratos incríveis e impressionar seus amigos e familiares, enquanto se prepara para um mercado de trabalho vibrante e cheio de oportunidades!</p>
-                        </div>
-                    </div>
-                    <!-- Categoria: Inteligência Artificial -->
-                    <div class="col-md-6 col-sm-6">
-                        <div class="iq_professional_services">
-                            <span class="icon-ai">
-                                <i class="fas fa-robot"></i>
-                            </span>
-                            <h5><a href="#">Inteligência Artificial</a></h5>
-                            <p>A inteligência artificial está moldando o futuro! Em nossos cursos, você aprenderá sobre algoritmos, machine learning, e suas aplicações no mundo real. Venha entender como a IA está transformando negócios e otimizando processos, e posicione-se na vanguarda dessa revolução tecnológica com um conhecimento prático e teórico!</p>
-                        </div>
-                    </div>
-                    <!-- Categoria: Decoração -->
-                    <div class="col-md-6 col-sm-6">
-                        <div class="iq_professional_services">
-                            <span class="icon-decoration">
-                                <i class="fas fa-paint-roller"></i>
-                            </span>
-                            <h5><a href="#">Decoração</a></h5>
-                            <p>Desperte sua criatividade e crie ambientes inspiradores! Nosso curso de Decoração oferece uma abordagem abrangente ao design de interiores, incluindo teoria das cores, escolha de móveis e técnicas de arranjo. Aprenda a transformar espaços comuns em verdadeiras obras de arte, e abra as portas para uma carreira repleta de estilo e inovação!</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Professional Services Wrap End -->
             </section>
-
 
             <!--Our Featured Courses Wrap End-->
             <!--Our Gallery Wrap Start-->
             <section class="iq_gallery_bg">
-                <!--Heading Wrap Start-->
+                <!-- Início da Seção de Cabeçalho -->
                 <div class="iq_heading_1 text-center">
-                    <h4>Our <span>Gallery</span></h4>
-                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
-                        sollicitudin,
-                        <br>lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.
+                    <h4>Nosso <span>Portfólio</span></h4>
+                    <p>Explore momentos marcantes e atividades realizadas no Centro de Formação Profissional Santa Cruz.
+                        <br>Descubra como formamos profissionais capacitados para o mercado de trabalho.
                     </p>
                 </div>
-                <!--Heading Wrap End-->
-                <!--Gallery Menu Wrap Start-->
+                <!-- Fim da Seção de Cabeçalho -->
+
+                <!-- Início do Menu de Categorias da Galeria -->
                 <div id="filters" class="iq_gallery_menu">
                     <ul id="filterable-item-filter-1">
-                        <li><a class="active" data-value="all">All</a></li>
-                        <li><a data-value="1">Accounting</a></li>
-                        <li><a data-value="2">Economics</a></li>
-                        <li><a data-value="3">Finance</a></li>
-                        <li><a data-value="4">Technologies</a></li>
-                        <li><a data-value="5">Management</a></li>
+                        <li><a class="active" data-value="all">Todas</a></li>
+                        <li><a data-value="1">Contabilidade</a></li>
+                        <li><a data-value="2">Economia</a></li>
+                        <li><a data-value="3">Finanças</a></li>
+                        <li><a data-value="4">Tecnologias</a></li>
+                        <li><a data-value="5">Gestão</a></li>
                     </ul>
                 </div>
-                <!--Gallery Menu Wrap End-->
+                <!-- Fim do Menu de Categorias da Galeria -->
+
                 <div id="filterable-item-holder-1" class="filterable_container main-gallery">
-                    <!--Gallery List Wrap Start-->
+                    <!-- Início da Lista de Itens da Galeria -->
                     <div class="col-md-4 col-sm-6 filterable-item all 1 2 3">
                         <div class="thumb">
                             <figure>
-                                <img src="{{ asset('Template User/extra-images/gallery-01.jpg') }}" alt="Image Here">
+                                <img src="{{ asset('Template User/extra-images/gallery-01.jpg') }}" alt="Imagem">
                                 <figcaption class="overlay1">
                                     <div class="link-wrapper">
                                         <a href="#"><i class="fa fa-search"></i></a>
                                         <a href="#"><i class="fa fa-link"></i></a>
-                                        <h6>Lorem Ipsum</h6>
+                                        <h6>Curso de Contabilidade</h6>
                                     </div>
                                 </figcaption>
                             </figure>
                         </div>
                     </div>
-                    <!--Gallery List Wrap End-->
-                    <!--Gallery List Wrap Start-->
-                    <div class="col-md-4 col-sm-6 filterable-item all 1  5">
+                    <!-- Fim da Lista de Itens da Galeria -->
+
+                    <!-- Início da Lista de Itens da Galeria -->
+                    <div class="col-md-4 col-sm-6 filterable-item all 1 5">
                         <div class="thumb">
                             <figure>
-                                <img src="{{ asset('Template User/extra-images/gallery-02.jpg') }}" alt="Image Here">
+                                <img src="{{ asset('Template User/extra-images/gallery-02.jpg') }}" alt="Imagem">
                                 <figcaption class="overlay1">
                                     <div class="link-wrapper">
                                         <a href="#"><i class="fa fa-search"></i></a>
                                         <a href="#"><i class="fa fa-link"></i></a>
-                                        <h6>Lorem Ipsum</h6>
+                                        <h6>Curso de Gestão</h6>
                                     </div>
                                 </figcaption>
                             </figure>
                         </div>
                     </div>
-                    <!--Gallery List Wrap End-->
-                    <!--Gallery List Wrap Start-->
-                    <div class="col-md-4 col-sm-6 filterable-item all 1 2 5">
+                    <!-- Fim da Lista de Itens da Galeria -->
+
+                    <!-- Início da Lista de Itens da Galeria -->
+                    <div class="col-md-4 col-sm-6 filterable-item all 2 4">
                         <div class="thumb">
                             <figure>
-                                <img src="{{ asset('Template User/extra-images/gallery-03.jpg') }}" alt="Image Here">
+                                <img src="{{ asset('Template User/extra-images/gallery-03.jpg') }}" alt="Imagem">
                                 <figcaption class="overlay1">
                                     <div class="link-wrapper">
                                         <a href="#"><i class="fa fa-search"></i></a>
                                         <a href="#"><i class="fa fa-link"></i></a>
-                                        <h6>Lorem Ipsum</h6>
+                                        <h6>Workshop de Tecnologia</h6>
                                     </div>
                                 </figcaption>
                             </figure>
                         </div>
                     </div>
-                    <!--Gallery List Wrap End-->
-                    <!--Gallery List Wrap Start-->
-                    <div class="col-md-4 col-sm-6 filterable-item all  2 4">
-                        <div class="thumb">
-                            <figure>
-                                <img src="{{ asset('Template User/extra-images/gallery-04.jpg') }}" alt="Image Here">
-                                <figcaption class="overlay1">
-                                    <div class="link-wrapper">
-                                        <a href="#"><i class="fa fa-search"></i></a>
-                                        <a href="#"><i class="fa fa-link"></i></a>
-                                        <h6>Lorem Ipsum</h6>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                    <!--Gallery List Wrap End-->
-                    <!--Gallery List Wrap Start-->
-                    <div class="col-md-4 col-sm-6 filterable-item all 1 2">
-                        <div class="thumb">
-                            <figure>
-                                <img src="{{ asset('Template User/extra-images/gallery-05.jpg') }}" alt="Image Here">
-                                <figcaption class="overlay1">
-                                    <div class="link-wrapper">
-                                        <a href="#"><i class="fa fa-search"></i></a>
-                                        <a href="#"><i class="fa fa-link"></i></a>
-                                        <h6>Lorem Ipsum</h6>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                    <!--Gallery List Wrap End-->
-                    <!--Gallery List Wrap Start-->
-                    <div class="col-md-4 col-sm-6 filterable-item all 1 3">
-                        <div class="thumb">
-                            <figure>
-                                <img src="{{ asset('Template User/extra-images/gallery-06.jpg') }}" alt="Image Here">
-                                <figcaption class="overlay1">
-                                    <div class="link-wrapper">
-                                        <a href="#"><i class="fa fa-search"></i></a>
-                                        <a href="#"><i class="fa fa-link"></i></a>
-                                        <h6>Lorem Ipsum</h6>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                    <!--Gallery List Wrap End-->
+                    <!-- Fim da Lista de Itens da Galeria -->
                 </div>
+
                 <div class="load-more">
-                    <a class="iq_link_1" href="#">LOAD MORE</a>
+                    <a class="iq_link_1" href="#">CARREGAR MAIS</a>
                 </div>
             </section>
+
             <!--Our Gallery Wrap End-->
             <!--UpComming Event Wrap Start-->
             <section class="iq_upcomming_bg">
                 <div class="container">
-                    <!--Heading Wrap Start-->
+                    <!-- Início da Seção de Cabeçalho -->
                     <div class="iq_heading_1 text-center">
-                        <h4>Up Coming <span>Events</span></h4>
-                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                            Aenean sollicitudin,
-                            <br>lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.
-                        </p>
+                        <h4>Próximos <span>Eventos</span></h4>
+                        <p>Fique por dentro dos eventos e atividades que acontecerão no Centro de Formação Profissional
+                            Santa Cruz. <br> Participe e amplie seu conhecimento!</p>
                     </div>
-                    <!--Heading Wrap End-->
-                    <!--Upcomming List Wrap Start-->
+                    <!-- Fim da Seção de Cabeçalho -->
+
+                    <!-- Início da Lista de Próximos Eventos -->
                     <div class="row">
-                        <!--UpComming Event Start-->
+                        <!-- Evento Start -->
                         <div class="col-md-3 col-sm-6">
                             <div class="iq_upcomming_event">
                                 <figure>
                                     <img src="{{ asset('Template User/extra-images/upcomming-event-01.jpg') }}"
-                                        alt="Image Here">
+                                        alt="Imagem do Evento">
                                 </figure>
                                 <div class="iq_upcomming_des">
-                                    <span>21 aug</span>
-                                    <p>10:00 am</p>
-                                    <h5><a href="#">Join us on the day of event</a></h5>
+                                    <span>21 ago</span>
+                                    <p>10:00 AM</p>
+                                    <h5><a href="#">Participe no nosso evento especial</a></h5>
                                 </div>
                             </div>
                         </div>
-                        <!--UpComming Event End-->
-                        <!--UpComming Event Start-->
+                        <!-- Evento End -->
+
+                        <!-- Evento Start -->
                         <div class="col-md-3 col-sm-6">
                             <div class="iq_upcomming_event">
                                 <figure>
                                     <img src="{{ asset('Template User/extra-images/upcomming-event-02.jpg') }}"
-                                        alt="Image Here">
+                                        alt="Imagem do Evento">
                                 </figure>
                                 <div class="iq_upcomming_des">
-                                    <span>21 aug</span>
-                                    <p>10:00 am</p>
-                                    <h5><a href="#">Join us on the day of event</a></h5>
+                                    <span>21 ago</span>
+                                    <p>10:00 AM</p>
+                                    <h5><a href="#">Participe no nosso evento especial</a></h5>
                                 </div>
                             </div>
                         </div>
-                        <!--UpComming Event End-->
-                        <!--UpComming Event Start-->
+                        <!-- Evento End -->
+
+                        <!-- Evento Start -->
                         <div class="col-md-3 col-sm-6">
                             <div class="iq_upcomming_event">
                                 <figure>
                                     <img src="{{ asset('Template User/extra-images/upcomming-event-03.jpg') }}"
-                                        alt="Image Here">
+                                        alt="Imagem do Evento">
                                 </figure>
                                 <div class="iq_upcomming_des">
-                                    <span>21 aug</span>
-                                    <p>10:00 am</p>
-                                    <h5><a href="#">Join us on the day of event</a></h5>
+                                    <span>21 ago</span>
+                                    <p>10:00 AM</p>
+                                    <h5><a href="#">Participe no nosso evento especial</a></h5>
                                 </div>
                             </div>
                         </div>
-                        <!--UpComming Event End-->
-                        <!--UpComming Event Start-->
+                        <!-- Evento End -->
+
+                        <!-- Evento Start -->
                         <div class="col-md-3 col-sm-6">
                             <div class="iq_upcomming_event">
                                 <figure>
                                     <img src="{{ asset('Template User/extra-images/upcomming-event-04.jpg') }}"
-                                        alt="Image Here">
+                                        alt="Imagem do Evento">
                                 </figure>
                                 <div class="iq_upcomming_des">
-                                    <span>21 aug</span>
-                                    <p>10:00 am</p>
-                                    <h5><a href="#">Join us on the day of event</a></h5>
+                                    <span>21 ago</span>
+                                    <p>10:00 AM</p>
+                                    <h5><a href="#">Participe no nosso evento especial</a></h5>
                                 </div>
                             </div>
                         </div>
-                        <!--UpComming Event End-->
-                        <!--UpComming Event Start-->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="iq_upcomming_event">
-                                <figure>
-                                    <img src="{{ asset('Template User/extra-images/upcomming-event-05.jpg') }}"
-                                        alt="Image Here">
-                                </figure>
-                                <div class="iq_upcomming_des">
-                                    <span>21 aug</span>
-                                    <p>10:00 am</p>
-                                    <h5><a href="#">Join us on the day of event</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <!--UpComming Event End-->
-                        <!--UpComming Event Start-->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="iq_upcomming_event">
-                                <figure>
-                                    <img src="{{ asset('Template User/extra-images/upcomming-event-06.jpg') }}"
-                                        alt="Image Here">
-                                </figure>
-                                <div class="iq_upcomming_des">
-                                    <span>21 aug</span>
-                                    <p>10:00 am</p>
-                                    <h5><a href="#">Join us on the day of event</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <!--UpComming Event End-->
-                        <!--UpComming Event Start-->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="iq_upcomming_event">
-                                <figure>
-                                    <img src="{{ asset('Template User/extra-images/upcomming-event-07.jpg') }}"
-                                        alt="Image Here">
-                                </figure>
-                                <div class="iq_upcomming_des">
-                                    <span>21 aug</span>
-                                    <p>10:00 am</p>
-                                    <h5><a href="#">Join us on the day of event</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <!--UpComming Event End-->
-                        <!--UpComming Event Start-->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="iq_upcomming_event">
-                                <figure>
-                                    <img src="{{ asset('Template User/extra-images/upcomming-event-08.jpg') }}"
-                                        alt="Image Here">
-                                </figure>
-                                <div class="iq_upcomming_des">
-                                    <span>21 aug</span>
-                                    <p>10:00 am</p>
-                                    <h5><a href="#">Join us on the day of event</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <!--UpComming Event End-->
+                        <!-- Evento End -->
+
+                        <!-- Mais eventos podem ser adicionados aqui... -->
+
                     </div>
-                    <!--Upcomming List Wrap End-->
+                    <!-- Fim da Lista de Próximos Eventos -->
                 </div>
             </section>
-            <!--UpComming Event Wrap End-->
+
             <!--Number Counter Wrap Start-->
             <section class="iq_number_count_bg">
                 <div class="container">
@@ -861,28 +956,28 @@
             <!--Our Teacher Wrap Start-->
             <section>
                 <div class="container">
-                    <!--Heading Wrap Start-->
+                    <!-- Cabeçalho da Seção -->
                     <div class="iq_heading_1 text-center">
-                        <h4>Our <span>Teachers</span></h4>
-                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                            Aenean sollicitudin, </p>
-                        <p>lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+                        <h4>Nossos <span>Formadores</span></h4>
+                        <p>Conheça os nossos formadores altamente qualificados que estão aqui para guiá-lo <br>na sua
+                            jornada de aprendizado no Centro de Formação Profissional Santa Cruz.</p>
                     </div>
-                    <!--Heading Wrap End-->
-                    <!--Teacher Wrap List Start-->
+                    <!-- Fim do Cabeçalho da Seção -->
+
+                    <!-- Lista de Formadores -->
                     <div class="row">
-                        <!--Teacher Thumb Start-->
+                        <!-- Formador 1 -->
                         <div class="col-md-4 col-sm-6">
                             <div class="iq_teacher_style_1">
                                 <figure>
                                     <img src="{{ asset('Template User/extra-images/teacher-01.jpg') }}"
-                                        alt="Image Here">
+                                        alt="Imagem do Formador">
                                 </figure>
                                 <div class="text">
-                                    <h4><a href="#">Anna Doe</a></h4>
-                                    <h6>Language Instructor</h6>
-                                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor
-                                        aliquet. Aenean sollicitudinris.</p>
+                                    <h4><a href="#">Ana Santos</a></h4>
+                                    <h6>Instrutora de Línguas</h6>
+                                    <p>A Ana é especializada no ensino de idiomas com uma vasta experiência em técnicas
+                                        de aprendizagem inovadoras e eficazes.</p>
                                     <ul class="iq_footer_social">
                                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -892,15 +987,16 @@
                                 </div>
                             </div>
                         </div>
-                        <!--Teacher Thumb End-->
-                        <!--Teacher Thumb Start-->
+                        <!-- Fim do Formador 1 -->
+
+                        <!-- Formador 2 -->
                         <div class="col-md-4 col-sm-6">
                             <div class="iq_teacher_style_1">
                                 <div class="text">
-                                    <h4><a href="#">John Doe</a></h4>
-                                    <h6>Vice President</h6>
-                                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor
-                                        aliquet. Aenean sollicitudinris.</p>
+                                    <h4><a href="#">João Pereira</a></h4>
+                                    <h6>Vice-Diretor</h6>
+                                    <p>João é responsável pela gestão de cursos e tem mais de 10 anos de experiência na
+                                        administração de centros de formação.</p>
                                     <ul class="iq_footer_social">
                                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -910,23 +1006,24 @@
                                 </div>
                                 <figure>
                                     <img src="{{ asset('Template User/extra-images/teacher-02.jpg') }}"
-                                        alt="Image Here">
+                                        alt="Imagem do Formador">
                                 </figure>
                             </div>
                         </div>
-                        <!--Teacher Thumb End-->
-                        <!--Teacher Thumb Start-->
+                        <!-- Fim do Formador 2 -->
+
+                        <!-- Formador 3 -->
                         <div class="col-md-4 hidden-sm">
                             <div class="iq_teacher_style_1">
                                 <figure>
                                     <img src="{{ asset('Template User/extra-images/teacher-03.jpg') }}"
-                                        alt="Image Here">
+                                        alt="Imagem do Formador">
                                 </figure>
                                 <div class="text">
-                                    <h4><a href="#">Sara Adward</a></h4>
-                                    <h6>Manager</h6>
-                                    <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor
-                                        aliquet. Aenean sollicitudinris.</p>
+                                    <h4><a href="#">Sara Antunes</a></h4>
+                                    <h6>Coordenadora de Cursos</h6>
+                                    <p>Sara é a nossa coordenadora, com um grande histórico em desenvolver programas
+                                        educacionais que atendem às necessidades do mercado.</p>
                                     <ul class="iq_footer_social">
                                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -936,119 +1033,98 @@
                                 </div>
                             </div>
                         </div>
-                        <!--Teacher Thumb End-->
+                        <!-- Fim do Formador 3 -->
                     </div>
-                    <!--Teacher Wrap List End-->
+                    <!-- Fim da Lista de Formadores -->
                 </div>
             </section>
+
             <!--Our Teacher Wrap End-->
             <!--Our Blog Slider Start-->
             <section class="center-slider-wrap">
                 <div class="container">
-                    <!--Heading 1 Start-->
+                    <!-- Cabeçalho da Seção -->
                     <div class="iq_heading_1 text-center">
-                        <h4>Latest From <span> Our Blog</span></h4>
-                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                            Aenean sollicitudin,
-                            <br>lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.
-                        </p>
+                        <h4>Últimas do <span>Nosso Blog</span></h4>
+                        <p>Fique por dentro das últimas novidades, eventos e dicas importantes compartilhadas pelos
+                            nossos formadores e especialistas.</p>
                     </div>
-                    <!--Heading 1 End-->
-                    <!--Slider Strat Start-->
+                    <!-- Fim do Cabeçalho da Seção -->
 
+                    <!-- Início do Slider de Blogs -->
                     <div class="blog-slider">
                         <div class="col-md-4 col-sm-6">
-                            <!--Center Dec Start-->
+                            <!-- Blog Post Início -->
                             <div class="center-dec">
                                 <figure>
                                     <img src="{{ asset('Template User/extra-images/center-img.jpg') }}"
-                                        alt="">
+                                        alt="Imagem do Post">
                                 </figure>
                                 <div class="text">
-                                    <h5><a href="#">Sed ut perspiciatis unde omnis iste natus error sit</a></h5>
-                                    <p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.
-                                        Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
+                                    <h5><a href="#">Técnicas de Estudo Eficientes para Aprendizagem Rápida</a>
+                                    </h5>
+                                    <p>Descubra como aprimorar seus métodos de estudo para aproveitar ao máximo seu
+                                        tempo e alcançar seus objetivos de formação.</p>
                                     <div class="text-footer pull-left">
                                         <a href="#"><i class="fa fa-pencil"></i></a>
                                         <a href="#"><i class="fa fa-comments-o"></i></a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="iq_link_1">Read More</a>
+                                        <a href="#" class="iq_link_1">Leia Mais</a>
                                     </div>
                                 </div>
                             </div>
-                            <!--Center Dec End-->
+                            <!-- Blog Post Fim -->
                         </div>
                         <div class="col-md-4 col-sm-6">
-                            <!--Center Dec Start-->
+                            <!-- Blog Post Início -->
                             <div class="center-dec">
                                 <figure>
                                     <img src="{{ asset('Template User/extra-images/center-img2.jpg') }}"
-                                        alt="">
+                                        alt="Imagem do Post">
                                 </figure>
                                 <div class="text">
-                                    <h5><a href="#">Sed ut perspiciatis unde omnis iste natus error sit</a></h5>
-                                    <p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.
-                                        Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
+                                    <h5><a href="#">O Impacto da Tecnologia no Mercado de Trabalho</a></h5>
+                                    <p>Veja como a evolução tecnológica está transformando o cenário profissional e como
+                                        se preparar para essas mudanças.</p>
                                     <div class="text-footer pull-left">
                                         <a href="#"><i class="fa fa-pencil"></i></a>
                                         <a href="#"><i class="fa fa-comments-o"></i></a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="iq_link_1">Read More</a>
+                                        <a href="#" class="iq_link_1">Leia Mais</a>
                                     </div>
                                 </div>
                             </div>
-                            <!--Center Dec End-->
+                            <!-- Blog Post Fim -->
                         </div>
                         <div class="col-md-4 col-sm-6">
-                            <!--Center Dec Start-->
+                            <!-- Blog Post Início -->
                             <div class="center-dec">
                                 <figure>
                                     <img src="{{ asset('Template User/extra-images/center-img3.jpg') }}"
-                                        alt="">
+                                        alt="Imagem do Post">
                                 </figure>
                                 <div class="text">
-                                    <h5><a href="#">Sed ut perspiciatis unde omnis iste natus error sit</a></h5>
-                                    <p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.
-                                        Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
+                                    <h5><a href="#">Dicas para Melhorar sua Comunicação Profissional</a></h5>
+                                    <p>Saiba como aprimorar suas habilidades de comunicação para se destacar no ambiente
+                                        de trabalho e nas entrevistas.</p>
                                     <div class="text-footer pull-left">
                                         <a href="#"><i class="fa fa-pencil"></i></a>
                                         <a href="#"><i class="fa fa-comments-o"></i></a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="iq_link_1">Read More</a>
+                                        <a href="#" class="iq_link_1">Leia Mais</a>
                                     </div>
                                 </div>
                             </div>
-                            <!--Center Dec End-->
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <!--Center Dec Start-->
-                            <div class="center-dec">
-                                <figure>
-                                    <img src="{{ asset('Template User/extra-images/center-img.jpg') }}"
-                                        alt="">
-                                </figure>
-                                <div class="text">
-                                    <h5><a href="#">Sed ut perspiciatis unde omnis iste natus error sit</a></h5>
-                                    <p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.
-                                        Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
-                                    <div class="text-footer pull-left">
-                                        <a href="#"><i class="fa fa-pencil"></i></a>
-                                        <a href="#"><i class="fa fa-comments-o"></i></a>
-                                    </div>
-                                    <div class="pull-right">
-                                        <a href="#" class="iq_link_1">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Center Dec End-->
+                            <!-- Blog Post Fim -->
                         </div>
                     </div>
-                    <!--Slider Strat Start-->
+                    <!-- Fim do Slider de Blogs -->
                 </div>
             </section>
+
             <!--Our Blog Slider End-->
 
             <!--Testimonial Slider Wrap Start-->
@@ -1127,167 +1203,7 @@
             <!--Testimonial Slider Wrap End-->
         </div>
         <!--Iqoniq Content End-->
-        <!--Contact Info Wrap Start-->
-        <div class="iq_contact_info">
-            <div class="container">
-                <ul>
-                    <li>
-                        <i class="fa fa-map-marker"></i>
-                        <div class="iq_info_wrap">
-                            <h5>University Address</h5>
-                            <p>Abc Street , new town <span>Sydney</span></p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa fa-phone"></i>
-                        <div class="iq_info_wrap">
-                            <h5>Contact Number</h5>
-                            <span>+ (0) 123 456 7891</span>
-                            <span>+ (0) 123 456 7891</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa fa-phone"></i>
-                        <div class="iq_info_wrap">
-                            <h5>Email;</h5>
-                            <a href="mailto:Info@info.com">Info@info.com</a>
-                            <a href="mailto:Support@support.com">Support@support.com</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!--Contact Info Wrap End-->
-        <!--Footer Wrap Start-->
-        <footer class="iq_footer_bg">
-            <div class="container">
-                <div class="row">
-                    <!--Widget About Start-->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="iq_uni_title">
-                            <!--Widget Title Start-->
-                            <h4>university of <span>education</span></h4>
-                            <!--Widget Title End-->
-                            <p>Lorem ipsum dolor sit amet elit, sed do eiusmod tempor incididunt ut labore et dolore .
-                            </p>
-                            <ul>
-                                <li><span>Moday - Friday</span> 08:00- 05:00</li>
-                                <li><span>Saturday</span> Closed</li>
-                                <li><span>Sunday</span> Closed</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--Widget About End-->
-                    <!--Widget Archive Start-->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="widget widget_archive">
-                            <!--Widget Title Start-->
-                            <h5 class="widget-title"><span>Our</span> Services</h5>
-                            <!--Widget Title End-->
-                            <!--Social Media Start-->
-                            <ul>
-                                <li>
-                                    <a href="#">Safety & Risk Management</a>
-                                </li>
-                                <li>
-                                    <a href="#">Facilities Services</a>
-                                </li>
-                                <li>
-                                    <a href="#">University Police</a>
-                                </li>
-                                <li>
-                                    <a href="#">Campus Planning</a>
-                                </li>
-                                <li>
-                                    <a href="#">Mail Services</a>
-                                </li>
-                                <li>
-                                    <a href="#">Facilities IT</a>
-                                </li>
-                            </ul>
-                            <!--Social Media End-->
-                        </div>
-                    </div>
-                    <!--Widget Archive End-->
-                    <!--Widget Flickr Start-->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="widget widget-flickr">
-                            <!-- Widget Title Start-->
-                            <h5 class="widget-title"><span>Our</span> Photo</h5>
-                            <!-- Widget Title End-->
-                            <div class="flickr-wrap">
-                                <a class="flickrbadges" href="#"><img
-                                        src="{{ asset('Template User/extra-images/flickr1.jpg') }}"
-                                        alt=""></a>
-                                <a class="flickrbadges" href="#"><img
-                                        src="{{ asset('Template User/extra-images/flickr2.jpg') }}"
-                                        alt=""></a>
-                                <a class="flickrbadges" href="#"><img
-                                        src="{{ asset('Template User/extra-images/flickr3.jpg') }}"
-                                        alt=""></a>
-                                <a class="flickrbadges" href="#"><img
-                                        src="{{ asset('Template User/extra-images/flickr4.jpg') }}"
-                                        alt=""></a>
-                                <a class="flickrbadges" href="#"><img
-                                        src="{{ asset('Template User/extra-images/flickr5.jpg') }}"
-                                        alt=""></a>
-                                <a class="flickrbadges" href="#"><img
-                                        src="{{ asset('Template User/extra-images/flickr6.jpg') }}"
-                                        alt=""></a>
-                                <a class="flickrbadges" href="#"><img
-                                        src="{{ asset('Template User/extra-images/flickr4.jpg') }}"
-                                        alt=""></a>
-                                <a class="flickrbadges" href="#"><img
-                                        src="{{ asset('Template User/extra-images/flickr5.jpg') }}"
-                                        alt=""></a>
-                                <a class="flickrbadges" href="#"><img
-                                        src="{{ asset('Template User/extra-images/flickr6.jpg') }}"
-                                        alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Widget Flickr End-->
-                    <!--Widget News Letter Start-->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="widget iq_footer_newsletter">
-                            <!--Widget Title Start-->
-                            <h5 class="widget-title"><span>Our</span> Newsletter</h5>
-                            <!--Widget Title End-->
-                            <p>Lorem ipsum dolor sit amet elit, sed do eiusmod tempor incididunt ut labore et dolore .
-                            </p>
-                            <form class="iq-input">
-                                <input placeholder="Search ..." type="text">
-                                <label class="iq-input-icon"><input type="submit"></label>
-                            </form>
-                            <!--Widget Title Start-->
-                            <h5 class="widget-title border-none"><span>Our</span> Connected</h5>
-                            <!--Widget Title Start-->
-                            <ul class="iq_footer_social">
-                                <li>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--Widget News Letter End-->
-                </div>
-            </div>
-        </footer>
-        <!--Footer Wrap End-->
-        <!--Copy Right Start-->
-        <div class="footer_strip">
-            <h5><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></h5>
-        </div>
-        <!--Copy Right End-->
+        @include('layouts user/footer')
         <!-- Modal -->
         <div class="modal fade" id="search-box" role="dialog">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -1350,20 +1266,18 @@
         </div>
     </div>
     <!--iqoniq Wrapper End-->
-    <!--Javascript Library-->
+
+    {{-- pendente --}}
+    <script src="{{ asset('Template admin/assets/js/app.min.js') }}"></script>
+    <script src="{{ asset('Template admin/assets/js/scripts.js') }}"></script>
+
     <script src="{{ asset('Template User/js/jquery.js') }}"></script>
-    <!--Bootstrap core JavaScript-->
     <script src="{{ asset('Template User/js/bootstrap.min.js') }}"></script>
-    <!--SLICK SLIDER JavaScript-->
     <script src="{{ asset('Template User/js/slick.min.js') }}"></script>
-    <!--Dl Menu Script-->
     <script src="{{ asset('Template User/js/dl-menu/modernizr.custom.js') }}"></script>
     <script src="{{ asset('Template User/js/dl-menu/jquery.dlmenu.js') }}"></script>
-    <!--Pretty Photo JavaScript-->
     <script src="{{ asset('Template User/js/jquery.prettyPhoto.js') }}"></script>
-    <!--Image Filterable JavaScript-->
     <script src="{{ asset('Template User/js/jquery-filterable.js') }}"></script>
-    <!--Number Count (Waypoints) JavaScript-->
     <script src="{{ asset('Template User/js/waypoints-min.js') }}"></script>
     <!--Custom JavaScript-->
 
@@ -1377,6 +1291,7 @@
     <script src="{{ asset('Template User/js/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('Template User/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('Template User/js/custom.js') }}"></script>
+
 
     <script>
         $(document).ready(function() {
