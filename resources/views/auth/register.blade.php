@@ -35,7 +35,7 @@
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf
                                     <div class="row">
-                                        <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="form-group col-12 col-sm-6 col-md-4 col-lg-6">
                                             <label for="name">Nome de Utilizador</label>
                                             <input id="name" type="text"
                                                 class="form-control @error('name') is-invalid @enderror" name="name"
@@ -46,7 +46,7 @@
                                                 </div>
                                             @enderror
                                         </div>
-                                        <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="form-group col-12 col-sm-6 col-md-4 col-lg-6">
                                             <label for="email">Email</label>
                                             <input id="email" type="email"
                                                 class="form-control @error('email') is-invalid @enderror"
@@ -59,7 +59,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="form-group col-12 col-sm-6 col-md-4 col-lg-6">
                                             <label for="password" class="d-block">Palavra Passe</label>
                                             <input id="password" type="password"
                                                 class="form-control pwstrength @error('password') is-invalid @enderror"
@@ -74,7 +74,7 @@
                                                 </div>
                                             @enderror
                                         </div>
-                                        <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="form-group col-12 col-sm-6 col-md-4 col-lg-6">
                                             <label for="password_confirmation" class="d-block">Confirmar Palavra
                                                 Passe</label>
                                             <input id="password_confirmation" type="password"

@@ -6,8 +6,10 @@ use App\Models\Categoria\Categoria;
 use App\Models\Curso\Curso;
 use App\Http\Requests\StoreCursoRequest;
 use App\Http\Requests\UpdateCursoRequest;
+use App\Mail\EnviarEmail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 use function PHPUnit\Framework\isNull;
 
@@ -18,8 +20,21 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $cursos = Curso::orderBy('nome')->get();
-        return view('admin.Curso.index', compact('cursos'));
+        $mensagem = "ola como estas";
+        $subt = "email de teste";
+        $resp = Mail::to('inforge68@gmail.com')->send(new EnviarEmail($mensagem, $subt));
+        dd($resp);
+        // $mensagem = "ola como estas";
+        // $subt = "email de teste";
+
+        // try {
+        //     Mail::to('inforge68@gmail.com')->send(new EnviarEmail($mensagem, $subt));
+        //     return "E-mail enviado com sucesso!";
+        // } catch (\Exception $e) {
+        //     return "Falha ao enviar o e-mail: " . $e->getMessage();
+        // }
+        // $cursos = Curso::orderBy('nome')->get();
+        // return view('admin.Curso.index', compact('cursos'));
     }
 
     /**

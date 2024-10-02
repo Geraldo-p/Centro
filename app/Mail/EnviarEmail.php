@@ -16,9 +16,11 @@ class EnviarEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public $mensagem, $subt;
+    public function __construct($mensagem, $subt)
     {
-        //
+        $this->mensagem = $mensagem;
+        $this->subt = $subt;
     }
 
     /**
@@ -27,7 +29,7 @@ class EnviarEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Enviar Email',
+            subject: $this->subt,
         );
     }
 
@@ -37,7 +39,7 @@ class EnviarEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'admin.email_conteudo',
         );
     }
 

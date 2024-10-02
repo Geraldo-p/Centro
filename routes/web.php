@@ -15,12 +15,52 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SalaController;
 use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\TurmaFormandoController;
+use App\Mail\EnviarEmail;
+use Illuminate\Contracts\Mail\Mailer;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
         return view('layouts user/index');
     });
+});
+
+Route::get('/sobre', function () {
+    return view('layouts user/sobre');
+});
+
+Route::get('/curso', function () {
+    return view('layouts user/Cursos/cursos');
+});
+
+Route::get('/show', function () {
+    return view('layouts user/Cursos/show');
+});
+
+
+Route::get('/blog', function () {
+    return view('layouts user/Blog/blog');
+});
+
+
+Route::get('/blog-detalhes', function () {
+    return view('layouts user/Blog/show');
+});
+
+Route::get('/evento', function () {
+    return view('layouts user/Evento/evento');
+});
+
+Route::get('/evento-detalhe', function () {
+    return view('layouts user/Evento/show');
+});
+
+Route::get('/equipe', function () {
+    return view('layouts user/Equipe/equipe');
+});
+Route::get('/equipe-detalhes', function () {
+    return view('layouts user/Equipe/show');
 });
 
 
