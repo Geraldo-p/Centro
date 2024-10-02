@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EnviarEmail;
 use App\Models\Funcionario\Funcionario;
 use App\Http\Requests\StoreFuncionarioRequest;
 use App\Http\Requests\UpdateFuncionarioRequest;
@@ -13,6 +14,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class FuncionarioController extends Controller
 {
@@ -51,12 +53,22 @@ class FuncionarioController extends Controller
         try {
             $faker = \Faker\Factory::create();
 
-            // depois de criar mandar as credenciais por email - resolver isso depois
+            $senha = $faker->password(5, 10);
+            $nome = $faker->regexify('[A-Za-z0-9]{5}');
+            try {
+
+                $mensagem = "CREDENCIAIS DE ACESSO";
+                $subt = "Utilizador: " + $nome + "/nPalavra-Passe: " + $senha;
+                Mail::to($request->email)->send(new EnviarEmail($mensagem, $subt));
+            } catch (\Throwable $th) {
+                //comentar o return se nao tiver internet
+                return back()->with('erro', 'Ocorreu um problema ao tentar adicionar o Formando. Por favor, tente novamente.');
+            }
             $user = User::create([
-                'name' => $faker->name,
+                'name' => $nome,
                 'email' => $request->email,
-                'password' => Hash::make($faker->password),
-                'nivel_acesso' => $request->cargo
+                'password' => Hash::make($senha),
+                'nivel_acesso' => 'Formador'
             ]);
 
             $image_name = null;
@@ -99,7 +111,7 @@ class FuncionarioController extends Controller
     /**
      * Exibe o recurso especificado.
      */
-    
+
     public function show(funcionario $funcionario)
     {
         return view('admin.Funcionario.show', compact('funcionario'));

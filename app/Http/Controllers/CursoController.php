@@ -20,21 +20,8 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $mensagem = "ola como estas";
-        $subt = "email de teste";
-        $resp = Mail::to('inforge68@gmail.com')->send(new EnviarEmail($mensagem, $subt));
-        dd($resp);
-        // $mensagem = "ola como estas";
-        // $subt = "email de teste";
-
-        // try {
-        //     Mail::to('inforge68@gmail.com')->send(new EnviarEmail($mensagem, $subt));
-        //     return "E-mail enviado com sucesso!";
-        // } catch (\Exception $e) {
-        //     return "Falha ao enviar o e-mail: " . $e->getMessage();
-        // }
-        // $cursos = Curso::orderBy('nome')->get();
-        // return view('admin.Curso.index', compact('cursos'));
+        $cursos = Curso::orderBy('nome')->get();
+        return view('admin.Curso.index', compact('cursos'));
     }
 
     /**

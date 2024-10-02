@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Categoria\Categoria;
 use App\Models\Departamento\departamento;
 use App\Models\Formando\Formando;
@@ -18,7 +18,7 @@ use App\Models\Lista_de_Presenca\Lista_Presenca;
 use App\Models\Lista_de_Presenca_Principal\Lista_Presenca_Principal;
 use App\Models\Pagamento\Pagamento;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 

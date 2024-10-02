@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EnviarEmail;
 use App\Models\Formando\Formando;
 use App\Http\Requests\StoreFormandoRequest;
 use App\Http\Requests\UpdateFormandoRequest;
@@ -12,6 +13,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Str;
 
 class FormandoController extends Controller
@@ -46,14 +48,27 @@ class FormandoController extends Controller
     public function store(StoreFormandoRequest $request)
     {
 
-        try {
-              $faker = \Faker\Factory::create();
 
-            // depois de criar mandar as credenciais por email - resolver isso depois
+        try {
+
+            $faker = \Faker\Factory::create();
+            $senha = $faker->password(5, 10);
+            $nome = $faker->regexify('[A-Za-z0-9]{5}');
+            try {
+
+                $mensagem = "CREDENCIAIS DE ACESSO";
+                $subt = "Utilizador: " + $nome + "/nPalavra-Passe: " + $senha;
+                Mail::to($request->email)->send(new EnviarEmail($mensagem, $subt));
+
+            } catch (\Throwable $th) {
+                //comentar o return se nao tiver internet
+                return back()->with('erro', 'Ocorreu um problema ao tentar criar o Funciónario. Por favor, tente novamente.');
+            }
+
             $user = User::create([
-                'name' => $faker->regexify('[A-Za-z0-9]{5}'),
+                'name' => $nome,
                 'email' => $request->email,
-                'password' => Hash::make($faker->password(5,10)),
+                'password' => Hash::make($senha),
                 'nivel_acesso' => 'Formando'
             ]);
 
