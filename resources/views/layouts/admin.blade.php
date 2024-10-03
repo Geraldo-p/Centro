@@ -21,6 +21,7 @@
     {{-- @yield('css') --}}
     <link rel="stylesheet" href="{{ asset('Template admin/assets/bundles/izitoast/css/iziToast.min.css') }}">
     @yield('css')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 
@@ -34,7 +35,7 @@
             <div class="main-content">
                 @yield('content')
             </div>
-            
+
         </div>
     </div>
 

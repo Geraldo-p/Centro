@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,8 +25,10 @@
                                 <h4>Esqueci a Palavra Passe</h4>
                             </div>
                             <div class="card-body">
-                                <p class="text-muted">Esqueceu sua Palavra Passe? Não há problema. Basta nos informar seu endereço de e-mail e enviaremos um link de redefinição de senha que permitirá que você escolha um novo.</p>
-                                    <!-- Session Status -->
+                                <p class="text-muted">Esqueceu sua Palavra Passe? Não há problema. Basta nos informar
+                                    seu endereço de e-mail e enviaremos um link de redefinição, que permitirá que você
+                                    escolha uma nova Palavra-Passe.</p>
+                                <!-- Session Status -->
                                 <x-auth-session-status class="mb-4" :status="session('status')" />
                                 <form method="POST" action="{{ route('password.email') }}">
                                     @csrf
@@ -63,7 +64,7 @@
 </body>
 
 </html>
-{{-- 
+{{--
 <x-guest-layout>
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
         {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}

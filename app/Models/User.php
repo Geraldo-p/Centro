@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\RedefinirSenhaNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Categoria\Categoria;
 use App\Models\Departamento\departamento;
@@ -33,6 +34,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'nivel_acesso'
     ];
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new RedefinirSenhaNotification($token));
+    }
 
     public function pagamentos()
     {

@@ -51,33 +51,36 @@
                 </div>
             </div>
         </li>
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-                class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i>
+        <li class="dropdown dropdown-list-toggle">
+            <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg"><i
+                    data-feather="bell" class="bell"></i>
             </a>
+
             <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                 <div class="dropdown-header">
                     Notifications
                     <div class="float-right">
-                        <a href="#">Marcar Todas Como Lidas</a>
+                        <a href="#" id="mark-all-as-read">Marcar Todas Como Lidas</a>
                     </div>
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons">
-
-                    <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-danger text-white">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </span> <span class="dropdown-item-desc"> Low disk space. Let's
-                            clean it! <span class="time">17 Hours Ago</span>
-                        </span>
-                    </a>
-                    <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white">
-                            <i class="fas
-												fa-bell"></i>
-                        </span> <span class="dropdown-item-desc"> Bem Vindo a Santa Cruz<span class="time">Hoje</span>
-                        </span>
-                    </a>
+                    {{-- @foreach ($notifications as $item)
+                        <a href="#"
+                            class="dropdown-item notification {{ is_null($item->read_at) ? 'font-weight-bold' : '' }}"
+                            data-id="{{ $item->id }}">
+                            <span class="dropdown-item-icon bg-info text-white">
+                                <i class="fas fa-bell"></i>
+                            </span>
+                            <span class="dropdown-item-desc">
+                                {{ $item->data['message'] }} <!-- Exibe a mensagem -->
+                                <span class="time">{{ $item->created_at->diffForHumans() }}</span>
+                                <!-- Exibe a data da notificação -->
+                            </span>
+                        </a>
+                    @endforeach --}}
                 </div>
                 <div class="dropdown-footer text-center">
-                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                    <a href="#">Ver Todas<i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
         </li>
@@ -124,15 +127,15 @@
                 <a href= "{{ route('dashboard') }}" class="nav-link"><i
                         data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
-            <li><a class="nav-link" href="{{ route('mensagens.index') }}"><i
+            <li><a class="nav-link" href="{{ route('chatify') }}"><i
                         data-feather="mail"></i><span>Mensagens</span></a></li>
 
 
             <li><a class="nav-link" href="blank.html"><i data-feather="file"></i><span>Notifications</span></a></li>
             <li class="menu-header">Area de Trabalho</li>
             <li class="dropdown">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="command"></i><span>Area do Formador</span></a>
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Area
+                        do Formador</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="chat.html">Turmas</a></li>
                     <li><a class="nav-link" href="{{ route('lista_presencas.index') }}">Lista de Presença</a></li>
@@ -141,8 +144,8 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="command"></i><span>Area do Formando</span></a>
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Area
+                        do Formando</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="chat.html">Turmas</a></li>
                     <li><a class="nav-link" href="{{ route('lista_presencas.index') }}">Lista de Presença</a></li>
@@ -151,8 +154,8 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="grid"></i><span>Area do Administrador</span></a>
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Area do
+                        Administrador</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('pagamentos.index') }}">Pagamento</a></li>
                     <li><a class="nav-link" href="{{ route('categorias.index') }}">Categoria</a></li>
@@ -245,3 +248,61 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Seleciona todas as notificações
+        document.querySelectorAll('.notification').forEach(function(notification) {
+            notification.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                // Pega o ID da notificação
+                const notificationId = this.getAttribute('data-id');
+
+                // Faz a requisição AJAX para marcar a notificação como lida
+                fetch(`/notificacoes/marcar-como-lida/${notificationId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector(
+                                'meta[name="csrf-token"]').getAttribute('content')
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Remove a classe de negrito (font-weight-bold) quando a notificação for marcada como lida
+                            this.classList.remove('font-weight-bold');
+                        }
+                    })
+                    .catch(error => console.error('Erro:', error));
+            });
+        });
+    });
+</script>
+<script>
+    document.getElementById('mark-all-as-read').addEventListener('click', function(e) {
+        e.preventDefault(); // Impede o comportamento padrão do link
+
+        fetch("{{ route('notifications.markAsRead') }}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // Inclui o token CSRF
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Atualiza a interface para refletir que as notificações foram lidas
+                    const notifications = document.querySelectorAll('.notification');
+                    notifications.forEach(notification => {
+                        notification.classList.remove('font-weight-bold'); // Remove a negrita
+                    });
+                    // Opcional: Você pode esconder o link após a ação
+                    this.style.display = 'none';
+                }
+            })
+            .catch(error => console.error('Erro:', error));
+    });
+</script>

@@ -3,6 +3,8 @@
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\Dashboard\DashboardController as DashboardDashboardController;
+use App\Http\Controllers\DashboardController\DashboardController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\FormandoController;
 use App\Http\Controllers\FuncionarioController;
@@ -21,7 +23,15 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () {
+    
+    Route::get("/", [DashboardDashboardController::class, 'dashboard'])->name("/");
+    Route::post('/notificacoes/marcar-como-lida/{id}', [DashboardDashboardController::class, 'marcarComoLida']);
+    Route::post('/notifications/mark-as-read', [DashboardDashboardController::class, 'markAsRead'])->name('notifications.markAsRead');
+
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/inicio', function () {
         return view('layouts user/index');
     });
 });

@@ -3,117 +3,118 @@
 
 
 @section('content')
-    <section class="section">
-        <div class="section-body">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                    <div class="card">
-                        <div class="body">
-                            <div id="plist" class="people-list">
-                                <div class="chat-search">
-                                    <input type="text" class="form-control" placeholder="Pesquisar" />
-                                </div>
-                                <div class="m-b-20">
-                                    <div id="chat-scroll">
-                                        <ul class="chat-list list-unstyled m-b-0">
-                                            @foreach ($todos as $item)
-                                                <input type="hidden" id="recebido_por" name="recebido_por"
-                                                    value="{{ $item->id }}">
-                                                <li class="clearfix active">
-                                                    <img src="{{ asset('Template admin/assets/img/users/user-4.png') }}"
-                                                        alt="avatar">
-                                                    <div class="about">
-                                                        <div class="name">{{ $item->name }}</div>
-                                                        <div class="status">
-                                                            <i class="material-icons online">fiber_manual_record</i>
-                                                            {{ $item->nivel_acesso }}
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    @include('Chatify::layouts.headLinks')
+    <div class="messenger">
+        {{-- ----------------------Users/Groups lists side---------------------- --}}
+        <div class="messenger-listView {{ !!$id ? 'conversation-active' : '' }}">
+            {{-- Header and search bar --}}
+            <div class="m-header">
+                <nav>
+                    <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">MENSAGENS</span> </a>
+                    {{-- header buttons --}}
+                    <nav class="m-header-right">
+                        <a href="#"><i class="fas fa-cog settings-btn"></i></a>
+                        <a href="#" class="listView-x"><i class="fas fa-times"></i></a>
+                    </nav>
+                </nav>
+                {{-- Search input --}}
+                <input type="text" class="messenger-search" placeholder="Search" />
+                {{-- Tabs --}}
+                {{-- <div class="messenger-listView-tabs">
+                <a href="#" class="active-tab" data-view="users">
+                    <span class="far fa-user"></span> Contacts</a>
+            </div> --}}
+            </div>
+            {{-- tabs and lists --}}
+            <div class="m-body contacts-container">
+                {{-- Lists [Users/Group] --}}
+                {{-- ---------------- [ User Tab ] ---------------- --}}
+                <div class="show messenger-tab users-tab app-scroll" data-view="users">
+                    {{-- Favorites --}}
+                    <div class="favorites-section">
+                        <p class="messenger-title"><span>Favoritos</span></p>
+                        <div class="messenger-favorites app-scroll-hidden"></div>
                     </div>
+                    {{-- Saved Messages --}}
+                    <p class="messenger-title"><span>Teu Espaço</span></p>
+                    {!! view('Chatify::layouts.listItem', ['get' => 'saved']) !!}
+                    {{-- Contact --}}
+                    <p class="messenger-title"><span>Todas Mensagens</span></p>
+                    <div class="listOfContacts" style="width: 100%;height: calc(100% - 272px);position: relative;"></div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                    <div class="card">
-                        <div class="chat">
-                            <div class="chat-header clearfix">
-                                <img src="{{ asset('Template admin/assets/img/users/user-1.png') }}" alt="avatar">
-                                <div class="chat-about">
-                                    <div class="chat-with">{{ Auth::user()->name }}</div>
-                                    <div class="chat-num-messages">2 new messages</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat-box" id="mychatbox">
-                            <div class="card-body chat-content">
-                            </div>
-                            <div class="card-footer chat-form">
-                                <form id="chat-form">
-                                    <input type="text" class="form-control" placeholder="Escrever a Mensagem">
-                                    <button class="btn btn-primary">
-                                        <i class="far fa-paper-plane"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+                {{-- ---------------- [ Search Tab ] ---------------- --}}
+                <div class="messenger-tab search-tab app-scroll" data-view="search">
+                    {{-- items --}}
+                    <p class="messenger-title"><span>Pesquisar</span></p>
+                    <div class="search-records">
+                        <p class="message-hint center-el"><span>Digite para pesquisar..</span></p>
                     </div>
                 </div>
             </div>
         </div>
 
-    </section>
-    <div class="row">
-        <div class="col-md-12 content-right">
-            <button class="btn btn-primary form-btn" type="button"
-                id="swal-inserir">Multiplas</button>
-            <a href=""></a>
+        {{-- ----------------------Messaging side---------------------- --}}
+        <div class="messenger-messagingView">
+            {{-- header title [conversation name] amd buttons --}}
+            <div class="m-header m-header-messaging">
+                <nav class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
+                    {{-- header back button, avatar and user name --}}
+                    <div class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
+                        <a href="#" class="show-listView"><i class="fas fa-arrow-left"></i></a>
+                        <div class="avatar av-s header-avatar"
+                            style="margin: 0px 10px; margin-top: -5px; margin-bottom: -5px;">
+                        </div>
+                        <a href="#" class="user-name">{{ config('chatify.name') }}</a>
+                    </div>
+                    {{-- header buttons --}}
+                    <nav class="m-header-right">
+                        <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
+                        <a href="/"><i class="fas fa-home"></i></a>
+                        <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
+                    </nav>
+                </nav>
+                {{-- Internet connection --}}
+                <div class="internet-connection">
+                    <span class="ic-connected">Conectado</span>
+                    <span class="ic-connecting">Conectando-se...</span>
+                    <span class="ic-noInternet">Sem acesso a internet</span>
+                </div>
+            </div>
+
+            {{-- Messaging area --}}
+            <div class="m-body messages-container app-scroll">
+                <div class="messages">
+                    <p class="message-hint center-el"><span>Por favor, selecione um chat para iniciar a conversa.</span></p>
+                </div>
+                {{-- Typing indicator --}}
+                <div class="typing-indicator">
+                    <div class="message-card typing">
+                        <div class="message">
+                            <span class="typing-dots">
+                                <span class="dot dot-1"></span>
+                                <span class="dot dot-2"></span>
+                                <span class="dot dot-3"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {{-- Send Message Form --}}
+            @include('Chatify::layouts.sendForm')
+        </div>
+        {{-- ---------------------- Info side ---------------------- --}}
+        <div class="messenger-infoView app-scroll">
+            {{-- nav actions --}}
+            <nav>
+                <p>Detalhes do Utilizador</p>
+                <a href="#"><i class="fas fa-times"></i></a>
+            </nav>
+            {!! view('Chatify::layouts.info')->render() !!}
         </div>
     </div>
-@endsection
-@section('script')
-    <!-- Page Specific JS File -->
-    <script src="{{ asset('Template admin/assets/js/page/chat.js') }}"></script>
-    <script src="{{ asset('Template admin/assets/bundles/izitoast/js/iziToast.min.js') }}"></script>
-    <script src="{{ asset('Template admin/assets/js/page/toastr.js') }}"></script>
 
-    @if (session('sucesso'))
-        <script>
-            $(document).ready(function() {
-                iziToast.success({
-                    title: 'Sucesso, ',
-                    message: '{{ session('sucesso') }}',
-                    position: 'topRight'
-                });
-            });
-        </script>
-    @endif
+    @include('Chatify::layouts.modals')
+    @include('Chatify::layouts.footerLinks')
 
-    @if (session('erro'))
-        <script>
-            $(document).ready(function() {
-                iziToast.error({
-                    title: 'Erro,',
-                    message: '{{ session('erro') }}',
-                    position: 'topRight'
-                });
-            });
-        </script>
-    @endif
-
-    @if (session('warning'))
-        <script>
-            $(document).ready(function() {
-                iziToast.warning({
-                    title: 'Atenção,',
-                    message: '{{ session('warning') }}',
-                    position: 'topRight'
-                });
-            });
-        </script>
-    @endif
 @endsection
