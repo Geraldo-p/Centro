@@ -20,9 +20,11 @@ class CreateChatifyMessagesTable extends Migration
             $table->string('body',5000)->nullable();
             $table->string('attachment')->nullable();
             $table->boolean('seen')->default(false);
+            
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
