@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="utf-8">
+    <link rel='shortcut icon' type='image/x-icon' href='{{ asset('Template admin/assets/img/logo_.ico') }}' />
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('titulo')</title>
@@ -30,7 +32,6 @@
     <link rel="stylesheet" href="{{ asset('Template User/css/swiper/swiper-bunble.min.css') }}">
 
 
-
 </head>
 
 <body>
@@ -41,7 +42,8 @@
             <div class="container">
                 <!--Logo Wrap Start-->
                 <div class="iq_logo">
-                    <a href="#"><img src="{{ asset('Template admin/assets/img/logo3.png') }}"
+
+                    <a href="{{ url('/', []) }}"><img src="{{ asset('Template admin/assets/img/logo3.png') }}"
                             alt="Iqoniq Themes"></a>
                 </div>
                 <!--Logo Wrap Start-->

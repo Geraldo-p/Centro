@@ -32,6 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'google_id',
         'nivel_acesso'
     ];
     public function sendPasswordResetNotification($token)

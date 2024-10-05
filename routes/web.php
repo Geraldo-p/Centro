@@ -3,8 +3,7 @@
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CursoController;
-use App\Http\Controllers\Dashboard\DashboardController as DashboardDashboardController;
-use App\Http\Controllers\DashboardController\DashboardController;
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\FormandoController;
 use App\Http\Controllers\FuncionarioController;
@@ -18,23 +17,25 @@ use App\Http\Controllers\SalaController;
 use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\TurmaFormandoController;
 use App\Mail\EnviarEmail;
+use App\Models\User;
 use Illuminate\Contracts\Mail\Mailer;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::middleware(['auth'])->group(function () {
-    
-    Route::get("/", [DashboardDashboardController::class, 'dashboard'])->name("/");
-    Route::post('/notificacoes/marcar-como-lida/{id}', [DashboardDashboardController::class, 'marcarComoLida']);
-    Route::post('/notifications/mark-as-read', [DashboardDashboardController::class, 'markAsRead'])->name('notifications.markAsRead');
+
+    Route::get("dashboard", [DashboardController::class, 'dashboard'])->name("/dashboard");
+    Route::post('/notificacoes/marcar-como-lida/{id}', [DashboardController::class, 'marcarComoLida']);
+    Route::post('/notifications/mark-as-read', [DashboardController::class, 'markAsRead'])->name('notifications.markAsRead');
 
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/inicio', function () {
+Route::get('/', function () {
         return view('layouts user/index');
     });
-});
 
 Route::get('/sobre', function () {
     return view('layouts user/sobre');
@@ -244,7 +245,7 @@ Route::middleware('auth')->group(function () {
         'destroy' => 'matriculas.destroy'
     ]);
     Route::get("/generate-pdf/matriculas", [PagamentoController::class, 'generatePdf'])->name("pagamentos.pdf");
-});
+
 //MENSAGENS
 Route::resource('mensagens', MensagensController::class)->names([
     'index' => 'mensagens.index',
@@ -256,6 +257,31 @@ Route::resource('mensagens', MensagensController::class)->names([
     'destroy' => 'mensagens.destroy'
 ]);
 Route::get("/generate-pdf/mensagens", [PagamentoController::class, 'generatePdf'])->name("mensagens.pdf");
+});
 
+
+Route::get('auth/google', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('auth/google/callback', function () {
+
+    $faker = \Faker\Factory::create();
+    $senha = $faker->password(5, 10);
+
+    $googleUser = Socialite::driver('google')->stateless()->user();
+
+    $user = User::firstOrCreate([
+        'email' => $googleUser->getEmail(),
+    ], [
+        'name' => $googleUser->getName(),
+        'google_id' => $googleUser->getId(),
+        'password' => Hash::make($senha), // senha aleatória
+    ]);
+
+    Auth::login($user);
+
+    return redirect('/'); // Redireciona para uma página desejada
+});
 
 require __DIR__ . '/auth.php';

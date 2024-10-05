@@ -137,7 +137,7 @@
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Area
                         do Formador</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="chat.html">Turmas</a></li>
+                    <li><a class="nav-link" href="{{ route('turmas.index') }}">Turmas</a></li>
                     <li><a class="nav-link" href="{{ route('lista_presencas.index') }}">Lista de Presença</a></li>
                     <li><a class="nav-link" href="blog.html">Registrar Modulos</a></li>
                     <li><a class="nav-link" href="blog.html">Lançar Notas</a></li>

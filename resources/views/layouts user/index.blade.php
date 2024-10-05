@@ -15,7 +15,7 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('Template User/extra-images/banner-01.jpg') }}" class="d-block w-100" alt="Imagem 1">
+               <a href=""></a> <img src="{{ asset('Template User/extra-images/banner-01.jpg') }}" class="d-block w-100" alt="Imagem 1">
                 <div class="iq-caption-wrapper text-left">
                     <div class="iq_banner_caption container">
                         <div class="iq-caption">

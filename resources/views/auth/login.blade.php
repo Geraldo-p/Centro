@@ -142,7 +142,7 @@
                                         </a>
                                     </div>
                                     <div class="col-6">
-                                        <a class="btn btn-block btn-social btn-twitter">
+                                        <a class="btn btn-block btn-social btn-twitter" href="{{ url('auth/google') }}">
                                             <span class="fab fa-google"></span> Google
                                         </a>
                                     </div>
