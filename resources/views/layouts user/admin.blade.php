@@ -73,7 +73,8 @@
                                         <li><a href="our-courses.html">Cursos em Promoção</a></li>
                                     </ul> --}}
                                 </li>
-                                <li><a href="{{ url('blog') }}">Blog</a>
+
+                                <li><a href="{{ route('blogs.posts') }}">Blog</a>
                                 </li>
                                 <li><a href="#">Eventos</a>
                                     <ul class="children">
@@ -219,12 +220,12 @@
 
                         </div>
                         <!--DL Menu END-->
-                        <!--Search Wrap Start-->
+                        <!--Pesquisar Wrap Start-->
                         <div class="iq_search pull-right">
-                            <button data-toggle="modal" data-target="#search-box"><i
-                                    class="fa fa-search"></i></button>
+                            <button data-toggle="modal" data-target="#pesquisar-box"><i
+                                    class="fa fa-pesquisar"></i></button>
                         </div>
-                        <!--Search Wrap End-->
+                        <!--Pesquisar Wrap End-->
                     </div>
                     <!--Navigation wrap End-->
                 </div>

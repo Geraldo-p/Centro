@@ -311,7 +311,7 @@ $(function (e) {
             x: "center",
             y: "bottom",
             textStyle: { color: '#9aa0ac' },
-            data: ["Direct Access", "E-mail Marketing", "Video Ads", "Search Engine"]
+            data: ["Direct Access", "E-mail Marketing", "Video Ads", "Pesquisar Engine"]
         },
 
         calculable: !0,
@@ -331,7 +331,7 @@ $(function (e) {
                 name: "Video Ads"
             }, {
                 value: 548,
-                name: "Search Engine"
+                name: "Pesquisar Engine"
             }]
         }],
         color: ['#575B7A', '#DE725C', '#72BE81', '#50A5D8']
@@ -470,7 +470,7 @@ $(function (e) {
             x: "center",
             y: "bottom",
             textStyle: { color: '#9aa0ac' },
-            data: ["Direct Access", "E-mail Marketing", "Union Ad", "Video Ads", "Search Engine"]
+            data: ["Direct Access", "E-mail Marketing", "Union Ad", "Video Ads", "Pesquisar Engine"]
         },
         series: [{
             name: "Access to the resource",
@@ -510,7 +510,7 @@ $(function (e) {
                 name: "Video Ads"
             }, {
                 value: 1548,
-                name: "Search Engine"
+                name: "Pesquisar Engine"
             }]
         }]
     });

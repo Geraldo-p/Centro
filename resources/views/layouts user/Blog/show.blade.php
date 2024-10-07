@@ -17,7 +17,7 @@
 <!--Banner Wrap End-->
 <!--iqoniq Content Start-->
 <div class="iq_content_wrap">
-    <!--blog1_detail START-->  
+    <!--blog1_detail START-->
     <section>
         <!--blog_detail_page START-->
         <div class="blog1_detail">
@@ -182,7 +182,7 @@
                                 </li>
                                 <!--comment-thumb end-->
                             </ul>
-                        </div>	
+                        </div>
                         <!--commenting aera end-->
                         <!--search_heading strat-->
                         <div class="blog_detail_searh">
@@ -220,9 +220,9 @@
                     <div class="col-md-4">
                         <div class="aside-bar">
                             <!--course_inrp_side_search START-->
-                            <div class="widget widget-search">
+                            <div class="widget widget-pesquisar">
                                 <form class="iq-input">
-                                    <input placeholder="Search ..." type="text">
+                                    <input placeholder="Pesquisar ..." type="text">
                                     <label class="iq-input-icon"><input type="submit"></label>
                                 </form>
                             </div>
@@ -230,7 +230,7 @@
                             <!--coures_archives start-->
                             <div class="widget widget_archive">
                                 <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>our</span> Course</h5>
+                                <h5 class="widget-title"><span>Nossos</span> Cursos</h5>
                                 <!--Widget Title End-->
                                 <ul>
                                     <li>
@@ -260,7 +260,7 @@
                             <!--POPULAR START-->
                             <div class="widget widget-popular">
                                 <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>popular</span>courses</h5>
+                                <h5 class="widget-title"><span>cursos</span> populares</h5>
                                 <!--Widget Title End-->
                                 <!--POPULAR THUMB START-->
                                 <div class="popular_thumb">
@@ -306,29 +306,29 @@
                             <!--COURES CATEGORIES START-->
                             <div class="widget widget_time">
                                 <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>working</span> hours</h5>
+                                <h5 class="widget-title"><span>Horas de</span> Trabalho</h5>
                                 <!--Widget Title End-->
                                 <ul>
                                     <li>
-                                        <span>Monday</span>08:30 am - 05:30 pm
+                                        <span>Segunda-feira</span>08:00 - 16:00
                                     </li>
                                     <li>
-                                        <span>Tuesday</span>08:30 am - 05:30 pm
+                                        <span>Terça-feira</span>08:00 - 16:00
                                     </li>
                                     <li>
-                                        <span>Wednesday</span>08:30 am - 05:30 pm
+                                        <span>Quarta-feira</span>08:00 - 16:00
                                     </li>
                                     <li>
-                                        <span>Thursday</span>08:30 am - 05:30 pm
+                                        <span>Quinta-feira</span>08:00 - 16:00
                                     </li>
                                     <li>
-                                        <span>Friday</span>08:30 am - 05:30 pm
+                                        <span>Sexta-feira</span>08:00 - 16:00
                                     </li>
                                     <li>
-                                        <span>Saturday</span>Closed
+                                        <span>Sábado</span>08:00 - 16:00
                                     </li>
                                     <li>
-                                        <span>Sunday</span>Closed
+                                        <span>Domingo</span>Closed
                                     </li>
                                 </ul>
                             </div>
@@ -336,7 +336,7 @@
                             <!--POPULAR START-->
                             <div class="widget widget-popular">
                                 <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>popular</span>courses</h5>
+                                <h5 class="widget-title"><span>cursos</span> populares</h5>
                                 <!--Widget Title End-->
                                 <!--POPULAR THUMB START-->
                                 <div class="popular_thumb">
@@ -351,8 +351,8 @@
                                             <div class="rating_down">
                                                 <div class="rating_up" style="width:100%;"></div>
                                             </div>
-                                        </div>	
-                                        <!--RATING AREA End-->							
+                                        </div>
+                                        <!--RATING AREA End-->
                                         <p>Anna Doe</p>
                                         <span>$99.99</span>
                                         <!--COURES RATING AREA END-->
@@ -373,8 +373,8 @@
                                             <div class="rating_down">
                                                 <div class="rating_up" style="width:100%;"></div>
                                             </div>
-                                        </div>	
-                                        <!--RATING AREA End-->							
+                                        </div>
+                                        <!--RATING AREA End-->
                                         <p>Anna Doe</p>
                                         <span>$99.99</span>
                                         <!--COURES RATING AREA END-->
@@ -395,8 +395,8 @@
                                             <div class="rating_down">
                                                 <div class="rating_up" style="width:100%;"></div>
                                             </div>
-                                        </div>	
-                                        <!--RATING AREA End-->							
+                                        </div>
+                                        <!--RATING AREA End-->
                                         <p>Anna Doe</p>
                                         <span>$99.99</span>
                                     </div>
@@ -430,7 +430,7 @@
                 </div>
             </div>
         </div>
-        <!--BLOG1 PAGE END-->  
+        <!--BLOG1 PAGE END-->
     </section>
 </div>
 

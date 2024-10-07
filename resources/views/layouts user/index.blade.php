@@ -185,10 +185,10 @@
                         </section>
 
                     </div>
-                    <!--Search Wrap Start-->
+                    <!--Pesquisar Wrap Start-->
                     <div class="col-md-4">
                         <div class="iq_search_courses">
-                            <h4>Search Courses</h4>
+                            <h4>Pesquisar Courses</h4>
                             <form>
                                 <!--Input Start-->
                                 <div class="iq-input">
@@ -252,13 +252,13 @@
                                 <!--Input End-->
                                 <!--Input Start-->
                                 <div class="iq-input">
-                                    <input class="iq_link_1" type="submit" value="Search">
+                                    <input class="iq_link_1" type="submit" value="Pesquisar">
                                 </div>
                                 <!--Input End-->
                             </form>
                         </div>
                     </div>
-                    <!--Search Wrap End-->
+                    <!--Pesquisar Wrap End-->
                 </div>
             </div>
         </div>
@@ -999,7 +999,7 @@
                 <div class="container">
                     <!--Heading Wrap Start-->
                     <div class="iq_heading_1 text-center">
-                        <h4>Search For<span>Our Courses</span></h4>
+                        <h4>Pesquisar For<span>Our Courses</span></h4>
                         <p>Fill The Below Form and Star Searching</p>
                     </div>
                     <!--Heading Wrap End-->
@@ -1008,7 +1008,7 @@
                         <div class="col-md-3 col-sm-6">
                             <!--Iconiq Input STARTS-->
                             <div class="iq-input">
-                                <input class="first_input" type="text" placeholder="Search Words">
+                                <input class="first_input" type="text" placeholder="Pesquisar Words">
                             </div>
                             <!--Iconiq Input End-->
                         </div>
@@ -1039,7 +1039,7 @@
                         <div class="col-md-3 col-sm-6">
                             <!--Iconiq Input STARTS-->
                             <div class="iq-input">
-                                <input class="iq_link_1" type="submit" value="Start Search">
+                                <input class="iq_link_1" type="submit" value="Start Pesquisar">
                             </div>
                             <!--Iconiq Input End-->
                         </div>

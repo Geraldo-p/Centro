@@ -16,20 +16,20 @@
 <!--Banner Wrap End-->
 <!--iqoniq Content Start-->
 <div class="iq_content_wrap">
-    <!--BLOG1 PAGE START-->  
+    <!--BLOG1 PAGE START-->
     <section>
         <div class="blog1_page">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
-                        <!--BLOG1 THUMB START-->  
+                        <!--BLOG1 THUMB START-->
                         <div class="blog-list">
-                            <!--BLOG1 THUMB FIGURE START--> 
+                            <!--BLOG1 THUMB FIGURE START-->
                             <figure>
                                 <img src="{{ asset('Template user/extra-images/blog1.jpg') }}" alt="">
                             </figure>
-                            <!--BLOG1 THUMB FIGURE END--> 
-                            <!--BLOG1 THUMB CAPSTION START-->  
+                            <!--BLOG1 THUMB FIGURE END-->
+                            <!--BLOG1 THUMB CAPSTION START-->
                             <div class="blog-caption">
                                 <span class="iq_course_icon">
                                     <span class="icon-lecture">
@@ -48,18 +48,18 @@
                                 <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </p>
                                 <a class="iq_link_1" href="{{ url('blog-detalhes', []) }}">LEIA MAIS</a>
                             </div>
-                            <!--BLOG1 THUMB CAPSTION END--> 
+                            <!--BLOG1 THUMB CAPSTION END-->
                         </div>
                         <!--BLOG1 PAGE END-->
                         <div class="border-div"></div>
-                        <!--BLOG1 THUMB START-->  
+                        <!--BLOG1 THUMB START-->
                         <div class="blog-list">
-                            <!--BLOG1 THUMB FIGURE START--> 
+                            <!--BLOG1 THUMB FIGURE START-->
                             <figure>
                                 <img src="{{ asset('Template user/extra-images/blog2.jpg') }}" alt="">
                             </figure>
-                            <!--BLOG1 THUMB FIGURE END--> 
-                            <!--BLOG1 THUMB CAPSTION START-->  
+                            <!--BLOG1 THUMB FIGURE END-->
+                            <!--BLOG1 THUMB CAPSTION START-->
                             <div class="blog-caption">
                                 <span class="iq_course_icon">
                                     <span class="icon-doctor-2">
@@ -78,18 +78,18 @@
                                 <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </p>
                                 <a class="iq_link_1" href="{{ url('blog-detalhes', []) }}">LEIA MAIS</a>
                             </div>
-                            <!--BLOG1 THUMB CAPSTION END--> 
+                            <!--BLOG1 THUMB CAPSTION END-->
                         </div>
                         <!--BLOG1 PAGE END-->
                         <div class="border-div"></div>
-                        <!--BLOG1 THUMB START-->  
+                        <!--BLOG1 THUMB START-->
                         <div class="blog-list">
-                            <!--BLOG1 THUMB FIGURE START--> 
+                            <!--BLOG1 THUMB FIGURE START-->
                             <figure>
                                 <img src="{{ asset('Template user/extra-images/blog3.jpg') }}" alt="">
                             </figure>
-                            <!--BLOG1 THUMB FIGURE END--> 
-                            <!--BLOG1 THUMB CAPSTION START-->  
+                            <!--BLOG1 THUMB FIGURE END-->
+                            <!--BLOG1 THUMB CAPSTION START-->
                             <div class="blog-caption">
                                 <span class="iq_course_icon">
                                     <span class="icon-scholarship">
@@ -106,9 +106,10 @@
                                     </li>
                                 </ul>
                                 <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </p>
-                                <a class="iq_link_1" href="{{ url('blog-detalhes', []) }}">LEIA MAIS</a>
+                                <a class="iq_link_1" href="{{ route('blogs.show', ['id'=>1]) }}">LEIA MAIS</a>
+
                             </div>
-                            <!--BLOG1 THUMB CAPSTION END--> 
+                            <!--BLOG1 THUMB CAPSTION END-->
                         </div>
                         <!--BLOG1 PAGE END-->
                         <!--Pagination Start-->
@@ -126,9 +127,9 @@
                     <div class="col-md-4">
                         <div class="aside-bar">
                             <!--course_inrp_side_search START-->
-                            <div class="widget widget-search">
+                            <div class="widget widget-pesquisar">
                                 <form class="iq-input">
-                                    <input placeholder="Search ..." type="text">
+                                    <input placeholder="Pesquisar ..." type="text">
                                     <label class="iq-input-icon"><input type="submit"></label>
                                 </form>
                             </div>
@@ -136,7 +137,7 @@
                             <!--coures_archives start-->
                             <div class="widget widget_archive">
                                 <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>our</span> Course</h5>
+                                <h5 class="widget-title"><span>Nossos</span> Cursos</h5>
                                 <!--Widget Title End-->
                                 <ul>
                                     <li>
@@ -166,7 +167,7 @@
                             <!--POPULAR START-->
                             <div class="widget widget-popular">
                                 <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>popular</span>courses</h5>
+                                <h5 class="widget-title"><span>cursos</span> populares</h5>
                                 <!--Widget Title End-->
                                 <!--POPULAR THUMB START-->
                                 <div class="popular_thumb">
@@ -212,29 +213,29 @@
                             <!--COURES CATEGORIES START-->
                             <div class="widget widget_time">
                                 <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>working</span> hours</h5>
+                                <h5 class="widget-title"><span>Horas de</span> Trabalho</h5>
                                 <!--Widget Title End-->
                                 <ul>
                                     <li>
-                                        <span>Monday</span>08:30 am - 05:30 pm
+                                        <span>Segunda-feira</span>08:00 - 16:00
                                     </li>
                                     <li>
-                                        <span>Tuesday</span>08:30 am - 05:30 pm
+                                        <span>Terça-feira</span>08:00 - 16:00
                                     </li>
                                     <li>
-                                        <span>Wednesday</span>08:30 am - 05:30 pm
+                                        <span>Quarta-feira</span>08:00 - 16:00
                                     </li>
                                     <li>
-                                        <span>Thursday</span>08:30 am - 05:30 pm
+                                        <span>Quinta-feira</span>08:00 - 16:00
                                     </li>
                                     <li>
-                                        <span>Friday</span>08:30 am - 05:30 pm
+                                        <span>Sexta-feira</span>08:00 - 16:00
                                     </li>
                                     <li>
-                                        <span>Saturday</span>Closed
+                                        <span>Sábado</span>08:00 - 16:00
                                     </li>
                                     <li>
-                                        <span>Sunday</span>Closed
+                                        <span>Domingo</span>Closed
                                     </li>
                                 </ul>
                             </div>
@@ -242,7 +243,7 @@
                             <!--POPULAR START-->
                             <div class="widget widget-popular">
                                 <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>popular</span>courses</h5>
+                                <h5 class="widget-title"><span>cursos</span> populares</h5>
                                 <!--Widget Title End-->
                                 <!--POPULAR THUMB START-->
                                 <div class="popular_thumb">
@@ -257,8 +258,8 @@
                                             <div class="rating_down">
                                                 <div class="rating_up" style="width:100%;"></div>
                                             </div>
-                                        </div>	
-                                        <!--RATING AREA End-->							
+                                        </div>
+                                        <!--RATING AREA End-->
                                         <p>Anna Doe</p>
                                         <span>$99.99</span>
                                         <!--COURES RATING AREA END-->
@@ -279,8 +280,8 @@
                                             <div class="rating_down">
                                                 <div class="rating_up" style="width:100%;"></div>
                                             </div>
-                                        </div>	
-                                        <!--RATING AREA End-->							
+                                        </div>
+                                        <!--RATING AREA End-->
                                         <p>Anna Doe</p>
                                         <span>$99.99</span>
                                         <!--COURES RATING AREA END-->
@@ -301,8 +302,8 @@
                                             <div class="rating_down">
                                                 <div class="rating_up" style="width:100%;"></div>
                                             </div>
-                                        </div>	
-                                        <!--RATING AREA End-->							
+                                        </div>
+                                        <!--RATING AREA End-->
                                         <p>Anna Doe</p>
                                         <span>$99.99</span>
                                     </div>
@@ -336,7 +337,7 @@
                 </div>
             </div>
         </div>
-        <!--BLOG1 PAGE END-->  
+        <!--BLOG1 PAGE END-->
     </section>
 </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Blog\Blog;
 use App\Notifications\RedefinirSenhaNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Categoria\Categoria;
@@ -43,6 +44,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function pagamentos()
     {
         return $this->hasMany(Pagamento::class, 'id_us');
+    }
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class, 'id_us');
     }
 
     public function matriculas()

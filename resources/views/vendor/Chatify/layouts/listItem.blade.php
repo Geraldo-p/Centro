@@ -58,7 +58,7 @@
     </table>
 @endif
 
-{{-- -------------------- Search Item -------------------- --}}
+{{-- -------------------- Pesquisar Item -------------------- --}}
 @if ($get == 'search_item')
     <table class="messenger-list-item" data-contact="{{ $user->id }}">
         <tr data-action="0">

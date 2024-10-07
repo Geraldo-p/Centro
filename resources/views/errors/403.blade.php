@@ -40,10 +40,10 @@
                                                 <i class="fas fa-search"></i>
                                             </div>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Search">
+                                        <input type="text" class="form-control" placeholder="Pesquisar">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary btn-lg">
-                                                Search
+                                                Pesquisar
                                             </button>
                                         </div>
                                     </div>

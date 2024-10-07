@@ -12,7 +12,7 @@
             <li>
                 <form class="form-inline mr-auto">
                     <div class="search-element">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Pesquisar"
+                        <input class="form-control" type="search" placeholder="Pesquisar" aria-label="Pesquisar"
                             data-width="200">
                         <button class="btn" type="submit">
                             <i class="fas fa-search"></i>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\Dashboard\DashboardController;
@@ -30,12 +31,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get("dashboard", [DashboardController::class, 'dashboard'])->name("/dashboard");
     Route::post('/notificacoes/marcar-como-lida/{id}', [DashboardController::class, 'marcarComoLida']);
     Route::post('/notifications/mark-as-read', [DashboardController::class, 'markAsRead'])->name('notifications.markAsRead');
-
 });
 
 Route::get('/', function () {
-        return view('layouts user/index');
-    });
+    return view('layouts user/index');
+});
 
 Route::get('/sobre', function () {
     return view('layouts user/sobre');
@@ -49,15 +49,6 @@ Route::get('/show', function () {
     return view('layouts user/Cursos/show');
 });
 
-
-Route::get('/blog', function () {
-    return view('layouts user/Blog/blog');
-});
-
-
-Route::get('/blog-detalhes', function () {
-    return view('layouts user/Blog/show');
-});
 
 Route::get('/evento', function () {
     return view('layouts user/Evento/evento');
@@ -209,6 +200,20 @@ Route::middleware('auth')->group(function () {
 
     Route::get("/generate-pdf/lista_presencas", [ListaPresencaController::class, 'generatePdf'])->name("lista_presencas.pdf");
 
+    // blog
+    Route::resource('blogs', BlogController::class)->names([
+        'index' => 'blogs.index',
+        'create' => 'blogs.create',
+        'store' => 'blogs.store',
+        'show' => 'blogs.show',
+        'edit' => 'blogs.edit',
+        'update' => 'blogs.update',
+        'destroy' => 'blogs.destroy',
+    ]);
+
+    // Route::get("/blog/blogs", [ListaPresencaController::class, 'generatePdf'])->name("lista_presencas.pdf");
+
+
     // User
     Route::resource('users', RegisteredUserController::class)->names([
         'index' => 'users.index',
@@ -246,17 +251,17 @@ Route::middleware('auth')->group(function () {
     ]);
     Route::get("/generate-pdf/matriculas", [PagamentoController::class, 'generatePdf'])->name("pagamentos.pdf");
 
-//MENSAGENS
-Route::resource('mensagens', MensagensController::class)->names([
-    'index' => 'mensagens.index',
-    'create' => 'mensagens.create',
-    'store' => 'mensagens.store',
-    'show' => 'mensagens.show',
-    'edit' => 'mensagens.edit',
-    'update' => 'mensagens.update',
-    'destroy' => 'mensagens.destroy'
-]);
-Route::get("/generate-pdf/mensagens", [PagamentoController::class, 'generatePdf'])->name("mensagens.pdf");
+    //MENSAGENS
+    Route::resource('mensagens', MensagensController::class)->names([
+        'index' => 'mensagens.index',
+        'create' => 'mensagens.create',
+        'store' => 'mensagens.store',
+        'show' => 'mensagens.show',
+        'edit' => 'mensagens.edit',
+        'update' => 'mensagens.update',
+        'destroy' => 'mensagens.destroy'
+    ]);
+    Route::get("/generate-pdf/mensagens", [PagamentoController::class, 'generatePdf'])->name("mensagens.pdf");
 });
 
 
@@ -283,5 +288,9 @@ Route::get('auth/google/callback', function () {
 
     return redirect('/'); // Redireciona para uma página desejada
 });
+
+
+Route::get("/Blog", [BlogController::class, 'posts'])->name("blogs.posts");
+Route::get("/Post-detalhes", [BlogController::class, 'show'])->name("blogs.show");
 
 require __DIR__ . '/auth.php';

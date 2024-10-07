@@ -1007,7 +1007,7 @@ function getSharedPhotos(user_id) {
 
 /**
  *-------------------------------------------------------------
- * Search in messenger
+ * Pesquisar in messenger
  *-------------------------------------------------------------
  */
 let searchPage = 1;
@@ -1445,7 +1445,7 @@ $(document).ready(function () {
     $("#imageModalBox").hide();
   });
 
-  // Search input on focus
+  // Pesquisar input on focus
   $(".messenger-search").on("focus", function () {
     $(".messenger-tab").hide();
     $('.messenger-tab[data-view="search"]').show();
@@ -1456,7 +1456,7 @@ $(document).ready(function () {
       $('.messenger-tab[data-view="users"]').show();
     }, 200);
   });
-  // Search action on keyup
+  // Pesquisar action on keyup
   const debouncedSearch = debounce(function () {
     const value = $(".messenger-search").val();
     messengerSearch(value);
@@ -1601,7 +1601,7 @@ $(document).ready(function () {
   actionOnScroll(".messenger-tab.users-tab", function () {
     getContacts();
   });
-  //Search pagination
+  //Pesquisar pagination
   actionOnScroll(".messenger-tab.search-tab", function () {
     messengerSearch($(".messenger-search").val());
   });

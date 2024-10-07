@@ -17,8 +17,8 @@
                         <a href="#" class="listView-x"><i class="fas fa-times"></i></a>
                     </nav>
                 </nav>
-                {{-- Search input --}}
-                <input type="text" class="messenger-search" placeholder="Search" />
+                {{-- Pesquisar input --}}
+                <input type="text" class="messenger-search" placeholder="Pesquisar" />
                 {{-- Tabs --}}
                 {{-- <div class="messenger-listView-tabs">
                 <a href="#" class="active-tab" data-view="users">
@@ -42,7 +42,7 @@
                     <p class="messenger-title"><span>Todas Mensagens</span></p>
                     <div class="listOfContacts" style="width: 100%;height: calc(100% - 272px);position: relative;"></div>
                 </div>
-                {{-- ---------------- [ Search Tab ] ---------------- --}}
+                {{-- ---------------- [ Pesquisar Tab ] ---------------- --}}
                 <div class="messenger-tab search-tab app-scroll" data-view="search">
                     {{-- items --}}
                     <p class="messenger-title"><span>Pesquisar</span></p>

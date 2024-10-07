@@ -48,7 +48,7 @@ Route::post('/star', 'MessagesController@favorite')->name('api.star');
 Route::post('/favorites', 'MessagesController@getFavorites')->name('api.favorites');
 
 /**
- * Search in messenger
+ * Pesquisar in messenger
  */
 Route::get('/search', 'MessagesController@search')->name('api.search');
 

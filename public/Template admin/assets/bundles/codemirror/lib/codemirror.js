@@ -539,7 +539,7 @@ function MarkedSpan(marker, from, to) {
   this.from = from; this.to = to
 }
 
-// Search an array of spans for a span matching the given marker.
+// Pesquisar an array of spans for a span matching the given marker.
 function getMarkedSpanFor(spans, marker) {
   if (spans) { for (var i = 0; i < spans.length; ++i) {
     var span = spans[i]
@@ -997,7 +997,7 @@ var bidiOrdering = (function() {
       else { prev = type }
     }
 
-    // W2. Search backwards from each instance of a European number
+    // W2. Pesquisar backwards from each instance of a European number
     // until the first strong type (R, L, AL, or sor) is found. If an
     // AL is found, change the type of the European number to Arabic
     // number.
@@ -1035,7 +1035,7 @@ var bidiOrdering = (function() {
       }
     }
 
-    // W7. Search backwards from each instance of a European number
+    // W7. Pesquisar backwards from each instance of a European number
     // until the first strong type (R, L, or sor) is found. If an L is
     // found, then change the type of the European number to L.
     for (var i$5 = 0, cur$1 = outerType; i$5 < len; ++i$5) {
