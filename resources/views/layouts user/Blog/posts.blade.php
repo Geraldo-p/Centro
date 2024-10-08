@@ -88,84 +88,39 @@
                                 <h5 class="widget-title"><span>Nossos</span> Cursos</h5>
                                 <!--Widget Title End-->
                                 <ul>
+                                    @forelse ($cursos as $item)
                                     <li>
-                                        <a href="#">Politics & History</a><span>03</span>
+                                        <a href="#">{{$item->nome}}</a><span>{{$item->modulos->count()}}</span>
                                     </li>
-                                    <li>
-                                        <a href="#">Journalism</a><span>01</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Medical Sciences</a><span>03</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Health</a><span>01</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Sports</a><span>03</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Atrs</a><span>02</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Tourism & Culture</a><span>06</span>
-                                    </li>
+                                    @empty
+                                    <center>
+                                        <h5>Nenhum Curso de Momento...</h5>
+                                    </center>
+                                    @endforelse
                                 </ul>
                             </div>
-                            <!--coures_archives end-->
-                            <!--POPULAR START-->
                             <div class="widget widget-popular">
-                                <!--Widget Title Start-->
                                 <h5 class="widget-title"><span>cursos</span> populares</h5>
-                                <!--Widget Title End-->
-                                <!--POPULAR THUMB START-->
+                                @forelse ($cursosComMaisPagamentos as $item)
+
                                 <div class="popular_thumb">
                                     <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb1.jpg') }}"
-                                            alt="" />
+                                        <img src="{{ asset('images/'. $item->foto) }}" alt="" />
                                     </figure>
-                                    <!--COURES POPULAR CAPSTION START-->
                                     <div class="overflow-text">
-                                        <h6><a href="#">Neque porro quisquam est qui dolorem dolor</a></h6>
-                                        <p>19 Dec, 2015</p>
+                                        <h6><a href="#">{{$item->cursos->nome}}</a></h6>
+                                        <p>Inscrições: Aberta<br>Data de Ínicio:
+                                            {{\Carbon\Carbon::parse($item->cursos->data_inicio)->format('M d, Y') }}</p>
                                     </div>
-                                    <!--COURES POPULAR CAPSTION END-->
                                 </div>
-                                <!--POPULAR THUMB END-->
-                                <!--POPULAR THUMB START-->
-                                <div class="popular_thumb">
-                                    <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb2.jpg') }}"
-                                            alt="" />
-                                    </figure>
-                                    <!--COURES POPULAR CAPSTION START-->
-                                    <div class="overflow-text">
-                                        <h6><a href="#">Neque porro quisquam est qui dolorem dolor</a></h6>
-                                        <p>19 Dec, 2015</p>
-                                    </div>
-                                    <!--COURES POPULAR CAPSTION END-->
-                                </div>
-                                <!--POPULAR THUMB END-->
-                                <!--POPULAR THUMB START-->
-                                <div class="popular_thumb">
-                                    <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb3.jpg') }}"
-                                            alt="" />
-                                    </figure>
-                                    <!--COURES POPULAR CAPSTION START-->
-                                    <div class="overflow-text">
-                                        <h6><a href="#">Neque porro quisquam est qui dolorem dolor</a></h6>
-                                        <p>19 Dec, 2015</p>
-                                    </div>
-                                    <!--COURES POPULAR CAPSTION END-->
-                                </div>
-                                <!--POPULAR THUMB END-->
+                                @empty
+                                <center>
+                                    <h5>Nenhum Curso de Momento...</h5>
+                                </center>
+                                @endforelse
                             </div>
-                            <!--POPULAR END-->
-                            <!--COURES CATEGORIES START-->
                             <div class="widget widget_time">
-                                <!--Widget Title Start-->
                                 <h5 class="widget-title"><span>Horas de</span> Trabalho</h5>
-                                <!--Widget Title End-->
                                 <ul>
                                     <li>
                                         <span>Segunda-feira</span>08:00 - 16:00
@@ -190,108 +145,30 @@
                                     </li>
                                 </ul>
                             </div>
-                            <!--COURES CATEGORIES END-->
-                            <!--POPULAR START-->
                             <div class="widget widget-popular">
-                                <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>cursos</span> populares</h5>
-                                <!--Widget Title End-->
-                                <!--POPULAR THUMB START-->
-                                <div class="popular_thumb">
-                                    <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb5.jpg') }}"
-                                            alt="" />
-                                    </figure>
-                                    <!--COURES POPULAR CAPSTION START-->
-                                    <div class="overflow-text">
-                                        <h6><a href="#">Professional Teching Course</a></h6>
-                                        <!--RATING AREA START-->
-                                        <div class="rating-wrap">
-                                            <div class="rating_down">
-                                                <div class="rating_up" style="width:100%;"></div>
-                                            </div>
-                                        </div>
-                                        <!--RATING AREA End-->
-                                        <p>Anna Doe</p>
-                                        <span>$99.99</span>
-                                        <!--COURES RATING AREA END-->
-                                    </div>
-                                    <!--COURES POPULAR CAPSTION END-->
-                                </div>
-                                <!--POPULAR THUMB END-->
-                                <!--POPULAR THUMB START-->
-                                <div class="popular_thumb">
-                                    <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb2.jpg') }}"
-                                            alt="" />
-                                    </figure>
-                                    <!--COURES POPULAR CAPSTION START-->
-                                    <div class="overflow-text">
-                                        <h6><a href="#">Professional Teching Course</a></h6>
-                                        <!--RATING AREA START-->
-                                        <div class="rating-wrap">
-                                            <div class="rating_down">
-                                                <div class="rating_up" style="width:100%;"></div>
-                                            </div>
-                                        </div>
-                                        <!--RATING AREA End-->
-                                        <p>Anna Doe</p>
-                                        <span>$99.99</span>
-                                        <!--COURES RATING AREA END-->
-                                    </div>
-                                    <!--COURES POPULAR CAPSTION END-->
-                                </div>
-                                <!--POPULAR THUMB END-->
-                                <!--POPULAR THUMB START-->
+                                <h5 class="widget-title"><span>cursos em</span> Promoção</h5>
                                 <div class="popular_thumb">
                                     <figure>
                                         <img src="{{ asset('Template user/extra-images/popular-thumb3.jpg') }}"
                                             alt="" />
                                     </figure>
-                                    <!--COURES POPULAR CAPSTION START-->
                                     <div class="overflow-text">
                                         <h6><a href="#">Professional Teching Course</a></h6>
-                                        <!--RATING AREA START-->
                                         <div class="rating-wrap">
                                             <div class="rating_down">
                                                 <div class="rating_up" style="width:100%;"></div>
                                             </div>
                                         </div>
-                                        <!--RATING AREA End-->
                                         <p>Anna Doe</p>
                                         <span>$99.99</span>
                                     </div>
-                                    <!--COURES POPULAR CAPSTION END-->
-                                </div>
-                                <!--POPULAR THUMB END-->
-                            </div>
-                            <!--POPULAR END-->
-                            <!--POPULAR START-->
-                            <div class="widget widget-tag">
-                                <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>tags</span></h5>
-                                <!--Widget Title End-->
-                                <div class="tag">
-                                    <a class="tag-link" href="#">Science</a>
-                                    <a class="tag-link" href="#">knowledge</a>
-                                    <a class="tag-link" href="#">Courage</a>
-                                    <a class="tag-link" href="#">Sports</a>
-                                    <a class="tag-link" href="#">Impression</a>
-                                    <a class="tag-link" href="#">History & Politics</a>
-                                    <a class="tag-link" href="#">Admission</a>
-                                    <a class="tag-link" href="#">Arts</a>
-                                    <a class="tag-link" href="#">Research</a>
-                                    <a class="tag-link" href="#">Career</a>
-                                    <a class="tag-link" href="#">PHD</a>
                                 </div>
                             </div>
-                            <!--POPULAR END-->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--BLOG1 PAGE END-->
     </section>
 </div>
 

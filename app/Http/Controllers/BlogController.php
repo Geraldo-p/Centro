@@ -6,6 +6,8 @@ use App\Models\Blog\Blog;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Categoria\Categoria;
+use App\Models\Curso\Curso;
+use App\Models\Pagamento\Pagamento;
 use App\Models\Tag;
 use Carbon\Carbon;
 use GuzzleHttp\Psr7\Uri;
@@ -97,7 +99,28 @@ class BlogController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(3);
 
-        return view("layouts user.Blog.posts", compact("posts"));
+        $cursosComMaisPagamentos = Pagamento::select('curso_id', Curso::raw('count(*) as total_pagamentos'))
+            ->whereIn('curso_id', function ($query) {
+                // Subconsulta para filtrar cursos com mais de 10 formandos
+                $query->select('curso_id')
+                    ->from('turma__formandos')
+                    ->groupBy('curso_id')
+                    ->having(Curso::raw('count(formando_id)'), '>', 10);
+            })
+            ->groupBy('curso_id')
+            ->orderBy('total_pagamentos', 'desc')
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $cursos = Curso::withCount('modulos')
+            ->inRandomOrder()
+            ->take(7)
+            ->get();
+
+        $tags = Blog::with('tags')->inRandomOrder()->first(); // Seleciona um blog aleatório com suas tags
+
+        return view("layouts user.Blog.posts", compact("posts", "cursosComMaisPagamentos", "cursos", "tags"));
     }
 
     /**

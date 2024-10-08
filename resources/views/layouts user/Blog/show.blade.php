@@ -14,26 +14,19 @@
         </div>
     </div>
 </div>
-<!--Banner Wrap End-->
-<!--iqoniq Content Start-->
 <div class="iq_content_wrap">
-    <!--blog1_detail START-->
     <section>
-        <!--blog_detail_page START-->
         <div class="blog1_detail">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
-                        <!--blog_detail_page START-->
                         <div class="blog_detail_page">
                             <figure>
                                 <img src="{{ asset('Template user/extra-images/blog-detail.jpg') }}" alt="">
                             </figure>
-                            <!--Heading Wrap Start-->
                             <div class="iq_heading_1 text-left">
                                 <h4>ASP.NET with <span>C #</span></h4>
                             </div>
-                            <!--Heading Wrap End-->
                             <ul class="blog_detail_navi">
                                 <li>
                                     <a href="#">September 21, 2015</a>
@@ -47,7 +40,6 @@
                             </ul>
                             <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.  </p>
                             <p class="blog_margin">Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
-                            <!--blog_quotes start-->
                             <div class="blog_quotes">
                                 <ul>
                                     <li><span>January 09, 2015</span><small>In Quotes</small></li>
@@ -55,41 +47,31 @@
                                 <p>“ Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.” </p>
                                 <span>-Jonathan Doe</span>
                             </div>
-                            <!--blog_quotes end-->
-                            <!--blog_quotes_prgh start-->
                             <div class="blog_quotes_prgh">
                                 <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae er auctor eu in elit. Class aptent taci ti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
                                 <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae eraodio. Sed non mauris vitae eraodio. Sed non mauris vitae erat .</p>
                             </div>
-                            <!--blog_quotes_prgh end-->
                             <p>Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat .</p>
                         </div>
-                        <!--blog_detail_area end-->
                         <div class="tags_wrap">
-                            <!--Tags Start-->
                             <ul class="iq-tags">
                                 <li><a href="#">Sports</a></li>
                                 <li><a href="#">Team</a></li>
                                 <li><a href="#">Champions</a></li>
                             </ul>
-                            <!--Tags End-->
                             <ul class="iq_footer_social">
                                 <li><a href="#" class="fa fa-facebook"></a></li>
                                 <li><a href="#" class="fa fa-twitter"></a></li>
                                 <li><a href="#" class="fa fa-rss"></a></li>
                             </ul>
                         </div>
-                        <!--commenting aera start-->
                         <div class="blog_commenting">
                             <div class="detail_searh_heading commenting">
-                                <!--Heading Wrap Start-->
                                 <div class="iq_heading_1 text-left">
                                     <h4>Comment : <span>4</span></h4>
                                 </div>
-                                <!--Heading Wrap End-->
                             </div>
                             <ul class="blog_commenting_area">
-                                <!--comment-thumb start-->
                                 <li>
                                     <div class="comment-thumb">
                                         <figure>
@@ -111,8 +93,6 @@
                                         </div>
                                     </div>
                                 </li>
-                                <!--comment-thumb end-->
-                                <!--comment-thumb start-->
                                 <li>
                                     <div class="comment-thumb">
                                         <figure>
@@ -157,8 +137,6 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <!--comment-thumb end-->
-                                <!--comment-thumb start-->
                                 <li>
                                     <div class="comment-thumb">
                                         <figure>
@@ -183,16 +161,11 @@
                                 <!--comment-thumb end-->
                             </ul>
                         </div>
-                        <!--commenting aera end-->
-                        <!--search_heading strat-->
                         <div class="blog_detail_searh">
-                            <!--blog_detail_social start-->
                             <div class="detail_searh_heading">
-                                <!--Heading Wrap Start-->
                                 <div class="iq_heading_1 text-left">
                                     <h4>Leave A <span>Comment</span></h4>
                                 </div>
-                                <!--Heading Wrap End-->
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
@@ -215,11 +188,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!--search_heading end-->
                     </div>
                     <div class="col-md-4">
                         <div class="aside-bar">
-                            <!--course_inrp_side_search START-->
                             <div class="widget widget-pesquisar">
                                 <form class="iq-input">
                                     <input placeholder="Pesquisar ..." type="text">

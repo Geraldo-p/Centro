@@ -17,7 +17,7 @@ class Curso extends Model
         'nome',
         'duracao',
         'foto',
-        'preco',
+        'preco', 
         'pag_mes',
         'data_inicio',
         'data_fim',
