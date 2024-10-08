@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel='shortcut icon' type='image/x-icon' href='{{ asset('Template admin/assets/img/logo_.ico') }}' />
+    <link rel='shortcut icon' type='image/x-icon' href='{{ asset(' Template admin/assets/img/logo_.ico') }}' />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,15 +66,9 @@
                                 <li class="active"><a href="#">Ínicio</a></li>
                                 <li><a href="{{ url('sobre') }}">Sobre Nós</a></li>
                                 <li><a href="{{ url('curso') }}">Cursos</a>
-                                    {{-- <ul class="children">
-                                        <li><a href="course-detail.html">Novos Cursos</a></li>
-                                        <li><a href="courses-small.html">Cursos Populares</a></li>
-                                        <li><a href="our-courses-list.html">Em Destaque</a></li>
-                                        <li><a href="our-courses.html">Cursos em Promoção</a></li>
-                                    </ul> --}}
                                 </li>
 
-                                <li><a href="{{ route('blogs.posts') }}">Blog</a>
+                                <li><a href="{{ route('blogs.post') }}">Blog</a>
                                 </li>
                                 <li><a href="#">Eventos</a>
                                     <ul class="children">
@@ -103,8 +97,7 @@
                                 <aside id="sidebar-wrapper">
                                     <div class="sidebar-brand">
                                         <a href="{{ route('dashboard') }}">
-                                            <img alt="image"
-                                                src="{{ asset('Template admin/assets/img/logo_.png') }}"
+                                            <img alt="image" src="{{ asset('Template admin/assets/img/logo_.png') }}"
                                                 class="header-logo" />
                                             <span class="logo-name">Santa Cruz</span>
                                         </a>

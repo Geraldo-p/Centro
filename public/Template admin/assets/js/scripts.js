@@ -364,6 +364,7 @@ $(function () {
         ["style", ["bold", "italic", "underline", "clear"]],
         ["font", ["strikethrough"]],
         ["para", ["paragraph"]]
+        
       ]
     });
   }

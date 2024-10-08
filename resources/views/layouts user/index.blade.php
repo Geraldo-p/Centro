@@ -307,20 +307,20 @@
                 <div id="my-tab-content" class="tab-content">
                     <div class="row tab-pane active" id="featured">
                         <!--Courses List Start-->
+                        @foreach ($cursos as $item)
+                            
                         <div class="col-md-4 col-sm-6">
                             <div class="iq_course_list">
                                 <figure>
-                                    <img src="{{ asset('Template User/extra-images/featured-course-1.jpg') }}"
-                                        alt="Curso de Informática e TI">
+                                    <img src="{{ asset('images/'. $item->foto) }}"
+                                        alt="{{$item->nome}}">
                                 </figure>
                                 <div class="iq_course_list_des">
                                     <div class="iq_course_icon">
                                         <span class="icon-student"></span>
                                     </div>
-                                    <h5><a href="#">Cursos de Informática & TI</a></h5>
-                                    <p>Domine as tecnologias que estão moldando o futuro. Desde redes de
-                                        computadores até programação avançada, nossos cursos oferecem as habilidades
-                                        necessárias para se destacar no competitivo mercado de TI.</p>
+                                    <h5><a href="#">{{$item->nome}}</a></h5>
+                                    <p>{{$item->descricao}}</p>
                                     <ul>
                                         <li>
                                             <div class="rating_down">
@@ -333,34 +333,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!--Courses List End-->
-                        <!--Courses List Start-->
-                        <div class="col-md-4 col-sm-6">
-                            <div class="iq_course_list">
-                                <figure>
-                                    <img src="{{ asset('Template User/extra-images/featured-course-02.jpg') }}"
-                                        alt="Curso de Negócios e Finanças">
-                                </figure>
-                                <div class="iq_course_list_des">
-                                    <div class="iq_course_icon">
-                                        <span class="icon-lecture"></span>
-                                    </div>
-                                    <h5><a href="#">Negócios & Finanças</a></h5>
-                                    <p>Desenvolva suas competências em gestão e finanças com nossos cursos que
-                                        preparam você para liderar com eficiência e tomar decisões estratégicas em
-                                        um ambiente corporativo dinâmico.</p>
-                                    <ul>
-                                        <li>
-                                            <div class="rating_down">
-                                                <div class="rating_up" style="width:100%;"></div>
-                                            </div>
-                                        </li>
-                                        <li>101 Avali.</li>
-                                        <li><i class="fa fa-user"></i>3.1 mil</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
+                        
                         <!--Courses List End-->
                         <!--Courses List Start-->
                         <div class="col-md-4 hidden-sm">

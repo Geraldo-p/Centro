@@ -17,7 +17,7 @@ class Matricula extends Model
         "id_us",
     ];
 
-    public function users()
+    public function users() 
     {
         return $this->belongsTo(User::class, 'id_us');
     }

@@ -22,108 +22,56 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
-                        <!--BLOG1 THUMB START-->
+                        @forelse ($posts as $item)
                         <div class="blog-list">
-                            <!--BLOG1 THUMB FIGURE START-->
                             <figure>
-                                <img src="{{ asset('Template user/extra-images/blog1.jpg') }}" alt="">
+                                <img src="{{ asset('blog/'.$item->imagem) }}" alt="">
                             </figure>
-                            <!--BLOG1 THUMB FIGURE END-->
-                            <!--BLOG1 THUMB CAPSTION START-->
-                            <div class="blog-caption">
-                                <span class="iq_course_icon">
-                                    <span class="icon-lecture">
-                                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span><span class="path19"></span><span class="path20"></span><span class="path21"></span><span class="path22"></span><span class="path23"></span><span class="path24"></span><span class="path25"></span><span class="path26"></span><span class="path27"></span><span class="path28"></span><span class="path29"></span><span class="path30"></span><span class="path31"></span><span class="path32"></span><span class="path33"></span><span class="path34"></span><span class="path35"></span><span class="path36"></span><span class="path37"></span><span class="path38"></span>
-                                    </span>
-                                </span>
-                                <h5 class="blog-title"><a href="#">Students Seek Lake of Communication</a></h5>
-                                <ul class="course_comments">
-                                    <li>
-                                        <a href="#"><i class="fa fa-user"></i>Admin</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-clock-o"></i>Feb 09, 2015</a>
-                                    </li>
-                                </ul>
-                                <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </p>
-                                <a class="iq_link_1" href="{{ url('blog-detalhes', []) }}">LEIA MAIS</a>
-                            </div>
-                            <!--BLOG1 THUMB CAPSTION END-->
-                        </div>
-                        <!--BLOG1 PAGE END-->
-                        <div class="border-div"></div>
-                        <!--BLOG1 THUMB START-->
-                        <div class="blog-list">
-                            <!--BLOG1 THUMB FIGURE START-->
-                            <figure>
-                                <img src="{{ asset('Template user/extra-images/blog2.jpg') }}" alt="">
-                            </figure>
-                            <!--BLOG1 THUMB FIGURE END-->
-                            <!--BLOG1 THUMB CAPSTION START-->
-                            <div class="blog-caption">
-                                <span class="iq_course_icon">
-                                    <span class="icon-doctor-2">
-                                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span><span class="path19"></span><span class="path20"></span><span class="path21"></span><span class="path22"></span><span class="path23"></span><span class="path24"></span><span class="path25"></span><span class="path26"></span><span class="path27"></span><span class="path28"></span><span class="path29"></span><span class="path30"></span><span class="path31"></span><span class="path32"></span><span class="path33"></span><span class="path34"></span><span class="path35"></span><span class="path36"></span><span class="path37"></span><span class="path38"></span>
-                                    </span>
-                                </span>
-                                <h5 class="blog-title"><a href="#">Students Seek Lake of Communication</a></h5>
-                                <ul class="course_comments">
-                                    <li>
-                                        <a href="#"><i class="fa fa-user"></i>Admin</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-clock-o"></i>Feb 09, 2015</a>
-                                    </li>
-                                </ul>
-                                <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </p>
-                                <a class="iq_link_1" href="{{ url('blog-detalhes', []) }}">LEIA MAIS</a>
-                            </div>
-                            <!--BLOG1 THUMB CAPSTION END-->
-                        </div>
-                        <!--BLOG1 PAGE END-->
-                        <div class="border-div"></div>
-                        <!--BLOG1 THUMB START-->
-                        <div class="blog-list">
-                            <!--BLOG1 THUMB FIGURE START-->
-                            <figure>
-                                <img src="{{ asset('Template user/extra-images/blog3.jpg') }}" alt="">
-                            </figure>
-                            <!--BLOG1 THUMB FIGURE END-->
-                            <!--BLOG1 THUMB CAPSTION START-->
                             <div class="blog-caption">
                                 <span class="iq_course_icon">
                                     <span class="icon-scholarship">
-                                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span>
+                                        <span class="path1"></span><span class="path2"></span><span
+                                            class="path3"></span><span class="path4"></span><span
+                                            class="path5"></span><span class="path6"></span><span
+                                            class="path7"></span><span class="path8"></span><span
+                                            class="path9"></span><span class="path10"></span><span
+                                            class="path11"></span><span class="path12"></span><span
+                                            class="path13"></span><span class="path14"></span><span
+                                            class="path15"></span><span class="path16"></span><span
+                                            class="path17"></span><span class="path18"></span>
                                     </span>
                                 </span>
-                                <h5 class="blog-title"><a href="#">Students Seek Lake of Communication</a></h5>
+                                <h5 class="blog-title"><a
+                                        href="{{ route('blogs.show', $item->id) }}">{{$item->titulo}}</a></h5>
                                 <ul class="course_comments">
                                     <li>
-                                        <a href="#"><i class="fa fa-user"></i>Admin</a>
+                                        <a href="#"><i class="fa fa-user"></i>{{$item->users->name}},
+                                            {{$item->users->nivel_acesso}}</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa fa-clock-o"></i>Feb 09, 2015</a>
+                                        <a href="#"><i class="fa fa-clock-o"></i>{{
+                                            \Carbon\Carbon::parse($item->data_publicacao)->format('M d, Y') }}
+                                        </a>
                                     </li>
                                 </ul>
-                                <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </p>
-                                <a class="iq_link_1" href="{{ route('blogs.show', ['id'=>1]) }}">LEIA MAIS</a>
-
+                                <p>{!! $item->resumo !!}</p>
+                                <a class="iq_link_1" href="{{ route('blogs.show', $item->id) }}">LEIA MAIS</a>
                             </div>
                             <!--BLOG1 THUMB CAPSTION END-->
                         </div>
-                        <!--BLOG1 PAGE END-->
+                        @empty
+                        <center>
+                            <h2>Não há posts disponíveis no momento.</h2>
+                        </center>
+                        @endforelse
+
                         <!--Pagination Start-->
                         <div class="iqoniq-pagination text-center">
-                            <span class="page-numbers current">1</span>
-                            <a class="page-numbers" href="#">2</a>
-                            <a class="page-numbers" href="#">3</a>
-                            <a class="page-numbers border_none" href="#">...</a>
-                            <a class="page-numbers" href="#">18</a>
-                            <a class="page-numbers" href="#">19</a>
-                            <a class="page-numbers" href="#">20</a>
+                            {{ $posts->links('vendor.pagination.bootstrap-4') }}
                         </div>
                         <!--Pagination End-->
                     </div>
+
                     <div class="col-md-4">
                         <div class="aside-bar">
                             <!--course_inrp_side_search START-->
@@ -172,11 +120,12 @@
                                 <!--POPULAR THUMB START-->
                                 <div class="popular_thumb">
                                     <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb1.jpg') }}" alt=""/>
+                                        <img src="{{ asset('Template user/extra-images/popular-thumb1.jpg') }}"
+                                            alt="" />
                                     </figure>
                                     <!--COURES POPULAR CAPSTION START-->
                                     <div class="overflow-text">
-                                        <h6><a href="#">Neque porro quisquam est qui dolorem  dolor</a></h6>
+                                        <h6><a href="#">Neque porro quisquam est qui dolorem dolor</a></h6>
                                         <p>19 Dec, 2015</p>
                                     </div>
                                     <!--COURES POPULAR CAPSTION END-->
@@ -185,11 +134,12 @@
                                 <!--POPULAR THUMB START-->
                                 <div class="popular_thumb">
                                     <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb2.jpg') }}" alt=""/>
+                                        <img src="{{ asset('Template user/extra-images/popular-thumb2.jpg') }}"
+                                            alt="" />
                                     </figure>
                                     <!--COURES POPULAR CAPSTION START-->
                                     <div class="overflow-text">
-                                        <h6><a href="#">Neque porro quisquam est qui dolorem  dolor</a></h6>
+                                        <h6><a href="#">Neque porro quisquam est qui dolorem dolor</a></h6>
                                         <p>19 Dec, 2015</p>
                                     </div>
                                     <!--COURES POPULAR CAPSTION END-->
@@ -198,11 +148,12 @@
                                 <!--POPULAR THUMB START-->
                                 <div class="popular_thumb">
                                     <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb3.jpg') }}" alt=""/>
+                                        <img src="{{ asset('Template user/extra-images/popular-thumb3.jpg') }}"
+                                            alt="" />
                                     </figure>
                                     <!--COURES POPULAR CAPSTION START-->
                                     <div class="overflow-text">
-                                        <h6><a href="#">Neque porro quisquam est qui dolorem  dolor</a></h6>
+                                        <h6><a href="#">Neque porro quisquam est qui dolorem dolor</a></h6>
                                         <p>19 Dec, 2015</p>
                                     </div>
                                     <!--COURES POPULAR CAPSTION END-->
@@ -248,7 +199,8 @@
                                 <!--POPULAR THUMB START-->
                                 <div class="popular_thumb">
                                     <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb5.jpg') }}" alt=""/>
+                                        <img src="{{ asset('Template user/extra-images/popular-thumb5.jpg') }}"
+                                            alt="" />
                                     </figure>
                                     <!--COURES POPULAR CAPSTION START-->
                                     <div class="overflow-text">
@@ -270,7 +222,8 @@
                                 <!--POPULAR THUMB START-->
                                 <div class="popular_thumb">
                                     <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb2.jpg') }}" alt=""/>
+                                        <img src="{{ asset('Template user/extra-images/popular-thumb2.jpg') }}"
+                                            alt="" />
                                     </figure>
                                     <!--COURES POPULAR CAPSTION START-->
                                     <div class="overflow-text">
@@ -292,7 +245,8 @@
                                 <!--POPULAR THUMB START-->
                                 <div class="popular_thumb">
                                     <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb3.jpg') }}" alt=""/>
+                                        <img src="{{ asset('Template user/extra-images/popular-thumb3.jpg') }}"
+                                            alt="" />
                                     </figure>
                                     <!--COURES POPULAR CAPSTION START-->
                                     <div class="overflow-text">

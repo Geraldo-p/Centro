@@ -17,6 +17,21 @@
     height: 600px;
     object-fit: cover;
 }
+.pagination .page-link {
+    color: #727170; /* Cor do texto dos botões */
+    background-color: transparent; /* Fundo transparente */
+    /* border: 1px solid #ffa500; Borda laranja */
+}
+
+.pagination .page-link:hover {
+    background-color: #ffa500; /* Fundo laranja ao passar o mouse */
+    color: white; /* Texto branco */
+}
+
+.pagination .active .page-link {
+    background-color: #ffa500; /* Fundo laranja para a página ativa */
+    border-color: #ffa500; /* Borda laranja para a página ativa */
+
 
 /* Estilo para o botão "READ MORE" */
 .btn-warning {

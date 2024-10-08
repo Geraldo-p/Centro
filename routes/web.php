@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\DepartamentoController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\SalaController;
 use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\TurmaFormandoController;
 use App\Mail\EnviarEmail;
+use App\Models\Curso\Curso;
 use App\Models\User;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Support\Facades\Auth;
@@ -28,13 +30,14 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get("dashboard", [DashboardController::class, 'dashboard'])->name("/dashboard");
+    Route::get("dashboard", [DashboardController::class, 'dashboard'])->name("dashboard");
     Route::post('/notificacoes/marcar-como-lida/{id}', [DashboardController::class, 'marcarComoLida']);
     Route::post('/notifications/mark-as-read', [DashboardController::class, 'markAsRead'])->name('notifications.markAsRead');
 });
 
 Route::get('/', function () {
-    return view('layouts user/index');
+    $cursos = Curso::inRandomOrder()->get();
+    return view('layouts user/index', compact("cursos"));
 });
 
 Route::get('/sobre', function () {
@@ -67,9 +70,9 @@ Route::get('/equipe-detalhes', function () {
 
 
 
-Route::get('/dashboard', function () {
-    return view('/layouts.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('/layouts.dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Route::get('/', function () {
 // return view("User Admin/index");
@@ -211,7 +214,7 @@ Route::middleware('auth')->group(function () {
         'destroy' => 'blogs.destroy',
     ]);
 
-    // Route::get("/blog/blogs", [ListaPresencaController::class, 'generatePdf'])->name("lista_presencas.pdf");
+    Route::get("/Blog-Posts", [BlogController::class, 'post'])->name("blogs.post");
 
 
     // User
@@ -262,6 +265,20 @@ Route::middleware('auth')->group(function () {
         'destroy' => 'mensagens.destroy'
     ]);
     Route::get("/generate-pdf/mensagens", [PagamentoController::class, 'generatePdf'])->name("mensagens.pdf");
+
+    //BLOG
+    Route::resource('blogs', BlogController::class)->names([
+        'index' => 'blogs.index',
+        'create' => 'blogs.create',
+        'store' => 'blogs.store',
+        'show' => 'blogs.show',
+        'edit' => 'blogs.edit',
+        'update' => 'blogs.update',
+        'destroy' => 'blogs.destroy'
+    ]);
+
+    // COMENTARIO
+    Route::post('/posts/{post}/comments', [ComentarioController::class, 'store'])->name('comments.store');
 });
 
 

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Blog\Blog;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
+use App\Models\Categoria\Categoria;
 use App\Models\Tag;
+use Carbon\Carbon;
 use GuzzleHttp\Psr7\Uri;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,15 +18,18 @@ class BlogController extends Controller
      */
     public function index()
     {
+
         $posts = Blog::orderBy("titulo")->get();
-        return view("layouts user.Blog.index", compact("posts"));
+        $dataSistema = Carbon::now('Africa/Luanda');
+        // $dataQualquer = Carbon::parse($dataQualquer, 'Africa/Luanda');
+
+        return view("layouts user.Blog.index", compact("posts", "dataSistema"));
     }
 
     public function posts()
     {
         $posts = Blog::orderBy("titulo")->get();
         return view("layouts user.Blog.posts", compact("posts"));
-
     }
 
     /**
@@ -32,7 +37,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view("layouts user.Blog.create");
+        $categorias = Categoria::orderBy("nome")->get();
+        return view("layouts user.Blog.create", compact("categorias"));
     }
 
     /**
@@ -41,30 +47,38 @@ class BlogController extends Controller
     public function store(StoreBlogRequest $request)
     {
         try {
-            //code...
-
             $image_name = null;
+
+            // Verifica se o arquivo de imagem foi enviado e processa o upload
             if ($request->hasFile('foto')) {
                 $file = $request->file('foto');
                 $image_name = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path("images"), $image_name);
+                $file->move(public_path("blog"), $image_name);
             }
 
+            // Cria o post com os dados do request
             $post = Blog::create([
                 'imagem' => $image_name,
+                'view' => 0,
                 'id_us' => Auth::id(),
-            ] + $request->all());
+                'titulo' => $request->input('titulo'),
+                'resumo' => $request->input('resumo'),
+                'conteudo' => $request->input('conteudo'),
+                'data_publicacao' => $request->input('data_publicacao'),
+                'id_categ' => $request->input('id_categ'),
+            ]);
 
-            // Criar ou buscar as tags e associá-las à postagem
-            $tags = collect(explode(',', $request->tags))->map(function ($tag) {
-                return Tag::firstOrCreate(attributes: ['nome' => trim($tag)]);
+            // Processa as tags e associa-as ao post
+            $tags = collect(explode(',', $request->input("tags")))->map(function ($tag) {
+                return Tag::firstOrCreate(['nome' => trim($tag)]);
             });
 
+            // Associa as tags ao post
             $post->tags()->sync($tags->pluck('id'));
 
-            return back()->with('sucesso', 'Post Criado com sucesso.');
+            return redirect()->route("blogs.index")->with('sucesso', 'Post Criado com sucesso.');
         } catch (\Throwable $th) {
-            return back()->with('erro', 'Ocorreu um problema ao tentar criar o post');
+            return back()->with('erro', 'Ocorreu um problema ao tentar criar o post: ' . $th->getMessage());
         }
     }
 
@@ -76,12 +90,27 @@ class BlogController extends Controller
         return view("layouts user.Blog.show", compact("blog"));
     }
 
+    public function post()
+    {
+        $dataSistema = Carbon::now('Africa/Luanda');
+        $posts = Blog::where('data_publicacao', '>', $dataSistema)
+            ->orderBy('created_at', 'desc')
+            ->paginate(3);
+
+        return view("layouts user.Blog.posts", compact("posts"));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Blog $blog)
     {
-        return view("layouts user.Blog.edit", compact("blog"));
+        $categorias = Categoria::orderBy("nome")->get();
+
+        $tags = $blog->tags->pluck('nome')->toArray();
+        $tagsString = implode(', ', $tags);
+
+        return view("layouts user.Blog.edit", compact("blog", "categorias", "tagsString"));
     }
 
     /**

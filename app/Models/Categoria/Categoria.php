@@ -2,6 +2,7 @@
 
 namespace App\Models\Categoria;
 
+use App\Models\Blog\Blog;
 use App\Models\Curso\Curso;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -24,5 +25,10 @@ class Categoria extends Model
     public function cursos()
     {
         return $this->hasMany(Curso::class, 'id_categ');
+    }
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class, 'id_categ');
     }
 }

@@ -18,6 +18,9 @@ return new class extends Migration
             $table->longText(column: "conteudo");
             $table->string("imagem");
             $table->timestamp("data_publicacao");
+            $table->bigInteger(column: "view");
+            $table->unsignedBigInteger('id_categ');
+            $table->foreign('id_categ')->references('id')->on('categorias');
             $table->unsignedBigInteger('id_us');
             $table->foreign('id_us')->references('id')->on('users');
             $table->timestamps();

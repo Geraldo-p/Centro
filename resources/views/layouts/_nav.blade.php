@@ -2,10 +2,8 @@
 <nav class="navbar navbar-expand-lg main-navbar sticky">
     <div class="form-inline mr-auto">
         <ul class="navbar-nav mr-3">
-            <li><a href="#" data-toggle="sidebar"
-                    class="nav-link nav-link-lg
-                                  collapse-btn"> <i
-                        data-feather="align-justify"></i></a></li>
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
+                                  collapse-btn"> <i data-feather="align-justify"></i></a></li>
             <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
                     <i data-feather="maximize"></i>
                 </a></li>
@@ -39,8 +37,8 @@
 											text-white">
                             <img alt="image" src="{{ asset('Template admin/assets/img/users/user-1.png') }}"
                                 class="rounded-circle">
-                        </span> <span class="dropdown-item-desc"> <span
-                                class="message-user">{{ Auth::user()->name }}</span>
+                        </span> <span class="dropdown-item-desc"> <span class="message-user">{{ Auth::user()->name
+                                }}</span>
                             <span class="time messege-text">Please check your mail !!</span>
                             <span class="time">2 Min Ago</span>
                         </span>
@@ -52,8 +50,8 @@
             </div>
         </li>
         <li class="dropdown dropdown-list-toggle">
-            <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg"><i
-                    data-feather="bell" class="bell"></i>
+            <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg"><i data-feather="bell"
+                    class="bell"></i>
             </a>
 
             <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
@@ -65,18 +63,19 @@
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons">
                     {{-- @foreach ($notifications as $item)
-                        <a href="#"
-                            class="dropdown-item notification {{ is_null($item->read_at) ? 'font-weight-bold' : '' }}"
-                            data-id="{{ $item->id }}">
-                            <span class="dropdown-item-icon bg-info text-white">
-                                <i class="fas fa-bell"></i>
-                            </span>
-                            <span class="dropdown-item-desc">
-                                {{ $item->data['message'] }} <!-- Exibe a mensagem -->
-                                <span class="time">{{ $item->created_at->diffForHumans() }}</span>
-                                <!-- Exibe a data da notificação -->
-                            </span>
-                        </a>
+                    <a href="#"
+                        class="dropdown-item notification {{ is_null($item->read_at) ? 'font-weight-bold' : '' }}"
+                        data-id="{{ $item->id }}">
+                        <span class="dropdown-item-icon bg-info text-white">
+                            <i class="fas fa-bell"></i>
+                        </span>
+                        <span class="dropdown-item-desc">
+                            {{ $item->data['message'] }}
+                            <!-- Exibe a mensagem -->
+                            <span class="time">{{ $item->created_at->diffForHumans() }}</span>
+                            <!-- Exibe a data da notificação -->
+                        </span>
+                    </a>
                     @endforeach --}}
                 </div>
                 <div class="dropdown-footer text-center">
@@ -90,8 +89,7 @@
                     class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
                 <div class="dropdown-title">Olá {{ Auth::user()->name }}</div>
-                <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon"> <i
-                        class="far
+                <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon"> <i class="far
 										fa-user"></i> Perfil
                 </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
                     Actividades
@@ -105,8 +103,8 @@
                             class="fas fa-sign-out-alt"></i>
                         Sair
                     </a> --}}
-                    <button type="submit" class="dropdown-item has-icon text-danger"><i
-                            class="fas fa-sign-out-alt"></i> Sair</button>
+                    <button type="submit" class="dropdown-item has-icon text-danger"><i class="fas fa-sign-out-alt"></i>
+                        Sair</button>
                 </form>
             </div>
         </li>
@@ -124,11 +122,11 @@
         <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
             <li class="dropdown active">
-                <a href= "{{ route('dashboard') }}" class="nav-link"><i
+                <a href="{{ route('dashboard') }}" class="nav-link"><i
                         data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
-            <li><a class="nav-link" href="{{ route('chatify') }}"><i
-                        data-feather="mail"></i><span>Mensagens</span></a></li>
+            <li><a class="nav-link" href="{{ route('chatify') }}"><i data-feather="mail"></i><span>Mensagens</span></a>
+            </li>
 
 
             <li><a class="nav-link" href="blank.html"><i data-feather="file"></i><span>Notifications</span></a></li>
@@ -191,7 +189,8 @@
                 </ul>
             </li>
 
-            {{-- <li><a class="nav-link" href="timeline.html"><i data-feather="sliders"></i><span>Timeline</span></a></li>
+            {{-- <li><a class="nav-link" href="timeline.html"><i data-feather="sliders"></i><span>Timeline</span></a>
+            </li>
 
             <li><a class="nav-link" href="vector-map.html"><i data-feather="map-pin"></i><span>Vector
                         Map</span></a></li> --}}
@@ -211,7 +210,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="create-post.html">Certificados</a></li>
                     <li><a class="nav-link" href="posts.html">Anúncios</a></li>
-                    <li><a class="nav-link" href="profile.html">Blog</a></li>
+                    <li><a class="nav-link" href="{{route("blogs.index")}}">Blog</a></li>
                 </ul>
             </li>
         </ul>
@@ -220,8 +219,8 @@
 
 
 <!-- Modal Vertically Center -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -234,10 +233,11 @@
                 <div class="form-group">
                     <center>
                         <form action="{{ route('pagamentos.pesquisar') }}" method="post">
-                            @csrf <!-- Token CSRF para proteção -->
+                            @csrf
+                            <!-- Token CSRF para proteção -->
                             <label for="cod">Código do Formando</label>
-                            <input type="text" class="form-control" name="cod" id="cod"
-                                aria-describedby="helpId" placeholder="">
+                            <input type="text" class="form-control" name="cod" id="cod" aria-describedby="helpId"
+                                placeholder="">
                             <br>
                             <button type="submit" class="btn btn-primary mr-2">Pesquisar</button>
                             <!-- Envia o form ao clicar -->

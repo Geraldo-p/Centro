@@ -6,6 +6,7 @@ use App\Models\Blog\Blog;
 use App\Notifications\RedefinirSenhaNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Categoria\Categoria;
+use App\Models\Comentario\Comentario;
 use App\Models\Departamento\departamento;
 use App\Models\Formando\Formando;
 use App\Models\Funcionario\Funcionario;
@@ -29,6 +30,16 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array<int, string>
      */
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            // Verifica se o usuário não foi verificado
+            if (!$user->hasVerifiedEmail()) {
+                // Envia a notificação de verificação de e-mail
+                $user->sendEmailVerificationNotification();
+            }
+        });
+    }
     protected $fillable = [
         'name',
         'email',
@@ -36,6 +47,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'google_id',
         'nivel_acesso'
     ];
+
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new RedefinirSenhaNotification($token));
@@ -44,6 +57,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function pagamentos()
     {
         return $this->hasMany(Pagamento::class, 'id_us');
+    }
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class, 'id_us');
     }
     public function blogs()
     {
