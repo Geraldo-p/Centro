@@ -1,5 +1,6 @@
 @extends('layouts user.admin')
 @section('titulo', 'Cursos')
+
 @section('conteudo')
     <div class="iner_banner">
         <div class="container">
@@ -14,1273 +15,169 @@
     </div>
 
     <div class="iq_content_wrap">
-        <!--OUR CORSES INPNER PAGE Start-->
         <section class="iqoniq1_our_courses_inpg">
             <div class="container">
-                <!-- Courses Tabs -->
                 <div class="list_setting">
-                    <!-- Courses Tabs Nav Start -->
-                    <ul class="iqoniq-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#Todos" aria-controls="Todos" role="tab"
-                                data-toggle="tab">Todos</a></li>
-                        <li role="presentation"><a href="#recommended" aria-controls="recommended" role="tab"
-                                data-toggle="tab">Recomendado</a></li>
-                        <li role="presentation"><a href="#newcourses" aria-controls="newcourses" role="tab"
-                                data-toggle="tab">Novos Cursos</a></li>
-                        <li role="presentation"><a href="#lastcall" aria-controls="lastcall" role="tab"
-                                data-toggle="tab">Last Call</a></li>
+                    <ul class="nav nav-pills" id="myTab3" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab3" data-toggle="tab" href="#home3" role="tab"
+                                aria-controls="home3" aria-selected="true">Todos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab3" data-toggle="tab" href="#profile3" role="tab"
+                                aria-controls="profile3" aria-selected="false">Recomendado</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab3" data-toggle="tab" href="#contact3" role="tab"
+                                aria-controls="contact3" aria-selected="false">Em Promoção</a>
+                        </li>
                     </ul>
-                    <!-- Courses Tabs Nav End -->
                 </div>
-                <!-- Courses Tabs -->
-                <div class="courses_tabs">
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="Todos">
-                            <!-- Courses Slider Start -->
 
-                                <div class="courses-slider">
-                                    
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-07.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Computer &amp; IT Courses</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-2.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Photography lectures</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-08.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Developing Mobile Apps</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-4.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Business & Finance</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-07.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Computer &amp; IT Courses</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                </div>
-                                <!-- Courses Slider End -->
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="recommended">
-                                <!-- Courses Slider Start -->
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-07.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Computer &amp; IT Courses</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-2.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Photography lectures</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-08.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Developing Mobile Apps</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-4.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Business & Finance</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-07.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Computer &amp; IT Courses</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-2.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Photography lectures</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                </div>
-                                <!-- Courses Slider End -->
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="newcourses">
-                                <!-- Courses Slider Start -->
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-07.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Computer &amp; IT Courses</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-2.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Photography lectures</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-08.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Developing Mobile Apps</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-4.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Business & Finance</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-2.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Photography lectures</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-07.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Computer &amp; IT Courses</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                </div>
-                                <!-- Courses Slider End -->
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="lastcall">
-                                <!-- Courses Slider Start -->
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-07.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Computer &amp; IT Courses</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-2.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Photography lectures</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-08.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Developing Mobile Apps</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-4.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Business & Finance</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                            <!-- popular thumb end -->
-                                        </div>
-                                        <!--courses popular thumb end -->
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!--courses popular thumb start -->
-                                        <div class="coureses_Popular_thumb">
-                                            <figure>
-                                                <img alt="Image Here"
-                                                    src="{{ asset('Template User/extra-images/featured-course-2.jpg') }}">
-                                                <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
-                                            </figure>
-                                            <!-- popular thumb start -->
-                                            <div class="Popular_capstion_thumb">
-                                                <!-- popular caption start -->
-                                                <div class="popular_capstion">
-                                                    <h5><a href="#">Photography lectures</a></h5>
-                                                    <div class="map_icon"><i class="fa fa-map-marker"></i>Education
-                                                        University
-                                                    </div>
-                                                    <!--RATING AREA START-->
-                                                    <div class="rating_down">
-                                                        <div class="rating_up" style="width:100%;"></div>
-                                                    </div>
-                                                    <!--RATING AREA End-->
-                                                    <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit
-                                                        auctor
-                                                        aliquet. </p>
-                                                </div>
-                                                <!-- popular caption end -->
-                                                <!-- popular caption bottom start -->
-                                                <ul class="popular_capstion_bottom">
-                                                    <li>
-                                                        <span>Undergraduate</span>
-                                                        <span class="right">Full Time</span>
-                                                    </li>
-                                                    <li>
-                                                        <span>3 Years</span>
-                                                        <span class="right">13 +</span>
-                                                    </li>
-                                                </ul>
-                                                <!-- popular caption bottom end -->
-                                                <span class="price"><strong>$ 69, 00</strong>per year</span>
-                                            </div>
-                                        </div>
-                                        <!-- popular thumb end -->
-                                    </div>
-                                    <!--courses popular thumb end -->
-                                </div>
-                                <div class="col-md-4">
-                                    <!--courses popular thumb start -->
+                <div class="tab-content" id="myTabContent2">
+                    <!-- Tab-pane Home -->
+                    <div class="tab-pane fade show active" id="home3" role="tabpanel" aria-labelledby="home-tab3">
+                        <div class="owl-carousel owl-theme">
+                            @forelse ($cursos as $item)
+                                <div class="">
                                     <div class="coureses_Popular_thumb">
                                         <figure>
-                                            <img alt="Image Here"
-                                                src="{{ asset('Template User/extra-images/featured-course-07.jpg') }}">
-                                            <a class="iq_link_1" href="{{ url('show', []) }}">Ver Detalhes</a>
+                                            <img alt="{{ $item->nome }}" src="{{ asset('images/' . $item->foto) }}">
+                                            <a class="iq_link_1" href="{{ route('indexCurso.show', $item) }}">Ver
+                                                Detalhes</a>
                                         </figure>
-                                        <!-- popular thumb start -->
                                         <div class="Popular_capstion_thumb">
-                                            <!-- popular caption start -->
                                             <div class="popular_capstion">
-                                                <h5><a href="#">Computer &amp; IT Courses</a></h5>
-                                                <div class="map_icon"><i class="fa fa-map-marker"></i>Education University
-                                                </div>
-                                                <!--RATING AREA START-->
+                                                <h5><a href="{{ route('indexCurso.show', $item) }}">{{ $item->nome }}</a>
+                                                </h5>
+                                                <div class="map_icon"><i class="fa fa-map-marker"></i>Centro de Formação -
+                                                    Santa Cruz</div>
                                                 <div class="rating_down">
-                                                    <div class="rating_up" style="width:100%;"></div>
+                                                    <div class="rating_up" style="width:95%;"></div>
                                                 </div>
-                                                <!--RATING AREA End-->
-                                                <p>This is Photoshop's version of Lorem Ipsum. Proin nibh vel velit auctor
-                                                    aliquet. </p>
+                                                <p>{{ $item->descricao }}</p>
                                             </div>
-                                            <!-- popular caption end -->
-                                            <!-- popular caption bottom start -->
                                             <ul class="popular_capstion_bottom">
                                                 <li>
-                                                    <span>Undergraduate</span>
-                                                    <span class="right">Full Time</span>
+                                                    <span>Duração</span>
+                                                    <span class="right">ínicio</span>
                                                 </li>
                                                 <li>
-                                                    <span>3 Years</span>
-                                                    <span class="right">13 +</span>
+                                                    <span>{{ $item->duracao }}</span>
+                                                    <span class="right">{{ $item->data_inicio }}</span>
                                                 </li>
                                             </ul>
-                                            <!-- popular caption bottom end -->
-                                            <span class="price"><strong>$ 69, 00</strong>per year</span>
+                                            <span class="price"><strong>{{ number_format($item->preco, 2, ',', '.') }}
+                                                    Kz</strong> Inscrição</span>
                                         </div>
-                                        <!-- popular thumb end -->
                                     </div>
-                                    <!--courses popular thumb end -->
                                 </div>
-                            </div>
-                            <!-- Courses Slider End -->
+                            @empty
+                                <h6>Nenhum curso disponível</h6>
+                            @endforelse
                         </div>
                     </div>
-                    <!-- Tab panes -->
+
+                    <!-- Tab-pane Profile -->
+                    <div class="tab-pane fade" id="profile3" role="tabpanel" aria-labelledby="profile-tab3">
+                        <div class="owl-carousel owl-theme">
+                            @forelse ($cursosComMaisPagamentos as $item)
+                                <div class="">
+                                    <div class="coureses_Popular_thumb">
+                                        <figure>
+                                            <img alt="{{ $item->nome }}" src="{{ asset('images/' . $item->foto) }}">
+                                            <a class="iq_link_1" href="{{ route('indexCurso.show', $item) }}">Ver
+                                                Detalhes</a>
+                                        </figure>
+                                        <div class="Popular_capstion_thumb">
+                                            <div class="popular_capstion">
+                                                <h5><a
+                                                        href="{{ route('indexCurso.show', $item) }}">{{ $item->nome }}</a>
+                                                </h5>
+                                                <div class="map_icon"><i class="fa fa-map-marker"></i>Centro de Formação -
+                                                    Santa Cruz</div>
+                                                <div class="rating_down">
+                                                    <div class="rating_up" style="width:95%;"></div>
+                                                </div>
+                                                <p>{{ $item->descricao }}</p>
+                                            </div>
+                                            <ul class="popular_capstion_bottom">
+                                                <li>
+                                                    <span>Duração</span>
+                                                    <span class="right">ínicio</span>
+                                                </li>
+                                                <li>
+                                                    <span>{{ $item->duracao }}</span>
+                                                    <span class="right">{{ $item->data_inicio }}</span>
+                                                </li>
+                                            </ul>
+                                            <span class="price"><strong>{{ number_format($item->preco, 2, ',', '.') }}
+                                                    Kz</strong> Inscrição</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @empty
+                                <h6>Nenhum curso disponível</h6>
+                            @endforelse
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact3" role="tabpanel" aria-labelledby="contact-tab3">
+                        <div class="owl-carousel owl-theme">
+                            em promoção
+                        </div>
+                    </div>
                 </div>
-                <!-- Courses Tabs -->
             </div>
         </section>
-        <section>
-            <div class="container">
-                <!--Heading 1 Start-->
-                <div class="iq_heading_1 text-center">
-                    <h4>related<span> courses</span></h4>
-                </div>
-                <!--Heading 1 End-->
-                <div class="owl-carousel owl-theme">
+    </div>
 
-                    <!--Courses List Start-->
-                    <div class="testimonial item">
-                        <div class="">
-                            <figure>
-                                <img src="{{ asset('Template User/extra-images/featured-course-07.jpg') }}"
-                                    alt="Image Here">
-                            </figure>
-                            <div class="iq_course_list_des">
-                                <div class="iq_course_icon">
-                                    <span class="icon-student">
-                                        <span class="path1"></span><span class="path2"></span><span
-                                            class="path3"></span><span class="path4"></span><span
-                                            class="path5"></span><span class="path6"></span><span
-                                            class="path7"></span><span class="path8"></span><span
-                                            class="path9"></span><span class="path10"></span><span
-                                            class="path11"></span><span class="path12"></span><span
-                                            class="path13"></span><span class="path14"></span><span
-                                            class="path15"></span><span class="path16"></span><span
-                                            class="path17"></span><span class="path18"></span><span
-                                            class="path19"></span>
-                                    </span>
-                                </div>
-                                <h5><a href="#">Computer & IT Courses</a></h5>
-                                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor
-                                    aliquet.
-                                    Aenean sollicitudin, lorem quis bibendum </p>
-                                <ul>
-                                    <li>
-                                        <!--RATING AREA START-->
-                                        <div class="rating_down">
-                                            <div class="rating_up" style="width:100%;"></div>
-                                        </div>
-                                        <!--RATING AREA End-->
-                                    </li>
-                                    <li>101 Visto</li>
-                                    <li><i class="fa fa-user"></i>3.1 k</li>
-                                </ul>
+    <section>
+        <div class="container">
+            <div class="iq_heading_1 text-center">
+                <h4>Cursos em<span> Promoção</span></h4>
+            </div>
+            <div class="owl-carousel owl-theme">
+                <div class="">
+                    <div class="iq_course_list">
+                        <figure>
+                            <img src="{{ asset('Template User/extra-images/featured-course-07.jpg') }}" alt="Image Here">
+                        </figure>
+                        <div class="iq_course_list_des">
+                            <div class="iq_course_icon">
+                                <span class="icon-student">
+                                    <span class="path1"></span><span class="path2"></span><span
+                                        class="path3"></span><span class="path4"></span><span
+                                        class="path5"></span><span class="path6"></span><span
+                                        class="path7"></span><span class="path8"></span><span
+                                        class="path9"></span><span class="path10"></span><span
+                                        class="path11"></span><span class="path12"></span><span
+                                        class="path13"></span><span class="path14"></span><span
+                                        class="path15"></span><span class="path16"></span><span
+                                        class="path17"></span><span class="path18"></span><span class="path19"></span>
+                                </span>
                             </div>
-                            <a class="iq_link_1" href="#">Inscrever-se</a>
+                            <h5><a href="#">Computer & IT Courses</a></h5>
+                            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
+                                Aenean sollicitudin, lorem quis bibendum </p>
+                            <ul>
+                                <li>
+                                    <!--RATING AREA START-->
+                                    <div class="rating_down">
+                                        <div class="rating_up" style="width:100%;"></div>
+                                    </div>
+                                    <!--RATING AREA End-->
+                                </li>
+                                <li>101 Reviews</li>
+                                <li><i class="fa fa-user"></i>3.1 k</li>
+                            </ul>
                         </div>
+                        {{-- <a class="iq_link_1" href="{{ route('inscrever.curso') }}">Inscrever-se</a> --}}
+                        <a class="iq_link_1" href="#">Inscrever-se</a>
                     </div>
-                    <!--Courses List End-->
-                    <!--Courses List Start-->
-                    <div class="testimonial item">
-                        <div class="">
-                            <figure>
-                                <img src="{{ asset('Template User/extra-images/featured-course-02.jpg') }}"
-                                    alt="Image Here">
-                            </figure>
-                            <div class="iq_course_list_des">
-                                <div class="iq_course_icon">
-                                    <span class="icon-lecture">
-                                        <span class="path1"></span><span class="path2"></span><span
-                                            class="path3"></span><span class="path4"></span><span
-                                            class="path5"></span><span class="path6"></span><span
-                                            class="path7"></span><span class="path8"></span><span
-                                            class="path9"></span><span class="path10"></span><span
-                                            class="path11"></span><span class="path12"></span><span
-                                            class="path13"></span><span class="path14"></span><span
-                                            class="path15"></span><span class="path16"></span><span
-                                            class="path17"></span><span class="path18"></span><span
-                                            class="path19"></span><span class="path20"></span><span
-                                            class="path21"></span><span class="path22"></span><span
-                                            class="path23"></span><span class="path24"></span><span
-                                            class="path25"></span><span class="path26"></span><span
-                                            class="path27"></span><span class="path28"></span><span
-                                            class="path29"></span><span class="path30"></span><span
-                                            class="path31"></span><span class="path32"></span><span
-                                            class="path33"></span><span class="path34"></span><span
-                                            class="path35"></span><span class="path36"></span><span
-                                            class="path37"></span><span class="path38"></span>
-                                    </span>
-                                </div>
-                                <h5><a href="#">Business & Finance</a></h5>
-                                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor
-                                    aliquet.
-                                    Aenean sollicitudin, lorem quis bibendum </p>
-                                <ul>
-                                    <li>
-                                        <!--RATING AREA START-->
-                                        <div class="rating_down">
-                                            <div class="rating_up" style="width:100%;"></div>
-                                        </div>
-                                        <!--RATING AREA End-->
-                                    </li>
-
-                                    <li>101 Visto</li>
-                                    <li><i class="fa fa-user"></i>3.1 k</li>
-                                </ul>
-                            </div>
-                            <a class="iq_link_1" href="#">Inscrever-se</a>
-                        </div>
-                    </div>
-                    <!--Courses List End-->
-                    <!--Courses List Start-->
-                    <div class="testimonial item">
-                        <div class="">
-                            <figure>
-                                <img src="{{ asset('Template User/extra-images/featured-course-03.jpg') }}"
-                                    alt="Image Here">
-                            </figure>
-                            <div class="iq_course_list_des">
-                                <div class="iq_course_icon">
-                                    <span class="icon-molecule">
-                                        <span class="path1"></span><span class="path2"></span><span
-                                            class="path3"></span><span class="path4"></span><span
-                                            class="path5"></span><span class="path6"></span><span
-                                            class="path7"></span><span class="path8"></span><span
-                                            class="path9"></span><span class="path10"></span><span
-                                            class="path11"></span><span class="path12"></span><span
-                                            class="path13"></span><span class="path14"></span><span
-                                            class="path15"></span><span class="path16"></span><span
-                                            class="path17"></span>
-                                    </span>
-                                </div>
-                                <h5><a href="#">Social Courses</a></h5>
-                                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor
-                                    aliquet.
-                                    Aenean sollicitudin, lorem quis bibendum </p>
-                                <ul>
-                                    <li>
-                                        <!--RATING AREA START-->
-                                        <div class="rating_down">
-                                            <div class="rating_up" style="width:100%;"></div>
-                                        </div>
-                                        <!--RATING AREA End-->
-                                    </li>
-                                    <li>101 Visto</li>
-                                    <li><i class="fa fa-user"></i>3.1 k</li>
-                                </ul>
-                            </div>
-                            <a class="iq_link_1" href="#">Inscrever-se</a>
-                        </div>
-                    </div>
-                    <!--Courses List End-->
-                    <!--Courses List Start-->
-                    <div class="item">
-                        <div class="">
-                            <figure>
-                                <img src="{{ asset('Template User/extra-images/featured-course-04.jpg') }}"
-                                    alt="Image Here">
-                            </figure>
-                            <div class="iq_course_list_des">
-                                <div class="iq_course_icon">
-                                    <span class="icon-doctor-2">
-                                        <span class="path1"></span><span class="path2"></span><span
-                                            class="path3"></span><span class="path4"></span><span
-                                            class="path5"></span><span class="path6"></span><span
-                                            class="path7"></span><span class="path8"></span><span
-                                            class="path9"></span><span class="path10"></span><span
-                                            class="path11"></span><span class="path12"></span><span
-                                            class="path13"></span><span class="path14"></span><span
-                                            class="path15"></span><span class="path16"></span><span
-                                            class="path17"></span><span class="path18"></span><span
-                                            class="path19"></span><span class="path20"></span><span
-                                            class="path21"></span><span class="path22"></span><span
-                                            class="path23"></span><span class="path24"></span><span
-                                            class="path25"></span><span class="path26"></span><span
-                                            class="path27"></span><span class="path28"></span><span
-                                            class="path29"></span><span class="path30"></span><span
-                                            class="path31"></span><span class="path32"></span><span
-                                            class="path33"></span><span class="path34"></span><span
-                                            class="path35"></span><span class="path36"></span><span
-                                            class="path37"></span><span class="path38"></span>
-                                    </span>
-                                </div>
-                                <h5><a href="#">Neuroscience Courses</a></h5>
-                                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor
-                                    aliquet.
-                                    Aenean sollicitudin, lorem quis bibendum </p>
-                                <ul>
-                                    <li>
-                                        <!--RATING AREA START-->
-                                        <div class="rating_down">
-                                            <div class="rating_up" style="width:100%;"></div>
-                                        </div>
-                                        <!--RATING AREA End-->
-                                    </li>
-                                    <li><i class="fa fa-user"></i>3.1 k</li>
-                                </ul>
-                            </div>
-                            <a class="iq_link_1" href="#">Inscrever-se</a>
-                        </div>
-                    </div>
-                    <!--Courses List End-->
                 </div>
             </div>
-    </div>
+        </div>
     </section>
-    </div>
-
     <script>
         $(document).ready(function() {
             $(".owl-carousel").owlCarousel({
@@ -1289,8 +186,8 @@
                 nav: true,
                 autoplay: true,
                 autoplayTimeout: 5000,
-                autoplaySpeed: 1000, // Tempo de transição mais suave
-                smartSpeed: 1000, // Suavidade na transição manual
+                autoplaySpeed: 1000,
+                smartSpeed: 1000,
                 responsive: {
                     0: {
                         items: 1
@@ -1303,7 +200,11 @@
                     }
                 }
             });
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+                // Encontrar o carousel dentro do tab-pane ativo e reiniciá-lo
+                var activeTabPane = $(e.target).attr('href');
+                $(activeTabPane + ' .owl-carousel').trigger('refresh.owl.carousel');
+            });
         });
     </script>
-
 @endsection

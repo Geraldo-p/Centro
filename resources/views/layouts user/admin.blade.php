@@ -30,8 +30,9 @@
     <link rel="stylesheet" href="{{ asset('Template User/css/color.css') }}">
     <link rel="stylesheet" href="{{ asset('Template User/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('Template User/css/swiper/swiper-bunble.min.css') }}">
+    
 
-
+    {{-- @yield('css') --}}
 </head>
 
 <body>
@@ -65,7 +66,7 @@
                             <ul>
                                 <li class="active"><a href="#">Ínicio</a></li>
                                 <li><a href="{{ url('sobre') }}">Sobre Nós</a></li>
-                                <li><a href="{{ url('curso') }}">Cursos</a>
+                                <li><a href="{{ route('todosCursos') }}">Cursos</a>
                                 </li>
 
                                 <li><a href="{{ route('blogs.post') }}">Blog</a>
@@ -97,7 +98,8 @@
                                 <aside id="sidebar-wrapper">
                                     <div class="sidebar-brand">
                                         <a href="{{ route('dashboard') }}">
-                                            <img alt="image" src="{{ asset('Template admin/assets/img/logo_.png') }}"
+                                            <img alt="image"
+                                                src="{{ asset('Template admin/assets/img/logo_.png') }}"
                                                 class="header-logo" />
                                             <span class="logo-name">Santa Cruz</span>
                                         </a>
@@ -214,10 +216,10 @@
                         </div>
                         <!--DL Menu END-->
                         <!--Pesquisar Wrap Start-->
-                        <div class="iq_search pull-right">
+                        {{-- <div class="iq_search pull-right">
                             <button data-toggle="modal" data-target="#pesquisar-box"><i
                                     class="fa fa-pesquisar"></i></button>
-                        </div>
+                        </div> --}}
                         <!--Pesquisar Wrap End-->
                     </div>
                     <!--Navigation wrap End-->
@@ -225,6 +227,7 @@
                 <!--Top Strip Wrap End-->
             </div>
         </header>
+
 
         <script src="{{ asset('Template admin/assets/js/app.min.js') }}"></script>
         <script src="{{ asset('Template admin/assets/js/scripts.js') }}"></script>
@@ -243,12 +246,13 @@
         <!-- Scripts do Bootstrap 4 -->
         <script src="{{ asset('Template User/js/jquery-3.5.1.slim.min.js') }}"></script>
         <script src="{{ asset('Template User/js/jquery.min.js') }}"></script>
-
         <script src="{{ asset('Template User/js/popper.min.js') }}"></script>
         <script src="{{ asset('Template User/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('Template User/js/swiper-bundle.min.js') }}"></script>
         <script src="{{ asset('Template User/js/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('Template User/js/custom.js') }}"></script>
+
+        @yield('scripts')
         @yield('conteudo')
         @include('layouts user/footer')
     </div>
@@ -256,5 +260,4 @@
 
 
 </body>
-
 </html>

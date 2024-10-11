@@ -20,7 +20,8 @@
                     <div class="card-header">
                         <h4>Escreva Seu Post</h4>
                     </div>
-                    <form action="{{ route('blogs.store') }}" method="POST" id="InserirForm" enctype="multipart/form-data">
+                    <form action="{{ route('blogs.store') }}" method="POST" id="InserirForm"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="form-group row mb-4">
@@ -29,7 +30,7 @@
                                     <input type="text" name="titulo"
                                         class="form-control @error('titulo') is-invalid @enderror">
                                     @error('titulo')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
@@ -39,7 +40,7 @@
                                     <select class="form-control selectric" name="id_categ">
                                         @foreach ($categorias as $item)
 
-                                        <option value="{{$item->id}}">{{$item->nome}}</option>
+                                            <option value="{{$item->id}}">{{$item->nome}}</option>
                                         @endforeach
 
                                     </select>
@@ -49,10 +50,10 @@
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Resumo</label>
                                 <div class="col-sm-12 col-md-7">
                                     <textarea class="summernote-simple @error('resumo') is-invalid
-                                    @enderror" name="resumo"></textarea>
-
+                                    @enderror" name="resumo" maxlength="376"></textarea>
+                                    <label for="">376 caracteres restantes</label>
                                     @error('resumo')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
@@ -63,7 +64,7 @@
                                     @enderror" name="conteudo"></textarea>
 
                                     @error('conteudo')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
@@ -76,7 +77,7 @@
                                         <input type="file" name="foto" id="image-upload" />
 
                                         @error('foto')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                            <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
@@ -85,11 +86,11 @@
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tags</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" class="form-control inputtags @error('tags') is-invalid @enderror"
-                                        name="tags">
+                                    <input type="text"
+                                        class="form-control inputtags @error('tags') is-invalid @enderror" name="tags">
 
                                     @error('tags')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
@@ -101,7 +102,7 @@
                                         class="form-control  @error('data_publicacao') is-invalid @enderror"
                                         name="data_publicacao">
                                     @error('data_publicacao')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
@@ -110,8 +111,8 @@
                             <hr>
                             <div class="row">
                                 <div class="col-md-12 content-right">
-                                    <button class="btn btn-primary form-btn" type="button"
-                                        id="swal-inserir">Criar Post</button>
+                                    <button class="btn btn-primary form-btn" type="button" id="swal-inserir">Criar
+                                        Post</button>
                                     <a href="{{ route('blogs.index') }}"><input type="button" value="Cancelar"
                                             class="btn btn-danger form-btn"></a>
                                 </div>
@@ -138,33 +139,33 @@
 <script src="{{ asset('Template admin/assets/js/page/create-post.js') }}"></script>
 
 <script src="{{ asset('Template admin/assets/bundles/izitoast/js/iziToast.min.js') }}"></script>
-    <script src="{{ asset('Template admin/assets/js/page/toastr.js') }}"></script>
-    @if (session('sucesso'))
-        <script>
-            $(document).ready(function() {
-                iziToast.success({
-                    title: 'Sucesso, ',
-                    message: '{{ session('sucesso') }}',
-                    position: 'topRight'
-                });
+<script src="{{ asset('Template admin/assets/js/page/toastr.js') }}"></script>
+@if (session('sucesso'))
+    <script>
+        $(document).ready(function () {
+            iziToast.success({
+                title: 'Sucesso, ',
+                message: '{{ session('sucesso') }}',
+                position: 'topRight'
             });
-        </script>
-        {{ session()->forget('sucesso') }}
+        });
+    </script>
+    {{ session()->forget('sucesso') }}
 
-    @endif
+@endif
 
-    @if (session('erro'))
-        <script>
-            $(document).ready(function() {
-                iziToast.error({
-                    title: 'Erro,',
-                    message: '{{ session('erro') }}',
-                    position: 'topRight'
-                });
+@if (session('erro'))
+    <script>
+        $(document).ready(function () {
+            iziToast.error({
+                title: 'Erro,',
+                message: '{{ session('erro') }}',
+                position: 'topRight'
             });
-        </script>
-        {{ session()->forget('erro') }}
+        });
+    </script>
+    {{ session()->forget('erro') }}
 
-    @endif
+@endif
 
 @endsection

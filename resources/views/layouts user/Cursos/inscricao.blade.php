@@ -56,7 +56,7 @@
                             <div class="col-sm-12 col-md-9 col-lg-9 col-xl-5 col-xxl-5">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="curso">Curso</label>
-                                    <select id="curso" name="curso_id"
+                                    <select id="curso" name="curso_id" readonly
                                         class="form-control @error('curso_id') is-invalid @enderror">
                                         @foreach ($cursos as $item)
                                             <option value="{{ $item->id }}" data-preco="{{ $item->preco }}">
@@ -73,8 +73,11 @@
                             <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="preco">Preço</label>
-                                    <input type="text" id="preco"
-                                        class="form-control @error('preco') is-invalid @enderror" name="preco" readonly>
+                                    @foreach ($cursos as $item)
+                                        <input type="text" id="preco" value="{{ $item->preco }}"
+                                            class="form-control @error('preco') is-invalid @enderror" name="preco"
+                                            readonly>
+                                    @endforeach
                                     @error('preco')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -121,8 +124,6 @@
                                     @enderror
                                 </div>
                             </div>
-
-
                             <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2 col-xxl-3">
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="">Em Falta</label>
@@ -133,8 +134,8 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div id="comprov" class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-9">
+
                                 <div class="form-group mb-3">
                                     <label class="form-label" for="">Submeter Comprovativo</label>
                                     <input class="form-control @error('comprovativo') is-invalid @enderror" type="file"

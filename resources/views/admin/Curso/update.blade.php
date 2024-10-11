@@ -77,14 +77,11 @@
                                 <div class="form-group mb-3">
                                     <label class="form-label">Categoria</label>
                                     <select class="form-control @error('id_categ') is-invalid @enderror" name="id_categ">
-                                        <optgroup label="Escolha uma Categoria para o curso">
                                             @foreach ($categoria as $item)
                                                 <option value="{{ $item->id }}"
                                                     @if ($item->id == $curso->id_categ) selected @endif>{{ $item->nome }}
                                                 </option>
-                                            @endforeach
-                                        </optgroup>
-
+                                            @endforeach 
                                     </select>
                                     @error('id_categ')
                                         <div class="invalid-feedback">{{ $message }}</div>

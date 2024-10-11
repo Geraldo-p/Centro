@@ -164,6 +164,19 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="widget widget-tag">
+                                <!--Widget Title Start-->
+                                <h5 class="widget-title"><span>tags</span></h5>
+                                <!--Widget Title End-->
+                                <div class="tag">
+                                    @forelse ($tags as $item)
+                                    <a class="tag-link" href="#">{{$item->nome}}</a>
+
+                                    @empty
+                                    
+                                    @endforelse
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

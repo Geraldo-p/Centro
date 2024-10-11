@@ -37,6 +37,12 @@ class ComentarioController extends Controller
             'blog_id' => $request->blog_id,
             'id_us' => Auth::id(),
         ]);
+
+        try {
+            return back()->with('sucesso', 'Comentou no Post');
+        } catch (\Throwable $th) {
+            return back()->with('erro', 'Ocorreu um problema ao tentar Comentar no Post');
+        }
     }
 
     /**

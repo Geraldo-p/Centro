@@ -12,15 +12,16 @@ use App\Models\Tag;
 use Carbon\Carbon;
 use GuzzleHttp\Psr7\Uri;
 use Illuminate\Support\Facades\Auth;
+use Termwind\Components\Dd;
 
 class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
-
         $posts = Blog::orderBy("titulo")->get();
         $dataSistema = Carbon::now('Africa/Luanda');
         // $dataQualquer = Carbon::parse($dataQualquer, 'Africa/Luanda');
@@ -89,13 +90,39 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        return view("layouts user.Blog.show", compact("blog"));
+        $dataSistema = Carbon::now('Africa/Luanda');
+        $posts = Blog::where('data_publicacao', '<=', $dataSistema)
+            ->orderBy('created_at', 'desc')
+            ->paginate(3);
+        // dd($dataSistema);
+
+        $cursosComMaisPagamentos = Pagamento::select('curso_id', Curso::raw('count(*) as total_pagamentos'))
+            ->whereIn('curso_id', function ($query) {
+                // Subconsulta para filtrar cursos com mais de 10 formandos
+                $query->select('curso_id')
+                    ->from('turma__formandos')
+                    ->groupBy('curso_id')
+                    ->having(Curso::raw('count(formando_id)'), '>', 10);
+            })
+            ->groupBy('curso_id')
+            ->orderBy('total_pagamentos', 'desc')
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $cursos = Curso::withCount('modulos')
+            ->inRandomOrder()
+            ->take(7)
+            ->get();
+        $tags = Tag::all();
+
+        return view("layouts user.Blog.show", compact("posts", "tags", "cursosComMaisPagamentos", "cursos", "blog"));
     }
 
     public function post()
     {
         $dataSistema = Carbon::now('Africa/Luanda');
-        $posts = Blog::where('data_publicacao', '>', $dataSistema)
+        $posts = Blog::where('data_publicacao', '<=', $dataSistema)
             ->orderBy('created_at', 'desc')
             ->paginate(3);
 
@@ -118,9 +145,9 @@ class BlogController extends Controller
             ->take(7)
             ->get();
 
-        $tags = Blog::with('tags')->inRandomOrder()->first(); // Seleciona um blog aleatório com suas tags
+        $tags = Tag::all();
 
-        return view("layouts user.Blog.posts", compact("posts", "cursosComMaisPagamentos", "cursos", "tags"));
+        return view("layouts user.Blog.posts", compact("tags", "posts", "cursosComMaisPagamentos", "cursos"));
     }
 
     /**

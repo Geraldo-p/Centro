@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\FormandoController;
 use App\Http\Controllers\FuncionarioController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ListaPresencaController;
 use App\Http\Controllers\MatriculaController;
 use App\Http\Controllers\MensagensController;
@@ -19,7 +20,11 @@ use App\Http\Controllers\SalaController;
 use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\TurmaFormandoController;
 use App\Mail\EnviarEmail;
+use App\Models\Blog\Blog;
 use App\Models\Curso\Curso;
+use App\Models\Formando\Formando;
+use App\Models\Funcionario\Funcionario;
+use App\Models\Turma\Turma;
 use App\Models\User;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Support\Facades\Auth;
@@ -35,18 +40,17 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/notifications/mark-as-read', [DashboardController::class, 'markAsRead'])->name('notifications.markAsRead');
 });
 
-Route::get('/', function () {
-    $cursos = Curso::inRandomOrder()->get();
-    return view('layouts user/index', compact("cursos"));
-});
+// INDEX
+Route::get('/', [IndexController::class, 'index'])->name('/');
+Route::get('/Curso-detalhes/{cursos}', [IndexController::class, 'Curso_Show'])->name('indexCurso.show');
+Route::get('/Inscrever-Curso/{cursoID}', [IndexController::class, 'Inscrever_Curso'])->name('inscrever.curso');
+Route::get('/Curso', [IndexController::class, 'Todos_Cursos'])->name('todosCursos');
+
 
 Route::get('/sobre', function () {
     return view('layouts user/sobre');
 });
 
-Route::get('/curso', function () {
-    return view('layouts user/Cursos/cursos');
-});
 
 Route::get('/show', function () {
     return view('layouts user/Cursos/show');
@@ -203,18 +207,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get("/generate-pdf/lista_presencas", [ListaPresencaController::class, 'generatePdf'])->name("lista_presencas.pdf");
 
-    // blog
-    Route::resource('blogs', BlogController::class)->names([
-        'index' => 'blogs.index',
-        'create' => 'blogs.create',
-        'store' => 'blogs.store',
-        'show' => 'blogs.show',
-        'edit' => 'blogs.edit',
-        'update' => 'blogs.update',
-        'destroy' => 'blogs.destroy',
-    ]);
-
-    Route::get("/Blog-Posts", [BlogController::class, 'post'])->name("blogs.post");
 
 
     // User
@@ -265,20 +257,6 @@ Route::middleware('auth')->group(function () {
         'destroy' => 'mensagens.destroy'
     ]);
     Route::get("/generate-pdf/mensagens", [PagamentoController::class, 'generatePdf'])->name("mensagens.pdf");
-
-    //BLOG
-    Route::resource('blogs', BlogController::class)->names([
-        'index' => 'blogs.index',
-        'create' => 'blogs.create',
-        'store' => 'blogs.store',
-        'show' => 'blogs.show',
-        'edit' => 'blogs.edit',
-        'update' => 'blogs.update',
-        'destroy' => 'blogs.destroy'
-    ]);
-
-    // COMENTARIO
-    Route::post('/posts/{post}/comments', [ComentarioController::class, 'store'])->name('comments.store');
 });
 
 
@@ -306,8 +284,22 @@ Route::get('auth/google/callback', function () {
     return redirect('/'); // Redireciona para uma página desejada
 });
 
+//BLOG
+Route::resource('blogs', BlogController::class)->names([
+    'index' => 'blogs.index',
+    'create' => 'blogs.create',
+    'store' => 'blogs.store',
+    'show' => 'blogs.show',
+    'edit' => 'blogs.edit',
+    'update' => 'blogs.update',
+    'destroy' => 'blogs.destroy'
+]);
 
-Route::get("/Blog", [BlogController::class, 'posts'])->name("blogs.posts");
-Route::get("/Post-detalhes", [BlogController::class, 'show'])->name("blogs.show");
+Route::get("/Blog-Posts", [BlogController::class, 'post'])->name("blogs.post");
+
+
+// COMENTARIO
+Route::post('/posts/{post}/comentarios', [ComentarioController::class, 'store'])->name('comentarios.store');
+
 
 require __DIR__ . '/auth.php';

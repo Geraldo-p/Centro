@@ -21,7 +21,8 @@ use App\Models\Lista_de_Presenca\Lista_Presenca;
 use App\Models\Lista_de_Presenca_Principal\Lista_Presenca_Principal;
 use App\Models\Pagamento\Pagamento;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
+// class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
