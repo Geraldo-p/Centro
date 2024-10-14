@@ -488,10 +488,11 @@
                 <div class="row">
                     @forelse ($eventos as $item)
                         <!-- Evento Start -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="iq_upcomming_event">
+                        <div class="col-md-3 col-sm-6" >
+                            <div class="iq_upcomming_event" >
                                 <figure>
-                                    <img src="{{ asset('Evento/' . $item->imagem) }}" alt="Imagem do Evento">
+                                    <img src="{{ asset('Evento/' . $item->imagem) }}" alt="Imagem do Evento" >
+                                    {{-- <img src="{{ asset('Evento/' . $item->imagem) }}" alt="Imagem do Evento" style="width: 500px; height: 400px;"> --}}
                                 </figure>
                                 <div class="iq_upcomming_des">
                                     <span>{{ \Carbon\Carbon::parse($item->data_inicio)->format('d M') }}</span>

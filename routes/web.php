@@ -47,10 +47,11 @@ Route::get('/Curso-detalhes/{cursos}', [IndexController::class, 'Curso_Show'])->
 Route::get('/Inscrever-Curso/{cursoID}', [IndexController::class, 'Inscrever_Curso'])->name('inscrever.curso');
 Route::get('/Curso', [IndexController::class, 'Todos_Cursos'])->name('todosCursos');
 Route::get('/Detalhes-Evento/{id}', [IndexController::class, 'Evento_Show'])->name('evento.detalhes');
+Route::get('/Eventos', [IndexController::class, 'Eventos'])->name('evento.todos');
 
 
-Route::get('/sobre', function () {
-    return view('layouts user/sobre');
+Route::get('/index2', function () {
+    return view('layouts user/index2');
 });
 
 

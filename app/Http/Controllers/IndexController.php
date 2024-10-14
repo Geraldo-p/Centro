@@ -203,7 +203,12 @@ class IndexController extends Controller
             ->inRandomOrder()
             ->take(2)
             ->get();
-            
+
         return view("layouts user.Evento.show", compact("temasParte2", "eventos", "temasParte1", "evento", "tags", "cursosComMaisPagamentos", "posts", "cursos", "dataSistema"));
+    }
+
+    public function Eventos()
+    {
+        return view("layouts user.Evento.eventos");
     }
 }

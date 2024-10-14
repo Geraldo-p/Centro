@@ -12,7 +12,6 @@
     {{-- pendente --}}
     <link rel="stylesheet" href="{{ asset('Template admin/assets/css/style.css') }}">
 
-
     <link rel="stylesheet" href="{{ asset('Template User/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('Template User/css/owr carousel/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('Template User/css/owr carousel/owl.theme.default.min.css') }}">
@@ -30,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('Template User/css/color.css') }}">
     <link rel="stylesheet" href="{{ asset('Template User/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('Template User/css/swiper/swiper-bunble.min.css') }}">
+    @yield('css')
 </head>
 
 <body>
@@ -62,12 +62,12 @@
 
                                 <li><a href="{{ route('blogs.post') }}">Blog</a>
                                 </li>
-                                <li><a href="#">Eventos</a>
-                                    <ul class="children">
-                                        <li><a href="event-detail.html">Novos Eventos</a></li>
-                                        <li><a href="event-detail.html">Eventos Passados</a></li>
+                                <li><a href="{{ route('evento.todos') }}">Eventos</a>
+                                    {{-- <ul class="children">
+                                        <li><a href="event-detail.html">Todos</a></li>
+                                        <li><a href="event-detail.html">Ca</a></li>
                                         <li><a href="event-calender.html">Calendario de Eventos</a></li>
-                                    </ul>
+                                    </ul> --}}
                                 </li>
 
                                 <li><a href=" {{ url('equipe', []) }}">Nossa Equipe</a>
