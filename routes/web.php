@@ -49,11 +49,9 @@ Route::get('/Curso', [IndexController::class, 'Todos_Cursos'])->name('todosCurso
 Route::get('/Detalhes-Evento/{id}', [IndexController::class, 'Evento_Show'])->name('evento.detalhes');
 Route::get('/Eventos', [IndexController::class, 'Eventos'])->name('evento.todos');
 
-
-Route::get('/index2', function () {
-    return view('layouts user/index2');
+Route::get('/admin', function () {
+    return view('layouts user/admin');
 });
-
 
 Route::get('/show', function () {
     return view('layouts user/Cursos/show');
