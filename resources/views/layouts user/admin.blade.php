@@ -30,27 +30,19 @@
     <link rel="stylesheet" href="{{ asset('Template User/css/color.css') }}">
     <link rel="stylesheet" href="{{ asset('Template User/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('Template User/css/swiper/swiper-bunble.min.css') }}">
-    
-
-    {{-- @yield('css') --}}
 </head>
 
 <body>
-    <!--iqoniq Wrapper Start-->
     <div class="iq_wrapper">
-        <!--Header Wrap Start-->
         <header class="iq_header_1">
             <div class="container">
-                <!--Logo Wrap Start-->
                 <div class="iq_logo">
 
                     <a href="{{ url('/', []) }}"><img src="{{ asset('Template admin/assets/img/logo3.png') }}"
                             alt="Iqoniq Themes"></a>
                 </div>
-                <!--Logo Wrap Start-->
-                <!--Top Strip Wrap Start-->
+
                 <div class="iq_ui_element">
-                    <!--Top Strip Wrap Start-->
                     <div class="iq_top_strip">
                         <div class="iq_top_contact pull-left">
                             <a href="#"> Call us : +244 947 986 411</a>
@@ -59,12 +51,11 @@
                         <div class="iq_time_wrap pull-right"><i class="fa fa-clock-o"></i> Seg - Sáb: 06:00 - 16:00
                             pm </div>
                     </div>
-                    <!--Top Strip Wrap End-->
-                    <!--Navigation wrap Start-->
+
                     <div class="navigation-wrapper pull-left ">
                         <div class="navigation pull-left">
                             <ul>
-                                <li class="active"><a href="#">Ínicio</a></li>
+                                <li class="active"><a href="{{ url('/', []) }}">Ínicio</a></li>
                                 <li><a href="{{ url('sobre') }}">Sobre Nós</a></li>
                                 <li><a href="{{ route('todosCursos') }}">Cursos</a>
                                 </li>
@@ -87,8 +78,6 @@
                             </ul>
                         </div>
 
-
-                        <!--DL Menu Start mobile-->
                         <div id="mg-responsive-navigation" class="dl-menuwrapper">
                             <a href="#" id="toggle-sidebar" class="nav-link nav-link-lg collapse-btn">
                                 <button class="dl-trigger">Open Menu</button>
@@ -163,31 +152,22 @@
                             <script>
                                 const toggleButton = document.getElementById('toggle-sidebar');
                                 const sidebar = document.getElementById('sidebar');
-
-                                // Abrir/fechar menu ao clicar no botão
                                 toggleButton.addEventListener('click', function(e) {
                                     e.preventDefault();
                                     sidebar.classList.toggle('active');
                                 });
 
-                                // Fechar o menu ao clicar fora
                                 document.addEventListener('click', function(e) {
                                     const isClickInside = sidebar.contains(e.target) || toggleButton.contains(e.target);
                                     if (!isClickInside) {
                                         sidebar.classList.remove('active');
                                     }
                                 });
-
-                                // Pega todos os elementos que têm a classe "menu-toggle"
                                 const menuToggles = document.querySelectorAll('.menu-toggle');
-
-                                // Itera sobre cada item de menu que tem submenu
                                 menuToggles.forEach(function(toggle) {
                                     toggle.addEventListener('click', function(e) {
                                         e.preventDefault();
                                         const dropdownMenu = toggle.nextElementSibling;
-
-                                        // Alterna visibilidade do submenu
                                         if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
                                             dropdownMenu.style.display = 'block';
                                         } else {
@@ -201,7 +181,6 @@
                                 .main-sidebar {
                                     position: fixed;
                                     left: -300px;
-                                    /* Escondido inicialmente */
                                     width: 300px;
                                     height: 100%;
                                     transition: left 0.3s ease;
@@ -222,9 +201,7 @@
                         </div> --}}
                         <!--Pesquisar Wrap End-->
                     </div>
-                    <!--Navigation wrap End-->
                 </div>
-                <!--Top Strip Wrap End-->
             </div>
         </header>
 
@@ -256,8 +233,6 @@
         @yield('conteudo')
         @include('layouts user/footer')
     </div>
-
-
-
+    
 </body>
 </html>

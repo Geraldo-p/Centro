@@ -169,8 +169,27 @@ class BlogController extends Controller
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
         try {
-            $blog->update($request->all());
-            return redirect()->route('salas.index')->with('sucesso', 'o Post "' . $blog->titulo . '" foi atualizado com sucesso.');
+            $image_name = null;
+
+            // Verifica se o arquivo de imagem foi enviado e processa o upload
+            if ($request->hasFile('foto')) {
+                $file = $request->file('foto');
+                $image_name = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path("blog"), $image_name);
+            }
+
+            // Cria o post com os dados do request
+            $blog->update([
+                'imagem' => $image_name,
+                'view' => 0,
+                'id_us' => Auth::id(),
+                'titulo' => $request->input('titulo'),
+                'resumo' => $request->input('resumo'),
+                'conteudo' => $request->input('conteudo'),
+                'data_publicacao' => $request->input('data_publicacao'),
+                'id_categ' => $request->input('id_categ'),
+            ]);
+            return redirect()->route('blogs.index')->with('sucesso', 'o Post "' . $blog->titulo . '" foi atualizado com sucesso.');
         } catch (\Throwable $th) {
             return back()->with('erro', 'Ocorreu um problema ao tentar atualizar o Post "' . $blog->titulo . '". Por favor, tente novamente.');
         }

@@ -7,6 +7,7 @@ use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\EventoController;
 use App\Http\Controllers\FormandoController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\IndexController;
@@ -45,6 +46,7 @@ Route::get('/', [IndexController::class, 'index'])->name('/');
 Route::get('/Curso-detalhes/{cursos}', [IndexController::class, 'Curso_Show'])->name('indexCurso.show');
 Route::get('/Inscrever-Curso/{cursoID}', [IndexController::class, 'Inscrever_Curso'])->name('inscrever.curso');
 Route::get('/Curso', [IndexController::class, 'Todos_Cursos'])->name('todosCursos');
+Route::get('/Detalhes-Evento/{id}', [IndexController::class, 'Evento_Show'])->name('evento.detalhes');
 
 
 Route::get('/sobre', function () {
@@ -96,6 +98,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/categoria/{categoria}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
     Route::get("/generate-pdf/categoria", [CategoriaController::class, 'generatePdf'])->name("categorias.pdf");
 
+    // EVENTO
+    Route::resource('eventos', EventoController::class)->names([
+        'index' => 'eventos.index',
+        'create' => 'eventos.create',
+        'store' => 'eventos.store',
+        'edit' => 'eventos.edit',
+        'update' => 'eventos.update',
+        'destroy' => 'eventos.destroy'
+    ]);
+    Route::get("/generate-pdf/evento", [EventoController::class, 'generatePdf'])->name("eventos.pdf");
 
     // curso
     Route::resource('cursos', CursoController::class)->names([

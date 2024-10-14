@@ -6,10 +6,12 @@ use App\Http\Requests\StorePagamentoRequest;
 use Illuminate\Http\Request;
 use App\Models\Blog\Blog;
 use App\Models\Curso\Curso;
+use App\Models\Evento\Evento;
 use App\Models\Formando\Formando;
 use App\Models\Funcionario\Funcionario;
 use App\Models\Pagamento\Pagamento;
 use App\Models\Sala\Sala;
+use App\Models\Tag;
 use App\Models\Turma\Turma;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -26,24 +28,25 @@ class IndexController extends Controller
         $totalTurma = Turma::all()->count();
         $totalFormando = Formando::all()->count();
         $posts = Blog::orderBy("data_publicacao", 'desc')->take(3)->get();
+        $eventos = Evento::orderBy("data_inicio", 'desc')->take(4)->get();
 
         $cursosComMaisPagamentos = Pagamento::select('curso_id', Curso::raw('count(*) as total_pagamentos'))
-        ->whereIn('curso_id', function ($query) {
-            // Subconsulta para filtrar cursos com mais de 10 formandos
-            $query->select('curso_id')
-                ->from('turma__formandos')
-                ->groupBy('curso_id')
-                ->having(Curso::raw('count(formando_id)'), '>', 10);
-        })
-        ->groupBy('curso_id')
-        ->orderBy('total_pagamentos', 'desc')
-        ->inRandomOrder()
-        ->take(5)
-        ->get();
+            ->whereIn('curso_id', function ($query) {
+                // Subconsulta para filtrar cursos com mais de 10 formandos
+                $query->select('curso_id')
+                    ->from('turma__formandos')
+                    ->groupBy('curso_id')
+                    ->having(Curso::raw('count(formando_id)'), '>', 10);
+            })
+            ->groupBy('curso_id')
+            ->orderBy('total_pagamentos', 'desc')
+            ->inRandomOrder()
+            ->take(5)
+            ->get();
 
         $funcionarios = Funcionario::inRandomOrder()->take(3)->get();
         // where("cargo", "Formador")->
-        return view('layouts user/index', compact("cursos", "funcionarios", "posts", "totalCurs", "totalTurma", "totalFormando", "cursosComMaisPagamentos"));
+        return view('layouts user/index', compact("cursos", "eventos", "funcionarios", "posts", "totalCurs", "totalTurma", "totalFormando", "cursosComMaisPagamentos"));
     }
 
     public function Curso_Show(Curso $cursos)
@@ -134,23 +137,73 @@ class IndexController extends Controller
         }
     }
 
-    public function Todos_Cursos(){
+    public function Todos_Cursos()
+    {
 
         $cursosComMaisPagamentos = Pagamento::select('curso_id', Curso::raw('count(*) as total_pagamentos'))
-        ->whereIn('curso_id', function ($query) {
-            // Subconsulta para filtrar cursos com mais de 10 formandos
-            $query->select('curso_id')
-                ->from('turma__formandos')
-                ->groupBy('curso_id')
-                ->having(Curso::raw('count(formando_id)'), '>', 10);
-        })
-        ->groupBy('curso_id')
-        ->orderBy('total_pagamentos', 'desc')
-        ->inRandomOrder()
-        ->take(5)
-        ->get();
+            ->whereIn('curso_id', function ($query) {
+                // Subconsulta para filtrar cursos com mais de 10 formandos
+                $query->select('curso_id')
+                    ->from('turma__formandos')
+                    ->groupBy('curso_id')
+                    ->having(Curso::raw('count(formando_id)'), '>', 10);
+            })
+            ->groupBy('curso_id')
+            ->orderBy('total_pagamentos', 'desc')
+            ->inRandomOrder()
+            ->take(5)
+            ->get();
         // selecionar todos os cursos ordem aleatoria
         $cursos = Curso::inRandomOrder()->get();
         return view('layouts user.Cursos.cursos', compact("cursos", "cursosComMaisPagamentos"));
+    }
+
+    public function Evento_Show($id)
+    {
+        $dataSistema = Carbon::now('Africa/Luanda');
+        $posts = Blog::where('data_publicacao', '<=', $dataSistema)
+            ->orderBy('created_at', 'desc')
+            ->paginate(3);
+        // dd($dataSistema);
+
+        $cursosComMaisPagamentos = Pagamento::select('curso_id', Curso::raw('count(*) as total_pagamentos'))
+            ->whereIn('curso_id', function ($query) {
+                // Subconsulta para filtrar cursos com mais de 10 formandos
+                $query->select('curso_id')
+                    ->from('turma__formandos')
+                    ->groupBy('curso_id')
+                    ->having(Curso::raw('count(formando_id)'), '>', 10);
+            })
+            ->groupBy('curso_id')
+            ->orderBy('total_pagamentos', 'desc')
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $cursos = Curso::withCount('modulos')
+            ->inRandomOrder()
+            ->take(7)
+            ->get();
+        $tags = Tag::all();
+
+        $cursos = Curso::withCount('modulos')
+            ->inRandomOrder()
+            ->take(7)
+            ->get();
+
+        $evento = Evento::find($id);
+
+        $temas = explode(',', $evento->temas);
+        $metade = ceil(count($temas) / 2);
+        $temasParte1 = array_slice($temas, 0, $metade);
+        $temasParte2 = array_slice($temas, $metade);
+
+        $eventos = Evento::where('data_inicio', '>=', Carbon::now())
+            ->where('id', '!=', $id)
+            ->inRandomOrder()
+            ->take(2)
+            ->get();
+            
+        return view("layouts user.Evento.show", compact("temasParte2", "eventos", "temasParte1", "evento", "tags", "cursosComMaisPagamentos", "posts", "cursos", "dataSistema"));
     }
 }

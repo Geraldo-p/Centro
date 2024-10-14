@@ -166,6 +166,7 @@
                     <li><a class="nav-link" href="{{ route('turmas.index') }}">Turma</a></li>
                     <li><a class="nav-link" href="{{ route('matriculas.create') }}">Matricula</a></li>
                     <li><a class="nav-link" href="{{ route('formandos.index') }}">Formando</a></li>
+                    <li><a class="nav-link" href="{{ route('eventos.index') }}">Evento</a></li>
                 </ul>
             </li>
             <li class="dropdown">

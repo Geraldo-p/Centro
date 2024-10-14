@@ -5,6 +5,7 @@ namespace App\Models\Funcionario;
 use App\Models\Contacto\Contacto;
 use App\Models\Departamento\departamento;
 use App\Models\Endereco\Endereco;
+use App\Models\Evento\Evento;
 use App\Models\Turma\Turma;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -50,6 +51,10 @@ class Funcionario extends Model
     public function turmas()
     {
         return $this->hasMany(Turma::class, 'funcionario_id');
+    }
+    public function Evento()
+    {
+        return $this->hasMany(Evento::class, 'funcionario_id');
     }
     public function contactos()
     {

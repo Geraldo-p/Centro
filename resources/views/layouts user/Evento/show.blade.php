@@ -1,392 +1,257 @@
 @extends('layouts user.admin')
 @section('titulo', 'Evento - Detalhes')
 @section('conteudo')
-<div class="iner_banner ent_detail">
-    <div class="container">
-        <h5>Evento - Detalhes</h5>
-        <div class="banner_iner_capstion">
-            <ul>
-                <li><a href="#">Ínicio</a></li>
-                <li><a href="#">Evento</a></li>
-                <li><a href="#">Detalhes</a></li>
-            </ul>
+    <div class="iner_banner ent_detail">
+        <div class="container">
+            <h5>Detalhes - Evento</h5>
+            <div class="banner_iner_capstion">
+                <ul>
+                    <li><a href="#">Ínicio</a></li>
+                    <li><a href="#"> Detalhes - Evento</a></li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-<!--Banner Wrap End-->
-<!--iqoniq Content Start-->
-<div class="iq_content_wrap">
-    <section>
-        <div class="event-page">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="event_pg_blog">
-                            <figure>
-                                <img src="{{ asset('Template user/extra-images/event-pg.jpg') }}" alt=""/>
-                            </figure>
-                            <div class="fig_caption link">
-                                <span><strong>jan</strong> 09</span>
-                                <a href="#"><i class="fa fa-user"></i>by admin</a>
-                            </div>
-                            <!--Heading Wrap Start-->
-                            <div class="iq_heading_1 text-left">
-                                <h4>Student Meeting to <span>Events</span></h4>
-                            </div>
-                            <!--Heading Wrap End-->
-                            <ul class="course_comments">
-                                <li>
-                                    <a href="#"><i class="fa fa-clock-o"></i>Nov 2015</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-user"></i>Nov 2015</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-comments-o"></i>Nov 2015</a>
-                                </li>
-                            </ul>
-                            <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean  lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh  cursus  sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit.</p>
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <ul class="categries-list">
-                                        <li><a href="#">Our Mission and Philosophy</a></li>
-                                        <li><a href="#">Our Departments and Programms</a></li>
-                                        <li><a href="#">Why We Are Best</a></li>
-                                        <li><a href="#">Grest Career Outcomes</a></li>
-                                    </ul>
+    <div class="iq_content_wrap">
+        <section>
+            <div class="event-page">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="event_pg_blog">
+                                <figure>
+                                    <img src="{{ asset('Evento/' . $evento->imagem) }}" alt="" />
+                                </figure>
+                                <div class="fig_caption link">
+                                    <span><strong>{{ \Carbon\Carbon::parse($evento->data_inicio)->format('M') }}</strong>
+                                        {{ \Carbon\Carbon::parse($evento->data_inicio)->format('d') }}</span>
+                                    <a href="#"><i class="fa fa-user"></i>Coordenador
+                                        {{ $evento->funcionarios->nome }}</a>
                                 </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <ul class="categries-list">
-                                        <li><a href="#">Our Mission and Philosophy</a></li>
-                                        <li><a href="#">Our Departments and Programms</a></li>
-                                        <li><a href="#">Why We Are Best</a></li>
-                                        <li><a href="#">Grest Career Outcomes</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor  ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. </p>
-                            <div class="row">
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="event_thumb_area">
-                                        <figure>
-                                            <img src="{{ asset('Template user/extra-images/event-thumb.jpg') }}" alt="">
-                                        </figure>
-                                        <div class="event_pg_tcapstion">
-                                            <h5><a href="#">Working</a></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="event_thumb_area">
-                                        <figure>
-                                            <img src="{{ asset('Template user/extra-images/event-thumb.jpg') }}" alt="">
-                                        </figure>
-                                        <div class="event_pg_tcapstion">
-                                            <h5><a href="#">Working</a></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="event_thumb_area">
-                                        <figure>
-                                            <img src="{{ asset('Template user/extra-images/event-thumb.jpg') }}" alt="">
-                                        </figure>
-                                        <div class="event_pg_tcapstion">
-                                            <h5><a href="#">Working</a></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="event_thumb_area">
-                                        <figure>
-                                            <img src="{{ asset('Template user/extra-images/event-thumb.jpg') }}" alt="">
-                                        </figure>
-                                        <div class="event_pg_tcapstion">
-                                            <h5><a href="#">Working</a></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <p> Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.</p>
-                            <!--coures_border end-->
-                            <div class="edu_upmg_area">
-                                <!--Heading Wrap Start-->
                                 <div class="iq_heading_1 text-left">
-                                    <h4>Upcoming <span>Events</span></h4>
+                                    <h4> {{ $evento->titulo }}</h4>
                                 </div>
+                                <ul class="course_comments">
+                                    <li>
+                                        <a href="#"><i class="fa fa-clock-o"></i>Ínicio:
+                                            {{ \Carbon\Carbon::parse($evento->data_inicio)->format('H:i') }}'</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-user"></i>Termina:
+                                            {{ \Carbon\Carbon::parse($evento->data_fim)->format('H:i') }}'</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i
+                                                class="fa fa-comments-o"></i>{{ \Carbon\Carbon::parse($evento->data_inicio)->format('M, d/m/Y') }}</a>
+                                    </li>
+                                </ul>
+                                <p>{!! $evento->resumo !!}</p>
                                 <div class="row">
-                                    <!--Heading Wrap End-->
+                                    <hr>
                                     <div class="col-md-6 col-sm-6">
-                                        <div class="iq_course_list">
-                                            <figure>
-                                                <img src="{{ asset('Template user/extra-images/featured-course-02.jpg') }}" alt="Image Here">
-                                            </figure>
-                                            <div class="iq_course_list_des">
-                                                <div class="iq_course_icon">
-                                                    <span class="icon-student">
-                                                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span><span class="path19"></span>
-                                                    </span>
-                                                </div>
-                                                <h5><a href="#">Business & Finance</a></h5>
-                                                <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum </p>
-                                                <ul>
-                                                    <li>
-                                                        <!--RATING AREA START-->
-                                                        <div class="rating_down">
-                                                            <div class="rating_up" style="width:100%;"></div>
-                                                        </div>
-                                                        <!--RATING AREA End-->
-                                                    </li>
-                                                    <li>101 Reviews</li>
-                                                    <li><i class="fa fa-user"></i>3.1 k</li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        <ul class="categries-list">
+                                            @foreach ($temasParte1 as $item)
+                                                <li><a href="#">{{ trim($item) }}</a></li>
+                                            @endforeach
+                                        </ul>
                                     </div>
                                     <div class="col-md-6 col-sm-6">
-                                        <div class="iq_course_list">
-                                            <figure>
-                                                <img src="{{ asset('Template user/extra-images/featured-course-1.jpg') }}" alt="Image Here">
-                                            </figure>
-                                            <div class="iq_course_list_des">
-                                                <div class="iq_course_icon">
-                                                    <span class="icon-student">
-                                                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span><span class="path19"></span>
-                                                    </span>
+                                        <ul class="categries-list">
+                                            @foreach ($temasParte2 as $item)
+                                                <li><a href="#">{{ trim($item) }}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <p>
+                                    {!! $evento->descricao !!}
+                                </p>
+                                <div class="edu_upmg_area">
+                                    <div class="iq_heading_1 text-left">
+                                        <h4>Eventos <span>Futuros</span></h4>
+                                    </div>
+                                    <div class="row">
+                                        @forelse ($eventos as $item)
+                                            <div class="col-md-5 col-sm-5">
+                                                <div class="iq_upcomming_event">
+                                                    <figure>
+                                                        <img src="{{ asset('Evento/' . $item->imagem) }}"
+                                                            alt="Imagem do Evento">
+                                                    </figure>
+                                                    <div class="iq_upcomming_des">
+                                                        <span>{{ \Carbon\Carbon::parse($item->data_inicio)->format('d M') }}</span>
+                                                        <p>{{ \Carbon\Carbon::parse($item->data_inicio)->format('H:i A') }}
+                                                        </p>
+                                                        <h5><a
+                                                                href="{{ route('evento.detalhes', $item->id) }}">{{ $item->titulo }}</a>
+                                                        </h5>
+                                                    </div>
                                                 </div>
-                                                <h5><a href="#">Computer &amp; IT Courses</a></h5>
-                                                <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum </p>
-                                                <ul>
-                                                    <li>
-                                                        <!--RATING AREA START-->
-                                                        <div class="rating_down">
-                                                            <div class="rating_up" style="width:100%;"></div>
-                                                        </div>
-                                                        <!--RATING AREA End-->
-                                                    </li>
-                                                    <li>101 Reviews</li>
-                                                    <li><i class="fa fa-user"></i>3.1 k</li>
-                                                </ul>
                                             </div>
-                                        </div>
+                                        @empty
+                                            <h6 class="text-center">Nenhum vento Futuro</h6>
+                                        @endforelse
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="aside-bar">
-                            <!--course_inrp_side_search START-->
-                            <div class="widget widget-pesquisar">
-                                <form class="iq-input">
-                                    <input placeholder="Pesquisar ..." type="text">
-                                    <label class="iq-input-icon"><input type="submit"></label>
-                                </form>
-                            </div>
-                            <!--course_inrp_side_search end-->
-                            <!--coures_archives start-->
-                            <div class="widget widget_archive">
-                                <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>Nossos</span> Cursos</h5>
-                                <!--Widget Title End-->
-                                <ul>
-                                    <li>
-                                        <a href="#">Politics & History</a><span>03</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Journalism</a><span>01</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Medical Sciences</a><span>03</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Health</a><span>01</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Sports</a><span>03</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Atrs</a><span>02</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Tourism & Culture</a><span>06</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--coures_archives end-->
-                            <!--POPULAR START-->
-                            <div class="widget widget-popular">
-                                <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>cursos</span> populares</h5>
-                                <!--Widget Title End-->
-                                <!--POPULAR THUMB START-->
-                                <div class="popular_thumb">
-                                    <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb1.jpg') }}" alt=""/>
-                                    </figure>
-                                    <!--COURES POPULAR CAPSTION START-->
-                                    <div class="overflow-text">
-                                        <h6><a href="#">Neque porro quisquam est qui dolorem  dolor</a></h6>
-                                        <p>19 Dec, 2015</p>
-                                    </div>
-                                    <!--COURES POPULAR CAPSTION END-->
+                        <div class="col-md-4">
+                            <div class="aside-bar">
+                                <div class="widget widget-pesquisar">
+                                    <form class="iq-input">
+                                        <input placeholder="Pesquisar ..." type="text">
+                                        <label class="iq-input-icon"><input type="submit"></label>
+                                    </form>
                                 </div>
-                                <!--POPULAR THUMB END-->
-                                <!--POPULAR THUMB START-->
-                                <div class="popular_thumb">
-                                    <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb2.jpg') }}" alt=""/>
-                                    </figure>
-                                    <!--COURES POPULAR CAPSTION START-->
-                                    <div class="overflow-text">
-                                        <h6><a href="#">Neque porro quisquam est qui dolorem  dolor</a></h6>
-                                        <p>19 Dec, 2015</p>
-                                    </div>
-                                    <!--COURES POPULAR CAPSTION END-->
+                                <div class="widget course-description">
+                                    <h5 class="widget-title"><span>Mais Sobre o</span> Evento</h5>
+                                    <ul class="course-lesson-list">
+                                        <li>
+                                            <a href="#">
+                                                <span class="icon-signs"></span>
+                                                Data de Ínicio</a>
+                                            {{ \Carbon\Carbon::parse($evento->data_inicio)->format('d/m/Y H:i') }}
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="icon-translate"></span>
+                                                Data de Término</a>
+                                            {{ \Carbon\Carbon::parse($evento->data_fim)->format('d/m/Y H:i') }}
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="icon-home"></span>
+                                                Local</a>
+                                            {{ $evento->local }}
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="icon-home"></span>
+                                                Tipo de Evento</a>
+                                            {{ $evento->tipo_evento }}
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="icon-users"></span>
+                                                Capacidade</a>
+                                            {{ $evento->capacidade }} pessoas
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="icon-dollar"></span>
+                                                Entrada: </a>
+                                            {{ number_format($evento->custo, 2, ',', '.') }}
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="icon-check"></span>
+                                                Status</a>
+                                            {{ $evento->status }}
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="icon-user"></span>
+                                                Coordenador</a>
+                                            {{ $evento->funcionarios->nome }}
+                                        </li>
+                                    </ul>
                                 </div>
-                                <!--POPULAR THUMB END-->
-                                <!--POPULAR THUMB START-->
-                                <div class="popular_thumb">
-                                    <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb3.jpg') }}" alt=""/>
-                                    </figure>
-                                    <!--COURES POPULAR CAPSTION START-->
-                                    <div class="overflow-text">
-                                        <h6><a href="#">Neque porro quisquam est qui dolorem  dolor</a></h6>
-                                        <p>19 Dec, 2015</p>
-                                    </div>
-                                    <!--COURES POPULAR CAPSTION END-->
+
+                                <div class="widget widget_archive">
+                                    <h5 class="widget-title"><span>Nossos</span> Cursos</h5>
+                                    <ul>
+                                        @forelse ($cursos as $item)
+                                            <li>
+                                                <a
+                                                    href="#">{{ $item->nome }}</a><span>{{ $item->modulos->count() }}</span>
+                                            </li>
+                                        @empty
+                                            <center>
+                                                <h5>Nenhum Curso de Momento...</h5>
+                                            </center>
+                                        @endforelse
+                                    </ul>
                                 </div>
-                                <!--POPULAR THUMB END-->
-                            </div>
-                            <!--POPULAR END-->
-                            <!--COURES CATEGORIES START-->
-                            <div class="widget widget_time">
-                                <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>Horas de </span> Trabalho</h5>
-                                <!--Widget Title End-->
-                                <ul>
-                                    <li>
-                                        <span>Segunda-feira</span>08:00 - 16:00
-                                    </li>
-                                    <li>
-                                        <span>Terça-feira</span>08:00 - 16:00
-                                    </li>
-                                    <li>
-                                        <span>Quarta-feira</span>08:00 - 16:00
-                                    </li>
-                                    <li>
-                                        <span>Quinta-feira</span>08:00 - 16:00
-                                    </li>
-                                    <li>
-                                        <span>Sexta-feira</span>08:00 - 16:00
-                                    </li>
-                                    <li>
-                                        <span>Sábado</span>08:00 - 16:00
-                                    </li>
-                                    <li>
-                                        <span>Domingo</span>Closed
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--COURES CATEGORIES END-->
-                            <!--POPULAR START-->
-                            <div class="widget widget-popular">
-                                <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>cursos</span> populares</h5>
-                                <!--Widget Title End-->
-                                <!--POPULAR THUMB START-->
-                                <div class="popular_thumb">
-                                    <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb5.jpg') }}" alt=""/>
-                                    </figure>
-                                    <!--COURES POPULAR CAPSTION START-->
-                                    <div class="overflow-text">
-                                        <h6><a href="#">Professional Teching Course</a></h6>
-                                        <!--RATING AREA START-->
-                                        <div class="rating-wrap">
-                                            <div class="rating_down">
-                                                <div class="rating_up" style="width:100%;"></div>
+                                <div class="widget widget-popular">
+                                    <h5 class="widget-title"><span>cursos</span> populares</h5>
+                                    @forelse ($cursosComMaisPagamentos as $item)
+                                        <div class="popular_thumb">
+                                            <figure>
+                                                <img src="{{ asset('images/' . $item->foto) }}" alt="" />
+                                            </figure>
+                                            <div class="overflow-text">
+                                                <h6><a href="#">{{ $item->cursos->nome }}</a></h6>
+                                                <p>Inscrições: Aberta<br>Data de Ínicio:
+                                                    {{ \Carbon\Carbon::parse($item->cursos->data_inicio)->format('M d, Y') }}
+                                                </p>
                                             </div>
                                         </div>
-                                        <!--RATING AREA End-->
-                                        <p>Anna Doe</p>
-                                        <span>$99.99</span>
-                                        <!--COURES RATING AREA END-->
-                                    </div>
-                                    <!--COURES POPULAR CAPSTION END-->
+                                    @empty
+                                        <center>
+                                            <h5>Nenhum Curso de Momento...</h5>
+                                        </center>
+                                    @endforelse
                                 </div>
-                                <!--POPULAR THUMB END-->
-                                <!--POPULAR THUMB START-->
-                                <div class="popular_thumb">
-                                    <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb2.jpg') }}" alt=""/>
-                                    </figure>
-                                    <!--COURES POPULAR CAPSTION START-->
-                                    <div class="overflow-text">
-                                        <h6><a href="#">Professional Teching Course</a></h6>
-                                        <!--RATING AREA START-->
-                                        <div class="rating-wrap">
-                                            <div class="rating_down">
-                                                <div class="rating_up" style="width:100%;"></div>
+                                <div class="widget widget_time">
+                                    <h5 class="widget-title"><span>Horas de</span> Trabalho</h5>
+                                    <ul>
+                                        <li>
+                                            <span>Segunda-feira</span>08:00 - 16:00
+                                        </li>
+                                        <li>
+                                            <span>Terça-feira</span>08:00 - 16:00
+                                        </li>
+                                        <li>
+                                            <span>Quarta-feira</span>08:00 - 16:00
+                                        </li>
+                                        <li>
+                                            <span>Quinta-feira</span>08:00 - 16:00
+                                        </li>
+                                        <li>
+                                            <span>Sexta-feira</span>08:00 - 16:00
+                                        </li>
+                                        <li>
+                                            <span>Sábado</span>08:00 - 16:00
+                                        </li>
+                                        <li>
+                                            <span>Domingo</span>Closed
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="widget widget-popular">
+                                    <h5 class="widget-title"><span>cursos em</span> Promoção</h5>
+                                    <div class="popular_thumb">
+                                        <figure>
+                                            <img src="{{ asset('Template user/extra-images/popular-thumb3.jpg') }}"
+                                                alt="" />
+                                        </figure>
+                                        <div class="overflow-text">
+                                            <h6><a href="#">Professional Teching Course</a></h6>
+                                            <div class="rating-wrap">
+                                                <div class="rating_down">
+                                                    <div class="rating_up" style="width:100%;"></div>
+                                                </div>
                                             </div>
+                                            <p>Anna Doe</p>
+                                            <span>$99.99</span>
                                         </div>
-                                        <!--RATING AREA End-->
-                                        <p>Anna Doe</p>
-                                        <span>$99.99</span>
-                                        <!--COURES RATING AREA END-->
                                     </div>
-                                    <!--COURES POPULAR CAPSTION END-->
                                 </div>
-                                <!--POPULAR THUMB END-->
-                                <!--POPULAR THUMB START-->
-                                <div class="popular_thumb">
-                                    <figure>
-                                        <img src="{{ asset('Template user/extra-images/popular-thumb3.jpg') }}" alt=""/>
-                                    </figure>
-                                    <!--COURES POPULAR CAPSTION START-->
-                                    <div class="overflow-text">
-                                        <h6><a href="#">Professional Teching Course</a></h6>
-                                        <!--RATING AREA START-->
-                                        <div class="rating-wrap">
-                                            <div class="rating_down">
-                                                <div class="rating_up" style="width:100%;"></div>
-                                            </div>
-                                        </div>
-                                        <!--RATING AREA End-->
-                                        <p>Anna Doe</p>
-                                        <span>$99.99</span>
+                                <div class="widget widget-tag">
+                                    <h5 class="widget-title"><span>tags</span></h5>
+                                    <div class="tag">
+                                        @forelse ($tags as $item)
+                                            <a class="tag-link" href="#">{{ $item->nome }}</a>
+                                        @empty
+                                        @endforelse
                                     </div>
-                                    <!--COURES POPULAR CAPSTION END-->
-                                </div>
-                                <!--POPULAR THUMB END-->
-                            </div>
-                            <!--POPULAR END-->
-                            <!--POPULAR START-->
-                            <div class="widget widget-tag">
-                                <!--Widget Title Start-->
-                                <h5 class="widget-title"><span>tags</span></h5>
-                                <!--Widget Title End-->
-                                <div class="tag">
-                                    <a class="tag-link" href="#">Science</a>
-                                    <a class="tag-link" href="#">knowledge</a>
-                                    <a class="tag-link" href="#">Courage</a>
-                                    <a class="tag-link" href="#">Sports</a>
-                                    <a class="tag-link" href="#">Impression</a>
-                                    <a class="tag-link" href="#">History & Politics</a>
-                                    <a class="tag-link" href="#">Admission</a>
-                                    <a class="tag-link" href="#">Arts</a>
-                                    <a class="tag-link" href="#">Research</a>
-                                    <a class="tag-link" href="#">Career</a>
-                                    <a class="tag-link" href="#">PHD</a>
                                 </div>
                             </div>
-                            <!--POPULAR END-->
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
 @endsection

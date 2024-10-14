@@ -353,7 +353,7 @@
                                     </div>
                                 </div>
                             @empty
-                                <h6>Nenhum curso disponível</h6>
+                                <h6 class="text-center">Nenhum curso disponível</h6>
                             @endforelse
                         </div>
                     </div>
@@ -395,7 +395,7 @@
                                     </div>
                                 </div>
                             @empty
-                                <h6>Nenhum curso disponível</h6>
+                                <h6 class="text-center">Nenhum curso disponível</h6>
                             @endforelse
                         </div>
                     </div>
@@ -485,72 +485,25 @@
                     <p>Fique por dentro dos eventos e atividades que acontecerão no Centro de Formação Profissional
                         Santa Cruz. <br> Participe e amplie seu conhecimento!</p>
                 </div>
-
                 <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="iq_upcomming_event">
-                            <figure>
-                                <img src="{{ asset('Template User/extra-images/upcomming-event-01.jpg') }}"
-                                    alt="Imagem do Evento">
-                            </figure>
-                            <div class="iq_upcomming_des">
-                                <span>21 ago</span>
-                                <p>10:00 AM</p>
-
-                                <h5><a href="{{ url('evento-detalhe', []) }}">Participe no nosso evento especial</a></h5>
+                    @forelse ($eventos as $item)
+                        <!-- Evento Start -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="iq_upcomming_event">
+                                <figure>
+                                    <img src="{{ asset('Evento/' . $item->imagem) }}" alt="Imagem do Evento">
+                                </figure>
+                                <div class="iq_upcomming_des">
+                                    <span>{{ \Carbon\Carbon::parse($item->data_inicio)->format('d M') }}</span>
+                                    <p>{{ \Carbon\Carbon::parse($item->data_inicio)->format('H:i A') }}</p>
+                                    <h5><a href="{{ route('evento.detalhes', $item->id) }}">{{ $item->titulo }}</a></h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="iq_upcomming_event">
-                            <figure>
-                                <img src="{{ asset('Template User/extra-images/upcomming-event-02.jpg') }}"
-                                    alt="Imagem do Evento">
-                            </figure>
-                            <div class="iq_upcomming_des">
-                                <span>21 ago</span>
-                                <p>10:00 AM</p>
-                                <h5><a href="{{ url('evento-detalhe', []) }}">Participe no nosso evento especial</a></h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="iq_upcomming_event">
-                            <figure>
-                                <img src="{{ asset('Template User/extra-images/upcomming-event-03.jpg') }}"
-                                    alt="Imagem do Evento">
-                            </figure>
-                            <div class="iq_upcomming_des">
-                                <span>21 ago</span>
-                                <p>10:00 AM</p>
-                                <h5><a href="#">Participe no nosso evento especial</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Evento End -->
-
-                    <!-- Evento Start -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="iq_upcomming_event">
-                            <figure>
-                                <img src="{{ asset('Template User/extra-images/upcomming-event-04.jpg') }}"
-                                    alt="Imagem do Evento">
-                            </figure>
-                            <div class="iq_upcomming_des">
-                                <span>21 ago</span>
-                                <p>10:00 AM</p>
-                                <h5><a href="#">Participe no nosso evento especial</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Evento End -->
-
-                    <!-- Mais eventos podem ser adicionados aqui... -->
-
+                    @empty
+                        <h6 class="text-center">Nenhum Evento Agendado...</h6>
+                    @endforelse
                 </div>
-                <!-- Fim da Lista de Próximos Eventos -->
             </div>
         </section>
 
@@ -708,7 +661,7 @@
                             </div>
                         </div>
                     @empty
-                        <h6>Nenhum Post Recente</h6>
+                        <h6 class="text-center">Nenhum Post Recente</h6>
                     @endforelse
                 </div>
             </div>

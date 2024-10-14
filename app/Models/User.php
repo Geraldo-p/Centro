@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Curso\Curso;
+use App\Models\Evento\Evento;
 use App\Models\Lista_de_Presenca\Lista_Presenca;
 use App\Models\Lista_de_Presenca_Principal\Lista_Presenca_Principal;
 use App\Models\Pagamento\Pagamento;
@@ -71,6 +72,10 @@ class User extends Authenticatable
     public function matriculas()
     {
         return $this->hasMany(Matricula::class, 'id_us');
+    }
+    public function eventos()
+    {
+        return $this->hasMany(Evento::class, 'id_us');
     }
     public function categorias()
     {
