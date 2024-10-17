@@ -46,12 +46,15 @@ Route::get('/', [IndexController::class, 'index'])->name('/');
 Route::get('/Curso-detalhes/{cursos}', [IndexController::class, 'Curso_Show'])->name('indexCurso.show');
 Route::get('/Inscrever-Curso/{cursoID}', [IndexController::class, 'Inscrever_Curso'])->name('inscrever.curso');
 Route::get('/Curso', [IndexController::class, 'Todos_Cursos'])->name('todosCursos');
-Route::get('/Detalhes-Evento/{id}', [IndexController::class, 'Evento_Show'])->name('evento.detalhes');
-Route::get('/Eventos', [IndexController::class, 'Eventos'])->name('evento.todos');
+Route::get('/evento-detalhes/{id}', [IndexController::class, 'evento_detalhes'])->name('evento_detalhes');
+Route::post('/Marcar-Presenca-Evento/{eventoId}', [IndexController::class, 'participarEvento'])->name('participarEvento');
+Route::post('/Remover-Presenca-Evento/{eventoId}', [IndexController::class, 'RemoverParticipação'])->name('RemoverParticipação');
+Route::get('/evento-list', [IndexController::class, 'evento_list'])->name('evento_list');
 
-Route::get('/admin', function () {
-    return view('layouts user/admin');
-});
+Route::get('/post-list', [IndexController::class, 'post_list'])->name('post_list');
+Route::get('/post-detalhes/{id}', [IndexController::class, 'post_detalhes'])->name('post_detalhes');
+
+
 
 Route::get('/show', function () {
     return view('layouts user/Cursos/show');
@@ -311,6 +314,8 @@ Route::get("/Blog-Posts", [BlogController::class, 'post'])->name("blogs.post");
 
 // COMENTARIO
 Route::post('/posts/{post}/comentarios', [ComentarioController::class, 'store'])->name('comentarios.store');
+Route::post('/evento/{id}/comentarios', [ComentarioController::class, 'evento'])->name('comentarios.evento');
 
+// Route::post('/evento/{id}', [EventoController::class, 'participarEvento'])->name('participarEvento');
 
 require __DIR__ . '/auth.php';

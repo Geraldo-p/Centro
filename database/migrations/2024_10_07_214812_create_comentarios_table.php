@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
             $table->longText('comentario');
-            $table->unsignedBigInteger('blog_id');
+            $table->unsignedBigInteger('blog_id')->nullable();
+            $table->unsignedBigInteger('evento_id')->nullable();
             $table->unsignedBigInteger('id_us');
             $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
+            $table->foreign('evento_id')->references('id')->on('eventos')->onDelete('cascade');
             $table->foreign('id_us')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

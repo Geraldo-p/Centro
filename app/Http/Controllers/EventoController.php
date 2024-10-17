@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Evento\Evento;
 use App\Http\Requests\StoreEventoRequest;
 use App\Http\Requests\UpdateEventoRequest;
+use App\Models\Formando\Formando;
 use App\Models\Funcionario\Funcionario;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class EventoController extends Controller
@@ -72,7 +74,7 @@ class EventoController extends Controller
      */
     public function show(Evento $evento)
     {
-        //
+        
     }
 
     /**
@@ -151,4 +153,7 @@ class EventoController extends Controller
             return back()->with('erro', 'Ocorreu um problema ao tentar remover o evento. "' . $evento->titulo);
         }
     }
+
+
+    
 }

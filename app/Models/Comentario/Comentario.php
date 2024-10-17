@@ -3,6 +3,7 @@
 namespace App\Models\Comentario;
 
 use App\Models\Blog\Blog;
+use App\Models\Evento\Evento;
 use App\Models\Funcionario\Funcionario;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,6 +15,7 @@ class Comentario extends Model
     protected $fillable = [
         'comentario',
         'blog_id',
+        'evento_id',
         'id_us',
 
     ];
@@ -26,5 +28,9 @@ class Comentario extends Model
     public function users()
     {
         return $this->belongsTo(User::class, 'id_us');
+    }
+    public function eventos()
+    {
+        return $this->belongsTo(Evento::class, 'evento_id');
     }
 }

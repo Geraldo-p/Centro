@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePagamentoRequest;
 use Illuminate\Http\Request;
 use App\Models\Blog\Blog;
+use App\Models\Categoria\Categoria;
 use App\Models\Curso\Curso;
 use App\Models\Evento\Evento;
 use App\Models\Formando\Formando;
@@ -22,12 +23,15 @@ class IndexController extends Controller
     public function index()
     {
 
-        $cursos = Curso::inRandomOrder()->take(3)->get();
-        $formadores = Funcionario::where("cargo", "Formador")->inRandomOrder()->take(3)->get();
+        // $cursos = Curso::inRandomOrder()->take(3)->get();
+        $cursos = Curso::inRandomOrder()->get();
+        $formadores = Funcionario::where("cargo", "Formador")->inRandomOrder()->get();
+        $Totalformadores = Funcionario::all()->count();
         $totalCurs = Curso::all()->count();
+        $totalSalas = Sala::all()->count();
         $totalTurma = Turma::all()->count();
         $totalFormando = Formando::all()->count();
-        $posts = Blog::orderBy("data_publicacao", 'desc')->take(3)->get();
+        $posts = Blog::orderBy("data_publicacao", 'desc')->get();
         $eventos = Evento::orderBy("data_inicio", 'desc')->take(4)->get();
 
         $cursosComMaisPagamentos = Pagamento::select('curso_id', Curso::raw('count(*) as total_pagamentos'))
@@ -44,9 +48,9 @@ class IndexController extends Controller
             ->take(5)
             ->get();
 
-        $funcionarios = Funcionario::inRandomOrder()->take(3)->get();
-        // where("cargo", "Formador")->
-        return view('layouts user/index', compact("cursos", "eventos", "funcionarios", "posts", "totalCurs", "totalTurma", "totalFormando", "cursosComMaisPagamentos"));
+        $funcionarios = Funcionario::has('turmas')->get();
+
+        return view('Santa Cruz/index', compact("cursos", "totalSalas", "Totalformadores", "eventos", "funcionarios", "posts", "totalCurs", "totalTurma", "totalFormando", "cursosComMaisPagamentos"));
     }
 
     public function Curso_Show(Curso $cursos)
@@ -77,7 +81,7 @@ class IndexController extends Controller
             ->get();
         $modulos1 = $cursos->modulos->slice(0, ceil($cursos->modulos->count() / 2));
         $modulos2 = $cursos->modulos->slice(ceil($cursos->modulos->count() / 2));
-        return view('layouts user/Cursos/show', compact("cursos", "cursosComMaisPagamentos", "funcionario", "NossoCursos", "modulos1", "modulos2"));
+        return view('layouts user/Cursos/show', compact("cursos", "totalSalas", "cursosComMaisPagamentos", "funcionario", "NossoCursos", "modulos1", "modulos2"));
     }
 
     public function Inscrever_Curso($cursoID)
@@ -158,7 +162,7 @@ class IndexController extends Controller
         return view('layouts user.Cursos.cursos', compact("cursos", "cursosComMaisPagamentos"));
     }
 
-    public function Evento_Show($id)
+    public function evento_detalhes($id)
     {
         $dataSistema = Carbon::now('Africa/Luanda');
         $posts = Blog::where('data_publicacao', '<=', $dataSistema)
@@ -193,10 +197,6 @@ class IndexController extends Controller
 
         $evento = Evento::find($id);
 
-        $temas = explode(',', $evento->temas);
-        $metade = ceil(count($temas) / 2);
-        $temasParte1 = array_slice($temas, 0, $metade);
-        $temasParte2 = array_slice($temas, $metade);
 
         $eventos = Evento::where('data_inicio', '>=', Carbon::now())
             ->where('id', '!=', $id)
@@ -204,11 +204,83 @@ class IndexController extends Controller
             ->take(2)
             ->get();
 
-        return view("layouts user.Evento.show", compact("temasParte2", "eventos", "temasParte1", "evento", "tags", "cursosComMaisPagamentos", "posts", "cursos", "dataSistema"));
+        return view("Santa Cruz.evento-detalhes", compact(  "eventos", "evento", "tags", "cursosComMaisPagamentos", "posts", "cursos", "dataSistema"));
+    }
+    public function participarEvento($eventoId)
+    {
+
+        try {
+            //code...
+            // Recupera o formando autenticado
+            $formando = Formando::where("id_us", Auth::id())->firstOrFail();
+            // dd($formando->all());
+
+            // Recupera o evento pelo ID
+            $evento = Evento::findOrFail($eventoId);
+
+            // Adiciona o formando ao evento, evitando duplicações
+            $evento->formandos()->syncWithoutDetaching($formando->id);
+            $evento->formandos()->updateExistingPivot($formando->id, [
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            return back()->with('sucesso', 'Inscrição no evento realizada com sucesso.');
+        } catch (\Throwable $th) {
+            // return redirect()->route("login");
+        }
+    }
+    public function RemoverParticipação($eventoId)
+    {
+        // Recupera o formando autenticado
+        $formando = Formando::where('id_us', Auth::id())->firstOrFail();
+
+        // Recupera o evento pelo ID
+        $evento = Evento::findOrFail($eventoId);
+
+        // Remove o formando do evento onde a coluna 'status' é 'ativo'
+        $evento->formandos()->wherePivot('formando_id', $formando->id)->detach($formando->id);
+        return back()->with('sucesso', 'Removeu presença do evento');
+
+    }
+    public function evento_list()
+    {
+        $eventos = Evento::paginate(6);
+        return view("Santa Cruz.evento-list", compact("eventos"));
     }
 
-    public function Eventos()
-    {
-        return view("layouts user.Evento.eventos");
+    public function post_list(){
+
+        // $pots = Blog::paginate(6);
+        // return view("Santa Cruz.post-list", compact("pots"));
+        $dataSistema = Carbon::now('Africa/Luanda');
+        $posts = Blog::where('data_publicacao', '<=', $dataSistema)
+            ->orderBy('created_at', 'desc')
+            ->paginate(3);
+        // dd($dataSistema);
+
+        $cursosComMaisPagamentos = Pagamento::select('curso_id', Curso::raw('count(*) as total_pagamentos'))
+            ->whereIn('curso_id', function ($query) {
+                // Subconsulta para filtrar cursos com mais de 10 formandos
+                $query->select('curso_id')
+                    ->from('turma__formandos')
+                    ->groupBy('curso_id')
+                    ->having(Curso::raw('count(formando_id)'), '>', 10);
+            })
+            ->groupBy('curso_id')
+            ->orderBy('total_pagamentos', 'desc')
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $tags = Tag::all();
+
+        $categorias = Categoria::orderBy("nome")->get();
+        return view("Santa Cruz.post-list", compact("posts","categorias", "tags", "cursosComMaisPagamentos"));
+    
+    }
+
+    public function post_detalhes($id){
+
     }
 }

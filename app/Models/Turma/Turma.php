@@ -7,7 +7,6 @@ use App\Models\Formando\Formando;
 use App\Models\Funcionario\Funcionario;
 use App\Models\Matricula\Matricula;
 use App\Models\Sala\Sala;
-use App\Models\Turma_Formando\Turma_Formando;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

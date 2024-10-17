@@ -4,6 +4,7 @@ namespace App\Models\Formando;
 
 use App\Models\Contacto\Contacto;
 use App\Models\Endereco\Endereco;
+use App\Models\Evento\Evento;
 use App\Models\Lista_de_Presenca\Lista_Presenca;
 use App\Models\Matricula\Matricula;
 use App\Models\Pagamento\Pagamento;
@@ -38,6 +39,11 @@ class Formando extends Model
         "endereco_id",
         "id_us",
     ];
+
+    public function eventos()
+{
+    return $this->belongsToMany(Evento::class, 'evento_formando');
+}
     public function pagamentos()
     {
         return $this->hasMany(Pagamento::class, 'formando_id');

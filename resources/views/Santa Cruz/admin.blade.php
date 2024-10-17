@@ -17,7 +17,9 @@
     <title>@yield('titulo')</title>
 
     <!-- Favicon and Touch Icons -->
-    <link href="{{ asset('LearnPress-Education-Courses/images/favicon.png') }}" rel="shortcut icon" type="image/png">
+    <link href="{{ asset('LearnPress-Education-Courses/images/logo_.png') }}" rel="shortcut icon" type="image/png">
+    {{-- <link rel='shortcut icon' type='image/x-icon' href='{{ asset(' Template admin/assets/img/logo_.ico') }}' /> --}}
+
     <link href="{{ asset('LearnPress-Education-Courses/images/apple-touch-icon.png') }}" rel="apple-touch-icon">
     <link href="{{ asset('LearnPress-Education-Courses/images/apple-touch-icon-72x72.png') }}" rel="apple-touch-icon"
         sizes="72x72">
@@ -72,6 +74,7 @@
     <script src="{{ asset('LearnPress-Education-Courses/js/revolution-slider/js/jquery.themepunch.revolution.min.js') }}">
     </script>
 
+    @yield('css')
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -136,64 +139,11 @@
                                     alt="">
                             </a>
                             <ul class="menuzord-menu">
-                                <li class="active"><a href="#home">Ínicio</a>
-                                    <ul class="dropdown">
-                                        {{-- <li><a href="#">Home Variations <span
-                                                    class="label label-info">New</span></a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Rev Slider</a>
-                                                    <ul class="dropdown">
-                                                        <li><a
-                                                                href="index-home-variation-revslider-style1.html">Layout1</a>
-                                                        </li>
-                                                        <li><a
-                                                                href="index-home-variation-revslider-style2.html">Layout2</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Maximage Slider</a>
-                                                    <ul class="dropdown">
-                                                        <li><a
-                                                                href="index-home-variation-maximageslider-style1.html">Layout1</a>
-                                                        </li>
-                                                        <li><a
-                                                                href="index-home-variation-maximageslider-style2.html">Layout2</a>
-                                                        </li>
-                                                        <li><a
-                                                                href="index-home-variation-maximageslider-style3.html">Layout3</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="index-home-variation-owl-carousel.html">Owl Slider</a>
-                                                </li>
-                                                <li><a href="index-home-variation-typed-text.html">Typed Text
-                                                        Layout</a></li>
-                                                <li><a href="index-home-variation-video-background.html">Youtube
-                                                        Background Video</a></li>
-                                                <li><a href="index-home-variation-html5-video.html">Html5 Background
-                                                        Video</a></li>
-                                                <li><a href="index-home-variation-bg-image-parallax.html">Bg Image
-                                                        Parallax Layout</a></li>
-                                                <li><a href="index-home-variation-bg-static.html">Bg Static Layout</a>
-                                                </li>
-                                                <li><a href="#">Home Appointment Form</a>
-                                                    <ul class="dropdown">
-                                                        <li><a
-                                                                href="index-home-variation-appointment-form-style1.html">Layout1</a>
-                                                        </li>
-                                                        <li><a
-                                                                href="index-home-variation-appointment-form-style2.html">Layout2</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li> --}}
-                                    </ul>
-                                </li>
+                                <li class="active"><a href="{{route("/")}}">Ínicio</a></li>
                                 <li><a href="#">Sobre Nós</a></li>
                                 <li><a href="#">Cursos</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Eventos</a></li>
+                                <li><a href="{{ route('post_list') }}">Blog</a></li>
+                                <li><a href="{{ route('evento_list') }}">Eventos</a></li>
                                 <li><a href="#">Nossa Equipa</a></li>
                                 <li><a href="#">Galeria</a></li>
                                 <li><a href="#">Fale Connosco</a></li>
@@ -207,7 +157,7 @@
 
         <!-- Start main-content -->
         <div class="main-content">
-            {{-- @yield('conteudo') --}}
+            @yield('conteudo')
         </div>
         <!-- end main-content -->
 
@@ -220,68 +170,64 @@
                         <div class="widget dark">
                             <img class="mt-10 mb-15" alt=""
                                 src="{{ asset('LearnPress-Education-Courses/images/logo-wide-white.png') }}">
-                            <p class="font-16 mb-10">GreenPeace is a library of Crowdfunding and Charity templates with
-                                predefined elements which helps you to build your own site. Lorem ipsum dolor sit amet
-                                consectetur.</p>
+                            <p class="font-16 mb-10">O Centro de Formação Profissional Santa Cruz oferece cursos e
+                                capacitação para diversas áreas, promovendo a qualificação e o desenvolvimento
+                                profissional. Conosco, você alcança o próximo nível de sua carreira.</p>
                             <a class="font-14" href="#"><i
-                                    class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
+                                    class="fa fa-angle-double-right text-theme-colored"></i> Leia mais</a>
                             <ul class="styled-icons icon-dark mt-20">
                                 <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".1s"
-                                    data-wow-offset="10"><a href="#" data-bg-color="#3B5998"><i
-                                            class="fa fa-facebook"></i></a></li>
+                                    data-wow-offset="10">
+                                    <a href="#" data-bg-color="#3B5998"><i class="fa fa-facebook"></i></a>
+                                </li>
                                 <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s"
-                                    data-wow-offset="10"><a href="#" data-bg-color="#02B0E8"><i
-                                            class="fa fa-twitter"></i></a></li>
+                                    data-wow-offset="10">
+                                    <a href="#" data-bg-color="#02B0E8"><i class="fa fa-twitter"></i></a>
+                                </li>
                                 <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".3s"
-                                    data-wow-offset="10"><a href="#" data-bg-color="#05A7E3"><i
-                                            class="fa fa-skype"></i></a></li>
+                                    data-wow-offset="10">
+                                    <a href="#" data-bg-color="#05A7E3"><i class="fa fa-skype"></i></a>
+                                </li>
                                 <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".4s"
-                                    data-wow-offset="10"><a href="#" data-bg-color="#A11312"><i
-                                            class="fa fa-google-plus"></i></a></li>
+                                    data-wow-offset="10">
+                                    <a href="#" data-bg-color="#A11312"><i class="fa fa-google-plus"></i></a>
+                                </li>
                                 <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".5s"
-                                    data-wow-offset="10"><a href="#" data-bg-color="#C22E2A"><i
-                                            class="fa fa-youtube"></i></a></li>
+                                    data-wow-offset="10">
+                                    <a href="#" data-bg-color="#C22E2A"><i class="fa fa-youtube"></i></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="widget dark">
-                            <h5 class="widget-title line-bottom">Latest News</h5>
+                            <h5 class="widget-title line-bottom">Últimas Notícias</h5>
                             <div class="latest-posts">
                                 <article class="post media-post clearfix pb-0 mb-10">
                                     <a href="#" class="post-thumb"><img alt=""
                                             src="http://placehold.it/80x55"></a>
                                     <div class="post-right">
-                                        <h5 class="post-title mt-0 mb-5"><a href="#">Sustainable
-                                                Construction</a></h5>
-                                        <p class="post-date mb-0 font-12">Mar 08, 2015</p>
+                                        <h5 class="post-title mt-0 mb-5"><a href="#">Novos Cursos
+                                                Disponíveis</a></h5>
+                                        <p class="post-date mb-0 font-12">14 Out, 2024</p>
                                     </div>
                                 </article>
                                 <article class="post media-post clearfix pb-0 mb-10">
                                     <a href="#" class="post-thumb"><img alt=""
                                             src="http://placehold.it/80x55"></a>
                                     <div class="post-right">
-                                        <h5 class="post-title mt-0 mb-5"><a href="#">Industrial Coatings</a>
+                                        <h5 class="post-title mt-0 mb-5"><a href="#">Parceria com Empresas
+                                                Locais</a></h5>
+                                        <p class="post-date mb-0 font-12">05 Out, 2024</p>
+                                    </div>
+                                </article>
+                                <article class="post media-post clearfix pb-0 mb-10">
+                                    <a href="#" class="post-thumb"><img alt=""
+                                            src="http://placehold.it/80x55"></a>
+                                    <div class="post-right">
+                                        <h5 class="post-title mt-0 mb-5"><a href="#">Eventos de Capacitação</a>
                                         </h5>
-                                        <p class="post-date mb-0 font-12">Mar 08, 2015</p>
-                                    </div>
-                                </article>
-                                <article class="post media-post clearfix pb-0 mb-10">
-                                    <a href="#" class="post-thumb"><img alt=""
-                                            src="http://placehold.it/80x55"></a>
-                                    <div class="post-right">
-                                        <h5 class="post-title mt-0 mb-5"><a href="#">Storefront
-                                                Installations</a></h5>
-                                        <p class="post-date mb-0 font-12">Mar 08, 2015</p>
-                                    </div>
-                                </article>
-                                <article class="post media-post clearfix pb-0 mb-10">
-                                    <a href="#" class="post-thumb"><img alt=""
-                                            src="http://placehold.it/80x55"></a>
-                                    <div class="post-right">
-                                        <h5 class="post-title mt-0 mb-5"><a href="#">Industrial Coatings</a>
-                                        </h5>
-                                        <p class="post-date mb-0 font-12">Mar 08, 2015</p>
+                                        <p class="post-date mb-0 font-12">20 Set, 2024</p>
                                     </div>
                                 </article>
                             </div>
@@ -289,39 +235,38 @@
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="widget dark">
-                            <h5 class="widget-title line-bottom">Useful Links</h5>
+                            <h5 class="widget-title line-bottom">Links Úteis</h5>
                             <ul class="list angle-double-right list-border">
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Donor Privacy Policy</a></li>
-                                <li><a href="#">Disclaimer</a></li>
-                                <li><a href="#">Terms of Use</a></li>
-                                <li><a href="#">Media Center</a></li>
+                                <li><a href="#">Política de Privacidade</a></li>
+                                <li><a href="#">Termos de Uso</a></li>
+                                <li><a href="#">Declaração de Isenção</a></li>
+                                <li><a href="#">Centro de Mídia</a></li>
+                                <li><a href="#">Fale Conosco</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="widget dark">
-                            <h5 class="widget-title line-bottom">Quick Contact</h5>
+                            <h5 class="widget-title line-bottom">Contato Rápido</h5>
                             <ul class="list-border">
-                                <li><a href="#">+(012) 345 6789</a></li>
-                                <li><a href="#">hello@yourdomain.com</a></li>
-                                <li><a href="#" class="lineheight-20">121 King Street, Melbourne Victoria 3000,
-                                        Australia</a></li>
+                                <li><a href="#">+(244) 947 986 411</a></li>
+                                <li><a href="mailto:info@cfpsantacruz.com">info@cfpsantacruz.com</a></li>
+                                <li><a href="#" class="lineheight-20">Bairro Dunga, Próximo a Praça, Junto as
+                                        Caritas, Angola - Uige</a></li>
                             </ul>
-                            <p class="font-16 text-white mb-5 mt-15">Subscribe to our newsletter</p>
+                            <p class="font-16 text-white mb-5 mt-15">Inscreva-se na nossa newsletter</p>
                             <form id="footer-mailchimp-subscription-form" class="newsletter-form mt-10">
                                 <label class="display-block" for="mce-EMAIL"></label>
                                 <div class="input-group">
-                                    <input type="email" value="" name="EMAIL" placeholder="Your Email"
+                                    <input type="email" value="" name="EMAIL" placeholder="Seu Email"
                                         class="form-control" data-height="37px" id="mce-EMAIL">
                                     <span class="input-group-btn">
-                                        <button type="submit" class="btn btn-colored btn-theme-colored m-0"><i
-                                                class="fa fa-paper-plane-o text-white"></i></button>
+                                        <button type="submit" class="btn btn-colored btn-theme-colored m-0">
+                                            <i class="fa fa-paper-plane-o text-white"></i>
+                                        </button>
                                     </span>
                                 </div>
                             </form>
-
-
                         </div>
                     </div>
                 </div>
@@ -330,23 +275,17 @@
                 <div class="container pt-20 pb-20">
                     <div class="row">
                         <div class="col-md-6">
-                            <p class="font-11 text-black-777 m-0"><a target="_blank"
-                                    href="https://www.templateshub.net">Templates Hub</a></p>
+                            <p class="font-11 text-black-777 m-0">© 2024 Centro de Formação Profissional Santa Cruz.
+                                Todos os direitos reservados.</p>
                         </div>
                         <div class="col-md-6 text-right">
                             <div class="widget no-border m-0">
                                 <ul class="list-inline sm-text-center mt-5 font-12">
-                                    <li>
-                                        <a href="#">FAQ</a>
-                                    </li>
+                                    <li><a href="#">Perguntas Frequentes</a></li>
                                     <li>|</li>
-                                    <li>
-                                        <a href="#">Help Desk</a>
-                                    </li>
+                                    <li><a href="#">Suporte</a></li>
                                     <li>|</li>
-                                    <li>
-                                        <a href="#">Support</a>
-                                    </li>
+                                    <li><a href="#">Ajuda Online</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -354,6 +293,7 @@
                 </div>
             </div>
         </footer>
+
         <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
     </div>
     <!-- end wrapper -->
@@ -392,6 +332,7 @@
     <script type="text/javascript"
         src="{{ asset('LearnPress-Education-Courses/js/revolution-slider/js/extensions/revolution.extension.video.min.js') }}">
     </script>
+    @yield('script')
 </body>
 
 <!-- index-mp-layout108:42-->

@@ -3,6 +3,7 @@
 namespace App\Models\Funcionario;
 
 use App\Models\Contacto\Contacto;
+use App\Models\Curso\Curso;
 use App\Models\Departamento\departamento;
 use App\Models\Endereco\Endereco;
 use App\Models\Evento\Evento;
@@ -39,6 +40,11 @@ class Funcionario extends Model
         'endereco_id',
         'id_us',
     ];
+
+    public function cursos()
+{
+    return $this->hasManyThrough(Curso::class, Turma::class, 'funcionario_id', 'id', 'id', 'curso_id');
+}
 
     public function formadors()
     {
