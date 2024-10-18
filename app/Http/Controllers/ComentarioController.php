@@ -61,6 +61,22 @@ class ComentarioController extends Controller
         }
     }
 
+    public function post(StoreComentarioRequest $request, $id)
+    {
+        // dd($request->comentario);
+        Comentario::create([
+            'comentario' => $request->comentario,
+            'blog_id' => $id,
+            'id_us' => Auth::id(),
+        ]);
+
+        try {
+            return back()->with('sucesso', 'Comentário Enviado');
+        } catch (\Throwable $th) {
+            return back()->with('erro', 'Ocorreu um problema ao tentar Comentar');
+        }
+    }
+
     /**
      * Display the specified resource.
      */

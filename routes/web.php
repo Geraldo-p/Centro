@@ -313,7 +313,7 @@ Route::get("/Blog-Posts", [BlogController::class, 'post'])->name("blogs.post");
 
 
 // COMENTARIO
-Route::post('/posts/{post}/comentarios', [ComentarioController::class, 'store'])->name('comentarios.store');
+Route::post('/posts/{post}/comentarios', [ComentarioController::class, 'post'])->name('comentarios.post');
 Route::post('/evento/{id}/comentarios', [ComentarioController::class, 'evento'])->name('comentarios.evento');
 
 // Route::post('/evento/{id}', [EventoController::class, 'participarEvento'])->name('participarEvento');

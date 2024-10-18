@@ -204,7 +204,7 @@ class IndexController extends Controller
             ->take(2)
             ->get();
 
-        return view("Santa Cruz.evento-detalhes", compact(  "eventos", "evento", "tags", "cursosComMaisPagamentos", "posts", "cursos", "dataSistema"));
+        return view("Santa Cruz.evento-detalhes", compact("eventos", "evento", "tags", "cursosComMaisPagamentos", "posts", "cursos", "dataSistema"));
     }
     public function participarEvento($eventoId)
     {
@@ -249,7 +249,8 @@ class IndexController extends Controller
         return view("Santa Cruz.evento-list", compact("eventos"));
     }
 
-    public function post_list(){
+    public function post_list()
+    {
 
         // $pots = Blog::paginate(6);
         // return view("Santa Cruz.post-list", compact("pots"));
@@ -276,11 +277,31 @@ class IndexController extends Controller
         $tags = Tag::all();
 
         $categorias = Categoria::orderBy("nome")->get();
-        return view("Santa Cruz.post-list", compact("posts","categorias", "tags", "cursosComMaisPagamentos"));
-    
+        return view("Santa Cruz.post-list", compact("posts", "categorias", "tags", "cursosComMaisPagamentos"));
+
     }
 
-    public function post_detalhes($id){
+    public function post_detalhes($id)
+    {
+        $cursosComMaisPagamentos = Pagamento::select('curso_id', Curso::raw('count(*) as total_pagamentos'))
+            ->whereIn('curso_id', function ($query) {
+                // Subconsulta para filtrar cursos com mais de 10 formandos
+                $query->select('curso_id')
+                    ->from('turma__formandos')
+                    ->groupBy('curso_id')
+                    ->having(Curso::raw('count(formando_id)'), '>', 10);
+            })
+            ->groupBy('curso_id')
+            ->orderBy('total_pagamentos', 'desc')
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $post = Blog::find($id);
+        $tags = Tag::all();
+        $categorias = Categoria::orderBy("nome")->get();
+
+        return view("Santa Cruz.post-detalhes", compact("post", "categorias", "tags", "cursosComMaisPagamentos"));
 
     }
 }
